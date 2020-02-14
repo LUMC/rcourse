@@ -1,0 +1,6 @@
+---
+title: "Contact"
+---
+
+```{r, child="_contact.Rmd"}
+``` 

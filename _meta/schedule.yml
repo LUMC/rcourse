@@ -1,0 +1,49 @@
+current : "BAST_march_2020"
+
+BAST_march_2020:
+  title: "BAST week"
+  start: "23-03-2020"   
+  end: "26-03-2020"
+  exam:
+    date:
+    rmd:
+  slots:
+    dplyr0:
+      title: "tidyverse" 
+      subtitle: "dplyr basics"
+      date: "23-03-2020"
+      time:
+      doc: dplyr0.html
+      exercises: dplyr0.tasks.nocode.html 
+      solutions: dplyr0.tasks.html 
+    dplyr_pipe:
+      title: "tidyverse"
+      subtitle: "dplyr '%>%' operator (pipe)"
+      date: 
+      time:
+      doc: dplyr_pipe.html
+      exercises: dplyr_pipe.tasks.nocode.html 
+      solutions: dplyr_pipe.tasks.html 
+    
+Boerhaave_june_2020:
+  title: "Boerhaave"
+  start: "09-06-2020"   
+  end: "12-06-2020"
+  exam:
+    date:
+    rmd:
+CRiP_september_2020:
+  title: "CRiP course (Bart Mertens)"
+  start: "21-09-2020"   
+  end: "01-10-2020"
+  exam:
+    date: "09-10-2020"
+    rmd:
+CRiP_november_2020:
+  title: "Data analysis with R (Kees Tensen)"
+  start:   
+  end:
+  exam:
+    date:
+    rmd:
+    

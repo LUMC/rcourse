@@ -1,0 +1,43 @@
+name: "r-course"
+include: ["setup.R"]
+navbar:
+  title: "Data Analysis with R"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+#    - text: "About"
+#      icon: fa-info
+#      href: about.html
+    - text: "Schedule"
+      icon: fa-calendar
+      href: schedule.html
+    - text: "Data"
+      icon: fa-table
+      href: data.html
+    - text: "More"
+      icon: fa-gear
+      menu:
+        - text: "Online help and materials"
+          href: materials.html
+        - text: "Contact"
+          href: contact.html
+        - text: "---------"
+        - text: "Past courses"
+          href: archive.html
+  right:
+    - icon: fa-download
+      href: https://barmsijs.lumc.nl/R_course/R_course.zip
+    - icon: fa-question fa-lg
+      href: help.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate # tango
+    toc: true
+    toc_depth: 2
+    toc_float: true  
+    include:
+      after_body: footer.html
+    css: styles.css

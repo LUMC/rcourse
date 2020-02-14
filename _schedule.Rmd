@@ -1,0 +1,24 @@
+```{r _shedule, echo=FALSE}
+library(yaml)
+conf <- yaml.load_file("_meta/schedule.yml")
+course <- conf[["current"]]
+course_name <- conf[[course]][["title"]] 
+start_data <- conf[[course]][["start"]] 
+end_data <- conf[[course]][["end"]] 
+exam_date <- conf[[course]][["exam"]][["date"]] 
+slots <- conf[[course]][["slots"]] 
+```
+
+## `r course_name` | `r start_data` - `r end_data`
+
+```{r, results='asis', echo=FALSE}
+for (slot in slots) {
+
+  cat('#### [', slot[["title"]] ,':',slot[["subtitle"]],'](',slot[["doc"]],') | ',slot[["date"]],
+      '[ [exercises](',slot[["exercises"]],') ]' ,' ',
+      '[ [solutions](',slot[["solutions"]],') ]' ,
+      '\n')
+  cat('\n')
+}
+```
+

@@ -1,0 +1,9 @@
+---
+title: "Help"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions to create modules

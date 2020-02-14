@@ -1,0 +1,53 @@
+---
+title: "Using R for data analysis"
+---
+
+[R](https://www.r-project.org/) is an open-source, free environment for statistical computing and graphics. 
+It provides a large repository of statistical analysis methods, both classic and new. 
+However, R has a steep learning curve, due partly to its using a command-line type of user interface, rather than the usual pull-down menus. 
+The course aims at helping researchers climb this curve, enabling them to perform basic data analysis and graphic displays at the end of the course, as well as giving a platform from which they can deepen their R knowledge later on if necessary.
+
+## Teachers
+
+```{r, child="_contact.Rmd"}
+``` 
+
+## Goals & Topics
+
+After the course you will be able to:
+
+- understand and write simple R programs
+- use R to perform simple statistical analyses of your own data tables
+- generate analysis reports from your own data in html or pdf formats
+
+We will cover the following topics:
+
+- R expressions
+- R data objects (vectors (arrays), data frames (tables), lists) creation and usage
+- [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)]
+- R functions for descriptive statistics and linear model fitting; R formula objects
+- installing additional libraries
+- histograms, scatter plots, boxplots (in pure R and with [ggplot2](http://ggplot2.org/)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf)]
+- filtering, sorting, summarizing of a table; joining/merging multiple tables (with [dplyr](https://cran.r-project.org/web/packages/dplyr/README.html) and [tidyr](https://github.com/hadley/tidyr)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)]
+
+## Prerequisites
+
+The course assumes no prior programming knowledge. Elementary statistics knowledge is necessary.
+
+Participants must **bring own laptops** capable of running recent [RStudio](https://www.rstudio.com/products/rstudio/). 
+
+Before the course prepare your laptop:
+
+- **install RStudio**: go to [the RStudio download page](https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio.
+- **download the course** [.zip file]() to your laptop. Unpack the zip file to a directory, and please check whether you can open `index.html` file from the directory.
+
+Some additional packages are needed for the course.
+During the course the participants will learn how to install packages, but this process occasionaly fails (because e.g.: additional steps are needed in a particular operating system, or there is lack of permissions to access some system directories, or other software is too old, ...).
+Resolving installation problems during the course may be impossible, therefore please try to follow the steps below.
+In case of failure, please inform the teachers during the first day of the course.
+
+- **install package tidyverse**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
+- **install packages needed for RMarkdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing RMarkdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
+
+
+

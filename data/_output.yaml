@@ -1,0 +1,19 @@
+html_document:
+  keep_md: true
+  toc: true
+  toc_float:
+    collapsed: false
+    smooth_scroll: true
+  theme: readable
+  highlight: tango
+  logo: bce_logo.png
+  number_sections: true
+  code_folding: show
+md_document:
+  toc: true
+  toc_depth: 3
+  variant: markdown_github
+ioslides_presentation:
+  widescreen: true
+  keep_md: yes
+  logo: bce_logo.png

@@ -1,0 +1,183 @@
+"locations"	"N.partic"	"year"
+"New York"	"77"	2006
+"Milano"	"76"	1984
+"Sidney"	"66"	1997
+"Rio de Janeiro"	"59"	2005
+"Salzburg"	"73"	2013
+"Amsterdam"	"80"	1963
+"Milano"	"62"	1967
+"Yokohama"	"61"	1979
+"Vancouver"	"combined"	1969
+"Seattle"	"82"	1968
+"Chennai"	"89"	2000
+"Geneva"	"77"	1973
+"Rio de Janeiro"	"69"	1966
+"Sidney"	"56"	1987
+"Phoenix"	"59"	1991
+"Istanbul"	"71"	1983
+"Rio de Janeiro"	"75"	2002
+"Lyon"	"83"	1970
+"Vancouver"	"69"	1968
+"New York"	"87"	2011
+"Oporto"	"74"	2013
+"Sidney"	"58"	1986
+"Vancouver"	"74"	1971
+"Istanbul"	"88"	2004
+"Cambridge"	"80"	1999
+"Oporto"	"94"	1976
+"Istanbul"	"68"	2005
+"Barcelona"	"65"	1987
+"Vancouver"	"81"	2009
+"New York"	"81"	1974
+"Istanbul"	"78"	2012
+"Rio de Janeiro"	"75"	1976
+"Istanbul"	"82"	1999
+"Sidney"	"combined"	1986
+"Geneva"	"76"	1962
+"Istanbul"	"81"	1996
+"Geneva"	"70"	2009
+"Seattle"	"64"	1985
+"New York"	"86"	2003
+"Rio de Janeiro"	"70"	1990
+"New York"	"78"	1977
+"Phoenix"	"68"	2001
+"Geneva"	"74"	1982
+"Lyon"	"70"	1988
+"Seattle"	"60"	1971
+"Cambridge"	"103"	1972
+"Phoenix"	"76"	1960
+"Cambridge"	"81"	1982
+"Amsterdam"	"87"	1962
+"Sidney"	"94"	1980
+"Istanbul"	"76"	1983
+"Chennai"	"76"	1984
+"New York"	"60"	2012
+"Sidney"	"86"	1974
+"Geneva"	"76"	1991
+"Milano"	"87"	1974
+"Boston"	"59"	2010
+"Glasgow"	"82"	1984
+"Amsterdam"	"79"	1989
+"Boston"	"83"	1964
+"Lyon"	"78"	2011
+"Sidney"	"combined"	1994
+"Rio de Janeiro"	"78"	1983
+"Vancouver"	"combined"	1984
+"New York"	"64"	2000
+"Geneva"	"77"	1980
+"New York"	"60"	1982
+"Vancouver"	"66"	1983
+"Vancouver"	"91"	1999
+"Phoenix"	"81"	1998
+"Geneva"	"66"	2007
+"St. Petersburg"	"77"	1965
+"Yokohama"	"84"	1985
+"Salzburg"	"67"	1970
+"Oporto"	"70"	1962
+"Sidney"	"72"	1994
+"New York"	"84"	2006
+"Yokohama"	"71"	2004
+"Seattle"	"65"	1963
+"Geneva"	"75"	1997
+"New York"	"74"	1968
+"Rio de Janeiro"	"68"	1963
+"Amsterdam"	"94"	1969
+"Amsterdam"	"68"	1980
+"Cambridge"	"91"	1994
+"Amsterdam"	"87"	1974
+"Cambridge"	"81"	1989
+"Vancouver"	"79"	1983
+"Seattle"	"79"	1990
+"Sidney"	"69"	1966
+"Geneva"	"73"	2010
+"Glasgow"	"72"	1991
+"New York"	"75"	2001
+"Amsterdam"	"66"	1980
+"Yokohama"	"67"	2003
+"Vancouver"	"72"	1999
+"Sidney"	"67"	1974
+"Vancouver"	"78"	1967
+"Cambridge"	"79"	1983
+"Vancouver"	"69"	1991
+"Cambridge"	"93"	2012
+"Sidney"	"88"	1971
+"Milano"	"68"	1977
+"Vancouver"	"75"	1965
+"Geneva"	"109"	1980
+"Barcelona"	"73"	1998
+"Barcelona"	"63"	2004
+"New York"	"78"	2013
+"Boston"	"71"	1969
+"Glasgow"	"64"	2013
+"Milano"	"77"	1983
+"Barcelona"	"73"	1999
+"Vancouver"	"88"	1962
+"Geneva"	"combined"	1960
+"St. Petersburg"	"67"	1976
+"New York"	"94"	1981
+"Vancouver"	"88"	1965
+"Geneva"	"100"	2008
+"Geneva"	"69"	1965
+"Phoenix"	"66"	1972
+"Sidney"	"combined"	1997
+"Cambridge"	"69"	1981
+"New York"	"72"	2001
+"Vancouver"	"81"	1980
+"Vancouver"	"77"	1983
+"Sidney"	"75"	1990
+"Rio de Janeiro"	"80"	2003
+"St. Petersburg"	"67"	1961
+"Geneva"	"64"	1985
+"Boston"	"62"	1989
+"Phoenix"	"75"	1980
+"Glasgow"	"75"	2012
+"Glasgow"	"77"	1977
+"Yokohama"	"70"	1970
+"Chennai"	"90"	2001
+"Amsterdam"	"73"	1976
+"Boston"	"72"	1963
+"Vancouver"	"63"	2008
+"Amsterdam"	"80"	1970
+"Thessaloniki"	"69"	1962
+"Vancouver"	"63"	1960
+"Seattle"	"77"	1984
+"Sidney"	"69"	2000
+"Phoenix"	"80"	1997
+"Vancouver"	"63"	1966
+"Sidney"	"81"	1996
+"New York"	"86"	1995
+"Geneva"	"86"	1992
+"Geneva"	"68"	1987
+"Salzburg"	"64"	2007
+"Glasgow"	"85"	1991
+"Vancouver"	"79"	1968
+"Seattle"	"72"	1974
+"St. Petersburg"	"112"	1995
+"Vancouver"	"67"	1993
+"Lyon"	"97"	1988
+"Lyon"	"63"	1969
+"Sidney"	"78"	2004
+"Chennai"	"83"	1974
+"Amsterdam"	"71"	2004
+"Vancouver"	"80"	2012
+"Phoenix"	"73"	1995
+"Seattle"	"67"	1986
+"Salzburg"	"66"	1993
+"Rio de Janeiro"	"85"	1969
+"Glasgow"	"103"	2008
+"Amsterdam"	"73"	1984
+"Phoenix"	"66"	1962
+"Rio de Janeiro"	"66"	1960
+"Seattle"	"86"	1981
+"Yokohama"	"74"	2000
+"Rio de Janeiro"	"75"	1970
+"Cambridge"	"68"	1983
+"Amsterdam"	"56"	1976
+"Oporto"	"92"	2003
+"Yokohama"	"97"	2009
+"New York"	"82"	1969
+"Barcelona"	"65"	1971
+"Rio de Janeiro"	"67"	2010
+"New York"	"combined"	2003
+"Oporto"	"73"	1987
+"New York"	"80"	1976

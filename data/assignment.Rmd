@@ -1,0 +1,50 @@
+---
+title: "Assignment"
+author: "Jelle Goeman, Szymon Kielbasa, Ramin Monajemi"
+date: "17 oktober 2016"
+output: html_document
+---
+
+# Advanced Concept in R: assignment
+
+Load the dataset that is in the tab-delimited file `pulse.txt`. Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.
+
+|Variable | Explanation |
+|---|-----------------------------------------------------|
+|name     | Name of student|
+|height	  |	Height (cm) |
+|weight	  |	Weight (kg) |
+|age	    |	Age (years)|
+|gender	  |	Sex (1 = male, 2 = female)|
+|smokes	  |	Regular smoker? (1 = yes, 2 = no)|
+|alcohol	|	Regular drinker? (1 = yes, 2 = no)|
+|exercise	|	Frequency of exercise (1 = high, 2 = moderate, 3 = low)|
+|ran	    |	Whether the student ran or sat between the first and second pulse measurements (1 = ran, 2 = sat)|
+|pulse1  	|	First pulse measurement (rate per minute)|
+|pulse2	  |	Second pulse measurement (rate per minute)|
+|year		  | Year of class (93 - 98)|
+
+> If you are unable to read in the data, you may ask for help.
+
+This is an open book (open computer) exam. You may look at any notes or websites you like. However, you are not allowed to have any communication websites (email, chat) open.
+
+## Exercises
+
+1. Make an R markdown document that contains your answers to the following questions. 
+
+1. Calculate BMI (weight in kg divided by squared height in meters) for each student and add this information to the data. Report the first 10 rows of your new table.
+
+1. What percentage of regular smokers are also regular drinkers?
+
+1. Calculate the mean weight of students separately for the six years of class.
+
+1. Perform a paired t-test to test whether the mean pulse rate in students was different between the first and the second measurement. For this t-test, consider only the students that ran. Report the p-value (only).
+
+1. Plot the first pulse measurement against weight. Let the plot distinguish points by smoking, drinking and exercise, and plot males and females separately in two plots side by side.
+
+1. How many students had a first name that starts with `R`?
+
+> Good luck!
+
+When you're done, please let us know. You are then allowed to open your email program and to send your .Rmd markdown source document to [j.j.goeman@lumc.nl](mailto:j.j.goeman@lumc.nl). 
+
