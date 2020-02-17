@@ -33,7 +33,7 @@ navbar:
       href: help.html
 output:
   html_document:
-    theme: cosmo
+    theme:     spacelab  # (maybe: spacelab lumen, readable,yeti) (no: flatly,cosmo, paper, sandstone, simplex,united)
     highlight: textmate # tango
     toc: true
     toc_depth: 2

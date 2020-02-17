@@ -15,22 +15,23 @@ BAST_march_2020:
     date:
     doc:
   slots:
-    dplyr0:
-      title: "tidyverse" 
-      subtitle: "dplyr basics"
+    slot1:
+      title: "title" 
+      subtitle: "subtitle"
       date: "23-03-2020"
-      time:
-      doc: dplyr0.html
-      exercises: dplyr0.tasks.nocode.html 
-      solutions: dplyr0.tasks.html 
-    dplyr_pipe:
-      title: "tidyverse"
-      subtitle: "dplyr '%>%' operator (pipe)"
-      date: 
-      time:
-      doc: dplyr_pipe.html
-      exercises: dplyr_pipe.tasks.nocode.html 
-      solutions: dplyr_pipe.tasks.html 
+      time: "11:30-13:30"
+      venue: "CZ4"
+      doc: "slot1.html"
+      tasks : "yes"      
+    slot2:
+      title: "title" 
+      subtitle: "subtitle"
+      date: "24-03-2020"
+      time: "10:30-12:30"
+      venue: "CZ4"
+      doc: "slot1.html"
+      tasks: "yes"      
+    ...  
 ```
 
 A course has a:

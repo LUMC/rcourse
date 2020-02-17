@@ -1,5 +1,3 @@
-options(knitr.duplicate.label = "allow")
-
 build_nocode <- function(params) {
   root_dir <- knitr::opts_knit$get("output.dir")
   site_dir <- file.path(root_dir,"_site")

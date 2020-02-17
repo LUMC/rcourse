@@ -9,16 +9,22 @@ exam_date <- conf[[course]][["exam"]][["date"]]
 slots <- conf[[course]][["slots"]] 
 ```
 
-## `r course_name` | `r start_data` - `r end_data`
+### `r course_name` ( `r start_data` -- `r end_data` )
+
+---
 
 ```{r, results='asis', echo=FALSE}
-for (slot in slots) {
-
-  cat('#### [', slot[["title"]] ,':',slot[["subtitle"]],'](',slot[["doc"]],') | ',slot[["date"]],
-      '[ [exercises](',slot[["exercises"]],') ]' ,' ',
-      '[ [solutions](',slot[["solutions"]],') ]' ,
-      '\n')
-  cat('\n')
+for (i in 1:length(slots) ) {
+  slot <- slots[[i]]
+  doc <- paste0(names(slots[i]),".html") # <slot name>.html
+  cat('#### (',i,') [', slot[["title"]] ,':',slot[["subtitle"]],'](',doc,')\n\n')
+  cat('#####          ', slot[["date"]],' | ',slot[["time"]],' | ',slot[["venue"]])
+  if (slot[["tasks"]] == "yes") {
+    cat(' | [ [exercises](',sub(".html", ".tasks.nocode.html", doc) ,') ]' ,' ',
+        '[ [solutions](',sub(".html", ".tasks.html", doc),') ]' ,
+        '\n\n---')
+  } 
+  cat('\n\n\n\n')
 }
 ```
 

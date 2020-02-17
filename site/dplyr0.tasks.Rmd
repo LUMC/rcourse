@@ -1,11 +1,9 @@
 ---
 title: "tidyverse: data manipulation (tasks)"
 author: "Ramin Monajemi"
-output: html_document
 ---
 
 ```{r , include=FALSE}
-# source( "R_course_setup.R" );
 if (exists("params")) {
   knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA)
 } else  {
@@ -15,6 +13,7 @@ pulse <- read.delim( "data/pulse.txt" )
 survey <- read.delim( "data/survey.txt" )
 ```
 
+---
 
 # `dplyr` : data manipulation
 
@@ -23,7 +22,6 @@ Load `tidyverse`:
 ```{r warning=FALSE,message=FALSE, echo=TRUE}
 library( tidyverse )
 ```
-
 
 ## General properties of `survey` data {#GeneralProperties}
 

@@ -1,25 +1,16 @@
 ---
-title: 'tidyverse: R packages for data science'
-author:
-- affiliation: "Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC"
-  company: "LUMC"
-  name: "Ramin Monajemi"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+title: 'tidyverse: data manipulation'
+author: "Ramin Monajemi"
 params:
   basename: "dplyr0"
-  title: "tidyverse: data manipulation (tasks) 0"
-  author: "Ramin Monajemi"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA)
-library( tidyverse )
-source("setup.R")
-build_nocode(params)
-# rmarkdown::render("_build_exercises.Rmd", params = list(title="aap"))
-
+build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
 ```
 
+---
 
 # `dplyr` : data.frame manipulation
 
