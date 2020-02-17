@@ -1,0 +1,20 @@
+---
+title: 'tidyverse: R packages for data science'
+subtitle: dplyr ‘%>%’ operator (pipe) 
+author:
+- affiliation: "Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC"
+  company: "LUMC"
+  name: "Ramin Monajemi"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "dplyr_pipe0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+library( tidyverse )
+source("setup.R")
+```
+
+```{r, child="_build_exercises.Rmd"}
+``` 

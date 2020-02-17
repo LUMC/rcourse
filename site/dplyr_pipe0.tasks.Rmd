@@ -1,0 +1,16 @@
+---
+output:
+  html_document:
+    pandoc_args: ["--metadata-file=_meta/dplyr_pipe0.yml"]
+---
+
+```{r , include=FALSE}
+# source( "R_course_setup.R" );
+if (exists("params")) {
+  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA)
+} else  {
+  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA)
+}
+pulse <- read.delim( "data/pulse.txt" )
+survey <- read.delim( "data/survey.txt" )
+```

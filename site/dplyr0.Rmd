@@ -7,17 +7,18 @@ author:
 date: "`r format(Sys.time(), '%d %B %Y')`"
 params:
   basename: "dplyr0"
+  title: "tidyverse: data manipulation (tasks) 0"
+  author: "Ramin Monajemi"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA)
 library( tidyverse )
 source("setup.R")
+build_nocode(params)
+# rmarkdown::render("_build_exercises.Rmd", params = list(title="aap"))
+
 ```
-
-
-```{r, child="_build_exercises.Rmd"}
-``` 
 
 
 # `dplyr` : data.frame manipulation

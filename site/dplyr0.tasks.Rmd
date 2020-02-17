@@ -1,7 +1,7 @@
 ---
-output:
-  html_document:
-    pandoc_args: ["--metadata-file=_meta/dplyr0.yml"]
+title: "tidyverse: data manipulation (tasks)"
+author: "Ramin Monajemi"
+output: html_document
 ---
 
 ```{r , include=FALSE}

@@ -6,7 +6,7 @@ BAST_march_2020:
   end: "26-03-2020"
   exam:
     date:
-    rmd:
+    doc:
   slots:
     dplyr0:
       title: "tidyverse" 
@@ -16,14 +16,14 @@ BAST_march_2020:
       doc: dplyr0.html
       exercises: dplyr0.tasks.nocode.html 
       solutions: dplyr0.tasks.html 
-    dplyr_pipe:
+    dplyr_pipe0:
       title: "tidyverse"
       subtitle: "dplyr '%>%' operator (pipe)"
       date: 
       time:
-      doc: dplyr_pipe.html
-      exercises: dplyr_pipe.tasks.nocode.html 
-      solutions: dplyr_pipe.tasks.html 
+      doc: dplyr_pipe0.html
+      exercises: dplyr_pipe0.tasks.nocode.html 
+      solutions: dplyr_pipe0.tasks.html 
     
 Boerhaave_june_2020:
   title: "Boerhaave"
