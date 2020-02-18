@@ -10,33 +10,49 @@ The class generates a web-site based on the Rmd files in the directory 'site'. T
 and contains several categories of files:
 
 \describe{
-  \item{_site.yml}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-  \item{_meta/schedule.yml}{This file contains information about the course (see details).}
-  \item{<module-name>.Rmd}{These files contain the course material on a specific topic.}
-  \item{_<name>.Rmd}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
+  \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
+  \item{\strong{_meta/schedule.yml}}{This file contains information about the course (see details).}
+  \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
+  \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
   counterpart in the _site directory.}   
-  \item{data and images}{ These directories copied into _site directory}
-  \item{footer.html}{Footer content for all pages.}
-  \item{setup.R}{This is needed only if the individual Rmd files need to be genrated inside RStudio using the 'knit' button.}
-  \item{Styles.css}{Stylesheet file for the appearance}
-  
-  
+  \item{\strong{data and images}}{ These directories copied into _site directory}
+  \item{\strong{footer.html}}{Footer content for all pages.}
+  \item{\strong{setup.R}}{This is needed only if the individual Rmd files need to be genrated inside RStudio using the 'knit' button.}
+  \item{\strong{Styles.css}}{Stylesheet file for the appearance}
+}
+
+The files prefixed with \strong{_} will not be rendered and are for internal use.
+}
+\details{
+The \strong{schdule} file has the following structure:
+
+\preformatted{
+   <course-id>:
+       title: <course-title>
+       start: <start-date>
+       end: <end-date>
+       exam: <exam-date>
+       slots:
+           <slot-id>:
+               title:  <session-title>
+               subtitle: <session-subtitle>
+               date: <session-date>
+               time: <session-time>
+               venue: <venue>
+               tasks : "yes | no"     
+           <slot-id>:
+               ...
 }
 }
 \section{Methods}{
 
-\describe{
-  \item{...}{...}
-}
 }
 
 \examples{
+rcourse <- Course$new()
+rcourse$view()
 
 }
-\seealso{
-\code{\link{Course}}
-}
-\keyword{data}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -49,6 +65,8 @@ and contains several categories of files:
 \item \href{#method-summary}{\code{Course$summary()}}
 \item \href{#method-slots}{\code{Course$slots()}}
 \item \href{#method-lstmod}{\code{Course$lstmod()}}
+\item \href{#method-listing}{\code{Course$listing()}}
+\item \href{#method-zip}{\code{Course$zip()}}
 \item \href{#method-clone}{\code{Course$clone()}}
 }
 }
@@ -58,9 +76,18 @@ and contains several categories of files:
 Instantiates a 'Course' object. It will load the schedule.yml 
 and renders the site for the default course (see current tag in shedule.yml)..
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$new(schedule = "site/_meta/schedule.yml", ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{schedule}}{The schedule file in YAML format.}
+
+\item{\code{...}}{arguments to rmarkdown::render_site}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-src"></a>}}
@@ -76,13 +103,15 @@ Path to site's directory containing all Rmd files.
 \subsection{Method \code{render()}}{
 Render the site only for modified Rmd's.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$render(clean = FALSE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$render(clean = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{clean}}{If true the clean the site first.}
+
+\item{\code{...}}{arguments to rmarkdown::render_site}
 }
 \if{html}{\out{</div>}}
 }
@@ -140,6 +169,31 @@ Returns the list of modified files.
 \if{html}{\out{<div class="r">}}\preformatted{Course$lstmod()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-listing"></a>}}
+\subsection{Method \code{listing()}}{
+Returns the list of files for zip archive.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$listing()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-zip"></a>}}
+\subsection{Method \code{zip()}}{
+Create a zip archive.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$zip(filename = "RCourse.zip")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{filename}}{name of zip archive.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

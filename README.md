@@ -1,48 +1,41 @@
 # DAR
 
-Data Analysis with R (DAR) is an R package to develop the R course in a modular fashion. 
+[Data Analysis with R (DAR)](https://git.lumc.nl/r.monajemi/dar) is a R package to develop R courses in a modular fashion. it has a single class `Course`, see  `?Course` for more details. An instance of the this object can be used to generate the web-site for materials. 
 
+The file `shedule.yml` ([YAML format](https://en.wikipedia.org/wiki/YAML)) holds all the information needed about the course to build the site. The file may contain multiple courses and can be edited.
 
-The file `shedule.yml` holds all the information needed to buil the site for the corresponding course. 
-Multiple courses can ben created using this file. Below is an example of a course: 
+Below is an example of a course: 
 
-```
-BAST_march_2020:
-  title: "BAST week"
-  start: "23-03-2020"   
-  end: "26-03-2020"
-  exam:
-    date:
-    doc:
+```code
+R_course:
+  title: "BAST Week"
+  start: "01-01-2020"   
+  end: "31-12-2020"
+  exam:"???"
   slots:
-    slot1:
-      title: "title" 
-      subtitle: "subtitle"
-      date: "23-03-2020"
-      time: "11:30-13:30"
-      venue: "CZ4"
-      doc: "slot1.html"
+    dplyr0:
+      title: "tidyverse: data manipulation" 
+      subtitle: "dplyr basics"
+      date: "dd-mm-yyyy"
+      time: "00:00-00:00"
+      venue: "<venue>"
       tasks : "yes"      
-    slot2:
-      title: "title" 
-      subtitle: "subtitle"
-      date: "24-03-2020"
-      time: "10:30-12:30"
-      venue: "CZ4"
-      doc: "slot1.html"
-      tasks: "yes"      
-    ...  
+    dplyr_pipe0:
+      title: "tidyverse: data manipulation"
+      subtitle: "dplyr '%>%' operator (pipe)"
+      date: "dd-mm-yyyy"
+      time: "00:00-00:00"
+      venue: "<venue>"
+      tasks : "yes"  
 ```
 
-A course has a:
 
-  - `title`, 
-  - `start` and `end` date,
-  - exam with a `date` and the document name `doc`
-  - collection of `slots` with each slot having
-    - title, subtitle, data, time, document, exercises and it solutions
+A limitations of this solution is its `flat directory structure` requirement. It is not straightforward to organise Rmd files into a directory structure, this may clutter the `site` folder. A workaround would be to archive each course and devise a new set of files for new courses. 
 
-For each course such block can be constructed and kept and archived. 
+Git repository: [https://git.lumc.nl/r.monajemi/dar](https://git.lumc.nl/r.monajemi/dar)
+
+
+
 
 
 

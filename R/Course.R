@@ -4,15 +4,39 @@
 #' and contains several categories of files:
 #'
 #' \describe{
-#'   \item{_site.yml}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-#'   \item{_meta/schedule.yml}{This file contains information about the course (see details).}
-#'   \item{<module-name>.Rmd}{These files contain the course material on a specific topic.}
-#'   \item{_<name>.Rmd}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
+#'   \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
+#'   \item{\strong{_meta/schedule.yml}}{This file contains information about the course (see details).}
+#'   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
+#'   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
 #'   counterpart in the _site directory.}   
-#'   \item{data and images}{ These directories copied into _site directory}
-#'   \item{footer.html}{Footer content for all pages.}
-#'   \item{setup.R}{This is needed only if the individual Rmd files need to be genrated inside RStudio using the 'knit' button.}
-#'   \item{Styles.css}{Stylesheet file for the appearance}
+#'   \item{\strong{data and images}}{ These directories copied into _site directory}
+#'   \item{\strong{footer.html}}{Footer content for all pages.}
+#'   \item{\strong{setup.R}}{This is needed only if the individual Rmd files need to be genrated inside RStudio using the 'knit' button.}
+#'   \item{\strong{Styles.css}}{Stylesheet file for the appearance}
+#' }
+#' 
+#' The files prefixed with \strong{_} will not be rendered and are for internal use.  
+#' 
+#' @details 
+#' 
+#' The \strong{schdule} file has the following structure:
+#' 
+#' \preformatted{
+#'    <course-id>:
+#'        title: <course-title>
+#'        start: <start-date>
+#'        end: <end-date>
+#'        exam: <exam-date>
+#'        slots:
+#'            <slot-id>:
+#'                title:  <session-title>
+#'                subtitle: <session-subtitle>
+#'                date: <session-date>
+#'                time: <session-time>
+#'                venue: <venue>
+#'                tasks : "yes | no"     
+#'            <slot-id>:
+#'                ...
 #' }
 #' 
 #' 
@@ -21,16 +45,11 @@
 #' @importFrom R6 R6Class
 # @export
 #' @format An \code{\link{R6Class}} generator object
-#' @keywords data
 #' @section Methods:
-#' \describe{
-#'   \item{...}{...}
-#' }
-#'
-#' @seealso
-#' \code{\link{Course}}
 #'
 #'@examples
+#' rcourse <- Course$new()
+#' rcourse$view()
 #'
 #'@export
 Course <- R6Class("Course",
@@ -44,18 +63,31 @@ Course <- R6Class("Course",
         html_file <- file.path(self$src(),"_site",paste0(f,".html"))
         ifelse(!file.exists(html_file), TRUE, 
                ((file.info(html_file)$mtime - file.info(file.path(self$src(), paste0(f,".Rmd") ) )$mtime )  <= 0) )
+      },
+      zip_ = function(zip_file){
+        prefix <- sub(".zip","",zip_file)
+        if (file.exists(prefix))
+          unlink(prefix)
+        if (file.exists(zip_file))
+          unlink(zip_file)
+        file.symlink(from = "site", to = prefix)
+        zip(zipfile = paste0(prefix,".zip"), 
+            files = paste0(prefix,"/",self$listing()), flags = "-q")
+        unlink(prefix)
       }
     ),
     public = list(
+      #' @param schedule The schedule file in YAML format.
+      #' @param ... arguments to rmarkdown::render_site
       #' @description Instantiates a 'Course' object. It will load the schedule.yml 
       #' and renders the site for the default course (see current tag in shedule.yml)..
-      initialize = function() {
+      initialize = function(schedule="site/_meta/schedule.yml", ...) {
         options(knitr.duplicate.label = "allow")  # RESOLVE THIS !!!
         options(width=120)
         #
         # schedule file
         #
-        cfg <- file.path(rprojroot::find_rstudio_root_file(),"site/_meta/schedule.yml")
+        cfg <- file.path(rprojroot::find_rstudio_root_file(),schedule)
         if (file.exists(cfg) ) {
           private$schedule <- yaml.load_file( cfg  )
         } else {
@@ -64,7 +96,7 @@ Course <- R6Class("Course",
         #
         # render and set url and site path. 
         #
-        rmarkdown::render_site(self$src())
+        rmarkdown::render_site(self$src(),...)
         private$site_ <- file.path(self$src(),"_site")
         private$url_ <- file.path(self$site(),"index.html")
       },
@@ -73,6 +105,7 @@ Course <- R6Class("Course",
         file.path(rprojroot::find_rstudio_root_file(),"site")
       },
       #' @param clean If true the clean the site first.
+      #' @param ... arguments to rmarkdown::render_site
       #' @description Render the site only for modified Rmd's. 
       render = function(clean=FALSE,...){
         if (clean)
@@ -85,6 +118,7 @@ Course <- R6Class("Course",
       },
       #' @description Return the path to site's directory.    
       site = function() {
+        private$site_
       },
       #' @description Return the path to site's index.html    
       url = function() {
@@ -112,11 +146,20 @@ Course <- R6Class("Course",
         file_basenames <- sapply(rmds[!grepl('^_',rmds)], function(x) sub(".Rmd","",x)) %>% as.vector()
         file_basenames[sapply(file_basenames, private$modified)]
       },
+      #' @description Returns the list of files for zip archive.
       listing = function(){
         shedule <- self$summary()
         course <- shedule[[ shedule[["current"]] ]]
-        rmds <- names(course[["slots"]])
+        rmds <- dir(self$src(),pattern=".Rmd")
         other <- c("images","data","_meta","styles.css","_site.yml","footer.html")
+        c(rmds,other)
+      },
+      #' @param filename name of zip archive.
+      #' @description Create a zip archive.
+      zip = function(filename="RCourse.zip"){
+        if (!grepl(".zip$",filename))
+          stop("invalud suffix, use extension .zip !")
+        private$zip_(filename)
       }
     )
 )

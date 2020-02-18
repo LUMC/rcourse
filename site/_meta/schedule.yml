@@ -1,5 +1,5 @@
-#current : "R_course"
-current : "BAST_march_2020"
+current : "R_course"
+#current : "BAST_march_2020"
 
 R_course:
   title: "All Modules"
@@ -12,17 +12,17 @@ R_course:
     dplyr0:
       title: "tidyverse: data manipulation" 
       subtitle: "dplyr basics"
-      date: "24-03-2020"
-      time: "10:30-12:30"
-      venue: "CZ4"
+      date: "dd-mm-yyyy"
+      time: "00:00-00:00"
+      venue: "<venue>"
       tasks : "yes"      
     dplyr_pipe0:
       title: "tidyverse: data manipulation"
       subtitle: "dplyr '%>%' operator (pipe)"
-      date: 
-      time:
-      venue:
-      tasks : "yes"
+      date: "dd-mm-yyyy"
+      time: "00:00-00:00"
+      venue: "<venue>"
+      tasks : "yes"      
         
 BAST_march_2020:
   title: "BAST week"

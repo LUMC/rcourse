@@ -28,12 +28,13 @@ navbar:
           href: archive.html
   right:
     - icon: fa-download
-      href: https://barmsijs.lumc.nl/R_course/R_course.zip
+      #href: https://barmsijs.lumc.nl/R_course/R_course.zip
+      href: file:///Users/rmonajemi/projects/dar/Rcourse.zip
     - icon: fa-question fa-lg
       href: help.html
 output:
   html_document:
-    theme:     spacelab  # (maybe: spacelab lumen, readable,yeti) (no: flatly,cosmo, paper, sandstone, simplex,united)
+    theme:     spacelab  # (e.g.: spacelab, lumen, readable,yeti) see https://www.datadreaming.org/post/r-markdown-theme-gallery/
     highlight: textmate # tango
     toc: true
     toc_depth: 2
