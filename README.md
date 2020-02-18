@@ -9,6 +9,7 @@ Below is an example of a course:
 ```code
 R_course:
   title: "BAST Week"
+  description: <== NEW 
   start: "01-01-2020"   
   end: "31-12-2020"
   exam:"???"
@@ -16,6 +17,7 @@ R_course:
     dplyr0:
       title: "tidyverse: data manipulation" 
       subtitle: "dplyr basics"
+      gaol: <== NEW 
       date: "dd-mm-yyyy"
       time: "00:00-00:00"
       venue: "<venue>"
@@ -23,6 +25,7 @@ R_course:
     dplyr_pipe0:
       title: "tidyverse: data manipulation"
       subtitle: "dplyr '%>%' operator (pipe)"
+      gaol: <== NEW 
       date: "dd-mm-yyyy"
       time: "00:00-00:00"
       venue: "<venue>"
