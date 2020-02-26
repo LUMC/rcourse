@@ -1,12 +1,12 @@
-# LOOC
+# ROOC
 
-Light Open Online Course (LOOC) is an R package to develop a course in a modular fashion. it has a single class `Course`, see  `?Course` for more details. An instance of the this object can be used to generate the web-site for materials. 
+Right Open Online Course (ROOC) is an R package to develop a course in a modular fashion. it has a single class `Course`, see  `?Course` for more details. An instance of the this object can be used to generate the web-site for materials. 
 
 
-**Quick start** Create a RStudio project from git repository `https://git.lumc.nl/r.monajemi/looc.git` and build it. The directory `site` contains all .Rmd files necessary for building the the web-pages for the course. The following code should work: 
+**Quick start** Create a RStudio project from git repository `https://git.lumc.nl/r.monajemi/rooc.git` and build it. The directory `site` contains all .Rmd files necessary for building the the web-pages for the course. The following code should work: 
 
 ```{r}
-> library(looc)
+> library(rooc)
 > rcourse <- Course$new() # instantiate and render the site
 > rcourse$view()          # view in browser
 ```
