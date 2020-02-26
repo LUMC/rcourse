@@ -14,9 +14,5 @@ rmarkdown::render(input = i ,
                     output_dir = root_dir,
                     output_format = "html_document",
                     quiet = TRUE, params = list(title="aap"))
-
-
-  
-#, params = list(title_=params$eTitle, author_=params$eAuthor)
 ```
 

@@ -1,15 +1,15 @@
 ```{r _shedule, echo=FALSE}
 library(yaml)
-conf <- yaml.load_file("_meta/schedule.yml")
-course <- conf[["current"]]
-course_name <- conf[[course]][["title"]] 
-start_data <- conf[[course]][["start"]] 
-end_data <- conf[[course]][["end"]] 
-exam     <- conf[[course]][["exam"]] 
-slots <- conf[[course]][["slots"]] 
+conf <- yaml.load_file("schedule.yml")
+course_ <- conf[["course"]]
+course_title <- course_[["title"]] 
+start_data <- course_[["start"]] 
+end_data <- course_[["end"]] 
+exam  <- course_[["exam"]] 
+slots <- course_[["slots"]] 
 ```
 
-### `r course_name` ( `r start_data` -- `r end_data` )
+### `r course_title` ( `r start_data` -- `r end_data` )
 
 <br/>
 

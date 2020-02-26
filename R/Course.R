@@ -5,7 +5,7 @@
 #'
 #' \describe{
 #'   \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-#'   \item{\strong{_meta/schedule.yml}}{This file contains information about the course (see details).}
+#'   \item{\strong{schedule.yml}}{This file contains information about the course (see details).}
 #'   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
 #'   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
 #'   counterpart in the _site directory.}   
@@ -73,7 +73,7 @@ Course <- R6Class("Course",
           unlink(zip_file)
         file.symlink(from = private$sources_, to = prefix)
         zip(zipfile = paste0(prefix,".zip"), 
-            files = paste0(prefix,"/",self$listing()), flags = "-q")
+            files = paste0(prefix,"/",self$listing()), flags = "-r")
         unlink(prefix)
       }
     ),
@@ -86,12 +86,18 @@ Course <- R6Class("Course",
         options(knitr.duplicate.label = "allow")  # RESOLVE THIS !!!
         options(width=120)
         private$sources_ <- site
-        if (!file.exists(self$src()))
-          stop("missing sources, try creating a 'course' from RMarkdown template !")
+        if (!file.exists(self$src())) {
+          cat('Starting new course ',site,'.\n', sep = "")
+          Sys.sleep(2)
+          rmarkdown::draft(file = site, template = "inst/rmarkdown/templates/course", edit = FALSE)
+          unlink(file.path(site,paste0(site,'.Rmd')))
+          rmarkdown::draft(file = file.path(site,"index.Rmd"), template = "inst/rmarkdown/templates/index", edit = FALSE)
+        }
+          
         #
         # schedule file
         #
-        cfg <- file.path(rprojroot::find_rstudio_root_file(),file.path(site,"_meta/schedule.yml"))
+        cfg <- file.path(rprojroot::find_rstudio_root_file(),file.path(site,"schedule.yml"))
         if (file.exists(cfg) ) {
           private$schedule <- yaml.load_file( cfg  )
         } else {
@@ -101,12 +107,17 @@ Course <- R6Class("Course",
         # render and set url and site path. 
         #
         rmarkdown::render_site(self$src(),...)
+        self$clear_nocode_html()
         private$site_ <- file.path(self$src(),"_site")
         private$url_ <- file.path(self$site(),"index.html")
       },
       #' @description Path to site's directory containing all Rmd files. 
       src = function() {
         file.path(rprojroot::find_rstudio_root_file(),private$sources_)
+      },
+      clear_nocode_html = function() {
+        html_files <- dir(self$src(),pattern = ".nocode.html$", full.names = TRUE)
+        unlink(html_files)
       },
       #' @param clean If true the clean the site first.
       #' @param ... arguments to rmarkdown::render_site
@@ -117,8 +128,7 @@ Course <- R6Class("Course",
         lapply(self$lstmod(),function(b) {
           rmarkdown::render_site(file.path(self$src(),paste0(b,".Rmd")),...)  
         })
-        html_files <- dir(self$src(),pattern = ".nocode.html$", full.names = TRUE)
-        unlink(html_files)
+        self$clear_nocode_html()
       },
       #' @description Return the path to site's directory.    
       site = function() {
@@ -139,8 +149,7 @@ Course <- R6Class("Course",
       #' @description Returns the list of course slots. The data is taken from 'shedule.yml'.   
       slots = function() {
         schedule <- private$schedule
-        course <- schedule[["current"]]
-        slots <- schedule[[course]] [["slots"]]
+        slots <- schedule[["course"]][["slots"]]
         names(slots)
       },
       #' @description Returns the list of modified files.
@@ -153,9 +162,9 @@ Course <- R6Class("Course",
       #' @description Returns the list of files for zip archive.
       listing = function(){
         shedule <- self$summary()
-        course <- shedule[[ shedule[["current"]] ]]
+        course <- shedule[["course"]]
         rmds <- dir(self$src(),pattern=".Rmd")
-        other <- c("images","data","_meta","styles.css","_site.yml","footer.html")
+        other <- c("images","data","schedule.yml","styles.css","_site.yml","footer.html")
         c(rmds,other)
       },
       #' @param filename name of zip archive.
@@ -163,6 +172,8 @@ Course <- R6Class("Course",
       zip = function(filename="RCourse.zip"){
         if (!grepl(".zip$",filename))
           stop("invalud suffix, use extension .zip !")
+        cat('exporting to ',filename, '...\n')
+        Sys.sleep(2)
         private$zip_(filename)
       }
     )

@@ -1,11 +1,10 @@
 Package: looc
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.1.9000
+Version: 1.0.0.9000
 Description: Light Open Online Course (LOOC) is an R package to develop a course in a modular fashion.
 License: GPLv3
 Depends: 
-    yaml
-Imports: 
+    yaml,
     tidyverse
 Encoding: UTF-8
 LazyData: true

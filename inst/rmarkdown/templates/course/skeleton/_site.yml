@@ -1,7 +1,7 @@
 name: "r-course"
 include: ["setup.R"]
 navbar:
-  title: "Data Analysis with R"
+  title: ""
   type: inverse
   left:
     - text: "Home"
