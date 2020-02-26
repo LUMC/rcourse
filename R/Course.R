@@ -54,6 +54,7 @@
 #'@export
 Course <- R6Class("Course",
     private = list(
+      sources_ = NULL,
       url_ = NULL,
       site_ = NULL,
       schedule = NULL,
@@ -70,7 +71,7 @@ Course <- R6Class("Course",
           unlink(prefix)
         if (file.exists(zip_file))
           unlink(zip_file)
-        file.symlink(from = "site", to = prefix)
+        file.symlink(from = private$sources_, to = prefix)
         zip(zipfile = paste0(prefix,".zip"), 
             files = paste0(prefix,"/",self$listing()), flags = "-q")
         unlink(prefix)
@@ -81,13 +82,16 @@ Course <- R6Class("Course",
       #' @param ... arguments to rmarkdown::render_site
       #' @description Instantiates a 'Course' object. It will load the schedule.yml 
       #' and renders the site for the default course (see current tag in shedule.yml)..
-      initialize = function(schedule="site/_meta/schedule.yml", ...) {
+      initialize = function(site="site", ...) {
         options(knitr.duplicate.label = "allow")  # RESOLVE THIS !!!
         options(width=120)
+        private$sources_ <- site
+        if (!file.exists(self$src()))
+          stop("missing sources, try creating a 'course' from RMarkdown template !")
         #
         # schedule file
         #
-        cfg <- file.path(rprojroot::find_rstudio_root_file(),schedule)
+        cfg <- file.path(rprojroot::find_rstudio_root_file(),file.path(site,"_meta/schedule.yml"))
         if (file.exists(cfg) ) {
           private$schedule <- yaml.load_file( cfg  )
         } else {
@@ -102,7 +106,7 @@ Course <- R6Class("Course",
       },
       #' @description Path to site's directory containing all Rmd files. 
       src = function() {
-        file.path(rprojroot::find_rstudio_root_file(),"site")
+        file.path(rprojroot::find_rstudio_root_file(),private$sources_)
       },
       #' @param clean If true the clean the site first.
       #' @param ... arguments to rmarkdown::render_site
