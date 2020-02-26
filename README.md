@@ -1,6 +1,16 @@
-# DAR
+# LOOC
 
-Data Analysis with R (DAR) is a R package to develop R courses in a modular fashion. it has a single class `Course`, see  `?Course` for more details. An instance of the this object can be used to generate the web-site for materials. 
+Light Open Online Course (LOOC) is an R package to develop a course in a modular fashion. it has a single class `Course`, see  `?Course` for more details. An instance of the this object can be used to generate the web-site for materials. 
+
+
+**Quick start** Create a RStudio project from git repository `https://git.lumc.nl/r.monajemi/looc.git` and build it. The directory `site` contains all .Rmd files necessary for building the the web-pages for the course. The following code should work: 
+
+```{r}
+> library(looc)
+> rcourse <- Course$new() # instantiate and render the site
+> rcourse$view()          # view in browser
+```
+
 
 The file `shedule.yml` ([YAML format](https://en.wikipedia.org/wiki/YAML)) holds all the information needed about the course to build the site. The file may contain multiple courses and can be edited.
 

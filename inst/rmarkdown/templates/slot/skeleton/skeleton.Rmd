@@ -1,0 +1,15 @@
+---
+title: '<title>'
+author: "<author>"
+params:
+  basename: "<slot-file-name>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+```
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 

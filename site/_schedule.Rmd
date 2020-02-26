@@ -5,13 +5,13 @@ course <- conf[["current"]]
 course_name <- conf[[course]][["title"]] 
 start_data <- conf[[course]][["start"]] 
 end_data <- conf[[course]][["end"]] 
-exam_date <- conf[[course]][["exam"]][["date"]] 
+exam     <- conf[[course]][["exam"]] 
 slots <- conf[[course]][["slots"]] 
 ```
 
 ### `r course_name` ( `r start_data` -- `r end_data` )
 
----
+<br/>
 
 ```{r, results='asis', echo=FALSE}
 for (i in 1:length(slots) ) {
@@ -26,5 +26,7 @@ for (i in 1:length(slots) ) {
   } 
   cat('\n\n\n\n')
 }
+
+cat('### Exam: ', exam[["date"]],' | ',exam[["time"]],' | ',exam[["venue"]])
 ```
 

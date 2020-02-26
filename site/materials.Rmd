@@ -10,9 +10,6 @@ There are lots and lots of materials available online, simply enter your query i
 - [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 - [R Markdown](https://rmarkdown.rstudio.com/)
 - [The R Graph Gallery](https://www.r-graph-gallery.com/index.html)
-- [R for Data Science](http://r4ds.had.co.nz/)
-- [A curated list of R tutorials for Data Science, NLP and Machine Learning](https://github.com/ujjwalkarn/DataScienceR)
-- [Great R packages for data import, wrangling and visualization](http://www.computerworld.com/article/2921176/business-intelligence/great-r-packages-for-data-import-wrangling-visualization.html)
 
 
 

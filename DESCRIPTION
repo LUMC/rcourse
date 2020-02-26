@@ -1,16 +1,17 @@
-Package: dar
+Package: looc
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+Version: 0.0.1.9000
+Description: Light Open Online Course (LOOC) is an R package to develop a course in a modular fashion.
+License: GPLv3
+Depends: 
+    yaml
+Imports: 
+    tidyverse
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
-Depends: 
-    yaml
+Authors@R: 
+    person(given = "Ramin",
+           family = "Monajemi",
+           role = c("aut","cre") ,
+           email = "r.monajemi@lumc.nl")
