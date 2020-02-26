@@ -9,9 +9,9 @@
 #'   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
 #'   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
 #'   counterpart in the _site directory.}   
-#'   \item{\strong{data and images}}{ These directories copied into _site directory}
+#'   \item{\strong{data and images}}{ These directories are copied into _site directory}
 #'   \item{\strong{footer.html}}{Footer content for all pages.}
-#'   \item{\strong{setup.R}}{This is needed only if the individual Rmd files need to be genrated inside RStudio using the 'knit' button.}
+#'   \item{\strong{setup.R}}{This is needed if the individual Rmd files need to be generated inside RStudio using the 'knit' button.}
 #'   \item{\strong{Styles.css}}{Stylesheet file for the appearance}
 #' }
 #' 
