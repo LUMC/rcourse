@@ -11,7 +11,7 @@ and contains several categories of files:
 
 \describe{
   \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-  \item{\strong{_meta/schedule.yml}}{This file contains information about the course (see details).}
+  \item{\strong{schedule.yml}}{This file contains information about the course (see details).}
   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
   counterpart in the _site directory.}   
@@ -27,15 +27,19 @@ The files prefixed with \strong{_} will not be rendered and are for internal use
 The \strong{schdule} file has the following structure:
 
 \preformatted{
-   <course-id>:
+   course:
        title: <course-title>
        start: <start-date>
        end: <end-date>
-       exam: <exam-date>
+       exam: 
+           date: <exam-date>
+           time: <time-time>
+           venue: <venue>
        slots:
            <slot-id>:
                title:  <session-title>
                subtitle: <session-subtitle>
+               goal: <goals/description>
                date: <session-date>
                time: <session-time>
                venue: <venue>
@@ -58,6 +62,7 @@ rcourse$view()
 \itemize{
 \item \href{#method-new}{\code{Course$new()}}
 \item \href{#method-src}{\code{Course$src()}}
+\item \href{#method-clear_nocode_html}{\code{Course$clear_nocode_html()}}
 \item \href{#method-render}{\code{Course$render()}}
 \item \href{#method-site}{\code{Course$site()}}
 \item \href{#method-url}{\code{Course$url()}}
@@ -76,13 +81,13 @@ rcourse$view()
 Instantiates a 'Course' object. It will load the schedule.yml 
 and renders the site for the default course (see current tag in shedule.yml)..
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$new(schedule = "site/_meta/schedule.yml", ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$new(site = "site", ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{schedule}}{The schedule file in YAML format.}
+\item{\code{site}}{name of the course, create it if it does not exist, otherwise instantiate it.}
 
 \item{\code{...}}{arguments to rmarkdown::render_site}
 }
@@ -95,6 +100,15 @@ and renders the site for the default course (see current tag in shedule.yml)..
 Path to site's directory containing all Rmd files.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Course$src()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clear_nocode_html"></a>}}
+\subsection{Method \code{clear_nocode_html()}}{
+clear generated nocode html file
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$clear_nocode_html()}\if{html}{\out{</div>}}
 }
 
 }

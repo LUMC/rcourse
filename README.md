@@ -7,7 +7,7 @@ Right Open Online Course (ROOC) is an R package to develop a course in a modular
 
 ```{r}
 > library(rooc)
-> rcourse <- Course$new() # instantiate and render the site
+> rcourse <- Course$new() # instantiate and render the 'site' (base example)
 > rcourse$view()          # view in browser
 ```
 

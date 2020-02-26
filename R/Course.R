@@ -22,15 +22,19 @@
 #' The \strong{schdule} file has the following structure:
 #' 
 #' \preformatted{
-#'    <course-id>:
+#'    course:
 #'        title: <course-title>
 #'        start: <start-date>
 #'        end: <end-date>
-#'        exam: <exam-date>
+#'        exam: 
+#'            date: <exam-date>
+#'            time: <time-time>
+#'            venue: <venue>
 #'        slots:
 #'            <slot-id>:
 #'                title:  <session-title>
 #'                subtitle: <session-subtitle>
+#'                goal: <goals/description>
 #'                date: <session-date>
 #'                time: <session-time>
 #'                venue: <venue>
@@ -78,7 +82,7 @@ Course <- R6Class("Course",
       }
     ),
     public = list(
-      #' @param schedule The schedule file in YAML format.
+      #' @param site name of the course, create it if it does not exist, otherwise instantiate it.
       #' @param ... arguments to rmarkdown::render_site
       #' @description Instantiates a 'Course' object. It will load the schedule.yml 
       #' and renders the site for the default course (see current tag in shedule.yml)..
@@ -115,6 +119,7 @@ Course <- R6Class("Course",
       src = function() {
         file.path(rprojroot::find_rstudio_root_file(),private$sources_)
       },
+      #' @description clear generated nocode html file
       clear_nocode_html = function() {
         html_files <- dir(self$src(),pattern = ".nocode.html$", full.names = TRUE)
         unlink(html_files)
