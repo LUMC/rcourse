@@ -19,26 +19,26 @@ Below is an example of a course:
 ```code
 R_course:
   title: "BAST Week"
-  description: <== NEW 
+  description: 
   start: "01-01-2020"   
   end: "31-12-2020"
-  exam:"???"
+  exam:
   slots:
     dplyr0:
       title: "tidyverse: data manipulation" 
       subtitle: "dplyr basics"
-      gaol: <== NEW 
+      gaol: 
       date: "dd-mm-yyyy"
       time: "00:00-00:00"
-      venue: "<venue>"
+      venue: "venue"
       tasks : "yes"      
     dplyr_pipe0:
       title: "tidyverse: data manipulation"
       subtitle: "dplyr '%>%' operator (pipe)"
-      gaol: <== NEW 
+      gaol: 
       date: "dd-mm-yyyy"
       time: "00:00-00:00"
-      venue: "<venue>"
+      venue: "venue"
       tasks : "yes"  
 ```
 
