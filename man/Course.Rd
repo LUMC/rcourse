@@ -11,7 +11,7 @@ and contains several categories of files:
 
 \describe{
   \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-  \item{\strong{schedule.yml}}{This file contains information about the course (see details).}
+  \item{\strong{_schedule.yml}}{This file contains information about the course (see details).}
   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
   counterpart in the _site directory.}   
@@ -68,6 +68,7 @@ rcourse$view()
 \item \href{#method-url}{\code{Course$url()}}
 \item \href{#method-view}{\code{Course$view()}}
 \item \href{#method-summary}{\code{Course$summary()}}
+\item \href{#method-schedule}{\code{Course$schedule()}}
 \item \href{#method-slots}{\code{Course$slots()}}
 \item \href{#method-lstmod}{\code{Course$lstmod()}}
 \item \href{#method-listing}{\code{Course$listing()}}
@@ -78,8 +79,8 @@ rcourse$view()
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
-Instantiates a 'Course' object. It will load the schedule.yml 
-and renders the site for the default course (see current tag in shedule.yml)..
+Instantiates a 'Course' object. It will load _schedule.yml 
+and renders the site for the default course (see current tag in _schedule.yml)..
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Course$new(site = "site", ...)}\if{html}{\out{</div>}}
 }
@@ -167,9 +168,18 @@ Print the 'current' course summary.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-schedule"></a>}}
+\subsection{Method \code{schedule()}}{
+Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$schedule()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-slots"></a>}}
 \subsection{Method \code{slots()}}{
-Returns the list of course slots. The data is taken from 'shedule.yml'.
+Returns the list of course slots. The data is taken from '_schedule.yml'.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Course$slots()}\if{html}{\out{</div>}}
 }

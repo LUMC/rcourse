@@ -5,7 +5,7 @@
 #'
 #' \describe{
 #'   \item{\strong{_site.yml}}{This file in YAML format describing the structure and the look of the site with menues and sub-menus.}
-#'   \item{\strong{schedule.yml}}{This file contains information about the course (see details).}
+#'   \item{\strong{_schedule.yml}}{This file contains information about the course (see details).}
 #'   \item{\strong{<module-name>.Rmd}}{These files contain the course material on a specific topic.}
 #'   \item{\strong{_<name>.Rmd}}{These Rmd files can be re-used and are called from inside other Rmd files. They do not have a html 
 #'   counterpart in the _site directory.}   
@@ -61,7 +61,7 @@ Course <- R6Class("Course",
       sources_ = NULL,
       url_ = NULL,
       site_ = NULL,
-      schedule = NULL,
+      schedule_ = NULL,
       modified = function(f) {
         # Returns TRUE if the html file of the corresponding 'Rmd' file is absent or the 
         # Rmd' file's modification date exceeds the html's.         
@@ -79,17 +79,26 @@ Course <- R6Class("Course",
         zip(zipfile = paste0(prefix,".zip"), 
             files = paste0(prefix,"/",self$listing()), flags = "-r")
         unlink(prefix)
+      },
+      read_schedule = function() {
+        cfg <- file.path(self$src(),"_schedule.yml")
+        if (file.exists(cfg) ) {
+          private$schedule_ <- yaml.load_file( cfg  )
+        } else {
+          error("missing _schedule.yml !")
+        }  
       }
     ),
     public = list(
       #' @param site name of the course, create it if it does not exist, otherwise instantiate it.
       #' @param ... arguments to rmarkdown::render_site
-      #' @description Instantiates a 'Course' object. It will load the schedule.yml 
-      #' and renders the site for the default course (see current tag in shedule.yml)..
+      #' @description Instantiates a 'Course' object. It will load _schedule.yml 
+      #' and renders the site for the default course (see current tag in _schedule.yml)..
       initialize = function(site="site", ...) {
         options(knitr.duplicate.label = "allow")  # RESOLVE THIS !!!
         options(width=120)
         private$sources_ <- site
+        
         if (!file.exists(self$src())) {
           cat('Starting new course ',site,'.\n', sep = "")
           Sys.sleep(2)
@@ -97,19 +106,9 @@ Course <- R6Class("Course",
           unlink(file.path(site,paste0(site,'.Rmd')))
           rmarkdown::draft(file = file.path(site,"index.Rmd"), template = "inst/rmarkdown/templates/index", edit = FALSE)
         }
-          
-        #
         # schedule file
-        #
-        cfg <- file.path(rprojroot::find_rstudio_root_file(),file.path(site,"schedule.yml"))
-        if (file.exists(cfg) ) {
-          private$schedule <- yaml.load_file( cfg  )
-        } else {
-          error("missing schedule.yml !")
-        }  
-        #
+        private$read_schedule() 
         # render and set url and site path. 
-        #
         rmarkdown::render_site(self$src(),...)
         self$clear_nocode_html()
         private$site_ <- file.path(self$src(),"_site")
@@ -149,11 +148,15 @@ Course <- R6Class("Course",
       },
       #' @description Print the 'current' course summary.    
       summary = function() {
-       private$schedule         
+       private$schedule_         
       },
-      #' @description Returns the list of course slots. The data is taken from 'shedule.yml'.   
+      #' @description Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
+      schedule = function() {
+        file.edit(file.path(self$src(),"_schedule.yml"))
+      },
+      #' @description Returns the list of course slots. The data is taken from '_schedule.yml'.   
       slots = function() {
-        schedule <- private$schedule
+        schedule <- private$schedule_
         slots <- schedule[["course"]][["slots"]]
         names(slots)
       },
@@ -166,10 +169,10 @@ Course <- R6Class("Course",
       },
       #' @description Returns the list of files for zip archive.
       listing = function(){
-        shedule <- self$summary()
-        course <- shedule[["course"]]
+        schedule <- self$summary()
+        course <- schedule[["course"]]
         rmds <- dir(self$src(),pattern=".Rmd")
-        other <- c("images","data","schedule.yml","styles.css","_site.yml","footer.html")
+        other <- c("images","data","_schedule.yml","styles.css","_site.yml","footer.html")
         c(rmds,other)
       },
       #' @param filename name of zip archive.
