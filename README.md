@@ -160,11 +160,12 @@ course:
 ```
 
 
-Render the pages to and view the schedule page:
+Render the pages and view the schedule page:
 
 
 ```r
 crip$render()
+crip$view()
 ```
 
 
