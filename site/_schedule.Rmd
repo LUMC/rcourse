@@ -1,6 +1,6 @@
 ```{r _shedule, echo=FALSE}
 library(yaml)
-conf <- yaml.load_file("schedule.yml")
+conf <- yaml.load_file("_schedule.yml")
 course_ <- conf[["course"]]
 course_title <- course_[["title"]] 
 start_data <- course_[["start"]] 
