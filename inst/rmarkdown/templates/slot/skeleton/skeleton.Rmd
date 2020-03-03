@@ -7,6 +7,7 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA)
+library(tidyverse)
 build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
 ```
 
