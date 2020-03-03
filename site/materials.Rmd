@@ -10,6 +10,7 @@ There are lots and lots of materials available online, simply enter your query i
 - [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 - [R Markdown](https://rmarkdown.rstudio.com/)
 - [The R Graph Gallery](https://www.r-graph-gallery.com/index.html)
+- [R for Data Science ; Garrett Grolemund, Hadley Wickham](https://r4ds.had.co.nz/)
 
 
 
