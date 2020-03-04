@@ -1,10 +1,16 @@
-.Rbuildignore
-.Rhistory
 .Rproj.user
-CRiP-sept-2020
-README.Rmd
-crip-schedule-2020.csv
-crip-schedule-sep-2020.csv
+.Rhistory
+.RData
+.Ruserdata
+.Rbuildignore
+*.csv
 rooc.Rproj
+site
+workshop-may-2020
+CRiP-sept-2020/_data
+CRiP-sept-2020/_site
+workshop-may-2020/_site
+README.html
+README.Rmd
 site/_site
 
