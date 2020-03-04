@@ -1,0 +1,10 @@
+.Rbuildignore
+.Rhistory
+.Rproj.user
+CRiP-sept-2020
+README.Rmd
+crip-schedule-2020.csv
+crip-schedule-sep-2020.csv
+rooc.Rproj
+site/_site
+
