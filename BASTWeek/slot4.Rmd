@@ -1,0 +1,20 @@
+---
+title: 'Reproducible report (R Markdown)'
+author: "<author>"
+params:
+  basename: "slot4"
+---
+
+
+[Video Tutorial](https://rladiessydney.org/courses/ryouwithme/04-markymark-1/)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+library(tidyverse)
+build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+```
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 

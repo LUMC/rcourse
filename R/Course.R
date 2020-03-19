@@ -128,7 +128,7 @@ Course <- R6Class("Course",
       #' @description Render the site only for modified Rmd's. 
       render = function(clean=FALSE,...){
         if (clean)
-          rmarkdown::clean_site(self$src())
+          self$clean()
         lapply(self$lstmod(),function(b) {
           rmarkdown::render_site(file.path(self$src(),paste0(b,".Rmd")),...)  
         })
@@ -182,7 +182,16 @@ Course <- R6Class("Course",
           stop("invalud suffix, use extension .zip !")
         cat('exporting to ',filename, '...\n')
         Sys.sleep(2)
-        private$zip_(filename)
+        msg <- try ( private$zip_(filename), silent = TRUE )
+        if (class(msg)=="try-error") {
+          message(msg)
+        } else {
+          file.copy(from = filename, to = file.path(private$sources_,"_site"), overwrite = TRUE)
+          file.remove(filename)
+        }
+      },
+      clean = function() {
+        rmarkdown::clean_site(self$src())
       }
     )
 )
