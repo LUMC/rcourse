@@ -1,0 +1,42 @@
+name: "r-course"
+include: ["setup.R"]
+navbar:
+  title: ""
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Schedule"
+      icon: fa-calendar
+      href: schedule.html
+    - text: "Data"
+      icon: fa-table
+      href: data.html
+    - text: "More"
+      icon: fa-gear
+      menu:
+        - text: "Online help and materials"
+          href: 
+        - text: "Contact"
+          href: contact.html
+        - text: "---------"
+        - text: "Past courses"
+          href: 
+  right:
+    - icon: fa-download
+      href: 
+    - icon: fa-question fa-lg
+      href: 
+output:
+  html_document:
+    theme:     spacelab  # (e.g.: spacelab, lumen, readable,yeti) see https://www.datadreaming.org/post/r-markdown-theme-gallery/
+    highlight: textmate # tango
+    toc: true
+    toc_depth: 2
+    toc_float: true  
+    include:
+      after_body: footer.html
+      in_header: fold.html
+    css: styles.css
+    df_print: paged

@@ -1,0 +1,6 @@
+---
+title: "Schedule"
+---
+
+```{r, child="_schedule.Rmd"}
+``` 

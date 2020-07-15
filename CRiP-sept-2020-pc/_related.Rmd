@@ -1,0 +1,14 @@
+```{r related, echo=FALSE}
+.related_slots <- .related(params$basename)
+```
+
+```{r, results='asis', echo=FALSE}
+if (!is.null(.related_slots)) {
+  cat("## Related topics\n\n")
+  for (slot in .related_slots) {
+    cat("<a href=\"", paste(slot,".html", sep="") ,"\">",slot,"</a> ")
+  }
+}
+```
+
+

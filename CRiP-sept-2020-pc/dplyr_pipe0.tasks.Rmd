@@ -1,0 +1,12 @@
+---
+title: "%>% : pipe operator (tasks)"
+# author: "R. Monajemi"
+---
+
+```{r , include=FALSE}
+if (exists("params")) {
+  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+} else  {
+  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+```

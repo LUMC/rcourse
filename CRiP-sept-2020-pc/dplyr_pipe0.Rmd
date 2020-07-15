@@ -1,0 +1,64 @@
+---
+title: '%>% : pipe operator'
+# author: "R. Monajemi"
+params:
+  basename: "dplyr_pipe0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+library(tidyverse)
+build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+pulse <- .read_csv_data("pulse.csv")
+survey <- .read_csv_data("survey.csv")
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+The pipe mechanism enables you to concentrate on the steps rather than the intermediate objects and is a convenient model for prototyping.
+
+
+```{r}
+pulse %>% dim()     #  <=> dim(pulse)
+pulse %>% nrow()    #  <=> nrow(pulse)
+pulse %>% head(3)  #  <=> head(pulse,3) 
+```
+
+
+Often we are only interested in the final result and less in the intermediate ones. For example let's say we want to calculate the number of cells in a data.frame, in base R this will be done as follows: 
+
+```{r}
+dims  <- dim(pulse)
+dims
+cells <- prod(dims)  # prod calculates the total product of the  given vector 
+cells
+```
+
+By using the pipe mechanism (`%>%`) we  can skip the intermediate variable `dims` 
+
+```{r}
+# when breaking the line the new line is always after `%>%`
+cells <- pulse %>% 
+         dim() %>%
+         prod()  
+cells
+```
+ 
+One may argue that the same is possible in base R :
+
+```{r}
+# Base R
+prod(dim(pulse))
+```
+
+However, this way of coding will become unmanageable when the number of steps increase. 
+
+A less apparent advantage of the pipe mechanism is that the order of applying the functions follows the steps needed and the line of thought whereas base R the steps are written in the opposite direction.  
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+ 
+```{r, child="_navigate.Rmd"}  
+``` 

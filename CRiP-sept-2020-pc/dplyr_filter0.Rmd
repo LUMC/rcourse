@@ -1,0 +1,24 @@
+---
+title: 'filter'
+# author: "R. Monajemi"
+params:
+  basename: "dplyr_filter0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+library(tidyverse)
+build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+```
+
+```{r, child="_navigate.Rmd"}  
+``` 
+
+```{r, child="_exercises_links.Rmd"}
+```
+
+```{r, child="_related.Rmd"}  
+``` 
+
+```{r, child="_navigate.Rmd"}  
+``` 

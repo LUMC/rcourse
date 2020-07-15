@@ -1,0 +1,11 @@
+```{r alert_interactive, echo=FALSE}
+```
+
+<div class="alert alert-success" role="alert">
+this is simple text ...
+</div>
+
+
+
+
+

@@ -1,0 +1,20 @@
+---
+title: 'tidyverse'
+# author: "R. Monajemi"
+params:
+  basename: "tidyverse0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+```
+
+
+```{r, child="_navigate.Rmd"}  
+``` 
+
+```{r, child="_related.Rmd"}  
+``` 
+
+```{r, child="_navigate.Rmd"}  
+``` 
