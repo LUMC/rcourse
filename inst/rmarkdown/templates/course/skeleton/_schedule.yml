@@ -15,3 +15,6 @@ course:
       time: "time-time"
       venue: "venue"
       tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:

@@ -4,7 +4,9 @@
 \name{Course}
 \alias{Course}
 \title{Class to build a web-site with rmarkdown rendering functionalities.}
-\format{An \code{\link{R6Class}} generator object}
+\format{
+An \code{\link{R6Class}} generator object
+}
 \description{
 The class generates a web-site based on the Rmd files in the directory 'site'. The directory has a flat structure 
 and contains several categories of files:
@@ -70,14 +72,18 @@ rcourse$view()
 \item \href{#method-summary}{\code{Course$summary()}}
 \item \href{#method-schedule}{\code{Course$schedule()}}
 \item \href{#method-slots}{\code{Course$slots()}}
+\item \href{#method-navigate}{\code{Course$navigate()}}
+\item \href{#method-related}{\code{Course$related()}}
 \item \href{#method-lstmod}{\code{Course$lstmod()}}
 \item \href{#method-listing}{\code{Course$listing()}}
 \item \href{#method-zip}{\code{Course$zip()}}
+\item \href{#method-clean}{\code{Course$clean()}}
 \item \href{#method-clone}{\code{Course$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Instantiates a 'Course' object. It will load _schedule.yml 
 and renders the site for the default course (see current tag in _schedule.yml)..
@@ -97,6 +103,7 @@ and renders the site for the default course (see current tag in _schedule.yml)..
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-src"></a>}}
+\if{latex}{\out{\hypertarget{method-src}{}}}
 \subsection{Method \code{src()}}{
 Path to site's directory containing all Rmd files.
 \subsection{Usage}{
@@ -106,6 +113,7 @@ Path to site's directory containing all Rmd files.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clear_nocode_html"></a>}}
+\if{latex}{\out{\hypertarget{method-clear_nocode_html}{}}}
 \subsection{Method \code{clear_nocode_html()}}{
 clear generated nocode html file
 \subsection{Usage}{
@@ -115,6 +123,7 @@ clear generated nocode html file
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-render"></a>}}
+\if{latex}{\out{\hypertarget{method-render}{}}}
 \subsection{Method \code{render()}}{
 Render the site only for modified Rmd's.
 \subsection{Usage}{
@@ -133,6 +142,7 @@ Render the site only for modified Rmd's.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-site"></a>}}
+\if{latex}{\out{\hypertarget{method-site}{}}}
 \subsection{Method \code{site()}}{
 Return the path to site's directory.
 \subsection{Usage}{
@@ -142,6 +152,7 @@ Return the path to site's directory.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-url"></a>}}
+\if{latex}{\out{\hypertarget{method-url}{}}}
 \subsection{Method \code{url()}}{
 Return the path to site's index.html
 \subsection{Usage}{
@@ -151,6 +162,7 @@ Return the path to site's index.html
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-view"></a>}}
+\if{latex}{\out{\hypertarget{method-view}{}}}
 \subsection{Method \code{view()}}{
 View the site in the browser.
 \subsection{Usage}{
@@ -160,6 +172,7 @@ View the site in the browser.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-summary"></a>}}
+\if{latex}{\out{\hypertarget{method-summary}{}}}
 \subsection{Method \code{summary()}}{
 Print the 'current' course summary.
 \subsection{Usage}{
@@ -169,6 +182,7 @@ Print the 'current' course summary.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-schedule"></a>}}
+\if{latex}{\out{\hypertarget{method-schedule}{}}}
 \subsection{Method \code{schedule()}}{
 Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
 \subsection{Usage}{
@@ -178,6 +192,7 @@ Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-slots"></a>}}
+\if{latex}{\out{\hypertarget{method-slots}{}}}
 \subsection{Method \code{slots()}}{
 Returns the list of course slots. The data is taken from '_schedule.yml'.
 \subsection{Usage}{
@@ -186,7 +201,43 @@ Returns the list of course slots. The data is taken from '_schedule.yml'.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-navigate"></a>}}
+\if{latex}{\out{\hypertarget{method-navigate}{}}}
+\subsection{Method \code{navigate()}}{
+given the base name of the slot return the basenames of next and previous 
+slots from '_schedule.yml'.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$navigate(base_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{base_name}}{the RMD file basename.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-related"></a>}}
+\if{latex}{\out{\hypertarget{method-related}{}}}
+\subsection{Method \code{related()}}{
+given the base name of the slot return the related slots from '_schedule.yml'.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$related(base_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{base_name}}{the RMD file basename.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-lstmod"></a>}}
+\if{latex}{\out{\hypertarget{method-lstmod}{}}}
 \subsection{Method \code{lstmod()}}{
 Returns the list of modified files.
 \subsection{Usage}{
@@ -196,6 +247,7 @@ Returns the list of modified files.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-listing"></a>}}
+\if{latex}{\out{\hypertarget{method-listing}{}}}
 \subsection{Method \code{listing()}}{
 Returns the list of files for zip archive.
 \subsection{Usage}{
@@ -205,6 +257,7 @@ Returns the list of files for zip archive.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-zip"></a>}}
+\if{latex}{\out{\hypertarget{method-zip}{}}}
 \subsection{Method \code{zip()}}{
 Create a zip archive.
 \subsection{Usage}{
@@ -220,7 +273,18 @@ Create a zip archive.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clean"></a>}}
+\if{latex}{\out{\hypertarget{method-clean}{}}}
+\subsection{Method \code{clean()}}{
+clear generted files, i.e. site/
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$clean()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

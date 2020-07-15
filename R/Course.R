@@ -127,10 +127,13 @@ Course <- R6Class("Course",
       #' @param ... arguments to rmarkdown::render_site
       #' @description Render the site only for modified Rmd's. 
       render = function(clean=FALSE,...){
+        e <- new.env() # currently to hold .next and .prev values for slots
         if (clean)
           self$clean()
         lapply(self$lstmod(),function(b) {
-          rmarkdown::render_site(file.path(self$src(),paste0(b,".Rmd")),...)  
+          assign(x = ".next", value = self$next_slot(base_name = b), envir = e)
+          assign(x = ".prev", value = self$prev_slot(base_name = b), envir = e)
+          rmarkdown::render_site(file.path(self$src(),paste0(b,".Rmd")),envir=e,...)  
         })
         self$clear_nocode_html()
       },
@@ -159,6 +162,26 @@ Course <- R6Class("Course",
         schedule <- private$schedule_
         slots <- schedule[["course"]][["slots"]]
         names(slots)
+      },
+      #' @description given the base name of the slot return the basename of the next  
+      #' slot from '_schedule.yml'.   
+      #' @param base_name the RMD file basename.  
+      next_slot = function(base_name) {
+        schedule <- private$schedule_
+        schedule[["course"]][["slots"]][[base_name]][["next"]]
+      },
+      #' @description given the base name of the slot return the basename of the previous  
+      #' slot from '_schedule.yml'.   
+      #' @param base_name the RMD file basename.  
+      prev_slot = function(base_name) {
+        schedule <- private$schedule_
+        schedule[["course"]][["slots"]][[base_name]][["prev"]]
+      },
+      #' @description given the base name of the slot return the related slots from '_schedule.yml'.   
+      #' @param base_name the RMD file basename.  
+      related = function(base_name) {
+        schedule <- private$schedule_
+        unlist(strsplit(schedule[["course"]][["slots"]][[base_name]][["related"]]," " ))
       },
       #' @description Returns the list of modified files.
       lstmod = function() {
@@ -190,6 +213,7 @@ Course <- R6Class("Course",
           file.remove(filename)
         }
       },
+      #' @description clear generted files, i.e. site/
       clean = function() {
         rmarkdown::clean_site(self$src())
       }
