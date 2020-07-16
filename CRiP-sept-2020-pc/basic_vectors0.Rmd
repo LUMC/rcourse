@@ -77,14 +77,14 @@ x
 
 # Try a character vector
 
-Also for the character vector you may create it with the combine function `c`:
+A character vector you may also create it with the combine function `c`:
 
 ```{r}
-x <- c( "Jay", "Gloria", "Claire", "Phil", "Mitchell", "Cameron" )
+x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
 x
 ```
 
-Both single and double quotes are allowed (must be identical at the beginning and the end of a text).
+Both single quotes (`'word'`) and double quotes (`"word"`) are allowed (must be identical at the beginning and the end of a text).
 
 # Elements of a vector
 
@@ -93,6 +93,8 @@ Use `length` to find out the number of elements in a vector (numerical, characte
 ```{r}
 x <- c( 10, 11, 12, 13 )
 length(x)
+y <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
+length(y)
 ```
 
 Use square brackets to select a single element from a vector.  
@@ -101,6 +103,7 @@ To select an element from the second position use:
 
 ```{r}
 x[2]
+y[4]
 ```
 
 Consequently, to select the last element:

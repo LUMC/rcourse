@@ -22,8 +22,8 @@ build_nocode(params) # build nocode version of tasks ;
 
 # Console pane: prompt and result/output
 
-RStudio screen has a pane (part of screen) called 'Console'.  
-It represents a direct connection to the R language interpreter.  
+RStudio window has a pane (a part of the window) called 'Console'.  
+It provides a direct connection to the R language interpreter.  
 
 ![](images/RStudio_main_screen.png)
 

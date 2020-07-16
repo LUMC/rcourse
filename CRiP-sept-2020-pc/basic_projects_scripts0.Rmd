@@ -1,0 +1,111 @@
+---
+title: "Basic projects and scripts"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_projects_scripts0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) # build nocode version of tasks ; 
+                     # replace with source("setup.R") when running stand-alone (knit)
+# library(tidyverse)
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+# Overview
+
+- This material shows a general way to setup a project for a new analysis.
+- The example project created here and the copied files are neded later in the course.
+
+# Concept of a project and of scripts
+
+A typical data analysis in R involves multiple files:
+
+- **Input files** with data, fixed before analysis (e.g. files in various formats containing tables of data to be analysed).
+- **Scripts** or **reports** (there you develop programs in R language to analyse the data and report results).
+- Other files (images, configurations, etc.).
+
+**Project** is a feature of RStudio to organize all files that you need for a single analysis and to keep them separate from other analyses.  
+From now on you are going to work within a new R course project.
+
+# Project
+
+## Create a new project
+
+Follow the subsequent steps to create a new project for this R course.  
+From the RStudio menu choose: `File`/`New project...`/`New directory...`/`New project...`  
+As a directory name type (for example): `Learning_R`  
+In the next option you may select where to create this directory.  
+Press `Create project` to finalize the process.
+
+## Check currently open project
+
+Look at the top right corner of the RStudio window to check which project you are working in.  
+Refer to the following Figure: it shows a state when a project called `Learning_R` is open.
+
+Moreover, the title line shows **the project diectory** in which the project files are located.
+
+Finally, note **the project file** `Learning_R.Rproj` in the `Files` panel. When you click this file in a file explorer, it should open RStudio and the right project.
+
+![](images/RStudio_new_project.png)
+
+# Input data
+
+## Copy data files to the project directory
+
+Although R can be used to analyse data from any readable file, it is convenient to have such files in the project directory.  
+For the following parts of the course you need the files: `pulse.csv` and `survey.csv`.  
+Download/copy these files to the project directory using system file explorer or browser.  
+Since this step depends on the operating system, therefore only a general description is provided here.
+
+Properly downloaded files should appear in the `Files` panel:
+
+![](images/RStudio_data_files.png)
+
+## Check access to the files
+
+Copy the following command to the `Console` and execute it to check whether you can access the `pulse.csv` file.  
+When the file is present, `TRUE` should be returned:
+
+```{r eval=FALSE,echo=TRUE}
+file.exists( "pulse.csv" )
+```
+```{r eval=TRUE,echo=FALSE}
+TRUE
+```
+
+# Scripts/reports
+
+## R scripts
+
+**R script** is a simple text file (e.g. `filename.R`) with commands written in R language.  
+When an R script is **sourced**, the lines of the script are one-by-one copied to the `Console` and immediately executed.  
+An R script allows to save R commands. Without saving, the commands given in the `Console` are executed and forgotten.
+
+In this course R scripts are not used.
+
+## R Markdown documents
+
+[**R Markdown** document](https://rmarkdown.rstudio.com/) (e.g. `filename.Rmd`) is an extension of R scripts.  
+R Markdown is a simple text file, which in addition to R language commands might contain any free text (prose; or like the sentence which you are reading right now).  
+The free text might be decorated (contain: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.).
+
+R Markdown documents are **knitted** to produce the report file.  
+Many report formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents.
+
+Watch the [R Markdown introduction video](https://rmarkdown.rstudio.com/lesson-1.html) from RStudio.
+
+## R Markdown text decorations
+
+To learn how to decorate text using R Markdown follow the lessons available at [https://www.markdowntutorial.com/](https://www.markdowntutorial.com/).
+
+## Create a new R Markdown document
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

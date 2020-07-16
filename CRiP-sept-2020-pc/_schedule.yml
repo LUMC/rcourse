@@ -42,8 +42,21 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
+        basic_projects_scripts0
       prev:
         basic_variables0
+    basic_projects_scripts0:
+      title: "Projects/scripts"
+      subtitle: ""
+      gaol: ""
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
+        basic_vectors0
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
