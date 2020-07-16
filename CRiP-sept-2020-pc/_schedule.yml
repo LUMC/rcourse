@@ -7,10 +7,47 @@ course:
     time: "time-time"
     venue: "venue"
   slots:
+    basic_R_as_calculator0:
+      title: "R as a calculator"
+      subtitle: ""
+      gaol: ""
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+        basic_variables0
+      prev:
+    basic_variables0:
+      title: "Variables"
+      subtitle: ""
+      gaol: ""
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+        basic_vectors0
+      prev:
+        basic_R_as_calculator0
+    basic_vectors0:
+      title: "Basic vectors"
+      subtitle: ""
+      gaol: ""
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
+        basic_variables0
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
-      gaol: "" 
+      gaol: ""
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -21,16 +58,16 @@ course:
         forcats0
         readr0
       next: dplyr_tibble0
-      prev: 
+      prev:
     dplyr_tibble0:
       title: "tibble"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
         dplyr_tibble1
         base_dataframe0
       next: dplyr_pipe0
@@ -38,77 +75,77 @@ course:
     dplyr_tibble1:
       title: "tibble1"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
-      next: 
+      related:
+      next:
       prev: dplyr_tibble0
     dplyr_pipe0:
       title: "%>% : pipe operator"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: "dplyr_select0"
       prev: "dplyr_tibble0"
     dplyr_select0:
       title: "select"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: "dplyr_filter0"
       prev: "dplyr_pipe0"
     dplyr_filter0:
       title: "filter"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: "dplyr_mutate0"
       prev: "dplyr_select0"
     dplyr_mutate0:
       title: "mutate"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
-      next: 
+      related:
+      next:
       prev: "dplyr_filter0"
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""
-      gaol:  
+      gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
-      next: 
-      prev: 
+      related:
+      next:
+      prev:
     base_dataframe0:
       title: "data.frame"
       subtitle: ""
-      gaol: "" 
+      gaol: ""
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
-      next: 
-      prev: 
+      related:
+      next:
+      prev:

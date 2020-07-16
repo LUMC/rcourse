@@ -1,0 +1,114 @@
+---
+title: "Variables"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+---
+
+# Variables
+
+Tasks:
+
+- type yourself given commands in the console (do not use copy/paste)
+- familiarize with error messages caused by typing errors
+
+## Variable and its value
+
+A variable stores a value, which can be explicitly provided or a result of a calculation.
+
+Choose the names of variables freely, optimally meaningful to represent the problem of interest.
+
+```{r}
+gardenWidth <- 5
+gardenLength <- 6
+gardenArea <- gardenWidth * gardenLength
+```
+
+To find out what the value of a variable is, type its name:
+
+```{r}
+gardenArea
+```
+
+A frequent error is to ask for a non-existing variable:
+
+```{r error=TRUE}
+gggardenArea
+```
+
+## Assignment operator(s)
+
+The arrow symbol `<-` is called the "assignment" operator:
+
+```{r}
+x <- 5
+```
+
+The same assignment can also be performed with symbol `=` (equal):
+
+```{r}
+x = 5
+```
+
+## No assignment, no change
+
+Assignments are needed to store a result. 
+When there is no assignment, the result is printed to screen and lost.
+This is a wrong way to "increase _x_ by one", because the result is calculated but not stored:
+
+```{r}
+x <- 5
+x + 1
+x
+```
+
+Here is the correct way:
+
+```{r}
+x <- 5
+x <- x + 1
+x
+```
+
+Remember: _no assignment, no change_.
+
+## How variables are stored
+
+The variables are stored in R memory.  
+In one of the RStudio panes you can find a tab called _environment_.  
+It contains a list of variables currently in memory.
+
+When you close R, all variables are lost.  
+Therefore, we will learn how **to write scripts** to store commands used to calculate variables.  
+The scripts provide **reproducibility**. They store not only the results of calculations, but also document how the result was calculated.
+
+## Valid variable names
+
+Variable names in R are case sensitive (all other symbols also).
+
+Note that `_` and `.` are allowed in variable names. 
+Numbers (not at the beginning) are allowed too. 
+
+Here are some examples (and each one is a different variable):
+
+```{r eval=FALSE}
+gardenLength <- 6
+garden.length <- 6
+garden_length <- 6
+gArDeNlEnGtH <- 6     # this is bad, don't use this
+
+len1 <- 5
+len2 <- 6
+```
+
+Choose meaningful variable names for readable scripts.
+
+Naturally, there are some limitations. Do not use:
+
+- names containing a space
+- names containing any of `@#!%$^()-+=!~?,<>}{][`
+- names which are R reserved names: `for`, `while`, `repeat`, `if`, `else`, `TRUE`, `FALSE`, `Inf`, `NA`, `NaN`
+
+## Autocomplete names
+
+RStudio provides autocomplete feature, useful for long variable names.
+
+Start typing the first letters of a (variable) name and press `Tab`.
