@@ -7,8 +7,8 @@ course:
     time: "time-time"
     venue: "venue"
   slots:
-    basic_R_as_calculator0:
-      title: "R as a calculator"
+    basic_calculator0:
+      title: "Calculator"
       subtitle: ""
       gaol: ""
       date: "01-09-2020"

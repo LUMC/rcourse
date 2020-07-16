@@ -1,8 +1,8 @@
 ---
-title: "R as a calculator"
+title: "Calculator"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 params:
-  basename: "basic_R_as_calculator0"
+  basename: "basic_calculator0"
 ---
 
 ```{r setup, include=FALSE}
@@ -24,6 +24,8 @@ build_nocode(params) # build nocode version of tasks ;
 
 RStudio screen has a pane (part of screen) called 'Console'.  
 It represents a direct connection to the R language interpreter.  
+
+![](images/RStudio_main_screen.png)
 
 At the prompt symbol `>` you can type any calculations you like.  
 Press _Enter_ to see the result/output.
