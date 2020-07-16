@@ -83,24 +83,24 @@ TRUE
 
 **R script** is a simple text file (e.g. `filename.R`) with commands written in R language.  
 When an R script is **sourced**, the lines of the script are one-by-one copied to the `Console` and immediately executed.  
-An R script allows to save R commands. Without saving, the commands given in the `Console` are executed and forgotten.
+An R script allows to save R commands (without saving, the commands given in the `Console` are executed and forgotten).
 
-In this course R scripts are not used.
+`r show_warning( "In this course R scripts are not used directly." )`
 
 ## R Markdown documents
 
-[**R Markdown** document](https://rmarkdown.rstudio.com/) (e.g. `filename.Rmd`) is an extension of R scripts.  
-R Markdown is a simple text file, which in addition to R language commands might contain any free text (prose; or like the sentence which you are reading right now).  
-The free text might be decorated (contain: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.).
+An [**R Markdown** document](https://rmarkdown.rstudio.com/) (e.g. `filename.Rmd`) is an extension of an R script.  
+An R Markdown document is also a simple text file consisting of:
 
-R Markdown documents are **knitted** to produce the report file.  
-Many report formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents.
+- **chunks** written in R language, where data analysis is performed; 
+- free text written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
 
-Watch the [R Markdown introduction video](https://rmarkdown.rstudio.com/lesson-1.html) from RStudio.
+R Markdown documents are **knitted** to produce report files.  
+Many report output formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents, etc.
 
-## R Markdown text decorations
+`r watch_extern_video( url = "https://rmarkdown.rstudio.com/lesson-1.html", title = "R Markdown introduction video", src = "RStudio" )`
 
-To learn how to decorate text using R Markdown follow the lessons available at [https://www.markdowntutorial.com/](https://www.markdowntutorial.com/).
+`r go_extern( url = "https://www.markdowntutorial.com/", title = "Markdown tutorial", goal = "to learn how do write free text using Markdown notation" )`
 
 ## Create a new R Markdown document
 

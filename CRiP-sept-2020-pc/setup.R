@@ -12,4 +12,3 @@ build_nocode <- function(params) {
                     output_dir = root_dir,
                     output_format = "html_document", params=list(ref="aap"))
 }
-

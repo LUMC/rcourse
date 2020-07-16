@@ -21,7 +21,7 @@ build_nocode <- function(params) {
     .schedule_ <- yaml.load_file( cfg  )
   } else {
     error("missing _schedule.yml !")
-  }  
+  }
   .schedule_
 }
 
@@ -37,10 +37,10 @@ build_nocode <- function(params) {
     rel <- .read_schedule()[["course"]][["slots"]][[base_name]][["related"]]
     if (!is.null(rel))
       strsplit(rel," ")[[1]]
-    else 
+    else
       NULL
 }
-  
+
 .read_pulse <- function() {
   read_csv("_data/pulse.csv", col_types = cols(
     id = col_character(),
@@ -56,9 +56,43 @@ build_nocode <- function(params) {
     pulse1 = col_double(),
     pulse2 = col_double(),
     year = col_double()
-  ) )  
+  ) )
 }
+
 .read_csv_data <- function(file) {
   root_dir <- knitr::opts_knit$get("output.dir")
   read.csv(file.path(root_dir,"_data",file))
 }
+
+show_link <- function( url, title, newTab = TRUE ) {
+  if( newTab ) {
+    paste0( "[", title, "](", url, '){target="_blank"}' )
+  } else {
+    paste0( "[", title, "](", url, ")" )
+  }
+}
+
+show_warning <- function( text ) {
+  paste0(
+    emo::ji( "warning" ),
+    text
+  )
+}
+
+go_extern <- function( url, title, goal ) {
+  paste0(
+    emo::ji( "right_arrow" ),
+    "Go to ", show_link( url = url, title = title ),
+    " ", goal, "."
+  )
+}
+
+watch_extern_video <- function( url, title, src = NULL ){
+  paste0(
+    emo::ji( "movie_camera" ),
+    " Watch ", show_link( url = url, title = title ),
+    ( if( is.null( src ) ) "" else paste0( " from ", src ) ),
+    "."
+  )
+}
+
