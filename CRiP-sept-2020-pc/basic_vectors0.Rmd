@@ -1,16 +1,26 @@
 ---
 title: "Basic vectors"
 date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_vectors0"
 ---
 
-# Basic vectors
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) # build nocode version of tasks ; 
+                     # replace with source("setup.R") when running stand-alone (knit)
+# library(tidyverse)
+```
 
-Tasks:
+```{r, child="_navigate.Rmd"} 
+``` 
 
-- type yourself given commands in the console (do not use copy/paste)
-- familiarize with error messages caused by typing errors
+# Tasks
 
-## Concept of a vector
+- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
+- Familiarize with error messages caused by typing errors.
+
+# Concept of a vector
 
 A vector is a container of (multiple) elements.  
 All elements are of the same type (e.g. all are numbers).  
@@ -24,7 +34,7 @@ A single vector can represent each one of:
 - eyes color of students in a class (a vector of values from a limited choice list, `factor`)
 - presence of siblings of students in a class (a vector of FALSE/TRUE values, `logical`)
 
-## Try a numerical vector
+# Try a numerical vector
 
 You can make a vector using the combine function `c`.  
 Here it will be a vector of numbers:
@@ -49,7 +59,7 @@ sum(x)
 mean(x)
 ```
 
-## Sequence of numbers
+# Sequence of numbers
 
 A simple regular sequence you can make with `:` (colon) operator:
 
@@ -65,7 +75,7 @@ x <- seq(5,15,3)
 x
 ```
 
-## Try a character vector
+# Try a character vector
 
 Also for the character vector you may create it with the combine function `c`:
 
@@ -76,7 +86,7 @@ x
 
 Both single and double quotes are allowed (must be identical at the beginning and the end of a text).
 
-## Elements of a vector
+# Elements of a vector
 
 Use `length` to find out the number of elements in a vector (numerical, character, or any other type):
 
@@ -113,6 +123,8 @@ x <- seq( 100, 160, 1 )
 x
 ```
 
+# TODOs
+
 ## For tasks
 
 - `head` and `tail`
@@ -129,3 +141,9 @@ x
 ## To link out
 
 - how to load a vector from file
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

@@ -1,16 +1,26 @@
 ---
 title: "Variables"
 date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_variables0"
 ---
 
-# Variables
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) # build nocode version of tasks ; 
+                     # replace with source("setup.R") when running stand-alone (knit)
+# library(tidyverse)
+```
 
-Tasks:
+```{r, child="_navigate.Rmd"} 
+``` 
 
-- type yourself given commands in the console (do not use copy/paste)
-- familiarize with error messages caused by typing errors
+# Tasks
 
-## Variable and its value
+- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
+- Familiarize with error messages caused by typing errors.
+
+# Variable and its value
 
 A variable stores a value, which can be explicitly provided or a result of a calculation.
 
@@ -34,7 +44,7 @@ A frequent error is to ask for a non-existing variable:
 gggardenArea
 ```
 
-## Assignment operator(s)
+# Assignment operator(s)
 
 The arrow symbol `<-` is called the "assignment" operator:
 
@@ -48,7 +58,7 @@ The same assignment can also be performed with symbol `=` (equal):
 x = 5
 ```
 
-## No assignment, no change
+# No assignment, no change
 
 Assignments are needed to store a result. 
 When there is no assignment, the result is printed to screen and lost.
@@ -70,7 +80,7 @@ x
 
 Remember: _no assignment, no change_.
 
-## How variables are stored
+# How variables are stored
 
 The variables are stored in R memory.  
 In one of the RStudio panes you can find a tab called _environment_.  
@@ -80,7 +90,7 @@ When you close R, all variables are lost.
 Therefore, we will learn how **to write scripts** to store commands used to calculate variables.  
 The scripts provide **reproducibility**. They store not only the results of calculations, but also document how the result was calculated.
 
-## Valid variable names
+# Valid variable names
 
 Variable names in R are case sensitive (all other symbols also).
 
@@ -107,8 +117,14 @@ Naturally, there are some limitations. Do not use:
 - names containing any of `@#!%$^()-+=!~?,<>}{][`
 - names which are R reserved names: `for`, `while`, `repeat`, `if`, `else`, `TRUE`, `FALSE`, `Inf`, `NA`, `NaN`
 
-## Autocomplete names
+# Autocomplete names
 
 RStudio provides autocomplete feature, useful for long variable names.
 
 Start typing the first letters of a (variable) name and press `Tab`.
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

@@ -1,29 +1,34 @@
 ---
 title: "R as a calculator"
-author:
-- affiliation: "Biomedical Data Sciences, LUMC"
-  company: "LUMC"
-  name: "Jelle Goeman"
-- affiliation: "Biomedical Data Sciences, LUMC"
-  company: "LUMC"
-  name: "Szymon M. Kiełbasa"
 date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_R_as_calculator0"
 ---
 
-# R as a calculator
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) # build nocode version of tasks ; 
+                     # replace with source("setup.R") when running stand-alone (knit)
+# library(tidyverse)
+```
 
-Tasks:
+```{r, child="_navigate.Rmd"} 
+``` 
 
-- type yourself given commands in the console (do not use copy/paste)
-- familiarize with error messages caused by typing errors
+# Tasks
 
-## Console and prompt
+- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
+- Familiarize with error messages caused by typing errors.
 
-RStudio screen has a pane (part of screen) called 'Console'. 
-It represents a direct connection to the R language interpreter.
+# Console pane: prompt and result/output
 
-At the prompt symbol `>` you can type any calculations you like. 
-Press _Enter_ to see the result.
+RStudio screen has a pane (part of screen) called 'Console'.  
+It represents a direct connection to the R language interpreter.  
+
+At the prompt symbol `>` you can type any calculations you like.  
+Press _Enter_ to see the result/output.
+
+Try the following (or similar) examples:
 
 ```{r prompt=TRUE}
 4+5
@@ -32,7 +37,7 @@ Press _Enter_ to see the result.
 2/8
 ```
 
-## Decimal separator: comma vs. dot
+# Decimal separator: comma vs. dot
 
 Fractional parts are always separated with `.` (dot), never with `,` (comma).
 
@@ -48,7 +53,7 @@ But note the error message:
 0,5
 ```
 
-## Order of calculation: parentheses
+# Order of calculation: parentheses
 
 Use parentheses as much as possible to make sure the calculations are done in the right order.
 
@@ -69,12 +74,16 @@ Or, when you have an extra closing parenthesis:
 12/(2*3))
 ```
 
-While typing, RStudio may automatically insert a closing parenthesis.
+While typing, RStudio may automatically insert a closing parenthesis.  
 If you don't like this, change using Tools...Global options...Code...Editing.
 
-## Multiline commands
+# Multiline commands
 
-When the prompt symbol changes to `+`, it means that the command in the single line is not finished yet. This might be intentional or mistake.
+When the prompt symbol changes to `+`, it means that the command in the single line is not finished yet. This might be intentional or mistake:
+
+- When this is intentional, simply continue typing in the next line.
+- When this is an error, press _Esc_ or _Ctrl-C_ to return to normal prompt.
+
 
 A command in a single line might be incomplete because a parenthesis is open, but not closed:
 
@@ -91,11 +100,7 @@ It can be also incomplete because there is an arithmetic symbol at the end of th
   3
 ```
 
-When this is intentional, simply continue typing in the next line.
-
-When this is an error, press _Esc_ or _Ctrl-C_ to return to normal prompt.
-
-## Simple functions
+# Simple functions
 
 Here are examples of several useful functions and how to use them:
 
@@ -115,10 +120,16 @@ Note the error when you forget to provide the argument:
 sqrt()
 ```
 
-## Useful console keystrokes
+# Useful console keystrokes
 
 Try the following keystrokes in the console:
 
 - _Up-arrow_ or _Down-arrow_ scroll through the history of the commands typed before.
 - _Ctrl-R_ shows the history, and then you may type characters to search this list.
 - _Ctrl_L_ clears the console (but not the history).
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

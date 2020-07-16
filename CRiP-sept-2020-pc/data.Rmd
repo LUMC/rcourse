@@ -28,11 +28,11 @@ Students in an introductory statistics class (MS212 taught by Professor John Ecc
 | pulse2	  |	Second pulse measurement (rate per minute) |
 | year		  | Year of the class (1993 - 1998) |
 
-The pulse data set is available in the data folder as tab-delimited text: `pulse.txt`. It is also available in SPSS-format as `pulse.sav`.
+The pulse data set is available in the data folder as comma-delimited text: `pulse.csv`. It is also available in SPSS-format as `pulse.sav`.
 
 
 ```{r, message=FALSE, echo=TRUE}
-pulse <- read.csv(file = "_data/pulse.csv")
+pulse <- .read_csv_data("pulse.csv")
 pulse 
 ```
 
@@ -57,11 +57,11 @@ This data frame contains the responses of 233 Statistics I students at the Unive
 | m.i	  |	whether the student expressed height in imperial (feet/inches) or metric (centimetres/metres) units. (metric/imperial) |
 | age	    |	Age of the student (years)|
 
-The pulse data set is available in the data folder as tab-delimited text: `survey.txt`.
+The pulse data set is available in the data folder as comma-delimited text: `survey.csv`.
 
 
 ```{r, message=FALSE, echo=TRUE}
-survey <- read.csv(file = "_data/survey.csv")
+survey <- .read_csv_data("survey.csv")
 survey 
 ```
 
