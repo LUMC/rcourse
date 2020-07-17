@@ -126,9 +126,7 @@ x <- seq( 100, 160, 1 )
 x
 ```
 
-# TODOs
-
-## For tasks
+# `r todo( "Topics to discuss" )`
 
 - `head` and `tail`
 - `rev`
@@ -140,9 +138,6 @@ x
 - `sort`, `order`, `sample`
 - `which`, `which.max`
 - `max`, `min`, `median`, `sd`
-
-## To link out
-
 - how to load a vector from file
 
 ```{r, child="_exercises_links.Rmd"}

@@ -36,10 +36,12 @@ From now on you are going to work within a new R course project.
 ## Create a new project
 
 Follow the subsequent steps to create a new project for this R course.  
-From the RStudio menu choose: `File`/`New project...`/`New directory...`/`New project...`  
-As a directory name type (for example): `Learning_R`  
-In the next option you may select where to create this directory.  
-Press `Create project` to finalize the process.
+From the RStudio menu choose: `r show_menu( c( "File", "New project...", "New directory...", "New project..." ) )`.  
+In the dialog box:
+
+- As a directory name type (for example): `Learning_R`  
+- In the next option you may select where to create this directory.  
+- Press `Create project` to finalize the process.
 
 ## Check currently open project
 
@@ -102,7 +104,19 @@ Many report output formats are available: HTML, PDF (printable pages or presenta
 
 `r go_extern( url = "https://www.markdowntutorial.com/", title = "Markdown tutorial", goal = "to learn how do write free text using Markdown notation" )`
 
-## Create a new R Markdown document
+## `r todo( "Create a new R Markdown document" )`
+
+- new R markdown dialog box
+- knit the demo
+- clear the demo
+
+## `r todo( "Write an own simple R Markdown document" )`
+
+- header
+- chunks; insert chunk keystroke
+- run a chunk; keystroke
+- knit complete document
+- find the produced html
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 
