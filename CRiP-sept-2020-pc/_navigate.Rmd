@@ -1,6 +1,6 @@
 ```{r navigate, echo=FALSE}
-.next <- .next_slot(params$basename)
-.prev <- .prev_slot(params$basename)
+.next <- next_slot(params$basename)
+.prev <- prev_slot(params$basename)
 .next_html <- paste(.next,".html", sep="")
 .prev_html <- paste(.prev,".html", sep="")
 .next_label <- ""
