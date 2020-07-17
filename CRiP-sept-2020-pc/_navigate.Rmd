@@ -1,6 +1,6 @@
 ```{r navigate, echo=FALSE}
-.next <- .next_slot(params$basename)
-.prev <- .prev_slot(params$basename)
+.next <- next_slot(params$basename)
+.prev <- prev_slot(params$basename)
 .next_html <- paste(.next,".html", sep="")
 .prev_html <- paste(.prev,".html", sep="")
 .next_label <- ""
@@ -15,6 +15,8 @@ if (!is.null(.prev)) {
   .prev_label <- strsplit(sub("[0-9]+","",.prev),"_")[[1]]
   .prev_label <- .prev_label[length(.prev_label)]
   cat("<a class=\"btn btn-primary\" href=",.prev_html,"role=\"button\">&laquo;",.prev_label,"</a>" )
+} else {
+  cat("<a class=\"btn btn-primary\" onclick=\"goBack()\" role=\"button\">&laquo;",.prev_label,"back</a>" )
 }
 
 if (!is.null(.next)) {
@@ -25,7 +27,3 @@ if (!is.null(.next)) {
 
 cat("</div>\n")
 ```
-
-
-
-

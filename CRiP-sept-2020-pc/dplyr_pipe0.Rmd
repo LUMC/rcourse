@@ -7,10 +7,8 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-library(tidyverse)
 build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
-pulse <- .read_csv_data("pulse.csv")
-survey <- .read_csv_data("survey.csv")
+pulse <- .read_pulse()
 ```
 
 ```{r, child="_navigate.Rmd"} 

@@ -1,6 +1,6 @@
 ---
-title: "ggplot basics (practice)"
-# author: "<author>"
+title: "import/export data (practice)"
+# author: "R. Monajemi"
 ---
 
 ```{r , include=FALSE}
@@ -10,3 +10,5 @@ if (exists("params")) {
   knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
 ```
+
+## template (practice)

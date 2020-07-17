@@ -83,6 +83,7 @@ course:
       related:
         dplyr_tibble1
         base_dataframe0
+        readr_io0
       next: dplyr_pipe0
       prev: tidyverse0
     dplyr_tibble1:
@@ -94,6 +95,17 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
+      next:
+      prev: 
+    readr_io0:
+      title: "import/export data"
+      subtitle: ""
+      gaol:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related: 
       next:
       prev: dplyr_tibble0
     dplyr_pipe0:

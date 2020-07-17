@@ -1,8 +1,8 @@
 ---
-title: '<title>'
-author: "<author>"
+title: 'import/export data'
+# author: "R. Monajemi"
 params:
-  basename: "<slot-file-name>"
+  basename: "readr_io0"
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +10,11 @@ knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 build_nocode(params) # build nocode version of tasks
 ```
 
-## template (slot)
+## notes 
+
+- use `haven` for spss format
+- use `readr` for all others
+
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

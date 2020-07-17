@@ -1,5 +1,5 @@
 ```{r related, echo=FALSE}
-.related_slots <- .related(params$basename)
+.related_slots <- related_slots(params$basename)
 ```
 
 ```{r, results='asis', echo=FALSE}

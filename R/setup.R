@@ -14,29 +14,29 @@ build_nocode <- function(params) {
 }
 
 
-.read_schedule <- function() {
+read_schedule <- function() {
   root_dir <- knitr::opts_knit$get("output.dir")
   site_dir <- file.path(root_dir,"_site")
   exer_dir <- file.path(site_dir,"exercises")
   cfg <- file.path(root_dir,"_schedule.yml")
   if (file.exists(cfg) ) {
-    .schedule_ <- yaml.load_file( cfg  )
+    schedule_ <- yaml.load_file( cfg  )
   } else {
     error("missing _schedule.yml !")
   }
-  .schedule_
+  schedule_
 }
 
-.next_slot<- function(base_name) {
-  .read_schedule()[["course"]][["slots"]][[base_name]][["next"]]
+next_slot<- function(base_name) {
+  read_schedule()[["course"]][["slots"]][[base_name]][["next"]]
 }
 
-.prev_slot <- function(base_name) {
-  .read_schedule()[["course"]][["slots"]][[base_name]][["prev"]]
+prev_slot <- function(base_name) {
+  read_schedule()[["course"]][["slots"]][[base_name]][["prev"]]
 }
 
-.related <- function(base_name) {
-    rel <- .read_schedule()[["course"]][["slots"]][[base_name]][["related"]]
+related_slots <- function(base_name) {
+    rel <- read_schedule()[["course"]][["slots"]][[base_name]][["related"]]
     if (!is.null(rel))
       strsplit(rel," ")[[1]]
     else
