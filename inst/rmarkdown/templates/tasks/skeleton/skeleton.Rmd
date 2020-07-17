@@ -1,5 +1,5 @@
 ---
-title: "<title> (tasks)"
+title: "<title> (practice)"
 author: "<author>"
 ---
 
@@ -10,3 +10,5 @@ if (exists("params")) {
   knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
 ```
+
+## template (practice)
