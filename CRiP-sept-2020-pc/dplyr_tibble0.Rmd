@@ -13,6 +13,61 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
+A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
+and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
+any [atomic types]() such as character,integer etc. Let's start by creating one manually.
+
+## Create data frame
+
+Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations. Take for example the variables `name`, `year` and `favourite` to represent a person's name, birth year and favourite colour:   
+
+```{r, echo=TRUE}
+# tibble
+favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+             year=c(1995,1995,1995,1994), 
+             favourite=c("Blue","Green","Yellow","Purple"))
+
+favourite_color
+```
+
+> What additionl pieces of information do you see beside the content we provided?
+
+```{.fold}
+1) '# A tibble: 3 x 4', which says that this is a tibble with 4x3 dimensions (4 observations 
+and 3 variables), 2) the types of each variable and 3) the row numbers. 
+```
+
+Now inspect the type of the tibble object we just created:
+
+```{r}
+class(favourite_color)
+```
+
+As you can see a tibble is in it's core a base R `data.frame` with some additional behaviour 
+enforced by {`tbl_df`,`tbl`}. For more details on the differences see (*) [tibble vs data.frame]().
+
+ 
+## tibble $\leftrightarrow$ data.frame
+
+Often you may need to switch between `data.frame` and `tibble`. You can convert an existing `tibble` into 
+`data.frame` type using the function `data.frame()`: 
+
+```{r}
+favourite_color_df <- data.frame(favourite_color)
+favourite_color_df
+class(favourite_color_df)
+```
+
+To do the reverse, from `data.frame` to `tibble`, use the function `as_tibble()`:
+
+```{r, eval=FALSE}
+t <- as_tibble(favourite_color_df)
+t
+class(t)
+```
+
+
+
 ```{r, child="_exercises_links.Rmd"}
 ``` 
 

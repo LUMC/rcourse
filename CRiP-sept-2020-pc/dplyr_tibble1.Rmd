@@ -14,17 +14,17 @@ build_nocode(params) # build nocode version of tasks ;
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-A tibble is the upgraded version of [data.frame]() data type with some convenient additional features, moreover, it is the standard data structure in tidyverse. In the following I'll layout the main features and differences in comparison with data.frame. Let's first create a data frame manually.
+A tibble is the upgraded version of [data.frame]() data type with some convenient additional features, moreover, it is the standard data structure in tidyverse. In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
 
-## Create data frame
+## Create
 
-Creating a __tibble__ is identical to creating a __data.frame__. They both take a list of `key=value` pairs separated by comma with `key` being the name and `value` the values of the column. Take for example the variables `name`, `year` and `favourite` to represent a person's name, birth year and favourite colour:   
+Take for example the variables `name`, `year` and `favourite` to represent a person's name, birth year and favourite colour    
 
 __data.frame__
 ```{r, echo=TRUE }
 t1 <- data.frame(name=c("Lucas","Lotte","Noa"), 
                  year=1995, 
-                 favorite=c("Blue","Green","Yellow"))
+                 favourite=c("Blue","Green","Yellow"))
 t1
 ```
         
@@ -33,7 +33,7 @@ __tibble__
 # tibble
 t2  <- tibble(name=c("Lucas","Lotte","Noa"), 
              year=1995, 
-             favorite=c("Blue","Green","Yellow"))
+             favourite=c("Blue","Green","Yellow"))
 t2
 ```
 
@@ -89,23 +89,6 @@ Selecting a single column with data.frame using comma results in a vector, and n
 
 
 
-## tibble <-> data.frame
-
-You can convert an existing `data.frame` into `tibble` format using the function `as_tibble(...)`: 
-
-```{r}
-t <- as_tibble(t1)
-t
-class(t)
-```
-
-Note that as_tibble maintains the original column types, so name and favourite are still factors even after conversion to tibble. The reverse is also possible, converting tibble to data.frame:
-
-```{r}
-t <- data.frame(t2)
-t
-class(t)
-```
 
 ## row names 
 
@@ -127,7 +110,7 @@ rownames(t2)
 
 The function `rownames` returns a character vector of 1 to the number of rows in the data frame. It can also be used to assign row names:
 
-
+ 
 ```{r}
 t <- t1 # t is a copy of data.frame t1
 rownames(t) <- letters[1:nrow(t1)]

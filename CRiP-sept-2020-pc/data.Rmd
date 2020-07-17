@@ -32,11 +32,11 @@ The pulse data set is available in the data folder as comma-delimited text: `pul
 
 
 ```{r, message=FALSE, echo=TRUE}
-pulse <- .read_csv_data("pulse.csv")
+pulse <- read_csv("_data/pulse.csv")
 pulse 
 ```
 
-
+ 
 ## Survey
 
 This data frame contains the responses of 233 Statistics I students at the University of Adelaide to a number of questions. It is a slightly modified version of the `survey` data from the `MASS` pacakge.
@@ -61,7 +61,7 @@ The pulse data set is available in the data folder as comma-delimited text: `sur
 
 
 ```{r, message=FALSE, echo=TRUE}
-survey <- .read_csv_data("survey.csv")
+survey <- read_csv("_data/survey.csv")
 survey 
 ```
 
