@@ -69,15 +69,15 @@ Course <- R6Class("Course",
         ifelse(!file.exists(html_file), TRUE, 
                ((file.info(html_file)$mtime - file.info(file.path(self$src(), paste0(f,".Rmd") ) )$mtime )  <= 0) )
       },
-      zip_ = function(zip_file){
+      zip_ = function(zip_file, what) {
         prefix <- sub(".zip","",zip_file)
         if (file.exists(prefix))
           unlink(prefix)
         if (file.exists(zip_file))
           unlink(zip_file)
         file.symlink(from = private$sources_, to = prefix)
-        zip(zipfile = paste0(prefix,".zip"), 
-            files = paste0(prefix,"/",self$listing()), flags = "-r")
+          zip(zipfile = paste0(prefix,".zip"), 
+              files = paste0(prefix,"/",self$listing(what)), flags = "-r")
         unlink(prefix)
       },
       read_schedule = function() {
@@ -191,21 +191,29 @@ Course <- R6Class("Course",
         file_basenames[sapply(file_basenames, private$modified)]
       },
       #' @description Returns the list of files for zip archive.
-      listing = function(){
+      #' @param set {archive, data} 
+      listing = function(set=c("archive","data")){
         schedule <- self$summary()
-        course <- schedule[["course"]]
-        rmds <- dir(self$src(),pattern=".Rmd")
-        other <- c("images","data","_schedule.yml","styles.css","_site.yml","footer.html")
-        c(rmds,other)
+        if (set=="archive") {
+          course <- schedule[["course"]]
+          rmds <- dir(self$src(),pattern=".Rmd")
+          other <- c("images","data","_schedule.yml","styles.css","_site.yml","footer.html")
+          c(rmds,other)
+        } else if (set=="data") {
+          paste("_data", strsplit(schedule[["course"]][["dataset"]]," ")[[1]], sep="/") 
+        } else {
+          stop("use {archive,data} as possible sets.")
+        }
+          
       },
       #' @param filename name of zip archive.
       #' @description Create a zip archive.
-      zip = function(filename="RCourse.zip"){
+      zip = function(filename="archive.zip", what="arvhive"){
         if (!grepl(".zip$",filename))
           stop("invalud suffix, use extension .zip !")
         cat('exporting to ',filename, '...\n')
         Sys.sleep(2)
-        msg <- try ( private$zip_(filename), silent = TRUE )
+        msg <- try ( private$zip_(zip_file = filename, what= what), silent = TRUE )
         if (class(msg)=="try-error") {
           message(msg)
         } else {

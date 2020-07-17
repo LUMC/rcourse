@@ -6,6 +6,12 @@ course:
     date: "date"
     time: "time-time"
     venue: "venue"
+  dataset:
+    pulse.csv
+    pulse.sav
+    survey.csv
+    CAREMA_case-control.sav
+    CAREMA_Prospectief.sav
   slots:
     basic_calculator0:
       title: "Calculator"
