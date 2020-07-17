@@ -43,10 +43,10 @@ In the dialog box:
 
 ## Check currently open project
 
-Look at the top right corner of the RStudio window to check which project you are working in.  
+Look at the top right corner of the RStudio window to check which project you are working on.  
 Refer to the following Figure: it shows a state when a project called `Learning_R` is open.
 
-Moreover, the title line shows **the project diectory** in which the project files are located.
+Moreover, the title line shows **the project diectory** in which the files of the project are/will be kept.
 
 Finally, note **the project file** `Learning_R.Rproj` in the `Files` panel. When you click this file in a file explorer, it should open RStudio and the right project.
 
@@ -102,9 +102,27 @@ Many report output formats are available: HTML, PDF (printable pages or presenta
 
 `r go_extern( url = "https://www.markdowntutorial.com/", title = "Markdown tutorial", goal = "to learn how do write free text using Markdown notation" )`
 
-## `r todo( "Create a new R Markdown document" )`
+# A new R Markdown report
 
-- new R markdown dialog box
+## Create
+
+`r show_warning( "Before creating a new document, first check whether you work in the correct project." )`
+
+From the RStudio menu choose: `r show_menu( c( "File", "New File", "R Markdown..." ) )`.  
+In the dialog box you may specify some details of the analysis (later change is possible):
+
+- Title of the analysis.  
+(Note, this is NOT the name of the `.Rmd` file; this name will be given when the document gets saved.)
+- Name of the author.
+- Output format (for now, select HTML).
+
+Once accepted, a new document `Untitled1` is shown.  
+The document is not empty; it contains an example written in R Markdown.
+
+![](images/RStudio_new_rmd_file.png)
+
+## `r todo( "Knit" )`
+
 - knit the demo
 - clear the demo
 
@@ -112,9 +130,17 @@ Many report output formats are available: HTML, PDF (printable pages or presenta
 
 - header
 - chunks; insert chunk keystroke
-- run a chunk; keystroke
-- knit complete document
+- run a chunk; keystroke, ctrl-Enter (for current command or marked text)
+- load tidyverse
+- read table
+- show table
+- knit complete document (no changes in environment)
 - find the produced html
+
+## `r todo( "To describe" )`
+
+- comment char (hash)
+- View command
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 
