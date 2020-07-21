@@ -8,7 +8,7 @@ params:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
-pulse <- .read_pulse()
+pulse <- read_pulse()
 ```
 
 ```{r, child="_navigate.Rmd"} 

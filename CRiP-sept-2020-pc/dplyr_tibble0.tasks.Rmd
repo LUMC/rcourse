@@ -1,12 +1,37 @@
 ---
 title: "tibble (tasks)"
 # author: "R. Monajemi"
+#params:
+#  solutions: "yes"
 ---
 
 ```{r , include=FALSE}
-if (exists("params")) {
-  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-} else  {
-  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
 ```
+  
+- Create a tibble for {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170} 
+and weights {56.0, 87.0, 54.0, 80.0, 58.5}.
+
+```{r} 
+t <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
+       height=c(164, 188, 164, 180, 170),  
+       weight=c(56.0, 87.0, 54.0, 80.0, 58.5))  
+t
+```
+    
+
+```{r, echo=FALSE, results='asis'}
+qa_toggle(msg="qa_toggle: aap mies noot")
+```   
+
+   
+
+ 

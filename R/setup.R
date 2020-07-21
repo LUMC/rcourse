@@ -7,10 +7,17 @@ build_nocode <- function(params) {
   fname <- paste0(params$basename,".tasks.Rmd")
   i <- file.path(root_dir,fname)
   o <- sub(".Rmd$",".nocode.html",basename(file.path(site_dir,fname)))
+  root_dir <- knitr::opts_knit$set(solutions="no")
   rmarkdown::render(input = i ,
                     output_file = o,
                     output_dir = root_dir,
-                    output_format = "html_document", params=list(ref="aap"))
+                    output_format = "html_document")
+  root_dir <- knitr::opts_knit$set(solutions="yes")
+  o <- sub(".Rmd$",".html",basename(file.path(site_dir,fname)))
+  rmarkdown::render(input = i ,
+                    output_file = o,
+                    output_dir = root_dir,
+                    output_format = "html_document")
 }
 
 
@@ -25,6 +32,14 @@ read_schedule <- function() {
     error("missing _schedule.yml !")
   }
   schedule_
+}
+
+qa_toggle <- function(msg) {
+  id <- paste("tag",digest(msg, algo="md5"),sep="")
+  txt <- paste("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#",id,"\"",sep="")
+  txt <- paste(txt, "aria-expanded=\"false\" aria-controls=\"collapseExample\">Answer</a>")
+  txt <- paste(txt, "<div class=\"collapse\" id=\"",id,"\"><div class=\"well\">",msg,"</div> </div><br>", sep="")  
+  cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
 next_slot<- function(base_name) {
@@ -43,7 +58,7 @@ related_slots <- function(base_name) {
       NULL
 }
 
-.read_pulse <- function() {
+read_pulse <- function() {
   read_csv("_data/pulse.csv", col_types = cols(
     id = col_character(),
     name = col_character(),
@@ -61,10 +76,29 @@ related_slots <- function(base_name) {
   ) )
 }
 
-.read_csv_data <- function(file) {
-  root_dir <- knitr::opts_knit$get("output.dir")
-  read.csv(file.path(root_dir,"_data",file))
+read_survey <- function() {
+  read_csv("_data/survey.csv", col_types = cols(
+    name = col_character(),
+    height = col_double(),
+    weight = col_double(),
+    age = col_double(),
+    gender = col_character(),
+    smokes = col_character(),
+    alcohol = col_character(),
+    exercise = col_character(),
+    ran = col_character(),
+    pulse1 = col_double(),
+    pulse2 = col_double(),
+    year = col_double()
+  ) )
 }
+
+
+
+# .read_csv_data <- function(file) {
+#   root_dir <- knitr::opts_knit$get("output.dir")
+#   read.csv(file.path(root_dir,"_data",file))
+# }
 
 show_color <- function( text, color ) {
   if (knitr::is_latex_output()) {

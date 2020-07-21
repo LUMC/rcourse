@@ -19,7 +19,7 @@
 #' 
 #' @details 
 #' 
-#' The \strong{schdule} file has the following structure:
+#' The \strong{schedule} file has the following structure:
 #' 
 #' \preformatted{
 #'    course:
@@ -130,7 +130,13 @@ Course <- R6Class("Course",
         e <- new.env() # currently to hold .next and .prev values for slots
         if (clean)
           self$clean()
-        lapply(self$lstmod(),function(b) {
+        # when a task file is updated render its slot so both code and no_code versions are compiled!
+        render_list <- self$lstmod()
+        tasks_list <- grepl(".tasks", render_list)
+        if (sum(tasks_list)!=0)
+          render_list <- c(render_list[!tasks_list], sub(".tasks$","", render_list[tasks_list]))
+        # render only modified files 
+        lapply(render_list,function(b) {
           assign(x = ".next", value = self$next_slot(base_name = b), envir = e)
           assign(x = ".prev", value = self$prev_slot(base_name = b), envir = e)
           rmarkdown::render_site(file.path(self$src(),paste0(b,".Rmd")),envir=e,...)  
@@ -149,51 +155,55 @@ Course <- R6Class("Course",
       view = function() {
         browseURL(self$url())
       },
-      #' @description Print the 'current' course summary.    
-      summary = function() {
+      #' @description Course schedule from schedule.yml.    
+      schedule = function() {
        private$schedule_         
       },
-      #' @description Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
-      schedule = function() {
-        file.edit(file.path(self$src(),"_schedule.yml"))
-      },
+      #' #' @description Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
+      #' schedule = function() {
+      #'   file.edit(file.path(self$src(),"_schedule.yml"))
+      #' },
       #' @description Returns the list of course slots. The data is taken from '_schedule.yml'.   
       slots = function() {
-        schedule <- private$schedule_
+        schedule <- self$schedule()
         slots <- schedule[["course"]][["slots"]]
-        names(slots)
+        slots_names <- names(slots)
+        task_names <- lapply(slots_names, function(x) if (slots[[x]][["tasks"]]=="yes") paste(x,".tasks",sep="") )
+        c(slots_names, task_names)
       },
       #' @description given the base name of the slot return the basename of the next  
       #' slot from '_schedule.yml'.   
       #' @param base_name the RMD file basename.  
       next_slot = function(base_name) {
-        schedule <- private$schedule_
+        schedule <- self$schedule()
         schedule[["course"]][["slots"]][[base_name]][["next"]]
       },
       #' @description given the base name of the slot return the basename of the previous  
       #' slot from '_schedule.yml'.   
       #' @param base_name the RMD file basename.  
       prev_slot = function(base_name) {
-        schedule <- private$schedule_
+        schedule <- self$schedule()
         schedule[["course"]][["slots"]][[base_name]][["prev"]]
       },
       #' @description given the base name of the slot return the related slots from '_schedule.yml'.   
       #' @param base_name the RMD file basename.  
       related = function(base_name) {
-        schedule <- private$schedule_
+        schedule <- self$schedule()
         unlist(strsplit(schedule[["course"]][["slots"]][[base_name]][["related"]]," " ))
       },
       #' @description Returns the list of modified files.
       lstmod = function() {
         rmds <- dir(self$src(), pattern = ".Rmd")
         rmds <- rmds[!grepl('^_',rmds)]
-        file_basenames <- sapply(rmds[!grepl('^_',rmds)], function(x) sub(".Rmd","",x)) %>% as.vector()
+        file_basenames <- sapply(rmds, function(x) sub(".Rmd","",x)) %>% as.vector()
+        # consider only the slots declared in the schedule.yml
+        file_basenames <- intersect(file_basenames,self$slots()) 
         file_basenames[sapply(file_basenames, private$modified)]
       },
       #' @description Returns the list of files for zip archive.
       #' @param set {archive, data} 
-      listing = function(set=c("archive","data")){
-        schedule <- self$summary()
+      listing = function(set="archive"){
+        schedule <- self$schedule()
         if (set=="archive") {
           course <- schedule[["course"]]
           rmds <- dir(self$src(),pattern=".Rmd")

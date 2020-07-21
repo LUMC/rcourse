@@ -1,7 +1,7 @@
 ---
-title: "tibble (tasks)"
+title: "tibble vs data.frame* (tasks)"
 # author: "R. Monajemi"
----
+--- 
 
 ```{r , include=FALSE}
 if (exists("params")) {
