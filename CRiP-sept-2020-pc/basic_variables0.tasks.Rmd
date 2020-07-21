@@ -1,12 +1,16 @@
 ---
-title: "ggplot basics (practice)"
+title: "variables (practice)"
 # author: "<author>"
 ---
 
 ```{r , include=FALSE}
-if (exists("params")) {
-  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-} else  {
-  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
 ```
