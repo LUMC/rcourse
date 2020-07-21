@@ -15,27 +15,30 @@ build_nocode(params)
    
 A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
 and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
-any [atomic types]() such as character,integer etc. Let's start by creating one manually.
+any [atomic type]() such as character,integer etc. Let's start by creating one manually.
 
 ## Create a tibble    
  
-Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations. Take for example the variables `name`, `year` and `favourite` to represent a person's name, birth year and favourite colour:   
+Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations. Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
 
 ```{r, echo=TRUE}
-# tibble
 favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
-             year=c(1995,1995,1995,1994), 
-             favourite=c("Blue","Green","Yellow","Purple"))
-
-favourite_color  
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
 ```
- 
+
+The object `favourite_color` now holds the data, type it's name in the R console for inspection:
+
+```{r}
+favourite_color
+```
+
 > What additional pieces of information do you see beside the content we provided?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "1) '# A tibble: 3 x 4', which says that this is a tibble with 4x3 dimensions (4 observations 
-and 3 variables), \n\n 2) the types of each variable and \n\n 3) the row numbers."
-qa_toggle(msg)
+msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with 4x3 dimensions (4 observations 
+and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
+QA(msg)
 ``` 
 
 Now inspect the type of the tibble object we just created:
@@ -45,30 +48,72 @@ class(favourite_color)
 ```
 
 As you can see a tibble is in it's core a base R `data.frame` with some additional behaviour 
-enforced by {`tbl_df`,`tbl`}. For more details on the differences between tobble and data.frame 
+enforced by {`tbl_df`,`tbl`} type. For more details on the differences between tibble and data.frame 
 see [tibble vs data.frame*](dplyr_tibble1.html).
 
- 
-## tibble $\leftrightarrow$ data.frame
+## subsetting [
 
-Often you may need to switch between `data.frame` and `tibble`. You can convert an existing `tibble` into 
-`data.frame` type using the function `data.frame()`: 
+Often you may need to select certain variables or discard others, this can be done using square brackets `[` :
 
 ```{r}
-favourite_color_df <- data.frame(favourite_color)
-favourite_color_df
-class(favourite_color_df)
+favourite_color["colour"]
+```
+
+to subset combination of variables:
+
+```{r}
+favourite_color[c("name","year")]
 ```
  
-To do the reverse, from `data.frame` to `tibble`, use the function `as_tibble()`:
 
-```{r, eval=FALSE}
-t <- as_tibble(favourite_color_df)
-t
-class(t) 
+```{r, echo=FALSE, results='asis'}
+msg <- "Subset result of a tibble is always a tibble."
+info_block(msg)
+``` 
+
+## Extract variables [[ or $
+
+If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
+
+```{r}
+favourite_color[["year"]]
+favourite_color$year
 ```
 
-   
+## tibble to/from file
+
+tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
+comma-separated-value (csv) format in this course. The functions involved for this purpose ar `write_csv` and `read_csv`.
+For more details on reading/writing format see [readr](readr_io0.html).
+
+let us now save our first tibble into a file in csv format:   
+
+```{r}
+write_csv(x = favourite_color, path = "_data/favourite_color.csv")
+```
+
+`favourite_color` tibble is written to `favourite_color.csv` text file. You may inspect the file with any editor and it should look something like: 
+
+```
+name,year,colour
+Lucas,1995,Blue
+Lotte,1995,Green
+Noa,1995,Yellow
+Wim,1994,Purple
+```
+
+This way we can permanently store our results in files for later use. We can now read the csv file back into a R 
+object, e.g. `favourite_color_csv` :
+
+```{r}
+favourite_color_csv <- read_csv(file = "_data/favourite_color.csv")
+```
+
+`read_csv` gives a summary of the variables and their inferred types.
+
+```{r}
+favourite_color_csv
+```
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

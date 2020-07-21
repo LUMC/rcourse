@@ -17,20 +17,73 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 }
 ```
   
-- Create a tibble for {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170} 
-and weights {56.0, 87.0, 54.0, 80.0, 58.5}.
+## Create tibble  
+  
+1. Create a tibble for {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170}, weights {56.0, 87.0, 54.0, 80.0, 58.5} and frequency of exercise {high, high, low, moderate, low}.
 
 ```{r} 
-t <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
-       height=c(164, 188, 164, 180, 170),  
-       weight=c(56.0, 87.0, 54.0, 80.0, 58.5))  
-t
+exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
+            height=c(164, 188, 164, 180, 170),  
+            weight=c(56.0, 87.0, 54.0, 80.0, 58.5),
+            exercise=c("high", "high", "low", "moderate", "low")
+     )  
+exercise_group
 ```
-    
 
-```{r, echo=FALSE, results='asis'}
-qa_toggle(msg="qa_toggle: aap mies noot")
-```   
+2. Create the same tibble in the previous exercise but now with variable exercise as `factor`.
+
+```{r}
+exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
+            height=c(164, 188, 164, 180, 170),  
+            weight=c(56.0, 87.0, 54.0, 80.0, 58.5),
+            exercise=factor(c("high", "high", "low", "moderate", "low"))
+     )  
+exercise_group
+```
+
+## tibble subset
+
+1. Take the tibble from the previous exercise and create a new tibble without the `height` and `weight` variables.
+
+```{r}
+exercise_group_sub <- exercise_group[c("name","exercise")]
+exercise_group_sub
+```
+
+## Extract variables
+
+1. Given the tibble `favourite_color`, how old were the subjects by the en of 2019?
+
+```{r, echo=FALSE}
+favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+```
+
+```{r}
+2019 - favourite_color[["year"]] # alternatively:  2019 - favourite_color$year
+```
+
+2. What is the mean height in `exercise_group`?
+
+```{r}
+mean(exercise_group[["height"]]) 
+```
+
+
+## tibble to/from file
+
+1. Read csv files `pulse.csv` and `survey.csv` into R object `pulse` and `survey` respectively.
+
+```{r}
+pulse <- read_csv(file = "_data/pulse.csv")
+survey <- read_csv(file = "_data/survey.csv")
+```
+
+## Extra exercise*
+
+1. ...
+
 
    
 

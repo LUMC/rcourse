@@ -34,11 +34,17 @@ read_schedule <- function() {
   schedule_
 }
 
-qa_toggle <- function(msg) {
+
+QA <- function(msg) {
   id <- paste("tag",digest(msg, algo="md5"),sep="")
   txt <- paste("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#",id,"\"",sep="")
   txt <- paste(txt, "aria-expanded=\"false\" aria-controls=\"collapseExample\">Answer</a>")
   txt <- paste(txt, "<div class=\"collapse\" id=\"",id,"\"><div class=\"well\">",msg,"</div> </div><br>", sep="")  
+  cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
+}
+
+info_block <- function(msg) {
+  txt <- paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 

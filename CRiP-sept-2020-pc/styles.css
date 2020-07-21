@@ -4,3 +4,9 @@ blockquote {
 .fold-btn { 
   float: right; 
 }
+
+ion-icon {
+  color: skyblue;
+  position: relative;
+  top:10px;
+}
