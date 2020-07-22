@@ -10,9 +10,11 @@ knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 build_nocode(params)  
 ```
 
-```{r, child="_navigate.Rmd"} 
+
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 
-   
+
 A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
 and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
 any [atomic type]() such as character,integer etc. Let's start by creating one manually.
@@ -84,7 +86,7 @@ favourite_color$year
 
 tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
 comma-separated-value (csv) format in this course. The functions involved for this purpose ar `write_csv` and `read_csv`.
-For more details on reading/writing format see [readr](readr_io0.html).
+For more details on reading/writing format see [readr_io0](readr_io0.html).
 
 let us now save our first tibble into a file in csv format:   
 
@@ -121,5 +123,6 @@ favourite_color_csv
 ```{r, child="_related.Rmd"} 
 ``` 
 
-```{r, child="_navigate.Rmd"} 
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 

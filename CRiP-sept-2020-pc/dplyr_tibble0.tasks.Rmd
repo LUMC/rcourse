@@ -52,7 +52,7 @@ exercise_group_sub
 
 ## Extract variables
 
-1. Given the tibble `favourite_color`, how old were the subjects by the en of 2019?
+1. Given the tibble `favourite_color`, how old were the subjects by the end of 2019?
 
 ```{r, echo=FALSE}
 favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
@@ -73,7 +73,7 @@ mean(exercise_group[["height"]])
 
 ## tibble to/from file
 
-1. Read csv files `pulse.csv` and `survey.csv` into R object `pulse` and `survey` respectively.
+1. Read csv files `pulse.csv` and `survey.csv` into R as objects `pulse` and `survey` respectively.
 
 ```{r}
 pulse <- read_csv(file = "_data/pulse.csv")

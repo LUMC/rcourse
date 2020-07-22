@@ -90,7 +90,7 @@ course:
         dplyr_tibble1
         base_dataframe0
         readr_io0
-      next: dplyr_pipe0
+      next: dplyr_select0
       prev: tidyverse0
     dplyr_tibble1:
       title: "tibble1"
@@ -114,17 +114,6 @@ course:
       related: 
       next:
       prev: dplyr_tibble0
-    dplyr_pipe0:
-      title: "%>% : pipe operator"
-      subtitle: ""
-      gaol:
-      date: "01-09-2020"
-      time: "09:00-09:30"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      next: "dplyr_select0"
-      prev: "dplyr_tibble0"
     dplyr_select0:
       title: "select"
       subtitle: ""
@@ -135,7 +124,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next: "dplyr_filter0"
-      prev: "dplyr_pipe0"
+      prev: "dplyr_tibble0"
     dplyr_filter0:
       title: "filter"
       subtitle: ""
@@ -156,8 +145,19 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next:
+      next: "dplyr_pipe0"
       prev: "dplyr_filter0"
+    dplyr_pipe0:
+      title: "%>% : pipe operator"
+      subtitle: ""
+      gaol:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""

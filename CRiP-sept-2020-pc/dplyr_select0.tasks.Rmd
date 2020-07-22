@@ -4,9 +4,36 @@ title: "select (tasks)"
 ---
 
 ```{r , include=FALSE}
-if (exists("params")) {
-  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-} else  {
-  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
+
+survey <- read_survey()
+```
+
+Apply the following to survey data: 
+
+1) Rename the `m.i` variable to `system`.
+  
+```{r}
+select(survey, system=m.i, everything())
+```
+
+2) Reorder the variables as such that name,age and gender come first. 
+
+```{r}
+select(survey, name,age,gender,everything())
+```
+
+
+4) Deselect variables that relate to hand and/or arm (e.g. *.hnd, etc.)
+
+```{r}
+select(survey, -span1,-span2,-hand,-fold,-clap)
 ```

@@ -48,6 +48,33 @@ info_block <- function(msg) {
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
+alert_block <- function(params,alert="alert-info", align="right") {
+  .next <- next_slot(params$basename)
+  .prev <- prev_slot(params$basename)
+  .next_html <- paste(.next,".html", sep="")
+  .prev_html <- paste(.prev,".html", sep="")
+  .next_label <- ""
+  .prev_label <- ""
+  
+  txt <- paste("<div class=\"alert ",alert,"\" role=\"alert\" style=\"text-align: ",align,";\" >", sep="")
+  
+  if (!is.null(.prev)) {
+    .prev_label <- strsplit(sub("[0-9]+","",.prev),"_")[[1]]
+    .prev_label <- .prev_label[length(.prev_label)]
+    txt <- paste(txt,"<a class=\"btn btn-primary\" href=",.prev_html,"role=\"button\">&laquo;",.prev_label,"</a>")
+  } else {
+    txt <- paste(txt,"<a class=\"btn btn-primary\" onclick=\"goBack()\" role=\"button\">&laquo;",.prev_label,"back</a>" )
+  }
+  
+  if (!is.null(.next)) {
+    .next_label <- strsplit(sub("[0-9]+","",.next),"_")[[1]]
+    .next_label <- .next_label[length(.next_label)]
+    txt <- paste(txt,"<a class=\"btn btn-primary \" href=",.next_html,"role=\"button\">",.next_label,"&raquo;</a>" )
+  }
+  txt <- paste(txt, "</div>")
+  cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
+}
+
 next_slot<- function(base_name) {
   read_schedule()[["course"]][["slots"]][[base_name]][["next"]]
 }

@@ -7,11 +7,82 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+build_nocode(params)
+pulse <- read_pulse()
 ```
 
-```{r, child="_navigate.Rmd"} 
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 
+
+Use the `select` function to select variables (columns) from tibbles. Let's take the `pulse` dataset:   
+
+```{r}
+pulse 
+```
+
+`select` takes as it first argument a tibble, followed by a comma separated list of variables of your choice and returns a tibble with those chosen variables:
+
+```{r}
+select(pulse, name, age)
+```
+
+> Does `pulse` still contain the variables 'name' and 'age'?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "Yes, 'select' returns only the selection as a tibble and does not modify the underlying tibble, in this case 
+'pulse'."
+QA(msg)
+``` 
+
+In order to keep your selection as a separate object you'll need to assign the result into a new fresh object, e.g. `name_age`:
+
+```{r}
+name_age <- select(pulse, name, age)
+name_age
+```
+
+##  Variable order
+
+The order of the selected variables is reflected in the resulted tibble:  
+
+```{r}
+select(pulse, age, name )
+```
+
+## Deselect variables 
+
+You may also deselect variables, with other words the complement of your selection. This is done by the `-` sign:
+
+```{r}
+select(pulse, -smokes, -alcohol)
+```
+
+## Select and rename 
+
+With selection it is possible to change the variable names simultaneously:  
+
+```{r}
+select(pulse, FirstName = name, Age = age)
+```
+
+> What is the variable name in the pulse dataset, 'Age' or 'age'?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "age"
+QA(msg)
+``` 
+
+## Reshuffle variables 
+
+With `select` we can reshuffle the variables. Sometimes tibbles may have large number of variables, you can bring more 'important' variables with `select` and a convenience function `evertything`:   
+
+```{r}
+select(pulse, name, age, everything()) 
+```
+
+`everything` function lists all other variable other than `name` and `age` to be placed after `name` and `age` by `select`.
+
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 
@@ -19,6 +90,6 @@ build_nocode(params) # build nocode version of tasks ; replace with source("setu
 ```{r, child="_related.Rmd"}  
 ``` 
 
-```{r, child="_navigate.Rmd"}  
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 
-

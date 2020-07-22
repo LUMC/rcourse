@@ -7,11 +7,31 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+build_nocode(params) 
+pulse <- read_pulse()
 ```
 
-```{r, child="_navigate.Rmd"}  
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 
+
+## Single condition
+
+```{r}
+filter(pulse, age == 22 ) 
+```
+
+## Multiple conditions 
+
+```{r}
+filter(pulse, age <= 20 & exercise == "moderate") 
+```
+
+## Condition on multiple values
+
+```{r}
+filter(pulse, exercise == "high" |  exercise =="moderate") 
+```
 
 ```{r, child="_exercises_links.Rmd"}
 ```
@@ -19,5 +39,6 @@ build_nocode(params) # build nocode version of tasks ; replace with source("setu
 ```{r, child="_related.Rmd"}  
 ``` 
 
-```{r, child="_navigate.Rmd"}  
+```{r, echo=FALSE, results='asis'}
+alert_block(params)
 ``` 
