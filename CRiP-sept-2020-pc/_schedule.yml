@@ -61,6 +61,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
+        dplyr_tibble0
       prev:
         basic_vectors0
     tidyverse0:
@@ -93,7 +94,7 @@ course:
       next: dplyr_select0
       prev: tidyverse0
     dplyr_tibble1:
-      title: "tibble1"
+      title: "tibble*"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -148,7 +149,7 @@ course:
       next: "dplyr_pipe0"
       prev: "dplyr_filter0"
     dplyr_pipe0:
-      title: "%>% : pipe operator"
+      title: "pipe operator"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -159,7 +160,7 @@ course:
       next: "forcats_factor0"
       prev: "dplyr_mutate0"
     forcats_factor0:
-      title: "%>% : pipe operator"
+      title: "factors"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -180,8 +181,8 @@ course:
       related:
       next:
       prev:
-    base_dataframe0:
-      title: "data.frame"
+    basic_vectors1:
+      title: "vectors*"
       subtitle: ""
       gaol: ""
       date: "01-09-2020"
@@ -190,4 +191,4 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
-      prev:
+      prev: forcats_factor0

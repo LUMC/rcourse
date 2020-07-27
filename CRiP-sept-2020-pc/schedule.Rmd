@@ -2,5 +2,5 @@
 title: "Schedule"
 ---
 
-```{r, child="_schedule.Rmd"}
+```{r, child="_graph.Rmd"}
 ``` 

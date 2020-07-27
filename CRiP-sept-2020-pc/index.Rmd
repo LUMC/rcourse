@@ -9,15 +9,6 @@ It provides a large repository of statistical analysis methods, both classic and
 However, R has a steep learning curve, due partly to its using a command-line type of user interface, rather than the usual pull-down menus. 
 The course aims at helping researchers climb this curve, enabling them to perform basic data analysis and graphic displays at the end of the course, as well as giving a platform from which they can deepen their R knowledge later on if necessary.
 
-## Teachers
-
-In alphabetical order:
-
-- [Jelle Goeman](https://www.lumc.nl/org/bds/medewerkers/812110344192525), Medical Statistics & Bioinformatics, LUMC
-- [Szymon M. Kielbasa](https://www.lumc.nl/org/bds/medewerkers/smkielbasa), Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC (__coordinator at LUMC__)
-- [Renee Menezes](http://www.bigstatistics.nl/renee), Department of Epidemiology and Biostatistics, VUmc (__coordinator at VUmc__)
-- [Ramin Monajemi](https://www.lumc.nl/org/bds/medewerkers/rmonajemi), Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC
-
 ## Goals & Topics
 
 After the course you will be able to:

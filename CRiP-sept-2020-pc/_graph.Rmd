@@ -1,0 +1,52 @@
+```{r _shedule, echo=FALSE}
+conf <- yaml.load_file("_schedule.yml")
+slots <- conf[["course"]][["slots"]]
+```
+
+
+```{r, echo=FALSE}
+require(networkD3)
+
+d <- sapply(names(slots), function(x) {
+  v <- slots[[x]][["next"]] 
+  if (is.null(v)) 
+    NA
+  else 
+    v
+}) %>% tibble(from = names(.),to   = .)
+
+d <- sapply(names(slots), function(x) {
+  v <- slots[[x]][["next"]] 
+  if (is.null(v)) 
+    NA
+  else 
+    v
+}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) %>% 
+  mutate(value=10) 
+
+dd <- tibble (name=factor(c(d$source,d$target) %>% unique()), group=1, size=1)
+dd <- dd[order(dd$name),]   
+
+# d : links
+# dd : nodes 
+d <- d %>%  mutate_at(c("source","target"), as.factor)
+d$source <- fct_unify(list(dd$name,d$source))[[2]]
+d$target <- fct_unify(list(dd$name,d$target))[[2]]
+dd <- dd %>%  mutate(name=as.character(name))
+d <- d %>% mutate_at(c("source","target"), .funs = as.numeric) %>% 
+     mutate(source=source-1, target= target -1 )
+dd$label <- sapply(dd$name, function(x) slots[[x]][["title"]]) %>% as.character()
+
+# force network 
+p <- forceNetwork(Links = d %>% data.frame(), Nodes = dd %>% data.frame(), Source = "source",
+             Target = "target", Value = "value", NodeID = "label",
+             Group = "group", opacity = 1, arrows = TRUE,opacityNoHover = 1 , fontSize = 20)
+
+p$x$nodes$hyperlink <- paste('file://',
+                             knitr::opts_knit$get("output.dir"),'/_site/', dd$name, # p$x$nodes$name
+                             ".html", sep="")
+p$x$options$clickAction = 'window.open(d.hyperlink,"_self")'
+
+p
+```
+
