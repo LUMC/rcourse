@@ -40,7 +40,7 @@ favourite_color
 ```{r, echo=FALSE, results='asis'}
 msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with 4x3 dimensions (4 observations 
 and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
-QA(msg)
+qa(msg)
 ``` 
 
 Now inspect the type of the tibble object we just created:

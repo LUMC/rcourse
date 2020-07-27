@@ -157,7 +157,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next: "forcats_factor0"
-      prev:
+      prev: "dplyr_mutate0"
     forcats_factor0:
       title: "%>% : pipe operator"
       subtitle: ""

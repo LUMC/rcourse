@@ -35,7 +35,7 @@ read_schedule <- function() {
 }
 
 
-QA <- function(msg) {
+qa <- function(msg) {
   id <- paste("tag",digest(msg, algo="md5"),sep="")
   txt <- paste("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#",id,"\"",sep="")
   txt <- paste(txt, "aria-expanded=\"false\" aria-controls=\"collapseExample\">Answer</a>")

@@ -31,7 +31,7 @@ select(pulse, name, age)
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. Use assignment '<-' to a variable to keep the selection."
-QA(msg)
+qa(msg)
 ``` 
 
 In order to keep your selection as a separate object you'll need to assign the result into a new fresh object, e.g. `name_age`:
@@ -69,7 +69,7 @@ select(pulse, FirstName = name, Age = age)
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "age"
-QA(msg)
+qa(msg)
 ``` 
 
 ## Reshuffle variables 
