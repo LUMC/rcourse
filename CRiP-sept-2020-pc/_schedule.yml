@@ -156,8 +156,19 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next:
+      next: "forcats_factor0"
       prev:
+    forcats_factor0:
+      title: "%>% : pipe operator"
+      subtitle: ""
+      gaol:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev: "dplyr_pipe0"
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""

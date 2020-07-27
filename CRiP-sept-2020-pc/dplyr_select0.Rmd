@@ -30,8 +30,7 @@ select(pulse, name, age)
 > Does `pulse` still contain the variables 'name' and 'age'?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes, 'select' returns only the selection as a tibble and does not modify the underlying tibble, in this case 
-'pulse'."
+msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. Use assignment '<-' to a variable to keep the selection."
 QA(msg)
 ``` 
 

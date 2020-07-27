@@ -1,0 +1,20 @@
+---
+title: 'factors'
+# author: "R. Monajemi"
+params:
+  basename: "forcats_factor0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) # build nocode version of tasks
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 
