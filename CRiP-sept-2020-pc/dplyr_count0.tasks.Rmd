@@ -1,6 +1,6 @@
 ---
-title: "<title> (practice)"
-author: "<author>"
+title: "count (practice)"
+# author: "R. Monajemi"
 ---
 
 ```{r , include=FALSE}

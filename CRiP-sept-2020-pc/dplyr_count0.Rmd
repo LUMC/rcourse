@@ -1,8 +1,8 @@
 ---
-title: '<title>'
-author: "<author>"
+title: 'count'
+# author: "R. Monajemi"
 params:
-  basename: "<slot-file-name>"
+  basename: "dplyr_count0"
 ---
 
 ```{r setup, include=FALSE}
@@ -12,8 +12,6 @@ build_nocode(params)
 
 ```{r, child="_navigate.Rmd"} 
 ``` 
-
-<!-- put content here ... -->
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

@@ -159,6 +159,17 @@ course:
       related:
       next: "forcats_factor0"
       prev: "dplyr_mutate0"
+    dplyr_count0:
+      title: "count"
+      subtitle: ""
+      gaol:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: 
+      prev: "dplyr_pipe0"
     forcats_factor0:
       title: "factors"
       subtitle: ""
@@ -169,7 +180,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
-      prev: "dplyr_pipe0"
+      prev: "basic_vectors0"
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""
@@ -191,4 +202,4 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
-      prev: forcats_factor0
+      prev: basic_vectors0
