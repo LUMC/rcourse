@@ -199,7 +199,7 @@ Course <- R6Class("Course",
         # consider only the slots declared in the schedule.yml
         file_basenames <- intersect(file_basenames,self$slots())
         # additional RMD files other than slots
-        file_basenames <- c(file_basenames, c("index"))
+        file_basenames <- c(file_basenames, c("index","schedule","_schedule","_graph"))
         file_basenames[sapply(file_basenames, private$modified)]
       },
       #' @description Returns the list of files for zip archive.

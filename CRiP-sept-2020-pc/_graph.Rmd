@@ -5,48 +5,43 @@ slots <- conf[["course"]][["slots"]]
 
 
 ```{r, echo=FALSE}
-require(networkD3)
+require(visNetwork)
 
-d <- sapply(names(slots), function(x) {
+related_slots <- lapply(names(slots), function(slot) {
+  related_slots <- slots[[slot]][["related"]] 
+  if (!is.null(related_slots)) {
+    related_slots <- strsplit(related_slots," ")[[1]] 
+  } else {
+    related_slots <- NULL
+  }
+  lapply(related_slots, function(x) {
+    tibble(source=slot,target=x)
+  }) %>% bind_rows()
+}) %>% bind_rows()
+
+next_slots <- sapply(names(slots), function(x) {
   v <- slots[[x]][["next"]] 
   if (is.null(v)) 
     NA
-  else 
+  else  
     v
-}) %>% tibble(from = names(.),to   = .)
+}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) 
 
-d <- sapply(names(slots), function(x) {
-  v <- slots[[x]][["next"]] 
-  if (is.null(v)) 
-    NA
-  else 
-    v
-}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) %>% 
-  mutate(value=10) 
+edges <- bind_rows(related_slots, next_slots) %>% rename(from=source,to=target)
+nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
+nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
+nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
 
-dd <- tibble (name=factor(c(d$source,d$target) %>% unique()), group=1, size=1)
-dd <- dd[order(dd$name),]   
+visNetwork(nodes, edges,width = "100%" ) %>% 
+  visIgraphLayout(layout = "layout_in_circle") %>% 
+  visEdges(arrows = list(to=list( scaleFactor=.5)),
+           color = list(color = "lightblue", highlight = "red"), shadow = TRUE) %>% 
+           visEvents(doubleClick = "function(e) {
+                                      var nodeID = e.nodes[0];
+                                      var url = this.body.nodes[nodeID].options.url;
+                                      window.open(url,'_self')
+                                    }"
+                     )
 
-# d : links
-# dd : nodes 
-d <- d %>%  mutate_at(c("source","target"), as.factor)
-d$source <- fct_unify(list(dd$name,d$source))[[2]]
-d$target <- fct_unify(list(dd$name,d$target))[[2]]
-dd <- dd %>%  mutate(name=as.character(name))
-d <- d %>% mutate_at(c("source","target"), .funs = as.numeric) %>% 
-     mutate(source=source-1, target= target -1 )
-dd$label <- sapply(dd$name, function(x) slots[[x]][["title"]]) %>% as.character()
-
-# force network 
-p <- forceNetwork(Links = d %>% data.frame(), Nodes = dd %>% data.frame(), Source = "source",
-             Target = "target", Value = "value", NodeID = "label",
-             Group = "group", opacity = 1, arrows = TRUE,opacityNoHover = 1 , fontSize = 20)
-
-p$x$nodes$hyperlink <- paste('file://',
-                             knitr::opts_knit$get("output.dir"),'/_site/', dd$name, # p$x$nodes$name
-                             ".html", sep="")
-p$x$options$clickAction = 'window.open(d.hyperlink,"_self")'
-
-p
 ```
 
