@@ -6,13 +6,31 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
+knitr::opts_chunk$set(comment = NA, paged.print=TRUE)
+build_nocode(params) 
+pulse <- read_pulse()
 ```
 
 
 ```{r, child="_navigate.Rmd"}  
 ``` 
+
+Use `mutate` to add new columns/variables from a selection of existing ones.
+
+Average pulse:
+
+```{r}
+pulse %>% mutate( averagePulse = (pulse1+pulse2)/2 ) # by default new column comes last
+pulse %>% mutate( averagePulse = (pulse1+pulse2)/2 ) %>% 
+      select( averagePulse, pulse1, pulse2, everything() )
+```
+
+BMI:
+
+```{r}
+pulse %>%  mutate(BMI=weight/(height/100)^2) %>% 
+  select( BMI, pulse1, pulse2, everything() )
+```
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

@@ -1,0 +1,40 @@
+---
+title: 'Group'
+# author: "R. Monajemi"
+params:
+  basename: "dplyr_group0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+pulse <- read_pulse()
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+Group per `age` and `gender`, note the tag `Groups: age, gender` in the output:
+
+```{r}
+pulse %>% group_by( age,gender )
+```
+
+Once groups are defined with `group_by`, `summarize` produces a single row output for each group:
+
+```{r}
+pulse %>% group_by( age, gender ) %>% summarize( count = n() ) # <=> pulse %>% count(age,gender)
+```
+
+Multiple stats can be calculated in one `summarize` command.
+
+```{r}
+pulse %>% group_by(age,gender) %>% summarise(count=n(),meanHeight=mean(height), meanWeight=mean(weight))
+```
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

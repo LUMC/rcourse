@@ -1,0 +1,50 @@
+---
+title: 'Queries'
+#author: "R. Monajemi"
+params:
+  basename: "dplyr_queries0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+pulse <- read_pulse()
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+Group per `gender` on those that `ran` and summarize on mean `age`, `pulse1` and `pulse2` 
+
+```{r}
+pulse %>% filter(ran == "ran") %>% group_by( gender ) %>% 
+    summarize( count = n(), meanAge= mean(age), meanPluse1 = mean(pulse1), meanPulse2 = mean( pulse2 ) )
+```
+
+now for those who `sat`:
+
+```{r}
+pulse %>% filter(ran == "sat") %>% group_by( gender ) %>% 
+    summarize( count = n(), meanAge= mean(age), meanPluse1 = mean(pulse1), meanPulse2 = mean( pulse2 ) )
+```
+
+Note the there are missing values, account for it by using `na.rm=TRUE`:  
+
+```{r}
+pulse %>% filter(ran == "sat") %>% group_by( gender ) %>% 
+    summarize( count = n(), meanAge= mean(age), 
+               meanPluse1 = mean(pulse1,na.rm=TRUE), meanPulse2 = mean( pulse2 , na.rm=TRUE) )
+```
+
+Use `ungroup` to remove grouping:
+
+```{r}
+pulse  %>% group_by( gender ) %>% ungroup()
+```
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 
