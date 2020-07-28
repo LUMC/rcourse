@@ -157,7 +157,7 @@ course:
       next: "dplyr_pipe0"
       prev: "dplyr_filter0"
     dplyr_pipe0:
-      title: "pipe operator"
+      title: "pipe operator" 
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -165,17 +165,17 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next: "forcats_factor0"
+      next: "dplyr_summarise0"
       prev: "dplyr_mutate0"
-    dplyr_count0:
-      title: "count"
+    dplyr_summarise0:
+      title: "summarise"
       subtitle: ""
       gaol:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related:
+      related: 
       next: 
       prev: "dplyr_pipe0"
     forcats_factor0:

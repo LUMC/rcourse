@@ -1,0 +1,68 @@
+---
+title: 'Summarise'
+# author: "R. Monajemi"
+params:
+  basename: "dplyr_summarise0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+pulse <- read_pulse()
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+Descriptive statistics enable you to describe basic features of your data, e.g. counts, sum, mean, median, etc.
+
+
+## Counting occurrences of values
+
+To count distinct values in a variable:
+
+```{r}
+pulse %>% count(year)
+pulse %>% count(gender)
+pulse %>% count(age)
+```
+
+For multiple variables, it is the count of each possible combination:
+
+```{r}
+pulse %>% count(gender, exercise)
+pulse %>% count(year, gender)
+```
+
+## Summarise variable(s)
+
+`summarise` function produces a single row of variable(s) summary given `summary function`
+
+```{r}
+pulse %>% summarize( count = n(), meanHeight = mean( height ) )
+pulse %>% summarize( count = n(), meanAge = mean( age ) )
+```
+
+## Distinct values in variable(s)
+
+To identify distinct values in a variable use the function `distinct`:
+
+```{r}
+pulse %>% distinct(year)
+pulse %>% distinct(exercise)
+pulse %>% distinct(ran) 
+```
+
+For multiple columns it is possible to identify distinct rows:
+```{r}
+pulse %>% distinct(gender, exercise)
+```
+
+
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 
