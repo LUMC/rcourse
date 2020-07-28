@@ -1,0 +1,123 @@
+---
+title: 'R'
+#author: "R. Monajemi"
+params:
+  basename: "introduction0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+# build_nocode(params)
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+## Why this course?
+
+Modern science requires modern statistical methods:
+ 
+- Genomics/bioinformatics
+- Advanced survival analysis
+- Causal modeling
+- ...
+
+Statisticians develop methods and make them available as packages in R.
+
+No need to wait until they are programmed into SPSS.
+
+## What is R? 
+
+### _R_: a short history
+
+_S_: a programming language for statistics by John Chambers (Bell Labs) in the 1970s-80s.
+
+Two implementations:
+
+- S-plus (1988, commercial)
+- R (1993, GNU public license) by Robert Gentleman and Ross Ihaka (Univ. of Auckland)
+
+The R Foundation for Statistical Computing. Non-profit. 
+
+Huge community (users, package writers).
+
+### Open source
+
+Free software.
+
+Volunteer work (mostly by academics).
+
+Anyone can see the source code.
+
+Anyone can contribute:
+
+- write code
+- report bugs
+- write documentation
+
+
+### Obtaining R
+
+CRAN: Comprehensive R Archive Network 
+
+- Repository for R and packages
+- Go to http://www.r-project.org
+
+Free download
+
+- New major version (R 3.5.0) every year 
+- New minor versions (R 3.5.2) in between
+
+Also on CRAN
+
+- Manuals (don't read them)
+- Mailing lists + archives (well indexed on google)
+
+
+### R and RStudio
+
+RStudio: open source integrated development environment to R (2011)
+
+Adds useful features to help write code and organize projects
+
+Not necessary to use R, but highly recommended
+
+RStudio organises input and output in useful windows
+
+
+## Course overview
+
+### What we teach
+
+This is not a statistics course!
+	
+To learn about statistics, follow _Basic Methods and Reasoning in Biostatistics_ (or more advanced courses).
+
+This course teaches R proficiency:
+
+- The mechanics of R
+- How to use other people's R scripts
+- How to write your own R scripts
+- How to use R packages 
+
+Focus: R as a _language_ for data analysis.
+
+
+### Course structure
+
+- Interactive lectures 
+- Practice time in between 
+
+Hands-on at four levels:
+
+1. *Type with me*
+2. Mini-exercises briefly interrupt the lecture
+3. Longer exercises to do it on your own
+4. Advanced exercises introduce advanced concepts for quick learners (optional)
+
+Eight half-day slots.
+
+ 
+```{r, child="_navigate.Rmd"} 
+``` 
+  

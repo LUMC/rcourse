@@ -1,7 +1,10 @@
 ---
 title: "Schedule"
+output:
+  html_document:
+    toc: false
 ---
 
 ```{r, child="_graph.Rmd"}
 ``` 
-   
+    

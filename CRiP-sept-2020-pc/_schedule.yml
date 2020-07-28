@@ -13,6 +13,18 @@ course:
     CAREMA_case-control.sav
     CAREMA_Prospectief.sav
   slots:
+    introduction0:
+      title: "R"
+      subtitle: ""
+      gaol: ""
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "no" # {yes | no}
+      related:
+      next:
+        basic_calculator0
+      prev:
     basic_calculator0:
       title: "Calculator"
       subtitle: ""
@@ -74,7 +86,7 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next: dplyr_tibble0
+      next: 
       prev:
     dplyr_tibble0:
       title: "tibble"

@@ -5,19 +5,18 @@ slots <- conf[["course"]][["slots"]]
 
 
 ```{r, echo=FALSE}
-require(visNetwork)
-
-related_slots <- lapply(names(slots), function(slot) {
-  related_slots <- slots[[slot]][["related"]] 
-  if (!is.null(related_slots)) {
-    related_slots <- strsplit(related_slots," ")[[1]] 
+rel_slots <- lapply(names(slots), function(slot) {
+  rel_slots <- slots[[slot]][["related"]] 
+  if (!is.null(rel_slots)) {
+    rel_slots <- strsplit(rel_slots," ")[[1]] 
   } else {
-    related_slots <- NULL
+    rel_slots <- NULL
   }
-  lapply(related_slots, function(x) {
+  lapply(rel_slots, function(x) {
     tibble(source=slot,target=x)
   }) %>% bind_rows()
-}) %>% bind_rows()
+}) %>% bind_rows() %>% 
+  mutate(dashes=TRUE)
 
 next_slots <- sapply(names(slots), function(x) {
   v <- slots[[x]][["next"]] 
@@ -25,14 +24,15 @@ next_slots <- sapply(names(slots), function(x) {
     NA
   else  
     v
-}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) 
+}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) %>% 
+  mutate(dashes=FALSE)
 
-edges <- bind_rows(related_slots, next_slots) %>% rename(from=source,to=target)
+edges <- bind_rows(rel_slots, next_slots) %>% rename(from=source,to=target)
 nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
 nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
 nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
 
-visNetwork(nodes, edges,width = "100%" ) %>% 
+visNetwork(nodes, edges,width = "100%" , height = "700px") %>% 
   visIgraphLayout(layout = "layout_in_circle") %>% 
   visEdges(arrows = list(to=list( scaleFactor=.5)),
            color = list(color = "lightblue", highlight = "red"), shadow = TRUE) %>% 

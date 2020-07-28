@@ -26,7 +26,7 @@ and contains several categories of files:
 The files prefixed with \strong{_} will not be rendered and are for internal use.
 }
 \details{
-The \strong{schdule} file has the following structure:
+The \strong{schedule} file has the following structure:
 
 \preformatted{
    course:
@@ -69,10 +69,10 @@ rcourse$view()
 \item \href{#method-site}{\code{Course$site()}}
 \item \href{#method-url}{\code{Course$url()}}
 \item \href{#method-view}{\code{Course$view()}}
-\item \href{#method-summary}{\code{Course$summary()}}
 \item \href{#method-schedule}{\code{Course$schedule()}}
 \item \href{#method-slots}{\code{Course$slots()}}
-\item \href{#method-navigate}{\code{Course$navigate()}}
+\item \href{#method-next_slot}{\code{Course$next_slot()}}
+\item \href{#method-prev_slot}{\code{Course$prev_slot()}}
 \item \href{#method-related}{\code{Course$related()}}
 \item \href{#method-lstmod}{\code{Course$lstmod()}}
 \item \href{#method-listing}{\code{Course$listing()}}
@@ -171,20 +171,14 @@ View the site in the browser.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-summary"></a>}}
-\if{latex}{\out{\hypertarget{method-summary}{}}}
-\subsection{Method \code{summary()}}{
-Print the 'current' course summary.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$summary()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-schedule"></a>}}
 \if{latex}{\out{\hypertarget{method-schedule}{}}}
 \subsection{Method \code{schedule()}}{
-Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
+Course schedule from schedule.yml.    
+#' @description Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
+schedule = function() {
+  file.edit(file.path(self$src(),"_schedule.yml"))
+},
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Course$schedule()}\if{html}{\out{</div>}}
 }
@@ -201,13 +195,31 @@ Returns the list of course slots. The data is taken from '_schedule.yml'.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-navigate"></a>}}
-\if{latex}{\out{\hypertarget{method-navigate}{}}}
-\subsection{Method \code{navigate()}}{
-given the base name of the slot return the basenames of next and previous 
-slots from '_schedule.yml'.
+\if{html}{\out{<a id="method-next_slot"></a>}}
+\if{latex}{\out{\hypertarget{method-next_slot}{}}}
+\subsection{Method \code{next_slot()}}{
+given the base name of the slot return the basename of the next  
+slot from '_schedule.yml'.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$navigate(base_name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$next_slot(base_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{base_name}}{the RMD file basename.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-prev_slot"></a>}}
+\if{latex}{\out{\hypertarget{method-prev_slot}{}}}
+\subsection{Method \code{prev_slot()}}{
+given the base name of the slot return the basename of the previous  
+slot from '_schedule.yml'.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$prev_slot(base_name)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -251,9 +263,16 @@ Returns the list of modified files.
 \subsection{Method \code{listing()}}{
 Returns the list of files for zip archive.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$listing()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$listing(set = "archive")}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{set}}{{archive, data}}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-zip"></a>}}
@@ -261,13 +280,15 @@ Returns the list of files for zip archive.
 \subsection{Method \code{zip()}}{
 Create a zip archive.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$zip(filename = "RCourse.zip")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$zip(filename = "archive.zip", what = "arvhive")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{filename}}{name of zip archive.}
+
+\item{\code{what}}{{archive, data}}
 }
 \if{html}{\out{</div>}}
 }

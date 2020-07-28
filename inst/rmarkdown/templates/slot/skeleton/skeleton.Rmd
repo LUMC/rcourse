@@ -7,7 +7,7 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params)
+# build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
 ```
 
 ```{r, child="_navigate.Rmd"} 

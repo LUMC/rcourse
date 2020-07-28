@@ -157,7 +157,8 @@ Course <- R6Class("Course",
       },
       #' @description Course schedule from schedule.yml.    
       schedule = function() {
-       private$schedule_         
+       private$read_schedule() 
+       private$schedule_
       },
       #' #' @description Edit '_schedule.yml'. Render the pages by render() to enforce the changes.
       #' schedule = function() {
@@ -169,6 +170,7 @@ Course <- R6Class("Course",
         slots <- schedule[["course"]][["slots"]]
         slots_names <- names(slots)
         task_names <- lapply(slots_names, function(x) if (slots[[x]][["tasks"]]=="yes") paste(x,".tasks",sep="") )
+        task_names <- task_names[!sapply(task_names,is.null)]
         c(slots_names, task_names)
       },
       #' @description given the base name of the slot return the basename of the next  
@@ -218,8 +220,10 @@ Course <- R6Class("Course",
         }
           
       },
-      #' @param filename name of zip archive.
       #' @description Create a zip archive.
+      #' @param filename name of zip archive.
+      #' @param what {archive, data}
+      #' 
       zip = function(filename="archive.zip", what="arvhive"){
         if (!grepl(".zip$",filename))
           stop("invalud suffix, use extension .zip !")
