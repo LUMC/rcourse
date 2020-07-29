@@ -41,7 +41,8 @@ visNetwork(nodes, edges,width = "100%" , height = "700px") %>%
                                       var url = this.body.nodes[nodeID].options.url;
                                       window.open(url,'_self')
                                     }"
-                     )
+                     ) %>% 
+  visInteraction(hover=TRUE) 
 
 ```
 
