@@ -10,7 +10,7 @@ knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 build_nocode(params)  
 ```
 
-
+ 
 ```{r, echo=FALSE, results='asis'}
 alert_block(params)
 ``` 

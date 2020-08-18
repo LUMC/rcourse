@@ -67,7 +67,22 @@ survey
 
 
 ## CAREMA dataset
-```{r, message=FALSE, eval=FALSE}
+
+
+To read a SPSS file, e.g. `CAREMA_case-control.sav`,  we need the function `read.spss` from the R package `foreign`. Try `library(foreign)`, if the package is not installed then you'll get an error `threre is no package called 'foreign'`, in that case you'll need to install it using `install.packages("foreign")`.
+It may require the latest version of R, if you have the latest version of R then 'foreign' package will be installed, otherwise you may do one
+of the two:
+
+1. install the latest verion of R then install 'foreign' package (recomended)
+2. install an older verion of 'foreign' (previous year) from 'https://cran.r-project.org/src/contrib/Archive/foreign/', for example:
+
+```
+install.packages("https://cran.r-project.org/src/contrib/Archive/foreign/foreign_0.8-74.tar.gz",repos = NULL, type = "source")
+```
+ 
+Once the foreign package is installed then we can read CAREMA prospective SPSS file as follows:
+
+```{r, message=FALSE, eval=FALSE} 
 ## CAREMA
 library(foreign)
 carema <- read.spss(file = "_data/CAREMA_case-control.sav") 
