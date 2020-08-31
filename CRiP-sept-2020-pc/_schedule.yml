@@ -37,6 +37,7 @@ course:
       next:
         basic_variables0
       prev:
+        introduction0
     basic_variables0:
       title: "Variables"
       subtitle: ""

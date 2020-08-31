@@ -50,17 +50,20 @@ The arrow symbol `<-` is called the "assignment" operator:
 x <- 5
 ```
 
+
+
 The same assignment can also be performed with symbol `=` (equal):
 
 ```{r}
 x = 5
 ```
 
+`r suggest("maybe leave out the assignment '=' symbol completely as a way of discouragement.")`
+
 # No assignment, no change
 
 Assignments are needed to store a result. 
-When there is no assignment, the result is printed to screen and lost.
-This is a wrong way to "increase _x_ by one", because the result is calculated but not stored:
+When there is no assignment, the result is printed to screen and lost. For example, the sequence of statements below is the wrong way to "increase _x_ by one", because the result is calculated but not stored:
 
 ```{r}
 x <- 5
@@ -76,7 +79,7 @@ x <- x + 1
 x
 ```
 
-Remember: _no assignment, no change_.
+`r info_block("Remember: no assignment, no change.")`
 
 # How variables are stored
 
@@ -107,13 +110,16 @@ len1 <- 5
 len2 <- 6
 ```
 
+`r suggest(" garden.length is a bad example, variables with dots are discouraged because they may clash with S3 method.")`
+
+
 Choose meaningful variable names for readable scripts.
 
-Naturally, there are some limitations. Do not use:
+Naturally, there are some limitations. Do not use variable names :
 
-- names containing a space
-- names containing any of `@#!%$^()-+=!~?,<>}{][`
-- names which are R reserved names: `for`, `while`, `repeat`, `if`, `else`, `TRUE`, `FALSE`, `Inf`, `NA`, `NaN`
+- containing a space
+- containing any of `@#!%$^()-+=!~?,<>}{][`
+- with R reserved names: `for`, `while`, `repeat`, `if`, `else`, `TRUE`, `FALSE`, `Inf`, `NA`, `NaN`
 
 # Autocomplete names
 

@@ -43,9 +43,13 @@ qa <- function(msg) {
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
-info_block <- function(msg) {
+info_block0 <- function(msg) {
   txt <- paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
+}
+
+info_block <- function(msg) {
+  paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
 }
 
 alert_block <- function(params,alert="alert-info", align="right") {
@@ -168,6 +172,13 @@ todo <- function( text, color = "yellow" ) {
   paste0(
     show_emoji( "construction", text = "TODO", color = color ),
     text
+  )
+}
+
+suggest <- function( text ) {
+  paste0(
+    show_emoji( "warning", text = "?"),
+    "<i><u>", text,  "</u></i>" 
   )
 }
 
