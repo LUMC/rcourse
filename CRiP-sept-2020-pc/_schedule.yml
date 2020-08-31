@@ -14,7 +14,7 @@ course:
     CAREMA_Prospectief.sav
   slots:
     introduction0:
-      title: "R"
+      title: "Introduction"
       subtitle: ""
       gaol: ""
       date: "21-09-2020"
@@ -86,7 +86,7 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next: 
+      next:
       prev:
     dplyr_tibble0:
       title: "tibble"
@@ -111,7 +111,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
-      prev: 
+      prev:
     readr_io0:
       title: "import/export data"
       subtitle: ""
@@ -120,7 +120,7 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next:
       prev: dplyr_tibble0
     dplyr_select0:
@@ -157,7 +157,7 @@ course:
       next: "dplyr_pipe0"
       prev: "dplyr_filter0"
     dplyr_pipe0:
-      title: "pipe operator" 
+      title: "pipe operator"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -175,7 +175,7 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: dplyr_group0
       prev: "dplyr_pipe0"
     dplyr_group0:
@@ -186,7 +186,7 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: dplyr_queries0
       prev: "dplyr_summarise0"
     dplyr_queries0:
@@ -197,7 +197,7 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: dplyr_join0
       prev: "dplyr_group0"
     dplyr_join0:
@@ -208,7 +208,7 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
+      related:
       next: tidyr_reshape0
       prev: "dplyr_queries0"
     tidyr_reshape0:
@@ -219,8 +219,8 @@ course:
       time: "09:00-09:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
-      related: 
-      next: 
+      related:
+      next:
       prev: dplyr_join0
     forcats_factor0:
       title: "factors"

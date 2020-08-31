@@ -41,20 +41,20 @@ In the dialog box:
 - In the next option you may select where to create this directory.  
 - Press `Create project` to finalize the process.
 
-## Check currently open project
+## Check current project
 
 Look at the top right corner of the RStudio window to check which project you are working on.  
 Refer to the following Figure: it shows a state when a project called `Learning_R` is open.
 
-Moreover, the title line shows **the project diectory** in which the files of the project are/will be kept.
+Moreover, the title line shows the **project diectory** in which the files of the project are/will be kept.
 
-Finally, note **the project file** `Learning_R.Rproj` in the `Files` panel. When you click this file in a file explorer, it should open RStudio and the right project.
+Finally, note the **project file** `Learning_R.Rproj` in the `Files` panel. When you click this file in a file explorer, it should open RStudio and the right project.
 
 ![](images/RStudio_new_project.png)
 
 # Input data
 
-## Copy data files to the project directory
+## Copy data files
 
 Although R can be used to analyse data from any readable file, it is convenient to have such files in the project directory.  
 For the following parts of the course you need the files: `pulse.csv` and `survey.csv`.  
@@ -65,7 +65,7 @@ Properly downloaded files should appear in the `Files` panel:
 
 ![](images/RStudio_data_files.png)
 
-## Check access to the files
+## Check access
 
 Copy the following command to the `Console` and execute it to check whether you can access the `pulse.csv` file.  
 When the file is present, `TRUE` should be returned:
@@ -92,10 +92,10 @@ An R script allows to save R commands (without saving, the commands given in the
 An [**R Markdown** document](https://rmarkdown.rstudio.com/) (e.g. `filename.Rmd`) is an extension of an R script.  
 An R Markdown document is also a simple text file consisting of:
 
-- **chunks** written in R language, where data analysis is performed; 
-- free text written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
+- **Chunks** written in R language, where data analysis is performed.
+- Free text written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
 
-R Markdown documents are **knitted** to produce report files.  
+The **knit** operation converts an R Markdown document into a report file.  
 Many report output formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents, etc.
 
 `r watch_extern_video( url = "https://rmarkdown.rstudio.com/lesson-1.html", title = "R Markdown introduction video", src = "RStudio" )`
@@ -104,7 +104,7 @@ Many report output formats are available: HTML, PDF (printable pages or presenta
 
 # A new R Markdown report
 
-## Create
+## Create document
 
 `r show_warning( "Before creating a new document, first check whether you work in the correct project." )`
 
@@ -121,26 +121,39 @@ The document is not empty; it contains an example written in R Markdown.
 
 ![](images/RStudio_new_rmd_file.png)
 
-## `r todo( "Knit" )`
+## Knit document
 
-- knit the demo
-- clear the demo
+**Knitting** is the name of the process of conversion from R Markdown text file to a report in one of the target formats.
 
-## `r todo( "Write an own simple R Markdown document" )`
+- Press the `Knit` button to start the conversion.
+- If the R Markdown document does not have a name yet, a save dialog box will pop up to ask for the file name.
+- Some libraries might get automatically installed before the first `Knit`.
+- The knitting process might take a few seconds and then the final document should appear either in a new window or in the `Viewer` pane.  
+The Figure below shows the result of knitting of the standard example (R Markdown was saved as `Lesson_1.Rmd` and produced HTML file `Lesson_1.html`):
+
+![](images/RStudio_knitting.png)
+
+## `r todo( "Write own chunks" )`
 
 - header
+- clear the chunks
 - chunks; insert chunk keystroke
 - run a chunk; keystroke, ctrl-Enter (for current command or marked text)
-- load tidyverse
-- read table
-- show table
 - knit complete document (no changes in environment)
 - find the produced html
 
-## `r todo( "To describe" )`
+# `r todo( "For tibble page" )`
+
+- Top task: follow steps in an R Markdown document; knit regularly
+
+- load tidyverse
+- read table
+- show table
+- View command
+
+# `r todo( "To describe somewhere" )`
 
 - comment char (hash)
-- View command
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

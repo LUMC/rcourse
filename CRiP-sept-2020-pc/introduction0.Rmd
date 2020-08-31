@@ -1,5 +1,5 @@
 ---
-title: 'R'
+title: 'Introduction'
 #author: "R. Monajemi"
 params:
   basename: "introduction0"
@@ -22,102 +22,84 @@ Modern science requires modern statistical methods:
 - Causal modeling
 - ...
 
-Statisticians develop methods and make them available as packages in R.
+Statisticians develop new methods and often make them first available as packages in R.  
+No need to wait until these methods are programmed into SPSS.
 
-No need to wait until they are programmed into SPSS.
+## What is _R_ and _RStudio_? 
 
-## What is R? 
+### A short history
 
-### _R_: a short history
+_S_ was a programming language for statistics developed by John Chambers (Bell Labs) in the 1970s-80s.  
+It had two primary implementations:
 
-_S_: a programming language for statistics by John Chambers (Bell Labs) in the 1970s-80s.
+- S-plus (1988, commercial);
+- _R_ (1993, GNU public license) by Robert Gentleman and Ross Ihaka (Univ. of Auckland).
 
-Two implementations:
+Now _R_ is known as "a free software environment for statistical computing and graphics."
 
-- S-plus (1988, commercial)
-- R (1993, GNU public license) by Robert Gentleman and Ross Ihaka (Univ. of Auckland)
+### R project
 
-The R Foundation for Statistical Computing. Non-profit. 
+Current _R_ developments are streamlined by non-profit organisation _The R Project for Statistical Computing_ at https://www.r-project.org/.
 
-Huge community (users, package writers).
+The project organizes a huge community of users and package developers:
 
-### Open source
+- volunteer work (mostly by academics);
+- anyone can see the source code;
+- anyone can contribute (write code, report bugs, write documentation).
 
-Free software.
+_CRAN_ (_Comprehensive R Archive Network_) at https://cloud.r-project.org/ is a central repository for R language interpreter and R packages.  
+It also contains manuals and mailing lists (well indexed on google).  
+Free download. New major version every year, minor versions in between.
 
-Volunteer work (mostly by academics).
+### RStudio
 
-Anyone can see the source code.
+_RStudio_ from https://rstudio.com/ is an open source integrated development environment (initially developed) for programming in _R_ language.
 
-Anyone can contribute:
+It provides useful features to help in developement of the R code and in organization of projects.
 
-- write code
-- report bugs
-- write documentation
-
-
-### Obtaining R
-
-CRAN: Comprehensive R Archive Network 
-
-- Repository for R and packages
-- Go to http://www.r-project.org
-
-Free download
-
-- New major version (R 3.5.0) every year 
-- New minor versions (R 3.5.2) in between
-
-Also on CRAN
-
-- Manuals (don't read them)
-- Mailing lists + archives (well indexed on google)
-
-
-### R and RStudio
-
-RStudio: open source integrated development environment to R (2011)
-
-Adds useful features to help write code and organize projects
-
-Not necessary to use R, but highly recommended
-
-RStudio organises input and output in useful windows
+RStudio is not necessary to work with R programs, but it is highly recommended (and it is used in this course).
 
 
 ## Course overview
 
 ### What we teach
 
-This is not a statistics course!
-	
-To learn about statistics, follow _Basic Methods and Reasoning in Biostatistics_ (or more advanced courses).
+This is not a statistics course!  
+The focus is _R_ as a _language_ for data analysis.
 
-This course teaches R proficiency:
+The goal of the course is to teach students how _R_ language can be used to build a report with very simple statistical analysis of data provided in a table.  
 
-- The mechanics of R
-- How to use other people's R scripts
-- How to write your own R scripts
-- How to use R packages 
+This course teaches _R_ proficiency:
 
-Focus: R as a _language_ for data analysis.
+- The mechanics of _R_.
+- How to use other people's _R_ scripts.
+- How to write your own _R_ scripts.
+- How to use _R_ packages.
 
 
 ### Course structure
 
-- Interactive lectures 
-- Practice time in between 
+The course materials are designed for self-study.  
 
-Hands-on at four levels:
+The necessary R concepts are split in a number of small sections.  
+Each section introduces several new R language commands.  
+We ask students to type these commands and observe their effects (do not use copy-paste; own typing is important in order to learn how R communicates mistakes).  
+Exercises at the end of the sections demonstrate other usage of the commands or introduce _extra_ material with related functionality.
 
-1. *Type with me*
-2. Mini-exercises briefly interrupt the lecture
-3. Longer exercises to do it on your own
-4. Advanced exercises introduce advanced concepts for quick learners (optional)
 
-Eight half-day slots.
+## The exam
 
- 
+To pass the exam the students are requested to build a script producing a report with the following parts:
+
+- read a table from a provided file;
+- show some selected content from the table;
+- summarise the table data;
+- produce some plots of the data.
+
+The students are allowed to use the course (or other) materials during the exam but it is strictly forbidden to communicate with other persons during the exam.
+
+The material present in the _extra_ exercises is not necessary for the exam.
+
 ```{r, child="_navigate.Rmd"} 
 ``` 
   
