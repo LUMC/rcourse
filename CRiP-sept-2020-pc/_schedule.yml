@@ -49,7 +49,7 @@ course:
       next:
         basic_vectors0
       prev:
-        basic_R_as_calculator0
+        basic_calculator0
     basic_vectors0:
       title: "Basic vectors"
       subtitle: ""
