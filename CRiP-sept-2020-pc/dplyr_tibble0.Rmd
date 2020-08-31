@@ -17,7 +17,7 @@ alert_block(params)
 
 A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
 and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
-any [atomic type]() such as character,integer etc. Let's start by creating one manually.
+any [atomic type](basic_vectors0.html) such as character,integer etc. Let's start by creating one manually.
 
 ## Create a tibble    
  
@@ -29,7 +29,7 @@ favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"),
                            colour=c("Blue","Green","Yellow","Purple"))
 ```
 
-The object `favourite_color` now holds the data, type it's name in the R console for inspection:
+The object `favourite_color` now holds the data. Enter it's name in the R console for inspection:
 
 ```{r}
 favourite_color
@@ -38,7 +38,7 @@ favourite_color
 > What additional pieces of information do you see beside the content we provided?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with 4x3 dimensions (4 observations 
+msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with dimensions 4x3 (4 observations 
 and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
 qa(msg)
 ``` 
@@ -50,7 +50,7 @@ class(favourite_color)
 ```
 
 As you can see a tibble is in it's core a base R `data.frame` with some additional behaviour 
-enforced by {`tbl_df`,`tbl`} type. For more details on the differences between tibble and data.frame 
+enforced by `tbl_df` and `tbl` types. For more details on the differences between tibble and data.frame 
 see [tibble vs data.frame*](dplyr_tibble1.html).
 
 ## subsetting [
@@ -84,7 +84,7 @@ favourite_color$year
 
 ## tibble to/from file
 
-tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
+Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
 comma-separated-value (csv) format in this course. The functions involved for this purpose ar `write_csv` and `read_csv`.
 For more details on reading/writing format see [readr_io0](readr_io0.html).
 
@@ -94,7 +94,7 @@ let us now save our first tibble into a file in csv format:
 write_csv(x = favourite_color, path = "_data/favourite_color.csv")
 ```
 
-`favourite_color` tibble is written to `favourite_color.csv` text file. You may inspect the file with any editor and it should look something like: 
+`favourite_color` tibble is written to `favourite_color.csv` text file in sub-directory `_data`. You may inspect the file with any editor and it should look something like: 
 
 ```
 name,year,colour

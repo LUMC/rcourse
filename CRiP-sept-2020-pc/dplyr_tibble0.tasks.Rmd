@@ -30,20 +30,10 @@ exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
 exercise_group
 ```
 
-2. Create the same tibble in the previous exercise but now with variable exercise as `factor`.
-
-```{r}
-exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
-            height=c(164, 188, 164, 180, 170),  
-            weight=c(56.0, 87.0, 54.0, 80.0, 58.5),
-            exercise=factor(c("high", "high", "low", "moderate", "low"))
-     )  
-exercise_group
-```
 
 ## tibble subset
 
-1. Take the tibble from the previous exercise and create a new tibble without the `height` and `weight` variables.
+1. Take the tibble `exercise_group` from the previous exercise and create a new tibble without the `height` and `weight` variables.
 
 ```{r}
 exercise_group_sub <- exercise_group[c("name","exercise")]

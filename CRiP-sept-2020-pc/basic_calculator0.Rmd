@@ -37,6 +37,11 @@ Try the following (or similar) examples:
 2/8
 ```
 
+```{r, echo=FALSE, results='asis'}
+msg <- "A '#' marks the start of an inline comment, all text after it are ignored by the R interpreter."
+info_block(msg)
+``` 
+
 # Decimal separator: comma vs. dot
 
 Fractional parts are always separated with `.` (dot), never with `,` (comma).
@@ -75,7 +80,7 @@ Or, when you have an extra closing parenthesis:
 ```
 
 While typing, RStudio may automatically insert a closing parenthesis.  
-If you don't like this, change using Tools...Global options...Code...Editing.
+If you don't like this, change using Tools &#8594; Global &#8594; options &#8594; Code &#8594; Editing.
 
 # Multiline commands
 
