@@ -140,7 +140,9 @@ The **header**:
 - Starts and ends with a line containing `---` (three minus symbols).
 - May specify *title*, *author*, *date* and possibly other properties of the document.
 
-_Locate the header in the Figure below. Create a new R Markdown document and make it empty. Then write a header at the top based on the Figure below. Add your name as the author and change the title. Knit to see the effect._
+`r direct_exercise( "Locate the header in the Figures above and below." )`
+
+`r direct_exercise( "Create a new R Markdown document and make it empty (remove the example text). Then write a header at the top based on the Figure below. Add your name as the author and change the title. Knit to see the effect." )`
 
 A **chunk**:
 
@@ -149,13 +151,29 @@ A **chunk**:
 - Ends with a line containing ` ``` `
 - RStudio highlights the chunk lines gray.
 
-_Locate two chunks in the Figure below. Based on the Figure, in your R Markdown document type a new chunk. Put an R expression into the chunk. Knit to see the effect._
+`r direct_exercise( "Locate two chunks in the Figure below. Locate a chunk (with a more complex R code) in the Figure above." )`
+
+`r direct_exercise( "Type a new chunk in your R Markdown document, based on the Figure below. Put a simple R expression into the chunk. Knit to see the effect." )`
+
+`r direct_exercise( "Add a new chunk with another R expression. Press the green play button in the upper right corner of the chunk area. Change the expression. Press play again." )`
 
 ![](images/RStudio_Rmd_header_chunks.png)
+
+## Editing an R Markdown document
+
+To insert a new chunk you may use menu `r show_menu( c( "Code", "Insert chunk" ) )` or the keyboard shortcut shown in the menu.
+
+To run a chunk you may use `Ctrl-Enter` key combination.
+
+Note the difference:
+
+- When you run a chunk it may use the variables currently present in memory (see `Environment`); this is good when you _develop_ your report.
+- `Knit` button processes the whole R Markdown with no variables in memory (empty `Environment`); this is _necessary for the final version_ of your report.
+
 ## Editing  `r todo( "Write own chunks" )`
 
 - clear the chunks
-- chunks; insert chunk keystroke
+- chunks; 
 - run a chunk; keystroke, ctrl-Enter (for current command or marked text)
 - knit complete document (no changes in environment)
 - find the produced html

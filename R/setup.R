@@ -39,7 +39,7 @@ qa <- function(msg) {
   id <- paste("tag",digest(msg, algo="md5"),sep="")
   txt <- paste("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#",id,"\"",sep="")
   txt <- paste(txt, "aria-expanded=\"false\" aria-controls=\"collapseExample\">Answer</a>")
-  txt <- paste(txt, "<div class=\"collapse\" id=\"",id,"\"><div class=\"well\">",msg,"</div> </div><br>", sep="")  
+  txt <- paste(txt, "<div class=\"collapse\" id=\"",id,"\"><div class=\"well\">",msg,"</div> </div><br>", sep="")
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
@@ -59,9 +59,9 @@ alert_block <- function(params,alert="alert-info", align="right") {
   .prev_html <- paste(.prev,".html", sep="")
   .next_label <- ""
   .prev_label <- ""
-  
+
   txt <- paste("<div class=\"alert ",alert,"\" role=\"alert\" style=\"text-align: ",align,";\" >", sep="")
-  
+
   if (!is.null(.prev)) {
     .prev_label <- strsplit(sub("[0-9]+","",.prev),"_")[[1]]
     .prev_label <- .prev_label[length(.prev_label)]
@@ -69,7 +69,7 @@ alert_block <- function(params,alert="alert-info", align="right") {
   } else {
     txt <- paste(txt,"<a class=\"btn btn-primary\" onclick=\"goBack()\" role=\"button\">&laquo;",.prev_label,"back</a>" )
   }
-  
+
   if (!is.null(.next)) {
     .next_label <- strsplit(sub("[0-9]+","",.next),"_")[[1]]
     .next_label <- .next_label[length(.next_label)]
@@ -178,7 +178,14 @@ todo <- function( text, color = "yellow" ) {
 suggest <- function( text ) {
   paste0(
     show_emoji( "warning", text = "?"),
-    "<i><u>", text,  "</u></i>" 
+    "<i><u>", text,  "</u></i>"
+  )
+}
+
+direct_exercise <- function( text, color = "black" ) {
+  paste0(
+    show_emoji( "running_man", text = "EXERCISE", color = color ),
+    "<i>", text, "</i>"
   )
 }
 
