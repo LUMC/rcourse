@@ -1,6 +1,5 @@
 ---
-title: "calculator (practice)"
-# author: "<author>"
+title: "Calculator (practice)"
 ---
 
 ```{r , include=FALSE}
@@ -13,4 +12,34 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 } else {
     knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
+```
+
+## Primary exercises
+
+1. Calculate 25 plus the square of 12.
+
+```{r}
+25 + 12^2
+```
+
+2. What is the square root of the number you have just calculated?
+
+```{r}
+sqrt( 25 + 12^2 )
+```
+
+## Extra exercises
+
+1. Practice the integer division operator `%/%`. Compare `4 / 3` with `4 %/% 3`. 
+
+```{r}
+4 / 3     # floating division
+4 %/% 3   # largest integer smaller/equal to the floating division result
+```
+
+2. Understand result of `-4 %/% 3`, compared to `4 %/% 3`.
+
+```{r}
+4 %/% 3   # largest integer smaller/equal to the floating division result
+-4 %/% 3  # largest integer SMALLER/EQUAL to the floating division result
 ```

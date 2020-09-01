@@ -3,6 +3,12 @@ title: "TODO notes"
 output: html_document
 ---
 
+# Tasks
+
+- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
+- Familiarize with error messages caused by typing errors.
+
+
 # `r todo( "For tibble page" )`
 
 Provide an image with the first Rmd document with tibble.

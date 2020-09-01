@@ -5,5 +5,5 @@
 
 ## Practice
 
-> Solve the [task(s)](`r .task`), and check your solution(s) [here](`r .solution`).
+> Solve the [exercise(s)](`r .task`), and check your [solution(s)](`r .solution`).
 

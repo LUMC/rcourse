@@ -196,6 +196,13 @@ show_warning <- function( text, color = "orange" ) {
   )
 }
 
+show_info <- function( text, color = "blue" ) {
+  paste0(
+    show_emoji( "information", text = "INFO", color = color ),
+    text
+  )
+}
+
 go_extern <- function( url, title, goal, color = "blue" ) {
   paste0(
     show_emoji( "right_arrow", text = "GO TO", color = color ),
