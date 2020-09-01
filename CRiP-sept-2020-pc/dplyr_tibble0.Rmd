@@ -49,13 +49,31 @@ Now inspect the type of the tibble object we just created:
 class(favourite_color)
 ```
 
-As you can see a tibble is in it's core a base R `data.frame` with some additional behaviour 
-enforced by `tbl_df` and `tbl` types. For more details on the differences between tibble and data.frame 
-see [tibble vs data.frame*](dplyr_tibble1.html).
+As you can see a tibble is in its core a base R `data.frame` with some additional behaviour 
+enforced by `tbl_df` and `tbl` types. In this course we will be working mainly with tibbles 
+rather than base R data.frame. However, for those of you interested in the differences between 
+tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
 
-## subsetting [
+## Inspect your data
 
-Often you may need to select certain variables or discard others, this can be done using square brackets `[` :
+To find out the dimmensions of the tibble as values:
+
+```{r}
+ncol(favourite_color)  # number of variables (columns)
+nrow(favourite_color)  # number of observatons (rows)
+dim(favourite_color)   # dimensions 
+```
+
+or top and bottom parts of the tibble: 
+
+```{r}
+head(favourite_color, 2)  # first 2 observations (rows)
+tail(favourite_color, 3)  # last 3 observations (rows)
+```
+
+## subsetting:  [
+
+Often you may need to select certain variable, this can be done using square brackets `[` :
 
 ```{r}
 favourite_color["colour"]
@@ -67,13 +85,9 @@ to subset combination of variables:
 favourite_color[c("name","year")]
 ```
  
+`r info_block("Subset result of a tibble is always a tibble.")`
 
-```{r, echo=FALSE, results='asis'}
-msg <- "Subset result of a tibble is always a tibble."
-info_block(msg)
-``` 
-
-## Extract variables [[ or $
+## Extract variables as vectors:  [[ or $
 
 If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
 

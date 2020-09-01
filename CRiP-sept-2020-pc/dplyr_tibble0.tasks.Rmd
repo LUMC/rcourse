@@ -60,10 +60,9 @@ favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"),
 mean(exercise_group[["height"]]) 
 ```
 
+## Read tibbles from file
 
-## tibble to/from file
-
-1. Read csv files `pulse.csv` and `survey.csv` into R as objects `pulse` and `survey` respectively.
+1. Read csv files `pulse.csv` and `survey.csv` into R as variable objects `pulse` and `survey` respectively.
 
 ```{r}
 pulse <- read_csv(file = "_data/pulse.csv")
@@ -72,7 +71,7 @@ survey <- read_csv(file = "_data/survey.csv")
 
 ## Extra exercise*
 
-1. ...
+1. [...]
 
 
    

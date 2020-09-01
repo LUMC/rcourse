@@ -13,7 +13,7 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-A tibble is the upgraded version of [data.frame]() data type with some convenient additional features, moreover, it is the standard data structure in tidyverse. In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
+A tibble is the upgraded version of [data.frame]() data type with some convenient additional features, moreover, it is the standard data structure in [tidyverse](https://www.tidyverse.org/). In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
 
 ## Create
 
