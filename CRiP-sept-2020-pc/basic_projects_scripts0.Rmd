@@ -130,9 +130,30 @@ The Figure below shows the result of knitting of the standard example (R Markdow
 
 ![](images/RStudio_knitting.png)
 
-## `r todo( "Write own chunks" )`
+## Parts of an R Markdown document
 
-- header
+An R Markdown document consists of: header, chunks and free text.
+
+The **header**:
+
+- Is located at the first lines of the file.
+- Starts and ends with a line containing `---` (three minus symbols).
+- May specify *title*, *author*, *date* and possibly other properties of the document.
+
+_Locate the header in the Figure below. Create a new R Markdown document and make it empty. Then write a header at the top based on the Figure below. Add your name as the author and change the title. Knit to see the effect._
+
+A **chunk**:
+
+- Is a place where code in R language is written. The result of this code will be displayed below the chunk.
+- Starts with a line containing ` ```{r} ` (three backticks, then `r` in curly braces).
+- Ends with a line containing ` ``` `
+- RStudio highlights the chunk lines gray.
+
+_Locate two chunks in the Figure below. Based on the Figure, in your R Markdown document type a new chunk. Put an R expression into the chunk. Knit to see the effect._
+
+![](images/RStudio_Rmd_header_chunks.png)
+## Editing  `r todo( "Write own chunks" )`
+
 - clear the chunks
 - chunks; insert chunk keystroke
 - run a chunk; keystroke, ctrl-Enter (for current command or marked text)
