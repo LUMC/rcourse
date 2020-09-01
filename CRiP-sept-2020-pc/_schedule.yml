@@ -62,22 +62,35 @@ course:
       related:
         basic_vectors1
       next:
-        basic_projects_scripts0
+        basic_projects0
       prev:
         basic_variables0
-    basic_projects_scripts0:
-      title: "Projects/scripts"
+    basic_projects0:
+      title: "RStudio projects"
       subtitle: ""
       gaol: ""
       date: "21-09-2020"
       time: "15:00-15:30"
       venue: "venue"
-      tasks : "yes" # {yes | no}
+      tasks : "no" # {yes | no}
+      related:
+      next:
+        basic_scripts0
+      prev:
+        basic_vectors0
+    basic_scripts0:
+      title: "Scripts/R Markdown"
+      subtitle: ""
+      gaol: ""
+      date: "21-09-2020"
+      time: "15:00-15:30"
+      venue: "venue"
+      tasks : "no" # {yes | no}
       related:
       next:
         dplyr_tibble0
       prev:
-        basic_vectors0
+        basic_projects0
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
@@ -101,7 +114,7 @@ course:
         dplyr_tibble1
         readr_io0
       next: dplyr_select0
-      prev: basic_projects_scripts0
+      prev: basic_scripts0
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""

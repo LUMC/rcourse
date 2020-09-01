@@ -1,0 +1,18 @@
+---
+title: "TODO notes"
+output: html_document
+---
+
+# `r todo( "For tibble page" )`
+
+Provide an image with the first Rmd document with tibble.
+
+- load tidyverse
+- read table
+- show table
+- View command
+
+# `r todo( "To describe somewhere" )`
+
+- comment char (hash)
+
