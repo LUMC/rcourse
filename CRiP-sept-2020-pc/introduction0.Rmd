@@ -89,7 +89,7 @@ Exercises at the end of the sections demonstrate other usage of the commands or 
 
 ## The exam
 
-To pass the exam the students are requested to build a script producing a report with the following parts:
+To pass the exam the students are requested to build a knittable R Markdown document reporting analysis of a table. The document has the following parts:
 
 - read a table from a provided file;
 - show some selected content from the table;

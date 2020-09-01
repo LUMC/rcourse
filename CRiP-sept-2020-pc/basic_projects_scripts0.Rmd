@@ -93,7 +93,7 @@ It is also a simple text file consisting of:
 - **Chunks** written in R language, where data analysis is performed.
 - **Free text** written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
 
-The **knit** operation converts an R Markdown document into a report file.  
+The **Knit** operation converts an R Markdown document into a report file.  
 Many report output formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents, etc.  
 _(For example: this page is written in R Markdown and knitted to HTML)_
 
@@ -126,7 +126,7 @@ The document is not empty; it contains an example written in R Markdown.
 - If the R Markdown document does not have a name yet, a save dialog box will pop up to ask for the file name.
 - Some libraries might get automatically installed before the first `Knit`.
 - The knitting process might take a few seconds and then the final document should appear either in a new window or in the `Viewer` pane.  
-The Figure below shows the result of knitting of the standard example (R Markdown was saved as `Lesson_1.Rmd` and produced HTML file `Lesson_1.html`):
+The Figure below shows the result of knitting of the standard example (R Markdown was saved as `Lesson_1.Rmd` and was knitted to HTML file `Lesson_1.html`):
 
 ![](images/RStudio_knitting.png)
 
