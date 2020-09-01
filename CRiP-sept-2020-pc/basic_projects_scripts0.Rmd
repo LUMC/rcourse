@@ -15,53 +15,51 @@ build_nocode(params)
 
 # Overview
 
-- This material shows a general way to setup a project for a new analysis.
-- The example project created here and the copied files are neded later in the course.
+- _How to create a new project_: this material shows a general way to setup a new project for a new analysis.
+- Here we create the project `Learning_R` used during the course.
 
 # Concept of a project and of scripts
 
-A typical data analysis in R involves multiple files:
+A typical data analysis involves multiple files:
 
 - **Input files** with data, fixed before analysis (e.g. files in various formats containing tables of data to be analysed).
 - **Scripts** or **reports** (there you develop programs in R language to analyse the data and report results).
-- Other files (images, configurations, etc.).
 
-**Project** is a feature of RStudio to organize all files that you need for a single analysis and to keep them separate from other analyses.  
-From now on you are going to work within a new R course project.
+RStudio uses **projects** to organize files of one analysis and separate them from other analyses.  
 
 # Project
 
 ## Create a new project
 
-Follow the subsequent steps to create a new project for this R course.  
+Follow the subsequent steps to create a new project `Learning_R` (we will use it during this course).  
 From the RStudio menu choose: `r show_menu( c( "File", "New project...", "New directory...", "New project..." ) )`.  
 In the dialog box:
 
-- As a directory name type (for example): `Learning_R`  
+- As a directory name type: `Learning_R`  
 - In the next option you may select where to create this directory.  
 - Press `Create project` to finalize the process.
 
 ## Check current project
 
-Look at the top right corner of the RStudio window to check which project you are working on.  
-Refer to the following Figure: it shows a state when a project called `Learning_R` is open.
+Look at the top right corner of the RStudio window to see the current project.  
+Refer to the following Figure: `Learning_R` is the currently open project.
 
 Moreover, the title line shows the **project diectory** in which the files of the project are/will be kept.
 
-Finally, note the **project file** `Learning_R.Rproj` in the `Files` panel. When you click this file in a file explorer, it should open RStudio and the right project.
+Finally, note the **project file** `Learning_R.Rproj` in the `Files` panel.  
+When you click this file in a file explorer, it should start RStudio and open the clicked project.
 
 ![](images/RStudio_new_project.png)
 
-# Input data
+# Input files
 
 ## Copy data files
 
-Although R can be used to analyse data from any readable file, it is convenient to have such files in the project directory.  
+Although R can be used to analyse data from files located anywhere in the filesystem, it is convenient to have such files in the project directory.  
 For the following parts of the course you need the files: `pulse.csv` and `survey.csv`.  
-Download/copy these files to the project directory using system file explorer or browser.  
-Since this step depends on the operating system, therefore only a general description is provided here.
+Download (with a browser) or copy (with the system file explorer) these files to the project directory -- here the details depend on the operating system of your computer.
 
-Properly downloaded files should appear in the `Files` panel:
+Once the files are present in the project directory, they should be visible in the `Files` panel:
 
 ![](images/RStudio_data_files.png)
 
@@ -77,34 +75,33 @@ file.exists( "pulse.csv" )
 TRUE
 ```
 
-# Scripts/reports
+# Scripts and reports
 
-## R scripts
+## What is an R script
 
-**R script** is a simple text file (e.g. `filename.R`) with commands written in R language.  
+**R script** is a simple text file (with extension `.R`, for example `my_script.R`) containing commands written in R language.  
 When an R script is **sourced**, the lines of the script are one-by-one copied to the `Console` and immediately executed.  
 An R script allows to save R commands (without saving, the commands given in the `Console` are executed and forgotten).
 
 `r show_warning( "In this course R scripts are not used directly." )`
 
-## R Markdown documents
+## What is an R Markdown document
 
-An [**R Markdown** document](https://rmarkdown.rstudio.com/) (e.g. `filename.Rmd`) is an extension of an R script.  
-An R Markdown document is also a simple text file consisting of:
+An [**R Markdown** document](https://rmarkdown.rstudio.com/) (with extension `.Rmd`, for example  `my_report.Rmd`) is an extension of an R script.  
+It is also a simple text file consisting of:
 
 - **Chunks** written in R language, where data analysis is performed.
-- Free text written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
+- **Free text** written in Markdown notation, possibly containing: sections, lists, tables, [hyperlinks](https://rmarkdown.rstudio.com/docs/), formulae: $r=\sqrt{x^2+y^2}$, etc.
 
 The **knit** operation converts an R Markdown document into a report file.  
-Many report output formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents, etc.
+Many report output formats are available: HTML, PDF (printable pages or presentations), Microsoft Word documents, etc.  
+_(For example: this page is written in R Markdown and knitted to HTML)_
 
 `r watch_extern_video( url = "https://rmarkdown.rstudio.com/lesson-1.html", title = "R Markdown introduction video", src = "RStudio" )`
 
-`r go_extern( url = "https://www.markdowntutorial.com/", title = "Markdown tutorial", goal = "to learn how do write free text using Markdown notation" )`
+`r go_extern( url = "https://www.markdowntutorial.com/", title = "Markdown tutorial", goal = "to quickly practice writing text with Markdown notation" )`
 
-# A new R Markdown report
-
-## Create document
+## Create a new R Markdown document
 
 `r show_warning( "Before creating a new document, first check whether you work in the correct project." )`
 
@@ -121,7 +118,7 @@ The document is not empty; it contains an example written in R Markdown.
 
 ![](images/RStudio_new_rmd_file.png)
 
-## Knit document
+## Knit an R Markdown document
 
 **Knitting** is the name of the process of conversion from R Markdown text file to a report in one of the target formats.
 
