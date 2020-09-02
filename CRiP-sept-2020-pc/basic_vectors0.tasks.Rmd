@@ -1,12 +1,78 @@
 ---
-title: "ggplot basics (practice)"
-# author: "<author>"
+title: "Vectors (practice)"
 ---
 
 ```{r , include=FALSE}
-if (exists("params")) {
-  knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-} else  {
-  knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
+```
+
+## Primary exercises
+
+1. Four patients had daily dietary intakes of 2314, 2178, 1922, 2004 kcal.  
+Make a vector of these four values.  
+Convert these values into in kJ using 1 kcal = 4.184 kJ.
+
+```{r}
+intakesKCal <- c( 2314, 2178, 1922, 2004 )
+intakesKCal
+intakesKCal * 4.184
+```
+
+2. Make a vector of all numbers between 1 and 100.  
+Calculate 1+2+3+…+100.  
+Hint: Read help (see `Help` pane) for function `sum`. 
+
+```{r}
+v <- 1:100
+sum( v )
+```
+
+3. Degrees Celsius (`Cel`) can be calculated from degrees Fahrenheit (`Fah`) as `Cel = 5/9 * (Fah - 32)`.  
+How much is 60 degrees Fahrenheit in Celsius?  
+Use `seq` function to create a vector that contains 0,5,10,...,95,100 degrees Fahrenheit.  
+Convert this vector to Celsius degrees.  
+From your calculation in the previous exercise, select 10 Fahrenheit in Celcius.
+
+```{r}
+Fah <- 60
+Cel <- 5 / 9 * (Fah - 32)
+Cel
+Fah <- seq( 0, 100, 5 )
+Cel <- 5 / 9 * (Fah - 32)
+Cel
+Fah[3]
+Cel[3]
+```
+
+## Extra exercises
+
+1. Read help (see `Help` pane) about `seq` function.  
+Use it to generate sequence: 10, 7, 4, 1, -2, -5.  
+Understand the error message of `seq( 10, -5, 3 )`.
+
+```{r}
+seq( 10, -5, -3 )
+seq( from = 10, to = -5, by = -3 )
+```
+
+2. Read help (see `Help` pane) about `rep` function.  
+Use it to generate sequence: 0, 1, 0, 1, 0, 1.  
+
+```{r}
+rep( c( 0, 1 ), 3 )
+```
+
+3. Check the effect of `sort` function on the vector of names `x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )`.
+
+```{r}
+x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
+sort( x )
 ```

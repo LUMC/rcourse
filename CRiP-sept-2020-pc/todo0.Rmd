@@ -9,6 +9,23 @@ output: html_document
 - Familiarize with error messages caused by typing errors.
 
 
+# `r todo( "Topics to discuss" )`
+
+- NA
+- `class`
+- `head` and `tail`
+- `rev`
+- nested combine: `c( c( ... ), 1:10 )`
+- select through a variable
+- set/get names() of vector elements
+- `letters` and `LETTERS`; `pi`
+- `as.numeric` and `as.character`
+- `sort`, `order`, `sample`
+- `which`, `which.max`
+- `max`, `min`, `median`, `sd`
+- how to load a vector from file
+
+
 # `r todo( "For tibble page" )`
 
 Provide an image with the first Rmd document with tibble.

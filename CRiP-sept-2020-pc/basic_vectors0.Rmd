@@ -1,5 +1,5 @@
 ---
-title: "Basic vectors"
+title: "Vectors"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 params:
   basename: "basic_vectors0"
@@ -13,32 +13,31 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-# Tasks
+## Concept of a vector
 
-- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
-- Familiarize with error messages caused by typing errors.
+A **vector** is a container of (multiple) elements:
 
-# Concept of a vector
+- All elements are of the same type (e.g. all are numbers).
+- The elements are kept at numbered positions (there is the first element, second, ...).
+- The elements might be given names (first may be named "Jay", second "Gloria", ...).
 
-A vector is a container of (multiple) elements.  
-All elements are of the same type (e.g. all are numbers).  
-The elements are kept in order (so, there is the first element, second, ...).  
-This is the primary data structure of the R language.  
+Some examples of a vector:
 
-A single vector can represent each one of:
+- Heights of students (a vector of numbers, `numerical`).
+- Names of students (a vector of texts, `character`).
+- Eyes color of students (a vector of values from a limited choice list, `factor`).
+- Whether students have siblings (a vector of FALSE/TRUE values, `logical`).
 
-- heights of students in a class (a vector of numbers, `numerical`)
-- names of students in a class (a vector of texts, `character`)
-- eyes color of students in a class (a vector of values from a limited choice list, `factor`)
-- presence of siblings of students in a class (a vector of FALSE/TRUE values, `logical`)
+Vector is the primary data structure of the R language.
 
-# Try a numerical vector
+## Numerical vector
 
-You can make a vector using the combine function `c`.  
-Here it will be a vector of numbers:
+You can create a vector using the **combine** function `c`.  
+Type the following to create a vector of numbers and store it in variable `x`:
 
 ```{r}
 x <- c(3, 6, 7, 2)
+x
 ```
 
 Calculations or functions often work on vectors elementwise.  
@@ -57,12 +56,13 @@ sum(x)
 mean(x)
 ```
 
-# Sequence of numbers
+## Sequence of numbers
 
-A simple regular sequence you can make with `:` (colon) operator:
+A simple regular sequence you can create with `:` (**colon operator**). Try:
 
 ```{r}
 y <- 1:10
+y
 7:9
 ```
 
@@ -73,9 +73,9 @@ x <- seq(5,15,3)
 x
 ```
 
-# Try a character vector
+## Character vector
 
-A character vector you may also create it with the combine function `c`:
+A character vector you may also create with the combine function `c`:
 
 ```{r}
 x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
@@ -84,59 +84,53 @@ x
 
 Both single quotes (`'word'`) and double quotes (`"word"`) are allowed (must be identical at the beginning and the end of a text).
 
-# Elements of a vector
+## Length and elements of a vector
 
-Use `length` to find out the number of elements in a vector (numerical, character, or any other type):
+Use `length` to find out the **length** (number of elements) in a vector (numerical, character, or any other type):
 
 ```{r}
-x <- c( 10, 11, 12, 13 )
+x <- c( 11, 12, 13, 14 )
 length(x)
 y <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
 length(y)
 ```
 
-Use square brackets to select a single element from a vector.  
+Use square brackets to **select** an element from a vector.  
 The first element is at position 1.
-To select an element from the second position use:
+Try the following to select an element from the second position:
 
 ```{r}
 x[2]
-y[4]
+y[2]
 ```
 
-Consequently, to select the last element:
+Now try to combine the brackets with `length` to select the last element. Type:
 
 ```{r}
 x[ length(x) ]
 ```
 
-You can also select multiple elements at once:
+Try the following to **select multiple elements** at once:
 
 ```{r}
 x[ c(1,3) ]
-x[2:4]
+w <- 2:4
+x[w]
 ```
 
 Note, when a vector is printed, the number reported on the left in square brackets shows the position of the next vector element:
 
-```{r}
-x <- seq( 100, 160, 1 )
+```{r eval=FALSE}
+x <- 101:155
 x
 ```
-
-# `r todo( "Topics to discuss" )`
-
-- `head` and `tail`
-- `rev`
-- nested combine: `c( c( ... ), 1:10 )`
-- select through a variable
-- set/get names() of vector elements
-- `letters` and `LETTERS`; `pi`
-- `as.numeric` and `as.character`
-- `sort`, `order`, `sample`
-- `which`, `which.max`
-- `max`, `min`, `median`, `sd`
-- how to load a vector from file
+```
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112
+[13] 113 114 115 116 117 118 119 120 121 122 123 124
+[25] 125 126 127 128 129 130 131 132 133 134 135 136
+[37] 137 138 139 140 141 142 143 144 145 146 147 148
+[49] 149 150 151 152 153 154 155
+```
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

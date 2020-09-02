@@ -13,16 +13,13 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-# Tasks
+## Variable and its value
 
-- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
-- Familiarize with error messages caused by typing errors.
-
-# Variable and its value
-
-A variable stores a value, which can be explicitly provided or a result of a calculation.
+A **variable** stores a **value**, which can be explicitly provided or a result of a calculation.
 
 Choose the names of variables freely, optimally meaningful to represent the problem of interest.
+
+Type the following lines in the `Console`. Observe changes in the `Environment` pane after each Enter.
 
 ```{r}
 gardenWidth <- 5
@@ -36,92 +33,84 @@ To find out what the value of a variable is, type its name:
 gardenArea
 ```
 
-A frequent error is to ask for a non-existing variable:
+A frequent error is to ask for a non-existing variable. Type to see the error:
 
 ```{r error=TRUE}
 gggardenArea
 ```
 
-# Assignment operator(s)
+## Assignment operator
 
-The arrow symbol `<-` is called the "assignment" operator:
+The arrow symbol `<-` is called the **assignment operator**:
 
 ```{r}
 x <- 5
 ```
 
+## No assignment, no change
 
+Assignment is needed to store a result.  
+When there is no assignment, the result is printed to screen and lost.  
 
-The same assignment can also be performed with symbol `=` (equal):
-
-```{r}
-x = 5
-```
-
-`r suggest("maybe leave out the assignment '=' symbol completely as a way of discouragement.")`
-
-# No assignment, no change
-
-Assignments are needed to store a result. 
-When there is no assignment, the result is printed to screen and lost. For example, the sequence of statements below is the wrong way to "increase _x_ by one", because the result is calculated but not stored:
+For example, the sequence of statements below is the wrong way to "increase _x_ by one".  
+The result is calculated but it is not stored.  
+Type these commands line by line. Observe when value of `x` changes in the `Environment` pane:
 
 ```{r}
 x <- 5
+x
 x + 1
 x
 ```
 
-Here is the correct way:
+Here is the correct way to "increase _x_ by one".  
+Type these commands line by line. Observe when value of `x` changes in the `Environment` pane:
 
 ```{r}
 x <- 5
+x
 x <- x + 1
 x
 ```
 
 `r info_block("Remember: no assignment, no change.")`
 
-# How variables are stored
+## How variables are stored
 
-The variables are stored in R memory.  
-In one of the RStudio panes you can find a tab called _environment_.  
-It contains a list of variables currently in memory.
+The variables are stored in R memory and RStudio shows them in the `Environment` pane.  
+When you close RStudio, all variables are lost.
 
-When you close R, all variables are lost.  
-Therefore, we will learn how **to write scripts** to store commands used to calculate variables.  
-The scripts provide **reproducibility**. They store not only the results of calculations, but also document how the result was calculated.
+We will learn how to write **scripts** to store commands used to calculate variables.  
+The scripts provide **reproducibility**.  
+They store not only the results of calculations, but also document how the results were calculated.
 
-# Valid variable names
+## Valid variable names
 
-Variable names in R are case sensitive (all other symbols also).
-
-Note that `_` and `.` are allowed in variable names. 
+Variable names in R are case sensitive (all other symbols also).  
+Note that `_` is allowed in variable names.  
 Numbers (not at the beginning) are allowed too. 
 
 Here are some examples (and each one is a different variable):
 
 ```{r eval=FALSE}
 gardenLength <- 6
-garden.length <- 6
 garden_length <- 6
 gArDeNlEnGtH <- 6     # this is bad, don't use this
+garden.length <- 6    # this leads to mistakes, don't use this
 
 len1 <- 5
 len2 <- 6
 ```
 
-`r suggest(" garden.length is a bad example, variables with dots are discouraged because they may clash with S3 method.")`
-
-
 Choose meaningful variable names for readable scripts.
 
-Naturally, there are some limitations. Do not use variable names :
+Naturally, there are some limitations. Do not use variable names:
 
 - containing a space
 - containing any of `@#!%$^()-+=!~?,<>}{][`
 - with R reserved names: `for`, `while`, `repeat`, `if`, `else`, `TRUE`, `FALSE`, `Inf`, `NA`, `NaN`
 
-# Autocomplete names
+## Autocomplete names
 
 RStudio provides autocomplete feature, useful for long variable names.
 
