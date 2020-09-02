@@ -6,11 +6,10 @@ title: "Data sets"
 knitr::opts_chunk$set(comment = NA)
 ```
 
+Throughout the course we will use the two data sets described below. 
 
-Throughout the course we will use the two data sets described below.
-
-## Pulse
-
+## Pulse 
+  
 Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students measured their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat without movement for one minute. Then everyone measured their pulse again. The pulse rates and other physiological and lifestyle data are given in the data table.
 
 |Variable | Explanation |
@@ -32,7 +31,7 @@ The pulse data set is available in the data folder as comma-delimited text: `pul
 
 
 ```{r, message=FALSE, echo=TRUE}
-pulse <- read_csv("_data/pulse.csv")
+pulse <- read_csv("data/pulse.csv")
 pulse 
 ```
 
@@ -61,12 +60,12 @@ The pulse data set is available in the data folder as comma-delimited text: `sur
 
 
 ```{r, message=FALSE, echo=TRUE}
-survey <- read_csv("_data/survey.csv")
+survey <- read_csv("data/survey.csv")
 survey 
 ```
 
 
-## CAREMA dataset
+## CAREMA
 
 
 To read a SPSS file, e.g. `CAREMA_case-control.sav`,  we need the function `read_spss` from the R package `haven`. Try `library(haven)`, if the package is not installed then you'll get an error `threre is no package called 'haven'`, in that case you'll need to install it using:
@@ -82,14 +81,24 @@ CAREMA prospective SPSS file as follows:
 ```{r, message=FALSE, eval=FALSE} 
 ## CAREMA
 library(haven)
-carema <- read_spss(file = "_data/CAREMA_case-control.sav") 
+carema <- read_spss(file = "data/CAREMA_case-control.sav") 
 str(carema)
 ```
 
 
 ```{r, message=FALSE, eval=FALSE, echo=FALSE}
 ## CAREMA Prospective  
-carema_prosp <- read.spss(file = "_data/CAREMA_Prospectief.sav") 
+carema_prosp <- read.spss(file = "data/CAREMA_Prospectief.sav") 
 str(carema_prosp)
 ```
 
+## Download data 
+
+Download all 
+(tar.gz <a href="data/crip_data2020.tar.gz" class="fas fa-download" download target="_blank"></a>,
+zip <a href="data/crip_data2020.zip" class="fas fa-download" download target="_blank"></a>)
+or individual files: 
+pulse.csv<a href="data/pulse.csv" class="fas fa-download" download target="_blank"></a>
+survey.csv<a href="data/survey.csv" class="fas fa-download" download target="_blank"></a>
+CAREMA_case-control.sav <a href="data/CAREMA_case-control.sav" class="fas fa-download" download target="_blank"></a>
+CAREMA_Prospectief.sav <a href="data/CAREMA_Prospectief.sav" class="fas fa-download" download target="_blank"></a>
