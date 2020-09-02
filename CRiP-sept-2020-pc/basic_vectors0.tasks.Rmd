@@ -18,20 +18,24 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 
 1. Four patients had daily dietary intakes of 2314, 2178, 1922, 2004 kcal.  
 Make a vector of these four values.  
-Convert these values into in kJ using 1 kcal = 4.184 kJ.
+What is the type of this vector?  
+Convert these values into in kJ using 1 kcal = 4.184 kJ.  
 
 ```{r}
 intakesKCal <- c( 2314, 2178, 1922, 2004 )
 intakesKCal
+class( intakesKCal )
 intakesKCal * 4.184
 ```
 
 2. Make a vector of all numbers between 1 and 100.  
+Check the type of that vector (note, that a vector of numbers might be different than `numeric`).  
 Calculate 1+2+3+…+100.  
 Hint: Read help (see `Help` pane) for function `sum`. 
 
 ```{r}
 v <- 1:100
+class( v )
 sum( v )
 ```
 
@@ -76,3 +80,20 @@ rep( c( 0, 1 ), 3 )
 x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
 sort( x )
 ```
+
+4. Sometimes it is necessary to convert a numerical vector to a character vector.  
+Understand what the function `as.character` does for argument `1:5`.
+
+```{r}
+1:5
+as.character( 1:5 )
+```
+
+5. Sometimes it is necessary to convert a character vector to a numerical vector.  
+Understand what the function `as.numeric` does for argument `c( "1", "-1", "x" )`.  
+What is `NA`?
+
+```{r}
+as.numeric( c( "1", "-1", "x" ) )
+```
+

@@ -21,7 +21,7 @@ A **vector** is a container of (multiple) elements:
 - The elements are kept at numbered positions (there is the first element, second, ...).
 - The elements might be given names (first may be named "Jay", second "Gloria", ...).
 
-Some examples of a vector:
+Some examples of a vector (and its **type**):
 
 - Heights of students (a vector of numbers, `numerical`).
 - Names of students (a vector of texts, `character`).
@@ -131,6 +131,26 @@ x
 [37] 137 138 139 140 141 142 143 144 145 146 147 148
 [49] 149 150 151 152 153 154 155
 ```
+
+## Type (class) of a vector
+
+Sometimes you may need to find what **type** of a vector is stored in a variable.  
+This can be done with the function `class`.  
+
+Type the following to create two vectors `x` and `y`:
+
+```{r}
+x <- c( 11, 12, 13 )
+y <- c( "Jay", "Gloria", "Claire" )
+```
+
+To find the types of these vectors type:
+
+```{r}
+class( x )
+class(y)
+```
+
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

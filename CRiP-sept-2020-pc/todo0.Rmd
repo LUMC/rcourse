@@ -12,7 +12,6 @@ output: html_document
 # `r todo( "Topics to discuss" )`
 
 - NA
-- `class`
 - `head` and `tail`
 - `rev`
 - nested combine: `c( c( ... ), 1:10 )`
