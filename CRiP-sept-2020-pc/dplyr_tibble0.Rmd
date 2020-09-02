@@ -15,13 +15,29 @@ build_nocode(params)
 alert_block(params)
 ``` 
 
-A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
+`r todo( "Must be added here that 'library(tidyverse)' must be executed first. Both at the console and at the top of the Rmd file." )`
+
+`r todo( "ThisOrNext:" )` A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
 and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
 any [atomic type](basic_vectors0.html) such as character,integer etc. Let's start by creating one manually.
 
+A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**).  
+I'll use these terms interchangeably depending on the context.  
+Each variable has a fixed [type](basic_vectors0.html) such as `character`, `integer` etc.  
+Let's start by creating a tibble manually.
+
 ## Create a tibble    
  
-Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations. Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
+`r todo( "ThisOrNext:" )` Creating a __tibble__ is done using the keyword `tibble` taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations.
+
+Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs where:
+
+- `key` is the variable (column) name,
+- `value` provides the values of the observations. 
+
+Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
+
+`r todo( "is favourite_color the optimal name?" )`
 
 ```{r, echo=TRUE}
 favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
@@ -29,7 +45,10 @@ favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"),
                            colour=c("Blue","Green","Yellow","Purple"))
 ```
 
-The object `favourite_color` now holds the data. Enter it's name in the R console for inspection:
+`r todo( "ThisOrNext:" )` The object `favourite_color` now holds the data. Enter it's name in the R console for inspection:
+
+The variable `favourite_color` now holds the data.  
+Enter its name in the R `Console` for inspection:
 
 ```{r}
 favourite_color
@@ -43,20 +62,25 @@ and 3 variables), \n\n 2) the atomic type of each variable, in this case charact
 qa(msg)
 ``` 
 
+## Type of tibble
+
+`r todo( "Maybe move this section to very end? It is less important than e.g. ncol/nrow" )`
+
 Now inspect the type of the tibble object we just created:
 
 ```{r}
 class(favourite_color)
 ```
 
-As you can see a tibble is in its core a base R `data.frame` with some additional behaviour 
-enforced by `tbl_df` and `tbl` types. In this course we will be working mainly with tibbles 
-rather than base R data.frame. However, for those of you interested in the differences between 
+`r todo( "Put extra info icon here" )`
+As you can see a tibble is in its core a base R `data.frame` with some additional behaviour enforced by `tbl_df` and `tbl` types.  
+In this course we will be working mainly with tibbles rather than base R data.frame.  
+However, for those of you interested in the differences between 
 tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
 
 ## Inspect your data
 
-To find out the dimmensions of the tibble as values:
+Type the following to find out the dimensions of the tibble:
 
 ```{r}
 ncol(favourite_color)  # number of variables (columns)
@@ -64,7 +88,7 @@ nrow(favourite_color)  # number of observatons (rows)
 dim(favourite_color)   # dimensions 
 ```
 
-or top and bottom parts of the tibble: 
+or top and bottom rows of the tibble: 
 
 ```{r}
 head(favourite_color, 2)  # first 2 observations (rows)

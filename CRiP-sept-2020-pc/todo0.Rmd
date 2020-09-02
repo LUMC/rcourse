@@ -18,7 +18,6 @@ output: html_document
 - select through a variable
 - set/get names() of vector elements
 - `letters` and `LETTERS`; `pi`
-- `as.numeric` and `as.character`
 - `sort`, `order`, `sample`
 - `which`, `which.max`
 - `max`, `min`, `median`, `sd`
