@@ -96,7 +96,7 @@ related_slots <- function(base_name) {
 }
 
 read_pulse <- function() {
-  read_csv("_data/pulse.csv", col_types = cols(
+  read_csv("data/pulse.csv", col_types = cols(
     id = col_character(),
     name = col_character(),
     height = col_double(),
@@ -114,7 +114,7 @@ read_pulse <- function() {
 }
 
 read_survey <- function() {
-  read_csv("_data/survey.csv", col_types = cols(
+  read_csv("data/survey.csv", col_types = cols(
     name = col_character(),
     height = col_double(),
     weight = col_double(),
@@ -134,7 +134,7 @@ read_survey <- function() {
 
 # .read_csv_data <- function(file) {
 #   root_dir <- knitr::opts_knit$get("output.dir")
-#   read.csv(file.path(root_dir,"_data",file))
+#   read.csv(file.path(root_dir,"data",file))
 # }
 
 show_color <- function( text, color ) {

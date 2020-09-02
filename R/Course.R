@@ -201,7 +201,7 @@ Course <- R6Class("Course",
         # consider only the slots declared in the schedule.yml
         file_basenames <- intersect(file_basenames,self$slots())
         # additional RMD files other than slots
-        file_basenames <- c(file_basenames, c("index","schedule","_schedule","_graph"))
+        file_basenames <- c(file_basenames, c("index","data","schedule","_schedule","_graph"))
         file_basenames[sapply(file_basenames, private$modified)]
       },
       #' @description Returns the list of files for zip archive.
@@ -214,7 +214,7 @@ Course <- R6Class("Course",
           other <- c("images","data","_schedule.yml","styles.css","_site.yml","footer.html")
           c(rmds,other)
         } else if (set=="data") {
-          paste("_data", strsplit(schedule[["course"]][["dataset"]]," ")[[1]], sep="/") 
+          paste("data", strsplit(schedule[["course"]][["dataset"]]," ")[[1]], sep="/") 
         } else {
           stop("use {archive,data} as possible sets.")
         }

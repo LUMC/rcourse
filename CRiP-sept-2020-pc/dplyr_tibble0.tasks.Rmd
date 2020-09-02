@@ -65,8 +65,8 @@ mean(exercise_group[["height"]])
 1. Read csv files `pulse.csv` and `survey.csv` into R as variable objects `pulse` and `survey` respectively.
 
 ```{r}
-pulse <- read_csv(file = "_data/pulse.csv")
-survey <- read_csv(file = "_data/survey.csv")
+pulse <- read_csv(file = "data/pulse.csv")
+survey <- read_csv(file = "data/survey.csv")
 ```
 
 ## Extra exercise*

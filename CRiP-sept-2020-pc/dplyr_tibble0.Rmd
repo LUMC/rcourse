@@ -105,10 +105,10 @@ For more details on reading/writing format see [readr_io0](readr_io0.html).
 let us now save our first tibble into a file in csv format:   
 
 ```{r}
-write_csv(x = favourite_color, path = "_data/favourite_color.csv")
+write_csv(x = favourite_color, path = "data/favourite_color.csv")
 ```
 
-`favourite_color` tibble is written to `favourite_color.csv` text file in sub-directory `_data`. You may inspect the file with any editor and it should look something like: 
+`favourite_color` tibble is written to `favourite_color.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
 
 ```
 name,year,colour
@@ -122,7 +122,7 @@ This way we can permanently store our results in files for later use. We can now
 object, e.g. `favourite_color_csv` :
 
 ```{r}
-favourite_color_csv <- read_csv(file = "_data/favourite_color.csv")
+favourite_color_csv <- read_csv(file = "data/favourite_color.csv")
 ```
 
 `read_csv` gives a summary of the variables and their inferred types.
