@@ -172,15 +172,15 @@ Often you may need to switch between `data.frame` and `tibble`. You can convert 
 `data.frame` type using the function `data.frame()`: 
 
 ```{r}
-favourite_color_df <- data.frame(favourite_color)
-favourite_color_df
-class(favourite_color_df)
+favourite_colour_df <- data.frame(favourite_colour)
+favourite_colour_df
+class(favourite_colour_df)
 ```
  
 To do the reverse, from `data.frame` to `tibble`, use the function `as_tibble()`:
 
 ```{r, eval=FALSE}
-t <- as_tibble(favourite_color_df)
+t <- as_tibble(favourite_colour_df)
 t
 class(t) 
 ```
