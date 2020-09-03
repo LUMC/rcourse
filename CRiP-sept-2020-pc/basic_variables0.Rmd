@@ -1,6 +1,6 @@
 ---
 title: "Variables"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+# date: "`r format(Sys.time(), '%d %B %Y')`"
 params:
   basename: "basic_variables0"
 ---

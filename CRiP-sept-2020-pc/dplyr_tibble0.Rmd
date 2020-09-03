@@ -17,14 +17,13 @@ alert_block(params)
 
 `r todo( "Must be added here that 'library(tidyverse)' must be executed first. Both at the console and at the top of the Rmd file." )`
 
-`r todo( "ThisOrNext:" )` A tibble is a two dimensional data structure with rows and columns, also referred to as `observations` 
-and `variables`. I'll use these terms interchangeably depending on the context. The variables may take 
-any [atomic type](basic_vectors0.html) such as character,integer etc. Let's start by creating one manually.
 
-A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**).  
-I'll use these terms interchangeably depending on the context.  
-Each variable has a fixed [type](basic_vectors0.html) such as `character`, `integer` etc.  
+A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
+I'll use these terms interchangeably depending on the context. 
+Each variable has a fixed [type](basic_vectors0.html) such as `character`, `integer` etc. 
 Let's start by creating a tibble manually.
+
+`r info_block("aaa")`
 
 ## Create a tibble    
  
