@@ -220,3 +220,12 @@ watch_extern_video <- function( url, title, src = NULL, color = "blue" ){
   )
 }
 
+data_file <- function( files = list.files( path = "data", pattern = "*" ) ) {
+  fs <- sapply( files, function( f ) {
+    paste0(
+      "[`", f, "`](data/", f, ") ",
+      '<a href="data/', f, '" class="fas fa-download" download target="_blank"></a>'
+    )
+  } )
+  paste0( fs, collapse = ", " )
+}

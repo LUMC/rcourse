@@ -51,7 +51,7 @@ When you find this file in a system file explorer, once clicked it should start 
 ## Copy input files
 
 Although R can be used to analyse data from files located anywhere in the filesystem, it is convenient to have such files in the project directory.  
-For the following parts of the course you need the files: `pulse.csv` and `survey.csv` (look at the `Data` in the course materials).  
+For the following parts of the course you need the files: `r data_file( c( "pulse.csv", "survey.csv" ) )`.  
 Download (with a browser) or copy (with the system file explorer) these files to the project directory -- here the details depend on the operating system of your computer.
 
 Once the files are present in the project directory, they should be visible in the `Files` panel:
