@@ -37,7 +37,7 @@ Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=v
 
 Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
 
-`r todo( "is favourite_color the optimal name?" )`
+`r todo( "is favourite_color the optimal name? Maybe persons? Or persons_data?" )`
 
 ```{r, echo=TRUE}
 favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
