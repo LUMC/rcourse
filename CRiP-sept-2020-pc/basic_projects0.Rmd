@@ -58,15 +58,5 @@ Once the files are present in the project directory, they should be visible in t
 
 ![](images/RStudio_data_files.png)
 
-Type the following command in the `Console` and execute it to check whether you can access the `pulse.csv` file.  
-When the file is present, `TRUE` should be returned:
-
-```{r eval=FALSE,echo=TRUE}
-file.exists( "pulse.csv" )
-```
-```{r eval=TRUE,echo=FALSE}
-TRUE
-```
-
 ```{r, child="_navigate.Rmd"} 
 ``` 
