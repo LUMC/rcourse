@@ -1,0 +1,85 @@
+---
+title: "Factors"
+# date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_factors0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) 
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+A **factor** is a vector of values from a limited set of possibilities (levels).
+
+For example, a factor can be used to store colors of hair of some people.  
+Let's assume that we can classify each person to one of the following hair colors.  
+This will be the **levels** of the factor:
+
+```{r eval=FALSE}
+c( "black", "brown", "ginger", "blond", "gray", "white" )
+```
+
+Now, let's assume that for 10 people we observed the following hair colors.  
+`NA` (not available, missing value) stands for a person whose hair color could not be determined.  
+This will be the **values** of the factor:
+
+```{r eval=FALSE}
+c( "brown", "ginger", "black", "brown", NA, "brown", "black", "brown", "blond", "gray" ) 
+```
+
+## Create a factor
+
+Enter the following to create the **factor** and store it in variable `hairColors`:
+
+```{r}
+hairColors <- factor(
+  c( "brown", "ginger", "black", "brown", NA, "brown", "black", "brown", "blond", "gray" ),
+  levels = c( "black", "brown", "ginger", "blond", "gray", "white" )
+)
+hairColors
+```
+
+## Levels and coding
+
+In R the factor is stored as two vectors.  
+The first vector codes the levels with subsequent integers: `1=black`, `2=brown`, ...  
+Type the following to get this vector:
+
+```{r}
+levels( hairColors )
+```
+
+and to find the **number of factor levels** enter:
+```{r}
+nlevels( hairColors )
+```
+
+The second vector keeps integers corresponding to the values.  
+Try the following and understand the relation of the integers and the levels:
+
+```{r}
+as.integer( hairColors )
+```
+
+## Count occurrences
+
+## Rename levels
+
+## Change levels order
+
+
+`r todo( "Link to cheat sheet" )`
+
+
+
+
+##
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 
