@@ -234,10 +234,10 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next:
+      next: basic_factors0
       prev: dplyr_join0
-    forcats_factor0:
-      title: "factors"
+    basic_factors0:
+      title: "Factors"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -245,8 +245,8 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next:
-      prev: "basic_vectors0"
+      next: "ggplot_basics0"
+      prev: "tidyr_reshape0"
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""
@@ -257,7 +257,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next:
-      prev:
+      prev: "basic_factors0"
     basic_vectors1:
       title: "vectors*"
       subtitle: ""

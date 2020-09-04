@@ -67,7 +67,8 @@ RStudio is not necessary to work with R programs, but it is highly recommended a
 This is not a statistics course!  
 The focus is _R_ as a _language_ for data analysis.
 
-The goal of the course is to teach students how _R_ language can be used to build a report with very simple statistical analysis of data provided in a table.  
+The goal of the course is to teach students how _R_ language can be used to build quickly a report with very simple statistical analysis of data provided in a table.  
+Therefore, instead of using base _R_ functionality only, we use an extended version provided by the [_tidyverse_](https://www.tidyverse.org) package.
 
 This course teaches _R_ proficiency:
 

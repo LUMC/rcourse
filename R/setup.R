@@ -164,7 +164,8 @@ show_link <- function( url, title, newTab = TRUE ) {
 show_menu <- function( menu ) {
   paste0(
     sapply( menu, function( v ) paste0( "`", v, "`" ) ),
-    collapse = show_emoji( "down_right_arrow", text = "\\", color = "gray" )
+    collapse = "&#8611;"
+#    collapse = show_emoji( "down_right_arrow", text = "\\", color = "gray" )
   )
 }
 
