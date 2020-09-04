@@ -102,6 +102,17 @@ course:
       related:
       next:
       prev:
+    installation0:
+      title: "installation"
+      subtitle: ""
+      gaol:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
     dplyr_tibble0:
       title: "tibble"
       subtitle: ""
@@ -113,6 +124,7 @@ course:
       related:
         dplyr_tibble1
         readr_io0
+        installation0
       next: dplyr_select0
       prev: basic_scripts0
     dplyr_tibble1:

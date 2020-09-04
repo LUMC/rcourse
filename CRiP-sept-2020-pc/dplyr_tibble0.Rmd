@@ -15,19 +15,20 @@ build_nocode(params)
 alert_block(params)
 ``` 
 
-`r todo( "Must be added here that 'library(tidyverse)' must be executed first. Both at the console and at the top of the Rmd file." )`
-
-
 A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
 I'll use these terms interchangeably depending on the context. 
 Each variable has a fixed [type](basic_vectors0.html) such as `character`, `integer` etc. 
 Let's start by creating a tibble manually.
 
-`r info_block("aaa")`
+## Create a tibble
 
-## Create a tibble    
- 
-`r todo( "ThisOrNext:" )` Creating a __tibble__ is done using the keyword `tibble` taking a list of `key=value` pairs with `key` being the variable name and `value` the values of the observations.
+To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](installation0.html) for more details.  
+
+Enter the following to load *tidyverse* package:
+
+```{r}
+library(tidyverse) 
+```
 
 Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=value` pairs where:
 
@@ -36,21 +37,16 @@ Creating a __tibble__ is done using the keyword _tibble_ taking a list of `key=v
 
 Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
 
-`r todo( "is favourite_color the optimal name? Maybe persons? Or persons_data?" )`
-
 ```{r, echo=TRUE}
-favourite_color  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
                            year=c(1995,1995,1995,1994), 
                            colour=c("Blue","Green","Yellow","Purple"))
 ```
 
-`r todo( "ThisOrNext:" )` The object `favourite_color` now holds the data. Enter it's name in the R console for inspection:
-
-The variable `favourite_color` now holds the data.  
-Enter its name in the R `Console` for inspection:
+The variable `favourite_colour` now holds the data. Enter its name in the R `Console` for inspection:
 
 ```{r}
-favourite_color
+favourite_colour
 ```
 
 > What additional pieces of information do you see beside the content we provided?
@@ -61,37 +57,21 @@ and 3 variables), \n\n 2) the atomic type of each variable, in this case charact
 qa(msg)
 ``` 
 
-## Type of tibble
-
-`r todo( "Maybe move this section to very end? It is less important than e.g. ncol/nrow" )`
-
-Now inspect the type of the tibble object we just created:
-
-```{r}
-class(favourite_color)
-```
-
-`r todo( "Put extra info icon here" )`
-As you can see a tibble is in its core a base R `data.frame` with some additional behaviour enforced by `tbl_df` and `tbl` types.  
-In this course we will be working mainly with tibbles rather than base R data.frame.  
-However, for those of you interested in the differences between 
-tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
-
 ## Inspect your data
 
 Type the following to find out the dimensions of the tibble:
 
 ```{r}
-ncol(favourite_color)  # number of variables (columns)
-nrow(favourite_color)  # number of observatons (rows)
-dim(favourite_color)   # dimensions 
+ncol(favourite_colour)  # number of variables (columns)
+nrow(favourite_colour)  # number of observations (rows)
+dim(favourite_colour)   # dimensions : 4 rows and 3 columns 
 ```
 
 or top and bottom rows of the tibble: 
 
 ```{r}
-head(favourite_color, 2)  # first 2 observations (rows)
-tail(favourite_color, 3)  # last 3 observations (rows)
+head(favourite_colour, 2)  # first 2 observations (rows)
+tail(favourite_colour, 3)  # last 3 observations (rows)
 ```
 
 ## subsetting:  [
@@ -99,13 +79,13 @@ tail(favourite_color, 3)  # last 3 observations (rows)
 Often you may need to select certain variable, this can be done using square brackets `[` :
 
 ```{r}
-favourite_color["colour"]
+favourite_colour["colour"]
 ```
 
 to subset combination of variables:
 
 ```{r}
-favourite_color[c("name","year")]
+favourite_colour[c("name","year")]
 ```
  
 `r info_block("Subset result of a tibble is always a tibble.")`
@@ -115,23 +95,26 @@ favourite_color[c("name","year")]
 If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
 
 ```{r}
-favourite_color[["year"]]
-favourite_color$year
+favourite_colour[["year"]]
+favourite_colour$year
 ```
 
 ## tibble to/from file
 
 Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
-comma-separated-value (csv) format in this course. The functions involved for this purpose ar `write_csv` and `read_csv`.
+comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv`.
 For more details on reading/writing format see [readr_io0](readr_io0.html).
 
 let us now save our first tibble into a file in csv format:   
 
 ```{r}
-write_csv(x = favourite_color, path = "data/favourite_color.csv")
+write_csv(x = favourite_colour, path = "data/favourite_colour.csv")
 ```
 
-`favourite_color` tibble is written to `favourite_color.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
+`r todo( "where to explain explicit vs implicit function argument names?" )
+
+
+`favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
 
 ```
 name,year,colour
@@ -142,17 +125,31 @@ Wim,1994,Purple
 ```
 
 This way we can permanently store our results in files for later use. We can now read the csv file back into a R 
-object, e.g. `favourite_color_csv` :
+object, e.g. `favourite_colour_csv` :
 
 ```{r}
-favourite_color_csv <- read_csv(file = "data/favourite_color.csv")
+favourite_colour_csv <- read_csv(file = "data/favourite_colour.csv")
 ```
 
 `read_csv` gives a summary of the variables and their inferred types.
 
 ```{r}
-favourite_color_csv
+favourite_colour_csv
 ```
+
+## Type of tibble
+
+Now inspect the type of the tibble object we just created:
+
+```{r}
+class(favourite_colour)
+```
+
+A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in the differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+
+`r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
+
+`r todo("is help (?) already explained? It is used in the exercises.")`
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

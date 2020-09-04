@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 .Rbuildignore
-*.csv
 rooc.Rproj
 site
 workshop-may-2020
