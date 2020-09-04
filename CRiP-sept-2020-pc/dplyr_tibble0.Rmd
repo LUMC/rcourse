@@ -12,7 +12,7 @@ build_nocode(params)
 
  
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 
 
 A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
@@ -67,12 +67,18 @@ nrow(favourite_colour)  # number of observations (rows)
 dim(favourite_colour)   # dimensions : 4 rows and 3 columns 
 ```
 
-or top and bottom rows of the tibble: 
+## Head and tail
+
+Show top and bottom rows of the tibble: 
 
 ```{r}
 head(favourite_colour, 2)  # first 2 observations (rows)
 tail(favourite_colour, 3)  # last 3 observations (rows)
 ```
+
+With the second argument to `head` and `tail` functions you can control the number of rows.
+
+`r info_block("By default head and tail show 6 rows, i.e. when the second argument is omitted : head(favourite_colour) or tail(favourite_colour).")`
 
 ## subsetting:  [
 
@@ -111,9 +117,6 @@ let us now save our first tibble into a file in csv format:
 write_csv(x = favourite_colour, path = "data/favourite_colour.csv")
 ```
 
-`r todo( "where to explain explicit vs implicit function argument names?" )
-
-
 `favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
 
 ```
@@ -125,7 +128,7 @@ Wim,1994,Purple
 ```
 
 This way we can permanently store our results in files for later use. We can now read the csv file back into a R 
-object, e.g. `favourite_colour_csv` :
+environment variable, e.g. `favourite_colour_csv` :
 
 ```{r}
 favourite_colour_csv <- read_csv(file = "data/favourite_colour.csv")
@@ -139,7 +142,7 @@ favourite_colour_csv
 
 ## Type of tibble
 
-Now inspect the type of the tibble object we just created:
+Now inspect the type of the tibble we just created:
 
 ```{r}
 class(favourite_colour)
@@ -149,8 +152,6 @@ A tibble is in its core a 'data.frame', a base R data structure. For those of yo
 
 `r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
 
-`r todo("is help (?) already explained? It is used in the exercises.")`
-
 ```{r, child="_exercises_links.Rmd"}
 ``` 
 
@@ -158,5 +159,5 @@ A tibble is in its core a 'data.frame', a base R data structure. For those of yo
 ``` 
 
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 

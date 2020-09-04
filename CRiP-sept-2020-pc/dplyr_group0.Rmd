@@ -11,8 +11,9 @@ build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
 pulse <- read_pulse()
 ```
 
-```{r, child="_navigate.Rmd"} 
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
 
 Group per `age` and `gender`, note the tag `Groups: age, gender` in the output:
 
@@ -36,5 +37,6 @@ pulse %>% group_by(age,gender) %>% summarise(count=n(),meanHeight=mean(height), 
 ```{r, child="_exercises_links.Rmd"}
 ``` 
 
-```{r, child="_navigate.Rmd"} 
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```

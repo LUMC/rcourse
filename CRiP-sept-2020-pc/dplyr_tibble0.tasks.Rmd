@@ -61,16 +61,76 @@ mean(exercise_group[["height"]])
 
 ## Read tibbles from file
 
-1. Read csv files `pulse.csv` and `survey.csv` into R as variable objects `pulse` and `survey` respectively.
+1. Read `pulse.csv` data set into R and inspect its dimensions.
+
+```{r, message=FALSE}
+pulse <- read_csv(file = "pulse.csv")
+```
 
 ```{r}
-pulse <- read_csv(file = "pulse.csv")
+# two alternatives i) nrow and ncol function, ii) dim function.
+nrow(pulse) # number of rows
+ncol(pulse) # number of columns
+dim(pulse)  # dimensions (rows, columns)
+```
+
+2. Read `survey.csv` data set into R. 
+
+```{r, message=FALSE}
 survey <- read_csv(file = "survey.csv")
+```
+
+  - Inspect the dimensions.
+
+```{r}
+dim(survey)
+```
+
+  - Show the first 9 and the last 7 rows.
+
+```{r}
+head(survey,9)
+tail(survey,7)
+```
+
+  - Calculate the mean `age`.
+    
+```{r}
+mean(survey$age, na.rm = TRUE) 
+```
+
+  - (*) Calculate the mean height in survey data. See also ?mean for more help on `mean` function.
+
+```{r}
+# Here we use a second argument 'na.rm = TRUE' because there are missing values (NA) in 
+# the variable height. By default the mean function returns NA if it first argument, in this 
+# case variable 'height', contains any NA. The second argument 'na.rm = TRUE' changes this 
+# behaviour by disregarding the observations with missing height and calculates the mean 
+# of observations for which the height is available. 
+# 
+mean(survey$height, na.rm = TRUE) 
 ```
 
 ## Extra exercise*
 
-1. 
+In survey data:
+
+1. What is the mean height of the last 30 observations?
+
+```{r}
+survey_last_30 <- tail(survey,30)
+mean(survey_last_30$height, na.rm = TRUE)
+```
+
+2. What is the mean height of the joint first 15 and last 30 observations?
+
+```{r}
+# The function 'bind_rows' is used here to concatenate the two tibbles from the results of 
+# 'head' and 'tail' functions. The resulting tibble 'survey_first15_last30' has 45 observations.
+#
+survey_first15_last30 <- bind_rows(head(survey,15), tail(survey,30)) # combined observations
+mean(survey_first15_last30$height, na.rm = TRUE)  # mean of the combined observations
+```
 
 
    

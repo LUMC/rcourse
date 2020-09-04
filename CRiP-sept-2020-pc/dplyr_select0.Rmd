@@ -12,7 +12,7 @@ pulse <- read_pulse()
 ```
 
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 
 
 Use the `select` function to select variables (columns) from tibbles. Let's take the `pulse` dataset:   
@@ -90,5 +90,5 @@ select(pulse, name, age, everything())
 ``` 
 
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 

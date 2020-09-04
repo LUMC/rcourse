@@ -12,7 +12,7 @@ pulse <- read_pulse()
 ```
 
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 
 
 ## Single condition
@@ -40,5 +40,5 @@ filter(pulse, exercise == "high" |  exercise =="moderate")
 ``` 
 
 ```{r, echo=FALSE, results='asis'}
-alert_block(params)
+navigate_slots(params)
 ``` 

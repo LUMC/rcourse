@@ -11,8 +11,10 @@ build_nocode(params) # build nocode version of tasks ; replace with source("setu
 pulse <- read_pulse()
 ```
 
-```{r, child="_navigate.Rmd"} 
-``` 
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
 
 The pipe mechanism enables you to concentrate on the steps rather than the intermediate objects and is a convenient model for prototyping.
 
@@ -58,5 +60,6 @@ A less apparent advantage of the pipe mechanism is that the order of applying th
 ```{r, child="_exercises_links.Rmd"}
 ``` 
  
-```{r, child="_navigate.Rmd"}  
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```

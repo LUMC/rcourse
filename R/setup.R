@@ -52,6 +52,8 @@ info_block <- function(msg) {
   paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
 }
 
+navigate_slots <- function(...) alert_block(...)
+
 alert_block <- function(params,alert="alert-info", align="right") {
   .next <- next_slot(params$basename)
   .prev <- prev_slot(params$basename)

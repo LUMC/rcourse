@@ -11,8 +11,9 @@ build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
 pulse <- read_pulse()
 ```
 
-```{r, child="_navigate.Rmd"} 
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
 
 Descriptive statistics enable you to describe basic features of your data, e.g. counts, sum, mean, median, etc.
 
@@ -64,5 +65,7 @@ pulse %>% distinct(gender, exercise)
 ```{r, child="_exercises_links.Rmd"}
 ``` 
 
-```{r, child="_navigate.Rmd"} 
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
+

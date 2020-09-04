@@ -102,8 +102,8 @@ course:
       related:
       next:
       prev:
-    installation0:
-      title: "installation"
+    packages0:
+      title: "packages"
       subtitle: ""
       gaol:
       date: "01-09-2020"
@@ -124,7 +124,7 @@ course:
       related:
         dplyr_tibble1
         readr_io0
-        installation0
+        packages0
       next: dplyr_select0
       prev: basic_scripts0
     dplyr_tibble1:

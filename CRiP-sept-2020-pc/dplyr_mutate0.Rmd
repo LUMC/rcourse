@@ -12,8 +12,9 @@ pulse <- read_pulse()
 ```
 
 
-```{r, child="_navigate.Rmd"}  
-``` 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
 
 Use `mutate` to add new columns/variables from a selection of existing ones.
 
@@ -37,6 +38,7 @@ pulse %>%  mutate(BMI=weight/(height/100)^2) %>%
 
 ```{r, child="_related.Rmd"}  
 ``` 
-
-```{r, child="_navigate.Rmd"}  
-``` 
+ 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
