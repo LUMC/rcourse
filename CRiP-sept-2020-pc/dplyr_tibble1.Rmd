@@ -169,20 +169,35 @@ qa(msg)
 ## tibble $\leftrightarrow$ data.frame
 
 Often you may need to switch between `data.frame` and `tibble`. You can convert an existing `tibble` into 
-`data.frame` type using the function `data.frame()`: 
+`data.frame` type using the function `data.frame()`. Take for example `favourite_colour` from [tibble](dplyr_tibble0.html) lecture notes:  
+
+```{r}
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour
+class(favourite_colour)
+```
+
+`favourite_colour` is a tibble and is converted into as data.frame with:
 
 ```{r}
 favourite_colour_df <- data.frame(favourite_colour)
 favourite_colour_df
+```
+
+You can see that the output layout has changed, it does not report the dimensions and variable types, and you can check the type which pure `data.frame` without `tbl_df` and `tbl`:    
+
+```{r}
 class(favourite_colour_df)
 ```
  
 To do the reverse, from `data.frame` to `tibble`, use the function `as_tibble()`:
 
-```{r, eval=FALSE}
-t <- as_tibble(favourite_colour_df)
-t
-class(t) 
+```{r}
+favourite_colour_tibble <- as_tibble(favourite_colour_df)
+favourite_colour_tibble
+class(favourite_colour_tibble) 
 ```
 
 
@@ -197,8 +212,6 @@ class(t)
 ## CAREMA data set (?)
 ```
 
-```{r, child="_exercises_links.Rmd"}
-``` 
 
 ```{r, child="_navigate.Rmd"} 
 ``` 

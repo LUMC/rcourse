@@ -83,15 +83,15 @@ With the second argument to `head` and `tail` functions you can control the numb
 
 `r info_block("By default head and tail show 6 rows, i.e. when the second argument is omitted : head(favourite_colour) or tail(favourite_colour).")`
 
-## subsetting:  [
+## Select variables: [
 
-Often you may need to select certain variable, this can be done using square brackets `[` :
+Often you may need to select certain variables, this can be done using square brackets `[` :
 
 ```{r}
 favourite_colour["colour"]
 ```
 
-to subset combination of variables:
+or combination of variables:
 
 ```{r}
 favourite_colour[c("name","year")]
@@ -143,7 +143,7 @@ favourite_colour_csv <- read_csv(file = "data/favourite_colour.csv")
 favourite_colour_csv
 ```
 
-## Type of tibble
+## Type of a tibble
 
 Now inspect the type of the tibble we just created:
 
@@ -151,7 +151,8 @@ Now inspect the type of the tibble we just created:
 class(favourite_colour)
 ```
 
-A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in the differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+
 
 `r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
 
