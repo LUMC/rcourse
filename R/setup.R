@@ -54,6 +54,11 @@ info_block <- function(msg) {
 
 navigate_slots <- function(...) alert_block(...)
 
+trim_slot_name <- function(slot_id) {
+  base <- strsplit(sub("[0-9]+","",slot_id),"_")[[1]]
+  base[length(base)]  
+}
+
 alert_block <- function(params,alert="alert-info", align="right") {
   .next <- next_slot(params$basename)
   .prev <- prev_slot(params$basename)
@@ -95,6 +100,13 @@ related_slots <- function(base_name) {
       strsplit(rel," ")[[1]]
     else
       NULL
+}
+prev_slot <- function(base_name) {
+  read_schedule()[["course"]][["slots"]][[base_name]][["goal"]]
+}
+
+slot_param <- function(base_name, param) {
+  read_schedule()[["course"]][["slots"]][[base_name]][[param]]
 }
 
 read_pulse <- function() {

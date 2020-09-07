@@ -6,7 +6,10 @@
 if (!is.null(.related_slots)) {
   cat("## Related topics\n\n")
   for (slot in .related_slots) {
-    cat("<a href=\"", paste(slot,".html", sep="") ,"\">",slot,"</a> ")
+    ts <- trim_slot_name(slot)
+    goal <- slot_param(slot,"goal")
+    cat("<a href=\"", paste(ts,".html", sep="") ,"\">",ts,"</a> : ", goal )
+    cat("</p>")
   }
 }
 ```

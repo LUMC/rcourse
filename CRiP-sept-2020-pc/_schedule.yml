@@ -16,7 +16,7 @@ course:
     introduction0:
       title: "Introduction"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "13:00-13:15"
       venue: "venue"
@@ -28,7 +28,7 @@ course:
     basic_calculator0:
       title: "Calculator"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "13:15-13:45"
       venue: "venue"
@@ -41,7 +41,7 @@ course:
     basic_variables0:
       title: "Variables"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "13:45-14:15"
       venue: "venue"
@@ -54,7 +54,7 @@ course:
     basic_vectors0:
       title: "Basic vectors"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "14:30-15:00"
       venue: "venue"
@@ -68,7 +68,7 @@ course:
     basic_projects0:
       title: "RStudio projects"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "15:00-15:30"
       venue: "venue"
@@ -81,7 +81,7 @@ course:
     basic_scripts0:
       title: "Scripts/R Markdown"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "21-09-2020"
       time: "15:00-15:30"
       venue: "venue"
@@ -94,7 +94,7 @@ course:
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -105,7 +105,7 @@ course:
     packages0:
       title: "packages"
       subtitle: ""
-      gaol:
+      goal: "Install and use R packages"
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -116,7 +116,7 @@ course:
     dplyr_tibble0:
       title: "tibble"
       subtitle: ""
-      gaol:
+      goal: ""
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -130,7 +130,7 @@ course:
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""
-      gaol:
+      goal: "Comparison tibble vs data.frame"
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -141,7 +141,7 @@ course:
     readr_io0:
       title: "import/export data"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -152,7 +152,7 @@ course:
     dplyr_select0:
       title: "select"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -163,7 +163,7 @@ course:
     dplyr_filter0:
       title: "filter"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -174,7 +174,7 @@ course:
     dplyr_mutate0:
       title: "mutate"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -185,7 +185,7 @@ course:
     dplyr_pipe0:
       title: "pipe operator"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -196,7 +196,7 @@ course:
     dplyr_summarise0:
       title: "summarise"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -207,7 +207,7 @@ course:
     dplyr_group0:
       title: "group"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -218,7 +218,7 @@ course:
     dplyr_queries0:
       title: "queries"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -229,7 +229,7 @@ course:
     dplyr_join0:
       title: "join"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -240,7 +240,7 @@ course:
     tidyr_reshape0:
       title: "reshape"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -251,7 +251,7 @@ course:
     basic_factors0:
       title: "Factors"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -262,7 +262,7 @@ course:
     ggplot_basics0:
       title: "ggplot basics"
       subtitle: ""
-      gaol:
+      goal:
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
@@ -273,7 +273,7 @@ course:
     basic_vectors1:
       title: "vectors*"
       subtitle: ""
-      gaol: ""
+      goal: ""
       date: "01-09-2020"
       time: "09:00-09:30"
       venue: "venue"
