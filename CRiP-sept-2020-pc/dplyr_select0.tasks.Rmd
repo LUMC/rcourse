@@ -1,5 +1,5 @@
 ---
-title: "select (tasks)"
+title: "select (exercises)"
 # author: "R. Monajemi"
 ---
 
@@ -17,13 +17,18 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 survey <- read_survey()
 ```
 
+
+## Primary exercises
+
 Apply the following to survey data: 
 
-1) Rename the `m.i` variable to `system`.
-  
+1) Select `name` along with all categorical variables into a new tibble `survey_cats`.
+
 ```{r}
-select(survey, system=m.i, everything())
+survey_cats <- select(survey, name, gender, hand, fold, clap, exercise, smokes, m.i)
+survey_cats
 ```
+
 
 2) Reorder the variables as such that name,age and gender come first. 
 
@@ -32,8 +37,28 @@ select(survey, name,age,gender,everything())
 ```
 
 
-4) Deselect variables that relate to hand and/or arm (e.g. *.hnd, etc.)
+4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.)
 
 ```{r}
 select(survey, -span1,-span2,-hand,-fold,-clap)
 ```
+
+
+## Extra exercises (*)
+
+
+1) Rename the `m.i` variable to `system`.
+  
+```{r}
+# Option 1: very tedious, you need to type all the variable names and 
+# only rename the 'm.i' vraiable to 'system'
+#
+select(survey , name, gender, span1, span2, hand, fold, pulse, clap, 
+       exercise, smokes, height, system=m.i, age)
+# Option 2: shorter, but side-effect is that m.i (now system) comes at 
+# the front.
+select(survey, system=m.i, everything()) 
+# Option 3: use rename function (see ?rename). 
+rename(survey,system=m.i)
+```
+

@@ -30,11 +30,11 @@ select(pulse, name, age)
 > Does `pulse` still contain the variables 'name' and 'age'?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. Use assignment '<-' to a variable to keep the selection."
+msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. Use assignment '<-' to store the tibble in a new environment variable."
 qa(msg)
 ``` 
 
-In order to keep your selection as a separate object you'll need to assign the result into a new fresh object, e.g. `name_age`:
+In order to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `name_age`:
 
 ```{r}
 name_age <- select(pulse, name, age)
@@ -43,7 +43,7 @@ name_age
 
 ##  Variable order
 
-The order of the selected variables is reflected in the resulted tibble:  
+The order of the selected variables is reflected in the resulting tibble:  
 
 ```{r}
 select(pulse, age, name )
@@ -68,19 +68,19 @@ select(pulse, FirstName = name, Age = age)
 > What is the variable name in the pulse dataset, 'Age' or 'age'?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "age"
+msg <- "age, this because we only run select and do not store its result with assignment ('<-') back into pulse tibble."
 qa(msg)
 ``` 
 
 ## Reshuffle variables 
 
-With `select` we can reshuffle the variables. Sometimes tibbles may have large number of variables, you can bring more 'important' variables with `select` and a convenience function `evertything`:   
+With `select` we can reshuffle the variables. Sometimes tibbles may have large number of variables, you can bring the more 'important' variables in front with `select` and a convenience function `evertything`:   
 
 ```{r}
 select(pulse, name, age, everything()) 
 ```
 
-`everything` function lists all other variable other than `name` and `age` to be placed after `name` and `age` by `select`.
+`everything` function lists all other variable other than `name` and `age` and `select` function places them after `name` and `age`.
 
 
 ```{r, child="_exercises_links.Rmd"}
