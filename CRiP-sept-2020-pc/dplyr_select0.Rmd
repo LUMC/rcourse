@@ -27,18 +27,18 @@ pulse
 select(pulse, name, age)
 ```
 
-> Does `pulse` still contain the variables 'name' and 'age'?
+> After this selection, does `pulse` tibble still contain the variables 'name' and 'age'?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. Use assignment '<-' to store the tibble in a new environment variable."
+msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. You can check this by entering 'pulse' in the R console." 
 qa(msg)
 ``` 
 
-In order to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `name_age`:
+If you want to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `pulse_name_age_only`:
 
 ```{r}
-name_age <- select(pulse, name, age)
-name_age
+pulse_name_age_only <- select(pulse, name, age)
+pulse_name_age_only
 ```
 
 ##  Variable order
