@@ -27,10 +27,18 @@ next_slots <- sapply(names(slots), function(x) {
 }) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) %>% 
   mutate(dashes=FALSE)
 
-edges <- bind_rows(rel_slots, next_slots) %>% rename(from=source,to=target)
+# edges <- bind_rows(rel_slots, next_slots) %>% rename(from=source,to=target)
+edges <- next_slots %>% rename(from=source,to=target)
+
 nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
 nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
+
+# TEMPORARY SOLTION
+# barmsijs
+# nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")
+# local
 nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
+
 # data/time
 nodes$title <- sapply(nodes$id, function(s) {
   paste("<a>",slots[[s]][["title"]],"</a><br><br>","data: ", slots[[s]][["date"]], "<br> time:",slots[[s]][["time"]]) 
