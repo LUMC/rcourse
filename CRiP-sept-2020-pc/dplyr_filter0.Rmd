@@ -15,10 +15,13 @@ pulse <- read_pulse()
 navigate_slots(params)
 ``` 
 
+In the previous section with could select variables (columns) with all its values using the `select` function. In this section we are intersted in collection of 
+observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a condition describing the values to be filtered on.   
+
 ## Single condition
 
 ```{r}
-filter(pulse, age == 22 ) 
+filter(pulse, age == 22 ) # filter out all observations with age equal to 22 
 ```
 
 ## Multiple conditions 
