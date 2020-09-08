@@ -1,0 +1,49 @@
+---
+title: "Factors (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+```
+
+## Primary exercises
+
+1. In a study participants were asked whether their sport activity is `none`, `oncePerWeek`, `severalPerWeek` or `daily`. Build a proper factor for the responses below. Store the factor in variable `w`. Print the factor. Write the code to count the numbers of occurrences of each level and print the counts.
+```
+severalPerWeek, none, none, oncePerWeek, oncePerWeek, 
+oncePerWeek, oncePerWeek, ?, none, none
+```
+
+```{r}
+v <- c( "severalPerWeek", "none", "none", "oncePerWeek", "oncePerWeek", "oncePerWeek", "oncePerWeek", NA, "none", "none" )
+w <- factor( v, levels = c( "none", "oncePerWeek", "severalPerWeek", "daily" ) )
+w
+fct_count( w )
+```
+
+2. A factor with a random content.  
+Read help about function `sample`. Then study the following lines of code and understand the results. Next, understand why an error is generated and use `replace` argument to generate a vector with 100 samples. Store this vector in a variable `v` and build a factor `w` from it. Finally, count the numbers of occurrences of each level in `w`. Ensure, that levels are in the provided order.
+
+```{r error=TRUE,echo=TRUE}
+lvs <- c( "none", "oncePerWeek", "severalPerWeek", "daily" )
+sample( lvs, 3 )
+sample( lvs, 3 )
+sample( lvs, 3 )
+sample( lvs, 100 )
+```
+
+```{r}
+v <- sample( lvs, 200, replace = TRUE )
+w <- factor( v, levels = lvs )
+w
+fct_count( w )
+```
+
