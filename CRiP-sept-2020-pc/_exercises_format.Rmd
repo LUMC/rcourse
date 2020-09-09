@@ -1,0 +1,8 @@
+## _Format_
+
+_Work in the R Markdown document `exercises-NNNN.Rmd` (put your student number instead of `NNNN`).  
+Make there a new section for the current exercises and develop solutions in it.  
+Do not use copy-paste, but type code manually (to make errors and to learn how to correct them).  
+Use `Run chunk` and `Knit` commands to test your code.  
+Remember that a chunk with `library( tidyverse )` is needed at the top of the document.  
+Later in the course we will ask you to send this document._
