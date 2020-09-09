@@ -79,7 +79,7 @@ Or, when you have an extra closing parenthesis:
 12/(2*3))
 ```
 
-While typing, RStudio may automatically inserts a closing parenthesis.  
+While typing, RStudio may automatically insert a closing parenthesis.  
 If you don't like this, change option _Insert matching parens/quotes_ in menu `r show_menu( c( "Tools", "Global Options...", "Code", "Editing" ) )`.
 
 ## Multiline commands

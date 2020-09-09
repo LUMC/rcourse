@@ -49,7 +49,7 @@ x <- 5
 
 ## No assignment, no change
 
-Assignment is needed to store a result.  
+Variable assignment is needed to store a result.  
 When there is no assignment, the result is printed to screen and lost.  
 
 For example, the sequence of statements below is the wrong way to "increase _x_ by one".  

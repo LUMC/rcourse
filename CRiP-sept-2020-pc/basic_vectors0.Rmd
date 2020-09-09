@@ -26,7 +26,7 @@ Some examples of a vector (and its **type**):
 - Heights of students (a vector of numbers, `numerical`).
 - Names of students (a vector of texts, `character`).
 - Whether students have siblings (a vector of FALSE/TRUE values, `logical`).
-- Eyes color of students (a vector of values from a limited choice list, `factor`).
+- Eye color of students (a vector of values from a limited choice list, `factor`).
 
 Vector is the primary data structure of the R language.
 

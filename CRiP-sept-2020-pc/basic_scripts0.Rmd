@@ -26,6 +26,7 @@ An R script allows to save R commands (without saving, the commands given in the
 ## What is an R Markdown document
 
 An [**R Markdown** document](https://rmarkdown.rstudio.com/) (with extension `.Rmd`, for example  `my_report.Rmd`) is an extension of an R script.  
+It is a format for developing elegant and reproducible reports.  
 It is a simple text file consisting of:
 
 - **Chunks** written in R language, where data analysis is performed.
