@@ -53,12 +53,24 @@ The course will be covered in 3,5 days :
 Monday    21-09-2020 13:15-17:00  : Introduction, Calculator, Variables, Basic Vectors, 
                                     RStudio projects, Scripts/R Markdown   
 Tuesday   22-09-2020 09:00-17:00  
-                     09:00-12:00  : tibble, select, filter
-                     13:00-17:00  : mutate, pipe operator, summarize, group
+                     09:00-10:00  : R Markdown & RStudio (Q&A)  (SzK)
+                                    
+                      10:00-12:00 : introduction tidyverse
+                                  : tibble : show how to read the pulse dataset
+                                      RM : add top_n to extra exercises
+                                  : select, filter (conditionals), mutate 
+                                  : 1h off
+                     13:00-17:00  : pipe operator, summarise : 20min
+                                    1h students work on exercises
+                                    10min do sample exercise
+                                    group, arrange?, queries : 20min
+                                    
+                                    
 Wednesday 23-09-2020 09:00-17:00
                      09:00-12:00  : queries, join, reshape
-                     13:00-17:00  : factors, ggplot
-Thursday  22-09-2020 09:00-17:00
+                     13:00-17:00  : ggplot: scatter,boxplot, facet, 
+Thursday  22-09-2020 09:00-17:00  : lists with t.test example, formula with lm example  , 
+                                  descriptives 
 ```
 
 <!--
