@@ -13,21 +13,21 @@ navbar:
     - text: "Data"
       icon: fa-table
       href: data.html
-    - text: "More"
-      icon: fa-gear
-      menu:
-        - text: "Online help and materials"
-          href: 
-        - text: "Contact"
-          href: contact.html
-        - text: "---------"
-        - text: "Past courses"
-          href: 
+#    - text: "More"
+#      icon: fa-gear
+#      menu:
+#        - text: "Online help and materials"
+#          href: 
+#        - text: "Contact"
+#          href: contact.html
+#        - text: "---------"
+#        - text: "Past courses"
+#          href: 
   right:
-    - icon: fa-download
-      href: crip2020.zip
+ #   - icon: fa-download
+#      href: crip2020.zip
     - icon: fa-question fa-lg
-      href: 
+      href: contact.html
 output:
   html_document:
     theme:     spacelab  # (e.g.: spacelab, lumen, readable,yeti) see https://www.datadreaming.org/post/r-markdown-theme-gallery/

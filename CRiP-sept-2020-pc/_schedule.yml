@@ -88,7 +88,7 @@ course:
       tasks : "no" # {yes | no}
       related:
       next:
-        dplyr_tibble0
+        tidyverse0
       prev:
         basic_projects0
     tidyverse0:
@@ -100,8 +100,8 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next:
-      prev:
+      next: dplyr_tibble0
+      prev: basic_scripts0
     packages0:
       title: "packages"
       subtitle: ""

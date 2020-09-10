@@ -101,9 +101,6 @@ related_slots <- function(base_name) {
     else
       NULL
 }
-prev_slot <- function(base_name) {
-  read_schedule()[["course"]][["slots"]][[base_name]][["goal"]]
-}
 
 slot_param <- function(base_name, param) {
   read_schedule()[["course"]][["slots"]][[base_name]][[param]]

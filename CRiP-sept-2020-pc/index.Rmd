@@ -14,18 +14,17 @@ The course aims at helping researchers climb this curve, enabling them to perfor
 After the course you will be able to:
 
 - understand and write simple R programs
-- use R to perform simple statistical analyses of your own data tables
+- use R to perform ~~simple~~ statistical analyses of your own data tables
 - generate analysis reports from your own data in html or pdf formats
 
 We will cover the following topics:
 
 - R expressions
-- R data objects (vectors (arrays), data frames (tables), lists) creation and usage
+- Data objects (vectors , data frames, lists)
 - [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)]
-- R functions for descriptive statistics and linear model fitting; R formula objects
-- installing additional libraries
-- histograms, scatter plots, boxplots (in pure R and with [ggplot2](http://ggplot2.org/)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf)]
-- filtering, sorting, summarizing of a table; joining/merging multiple tables (with [dplyr](https://cran.r-project.org/web/packages/dplyr/README.html) and [tidyr](https://github.com/hadley/tidyr)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)]
+- R packages : installation and usage
+- Data manipulation : filtering, sorting, summarising of a table; joining/merging multiple tables (with [dplyr](https://cran.r-project.org/web/packages/dplyr/README.html) and [tidyr](https://github.com/hadley/tidyr)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)]
+- Visualisation: histograms, scatter plots, boxplots (in pure R and with [ggplot2](http://ggplot2.org/)) [[cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf)]
 
 ## Prerequisites
 
@@ -45,7 +44,24 @@ In case of failure, please inform the teachers during the first day of the cours
 
 - **install package tidyverse**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
 - **install packages needed for RMarkdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing RMarkdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
-  
+
+## How to pass this course
+
+```
+The course will be covered in 3,5 days : 
+
+Monday    21-09-2020 13:15-17:00  : Introduction, Calculator, Variables, Basic Vectors, 
+                                    RStudio projects, Scripts/R Markdown   
+Tuesday   22-09-2020 09:00-17:00  
+                     09:00-12:00  : tibble, select, filter
+                     13:00-17:00  : mutate, pipe operator, summarize, group
+Wednesday 23-09-2020 09:00-17:00
+                     09:00-12:00  : queries, join, reshape
+                     13:00-17:00  : factors, ggplot
+Thursday  22-09-2020 09:00-17:00
+```
+
+<!--
 ## Materials
 
 The course materials are served:
@@ -54,4 +70,4 @@ The course materials are served:
 - as a [.zip file](`r params$RCourseURL`/R_course.zip)
 - as a [.tar.gz file](`r params$RCourseURL`/R_course.tgz)
 
-The materials contain a [`data` directory](`r params$RCourseURL`/data) with the __data__ __files__ used in the presentations/tasks. The directory can be also accessed at `r params$RCourseURL`/data
+The materials contain a [`data` directory](`r params$RCourseURL`/data) with the __data__ __files__ used in the presentations/tasks. The directory can be also accessed at `r params$RCourseURL`/data -->

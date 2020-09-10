@@ -33,7 +33,7 @@ edges <- next_slots %>% rename(from=source,to=target)
 nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
 nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
 
-# TEMPORARY SOLTION
+# TEMPORARY SOLTION URL
 # barmsijs
 # nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")
 # local
