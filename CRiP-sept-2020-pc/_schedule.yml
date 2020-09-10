@@ -123,10 +123,9 @@ course:
       tasks : "yes" # {yes | no}
       related:
         dplyr_tibble1
-        readr_io0
         packages0
       next: dplyr_select0
-      prev: basic_scripts0
+      prev: tidyverse0
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""
@@ -138,17 +137,6 @@ course:
       related:
       next:
       prev:
-    readr_io0:
-      title: "import/export data"
-      subtitle: ""
-      goal:
-      date: "01-09-2020"
-      time: "09:00-09:30"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      next:
-      prev: dplyr_tibble0
     dplyr_select0:
       title: "select"
       subtitle: ""

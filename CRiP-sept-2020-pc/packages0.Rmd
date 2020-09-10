@@ -28,13 +28,13 @@ There are various overview sites cataloguing packages, however the easiest way t
 
 > Install packages
 
-CRAN is the default archive accessible from R and packages can be installed either by entering the function call `install.packages("your-package-name")` in the console or use the `Packages` pane in RStudio and click on install. Enter the following in your R console: 
+CRAN is the default archive accessible from R and packages can be installed either by entering the function call `install.packages("your-package-name")` in the console:
 
 ```{r, eval=FALSE}
 install.packages("haven")
 ```
 
-The same can be achieved selecting the `Packages` pane and clicking install  and in the pop-up dialogue enter the package name, i.e. `haven`  
+The same can be achieved by selecting the `Packages` pane and clicking install  and in the pop-up dialogue enter the package name, i.e. `haven`  
 
 `r info_block("You only need to install a package once.")`
 

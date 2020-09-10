@@ -1,8 +1,7 @@
-## _Format_
+ 
 
-_Work in the R Markdown document `exercises-NNNN.Rmd` (put your student number instead of `NNNN`).  
-Make there a new section for the current exercises and develop solutions in it.  
-Do not use copy-paste, but type code manually (to make errors and to learn how to correct them).  
-Use `Run chunk` and `Knit` commands to test your code.  
-Remember that a chunk with `library( tidyverse )` is needed at the top of the document.  
-Later in the course we will ask you to send this document._
+```{r, results='asis', echo=FALSE}
+cat("<div class=\"alert alert-danger\" role=\"alert\" style=\"text-align: left;\" >")
+cat("**Format** Work in the R Markdown document `exercises-NNNN.Rmd` (replace `NNNN` with your student number if you have one, otherwise your name). Make there a new section for the current exercises and develop solutions in it.  Do not use copy-paste, but type code manually (to make errors and to learn how to correct them). Use `Run chunk` and `Knit` commands to test your code.  Your minimal R Markdown document for the exercises should contain a single R chunk with `library(tidyverse)` at the top of the document. [...]")
+cat("</div>\n")
+```

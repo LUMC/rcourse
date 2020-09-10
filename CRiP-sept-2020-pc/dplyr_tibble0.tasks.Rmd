@@ -1,5 +1,5 @@
 ---
-title: "tibble (exercises)"
+title: "tibble (practice)"
 # author: "R. Monajemi"
 #params:
 #  solutions: "yes"
@@ -20,7 +20,9 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 ```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
 ``` 
 
-## Create tibble  
+## Primary exercises
+
+### Create tibble  
   
 1. Create a tibble `exercise_group` for a group of individuals with names {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170}, weights {56.0, 87.0, 54.0, 80.0, 58.5} and frequency of exercise {high, high, low, moderate, low}.
 
@@ -33,7 +35,7 @@ exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
 exercise_group
 ```
 
-## tibble subset
+### tibble subset
 
 1. Take the tibble `exercise_group` from the previous exercise and create a new tibble without the `height` and `weight` variables.
 
@@ -42,7 +44,7 @@ exercise_group_sub <- exercise_group[c("name","exercise")]
 exercise_group_sub
 ```
 
-## Extract variables as vectors
+### Extract variables as vectors
 
 1. Given the tibble `favourite_colour`, how old were the subjects by the end of 2019?
 
@@ -62,7 +64,7 @@ favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"),
 mean(exercise_group[["height"]]) 
 ```
 
-## Read tibbles from file
+### Read tibbles from file
 
 1. Read `pulse.csv` data set into R and inspect its dimensions.
 
@@ -114,7 +116,7 @@ mean(survey$age, na.rm = TRUE)
 mean(survey$height, na.rm = TRUE) 
 ```
 
-## Extra exercise*
+## Extra exercises
 
 In survey data:
 

@@ -13,7 +13,7 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-A tibble is the upgraded version of [data.frame]() data type with some convenient additional features, moreover, it is the standard data structure in [tidyverse](https://www.tidyverse.org/). In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
+A **tibble** is the upgraded version of base R **data.frame** data type with some convenient additional features, moreover, it is the standard data structure in [tidyverse](https://www.tidyverse.org/). In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
 
 ## Create
 
@@ -65,7 +65,7 @@ qa(msg)
 ``` 
 
 
-`data.frame` function by default converts all character variables into [factor]():
+`data.frame` function by default converts all character variables into [factor](forcats_factor0.html):
 
 ```{r}
 class(t1$name)
@@ -73,19 +73,19 @@ class(t1$favorite)
 ```
 
 In general, not all character variables are categorical, for example it makes less sense to have the variable 
-`name` as a factor, whereas `favourite` is a good candidate. `tibble` does not make any assumptions on the type of the variable treats all character variables as base type character `chr`.
+`name` as a factor, whereas `favourite` is a good candidate. `tibble` does not make any assumptions on the type of the variable and treats all character variables as base type character `chr`.
 
 ## column selection 
 
 Columns selection with tibble always results into a tibble, this is not the case with data.frame. 
 
 ```{r}
-# data.frame
-t1[3]  
-t1[,3]
 # tibble
 t2[3]  
 t2[,3]
+# data.frame
+t1[3]  
+t1[,3]
 ```
 
 Selecting a single column with data.frame using comma results in a vector, and not a data frame as is the case when selecting from a tibble.
@@ -160,8 +160,8 @@ t2$fa   # t2 is a tibble
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "Having a partial call such as t1\\$fa assumes that t1 will never be updated with a new 
-column called fa. Because when that happens then your r script with call t1\\$fa will no 
-longer result into t1\\$favourite bu the a more exact match t1\\$fa."
+column called fa. Because when that happens then your R script with call t1\\$fa will no 
+longer result into t1\\$favourite but to a more exact match t1\\$fa."
 qa(msg)
 ``` 
 
@@ -186,7 +186,7 @@ favourite_colour_df <- data.frame(favourite_colour)
 favourite_colour_df
 ```
 
-You can see that the output layout has changed, it does not report the dimensions and variable types, and you can check the type which pure `data.frame` without `tbl_df` and `tbl`:    
+You can see that the output layout has changed, it does not report the dimensions and variable types, and you can check the type which is a base `data.frame` without `tbl_df` and `tbl`: 
 
 ```{r}
 class(favourite_colour_df)

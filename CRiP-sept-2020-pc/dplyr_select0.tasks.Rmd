@@ -1,5 +1,5 @@
 ---
-title: "select (exercises)"
+title: "select (practice)"
 # author: "R. Monajemi"
 ---
 
@@ -44,7 +44,7 @@ select(survey, -span1,-span2,-hand,-fold,-clap)
 ```
 
 
-## Extra exercises (*)
+## Extra exercises
 
 
 1) Rename the `m.i` variable to `system`.

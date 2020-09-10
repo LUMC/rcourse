@@ -8,7 +8,7 @@ if (!is.null(.related_slots)) {
   for (slot in .related_slots) {
     ts <- trim_slot_name(slot)
     goal <- slot_param(slot,"goal")
-    cat("<a href=\"", paste(ts,".html", sep="") ,"\">",ts,"</a> : ", goal )
+    cat("<a href=\"", paste(slot,".html", sep="") ,"\">",ts,"</a> : ", goal )
     cat("</p>")
   }
 }
