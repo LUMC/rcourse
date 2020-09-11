@@ -82,9 +82,15 @@ person[[ 'name' ]]
 person[[ 'children' ]]
 ```
 
-**Add a new element** to the list using:
+Try to **add a new element** to the list using:
 ```{r}
 person[[ 'smoker' ]] <- TRUE
+person
+```
+
+and next **change the element**:
+```{r}
+person[[ 'smoker' ]] <- FALSE
 person
 ```
 
