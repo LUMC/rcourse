@@ -13,16 +13,14 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-## Concept of a list
-
-A [list](http://cran.r-project.org/doc/manuals/r-release/R-lang.html#List-objects) can be thought of as zero or more data elements (of _any type_), kept in order.  
-The elements can be accessed by their position (first element, second element, ... ).  
-Typically the elements are also named and consequently can be also accessed by names.
+A **list** can be thought of as zero or more data elements (of _any type_), kept in order.  
+The elements can be accessed by their **position**  (or **index**): first element, second element, ...  
+Typically the elements are also named and consequently can be also accessed by the **names**.
 
 A list allows to keep together related information.  
 For example, functions often return lists when they calculate more than one value at once.
 
-## Simple list
+## Create a list
 
 Type the following code to **manualy create** a list and store it in a variable `person`: 
 ```{r}
@@ -49,7 +47,7 @@ It gives a compact display of data stored in a variable and is useful for a `lis
 str( person )
 ```
 
-## Length and elements of a list by position
+## Length and elements by position
 
 Use `length` to find the **number of elements** in a list:
 ```{r}
@@ -69,7 +67,7 @@ class( person[[1]] )
 class( person[[2]] )
 ```
 
-## Names and elements of list by name
+## Names and elements name
 
 To **get names** of all elements of a list enter:
 ```{r}

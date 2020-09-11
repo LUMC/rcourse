@@ -259,7 +259,7 @@ course:
       prev: "basic_factors0"
       next: "ggplot_basics0"
     ggplot_basics0:
-      title: "ggplot basics"
+      title: "ggplot2"
       subtitle: ""
       goal:
       date: "01-09-2020"
