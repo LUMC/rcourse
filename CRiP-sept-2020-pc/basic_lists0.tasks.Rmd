@@ -46,6 +46,27 @@ scores[[ "Dan" ]] <- c( scores[[ "Dan" ]], c(8,8,6,7) )
 scores
 ```
 
+3. *A list returned from a function*.  
+For this exercise we need two random numerical vectors.  
+Let's create `x` and `y`, each of 30 elements sampled from the normal distribution: `x <- rnorm( 30 )` and `y <- rnorm( 30 )`.  
+Print these vectors.  
+  \
+The function `cor.test` tests for association between corresponding elements of two vectors.  
+Use `h <- cor.test( x, y )` and print `h` to see a report of the association test.  
+Internally `h` is stored as a list. Print names of the elements stored in `h`.  
+Now, read `Help` for `cor.test`. In the section `Value` you will see the description of the `h` elements.  
+Get directy the values of elements `estimate` and `p.value`.
+```{r}
+x <- rnorm( 30 )
+y <- rnorm( 30 )
+x
+y
+h <- cor.test( x, y )
+h
+names( h )
+h[[ 'estimate' ]]
+h[[ 'p.value' ]]
+```
 
 ## Extra exercises
 
