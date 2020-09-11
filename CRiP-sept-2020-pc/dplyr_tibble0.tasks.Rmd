@@ -1,5 +1,5 @@
 ---
-title: "tibble (practice)"
+title: "Tibble (practice)"
 # author: "R. Monajemi"
 #params:
 #  solutions: "yes"

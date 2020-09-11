@@ -12,6 +12,7 @@ knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 ```{r, child="_navigate.Rmd"}  
 ``` 
 
+## tidyverse package
 
 [Tidverse](https://www.tidyverse.org/) is a colection of R packages which we will be using intensively for the remainder of this course. If you haven't installed `tidyverse` then you can do this with:
 
@@ -42,10 +43,24 @@ Something similar to the following will appear on your screen after loading tidy
 
 It shows the sub-packages and the versions and also some conflicts. 
 
-`r show_warning("You may ignore the Conflicts")`
+`r show_warning("You may ignore these Conflicts.")`
 
 You now have access to a powerful set of functions for **data manipulation and visualisation**. 
 
+## outline
+
+- Data transformation with dplyr ([cheat sheet](pdf/data-transformation.pdf){target="_blank"})
+  - tibble : a two-dimensional data structure with rows and columns
+  - functions to manipulate tibble:
+    - select : extract columns
+    - filter : extract rows
+    - mutate : add a new column
+  - pipe operator `%>%` 
+  - summaries and sorting 
+  - grouping
+  - queries 
+  - join : combining tables
+- reshape : change the table layout ([cheat sheet](pdf/data-import.pdf){target="_blank"})  
 
 ## Links 
 - [Tidyverse](https://www.tidyverse.org/)

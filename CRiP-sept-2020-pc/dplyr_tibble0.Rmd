@@ -1,5 +1,5 @@
 ---
-title: 'tibble'
+title: 'Tibble'
 # author: "R. Monajemi"
 params:
   basename: "dplyr_tibble0"

@@ -1,5 +1,5 @@
 ---
-title: 'mutate'
+title: 'Mutate'
 # author: "R. Monajemi"
 params:
   basename: "dplyr_mutate0"

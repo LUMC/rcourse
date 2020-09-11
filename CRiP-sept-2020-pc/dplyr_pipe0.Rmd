@@ -1,5 +1,5 @@
 ---
-title: '%>% : pipe operator'
+title: '%>% : Pipe operator'
 # author: "R. Monajemi"
 params:
   basename: "dplyr_pipe0"

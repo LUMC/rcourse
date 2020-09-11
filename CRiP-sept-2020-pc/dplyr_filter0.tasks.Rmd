@@ -1,5 +1,5 @@
 ---
-title: "filter (practice)"
+title: "Filter (practice)"
 # author: "R. Monajemi"
 ---
 
@@ -18,6 +18,10 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 
 survey <- read_survey()
 ```
+
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
 
 
 1) Select teenagers, assume age range between and including 10 and 19.
@@ -56,12 +60,17 @@ nrow( filter(survey, (smokes %in% c("regul","occas")) & exercise=="none" & gende
 
 ```{r}
 # men
-none_smoker_sportsmen <- nrow( filter(survey, smokes=="never" & exercise=="freq" & gender=="male") )
+none_smoker_sportsmen <- nrow( filter(survey, smokes=="never"  & 
+                                              exercise=="freq" & 
+                                              gender=="male") )
 total_men <- nrow( filter(survey, gender=="male") ) 
-none_smoker_sportsmen/total_men
+none_smoker_sportsmen / total_men
+
 # women
-none_smoker_sportswomen <- nrow( filter(survey, smokes=="never" & exercise=="freq" & gender=="female") )
+none_smoker_sportswomen <- nrow( filter(survey, smokes=="never"  & 
+                                                exercise=="freq" & 
+                                                gender=="female") )
 total_women <- nrow( filter(survey, gender=="female") ) 
-none_smoker_sportswomen/total_women
+none_smoker_sportswomen / total_women
 ```
 

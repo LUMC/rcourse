@@ -1,5 +1,5 @@
 ---
-title: "Summarise(practice)"
+title: "Summarise (practice)"
 # author: "R. Monajemi"
 ---
 
@@ -13,6 +13,14 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 } else {
     knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
+
+survey <- read_survey()
 ```
 
-<!-- put content here ... -->
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+## Extra exercises
