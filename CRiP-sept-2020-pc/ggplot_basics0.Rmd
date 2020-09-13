@@ -10,6 +10,10 @@ build_nocode(params)
 pulse <- read_pulse()
 ```
 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 
+
 The [ggplot2](https://ggplot2.tidyverse.org/) library is a part of the `tidyverse` package.  
 Citing the original description:
 
@@ -17,7 +21,7 @@ Citing the original description:
 
 _Remember to use `library( tidyverse )` at the beginning of your R Markdown document._  
 _Load the `pulse.csv` table into the `pulse` variable._  
-_Practice in an R Markdown document and it `Knit` regularly to see the generated report._
+_Practice in an R Markdown document and `Knit` it regularly to see the generated report._
 
 ## A simple scatter plot
 

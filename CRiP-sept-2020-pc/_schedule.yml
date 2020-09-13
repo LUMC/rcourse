@@ -268,6 +268,17 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "basic_lists0"
+      next: "ggplot_scales0"
+    ggplot_scales0:
+      title: "scales"
+      subtitle: ""
+      goal:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_basics0"
       next:
     basic_vectors1:
       title: "vectors*"
