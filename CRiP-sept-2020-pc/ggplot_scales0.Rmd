@@ -24,9 +24,9 @@ Majority of commands to modify scales start with `scale_` followed by the name o
 
 ## Location scales
 
-These examples assume that a continuous variable is used for `x` (horizontal) or `y` (vertical) scales.
+These examples assume that a continuous variable is used for the **location scales**: `x` (horizontal) or `y` (vertical).
 
-Try the following code to change the label of the vertical axis:
+Try the following code to change the **label** of the vertical axis:
 ```{r}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
@@ -34,7 +34,7 @@ ggplot( pulse ) +
   scale_y_continuous( name = "Height [cm]" )
 ```
 
-Now, add an extra argument `limits` to show points with `height` in a certain range:
+Now, add an extra argument `limits` to only show points with `height` in a certain range:
 ```{r}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
@@ -45,8 +45,16 @@ ggplot( pulse ) +
   )
 ```
 
-Try the extra argument `breaks` to put ticks on provided positions:
-```{r}
+You might see a **warning**: the current version of the `ggplot2` library seems to have a bug.  
+Indeed, some points are filtered out by the `limit` argument but this is intentional and should not be reported as a warning.  
+You may **disable chunk warnings** by adding an option to the chunk header:
+````{r,result="as.is",echo=FALSE}
+cat( "```{r warning=FALSE}\nggplot( ... ) + ...\n```\n" )
+````
+
+
+Try the extra argument `breaks` to put ticks at provided positions:
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -62,12 +70,12 @@ ggplot( pulse ) +
 
 These examples assume that a continuous variable is used for `color`.
 
-In general we advise to use [**Viridis color scales**](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) (citing: _"The viridis scales provide colour maps that are perceptually uniform in both colour and black-and-white. They are also designed to be perceived by viewers with common forms of colour blindness."_).
+In general we advise to use the [**Viridis color scales**](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) (citing: _"The viridis scales provide colour maps that are perceptually uniform in both colour and black-and-white. They are also designed to be perceived by viewers with common forms of colour blindness."_).
 
 Try first the following code.  
 Then add `option = "A"` argument to `scale_color_viridis_c()`.  
 Values from `"A"` to `"E"` provide different color mappings.
-```{r}
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = age, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -77,7 +85,7 @@ ggplot( pulse ) +
 
 It is also possible to have a continuous transition between two manually given colors.  
 Try `low` and `high` arguments of `scale_color_continuous`:
-```{r}
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = age, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -86,7 +94,7 @@ ggplot( pulse ) +
 ```
 
 Or try `scale_color_gradientn` to have continuous mapping through multiple colors:
-```{r}
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = age, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -100,9 +108,10 @@ ggplot( pulse ) +
 
 These examples assume that a categorical variable is used for `color`.
 
-Also for categorical (discrete) variables a [Viridis color scheme](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) is advisable.  
-Try the code below. Here the argument `option` can also be used in `scale_color_viridis_d`.
-```{r}
+Also for categorical (discrete) variables the [Viridis color scheme](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) is advisable.  
+Try the code below.  
+Change the argument `option` of `scale_color_viridis_d` for different color mappings.
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -110,8 +119,8 @@ ggplot( pulse ) +
   scale_color_viridis_d( option = "B" )
 ```
 
-Another possibility is to use `scale_color_manual`, which declares that the color variable is categorical and that you want to manually declare which color should be used for which `values` of your data:
-```{r}
+Another possibility is to use `scale_color_manual`, which declares that the color variable is categorical and that you want to manually declare a color for each category with the `values` argument:
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -119,8 +128,8 @@ ggplot( pulse ) +
   scale_color_manual( values = c( "high" = "red", "moderate" = "gray60", "low" = "blue" ) )
 ```
 
-Note below, how to use `\n` symbol to have multiple lines of text in the title of the color legend:
-```{r}
+Below observe how to use `\n` symbol to enforce multiple lines of text in the title of the color legend:
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -132,7 +141,7 @@ ggplot( pulse ) +
 ```
 
 Finally, try the `breaks` argument to enforce the order of values in the legend:
-```{r}
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
@@ -149,7 +158,7 @@ ggplot( pulse ) +
 `shape` must represent a categorical variable.  
 
 Add `scale_shape_manual` to the previous example to manually declare which shapes to use for `female` and `male`:
-```{r}
+```{r warning=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, color = exercise, shape = gender ) +
   geom_point( size = 3, alpha = 0.8 ) +
