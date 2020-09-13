@@ -279,6 +279,17 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_basics0"
+      next: "ggplot_facets_themes0"
+    ggplot_facets_themes0:
+      title: "facets"
+      subtitle: ""
+      goal:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_scales0"
       next:
     basic_vectors1:
       title: "vectors*"

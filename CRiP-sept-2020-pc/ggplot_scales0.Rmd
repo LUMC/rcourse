@@ -28,23 +28,33 @@ These examples assume that a continuous variable is used for `x` (horizontal) or
 
 Try the following code to change the label of the vertical axis:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]" )
 ```
 
 Now, add an extra argument `limits` to show points with `height` in a certain range:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
-  scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) )
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
+  scale_y_continuous( 
+    name = "Height [cm]", 
+    limits = c( 130, 200 ) 
+  )
 ```
 
 Try the extra argument `breaks` to put ticks on provided positions:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
-  scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ), breaks = c( 130, 135, 150, 175, 180 ) )
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
+  scale_y_continuous( 
+    name = "Height [cm]", 
+    limits = c( 130, 200 ), 
+    breaks = c( 130, 135, 150, 175, 180 ) 
+  )
 ```
 
 
@@ -58,8 +68,9 @@ Try first the following code.
 Then add `option = "A"` argument to `scale_color_viridis_c()`.  
 Values from `"A"` to `"E"` provide different color mappings.
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = age, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = age, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_viridis_c()
 ```
@@ -67,16 +78,18 @@ ggplot( pulse, aes( x = weight, y = height ) ) +
 It is also possible to have a continuous transition between two manually given colors.  
 Try `low` and `high` arguments of `scale_color_continuous`:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = age, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = age, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_continuous( low = "blue", high = "red" )
 ```
 
 Or try `scale_color_gradientn` to have continuous mapping through multiple colors:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = age, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = age, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_gradientn( colors = c( "red", "blue", "darkgreen", "yellow" ) )
 ```
@@ -90,24 +103,27 @@ These examples assume that a categorical variable is used for `color`.
 Also for categorical (discrete) variables a [Viridis color scheme](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) is advisable.  
 Try the code below. Here the argument `option` can also be used in `scale_color_viridis_d`.
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_viridis_d( option = "B" )
 ```
 
 Another possibility is to use `scale_color_manual`, which declares that the color variable is categorical and that you want to manually declare which color should be used for which `values` of your data:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_manual( values = c( "high" = "red", "moderate" = "gray60", "low" = "blue" ) )
 ```
 
 Note below, how to use `\n` symbol to have multiple lines of text in the title of the color legend:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_manual( 
     values = c( "high" = "red", "moderate" = "gray60", "low" = "blue" ), 
@@ -117,8 +133,9 @@ ggplot( pulse, aes( x = weight, y = height ) ) +
 
 Finally, try the `breaks` argument to enforce the order of values in the legend:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_manual( 
     values = c( "high" = "red", "moderate" = "gray60", "low" = "blue" ), 
@@ -133,8 +150,9 @@ ggplot( pulse, aes( x = weight, y = height ) ) +
 
 Add `scale_shape_manual` to the previous example to manually declare which shapes to use for `female` and `male`:
 ```{r}
-ggplot( pulse, aes( x = weight, y = height ) ) +
-  geom_point( aes( color = exercise, shape = gender ), size = 3, alpha = 0.8 ) +
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 ) +
   scale_y_continuous( name = "Height [cm]", limits = c( 130, 200 ) ) +
   scale_color_manual( 
     values = c( "high" = "red", "moderate" = "gray60", "low" = "blue" ), 
