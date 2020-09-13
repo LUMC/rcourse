@@ -1,5 +1,5 @@
 ---
-title: 'ggplot2'
+title: 'ggplot2 introduction'
 params:
   basename: "ggplot_basics0"
 ---
@@ -23,9 +23,9 @@ _Practice in an R Markdown document and it `Knit` regularly to see the generated
 
 When you use `ggplot2`, you compose a plot by "adding" components. Here are some examples:
 
-- `ggplot( pulse )`: start a new plot for data from the variable `pulse` (a `tibble` or a `data.frame`),
-- `aes( x = weight )`: aesthetics -- use the data column `weight` for the `x` axis,
-- `geom_point()`: use the scatter plot geometry (requires at least `x` and `y`).
+- `ggplot( pulse )`: Always the first component. It starts a new plot for data from the variable `pulse` (a `tibble` or a `data.frame`).
+- `aes( x = weight )`: aesthetics -- Sets usage of the data column `weight` for the `x` axis.
+- `geom_point()`: Sets the scatter plot geometry (requires at least `x` and `y`).
 
 Now enter the following code and create a simple scatter plot (also `Knit` the document):
 ```{r}
@@ -37,9 +37,9 @@ ggplot( pulse ) +
 ## Aesthetics
 
 Open `Help` for the command `geom_point` and find there the section `Aesthetics`.  
-There you can find keywords to specify **aesthetics**: position, color, shape of the points, ...
+There you can find keywords to specify **aesthetics** known by `geom_point`: position, color, shape of the points, ...
 
-### All points of identical color, shape...
+### Fixed: all points identical
 
 Type the following example code and generate the plot.  
 Regenerate the plot for another color (google-search to find allowed "[R color names](https://www.google.com/search?q=R+color+names)"):
@@ -79,7 +79,7 @@ ggplot( pulse ) +
   geom_point( shape = 24, size = 3, color = "blue", fill = "lightblue" )
 ```
 
-### Points diffier in color, shape...
+### Variable: points diffier
 
 Variable **aesthetics** need to be specified as arguments to `aes( ... )` function.  
 For example, type the following code to make color of the points dependent on the `exercise` column of `pulse`.  
@@ -101,7 +101,7 @@ ggplot( pulse ) +
 
 ### Combined
 
-Naturally, it is possible to combine multiple variable and constant aesthetics. Try:
+Naturally, it is possible to combine variable and fixed aesthetics. Try:
 ```{r eval=FALSE}
 ggplot( pulse ) +
   aes( x = weight, y = height, size = pulse1, fill = exercise ) +
@@ -116,6 +116,9 @@ ggplot( pulse, aes( x = weight ) ) +
   aes( fill = exercise ) +
   geom_point( shape = 21, alpha = 0.65, color = "black", aes( size = pulse1 ) )
 ```
+
+```{r, child="_exercises_links.Rmd"}
+``` 
 
 ```{r, echo=FALSE, results='asis'}
 navigate_slots(params)

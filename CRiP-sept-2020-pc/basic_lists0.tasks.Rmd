@@ -46,7 +46,7 @@ scores[[ "Dan" ]] <- c( scores[[ "Dan" ]], c(8,8,6,7) )
 scores
 ```
 
-3. *A list returned from a function*.  
+3. *A list returned by a function*.  
 For this exercise we need two random numerical vectors.  
 Let's create `x` and `y`, each of 30 elements sampled from the normal distribution: `x <- rnorm( 30 )` and `y <- rnorm( 30 )`.  
 Print these vectors.  
