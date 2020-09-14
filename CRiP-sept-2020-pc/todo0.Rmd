@@ -31,9 +31,15 @@ Provide an image with the first Rmd document with tibble.
 - load tidyverse
 - read table
 - show table
-- View command
+- View command  <= Is View necessary? It is not suitable when used with R Markdown. Sometime the command is left in the script which invokes an external excel like program.
 
 # `r todo( "To describe somewhere" )`
 
 - comment char (hash)
+
+# `r todo( "For tibble page" )`
+
+# `r todo( "select" )`
+
+- what about selection with indices? At the moment it is left out.
 
