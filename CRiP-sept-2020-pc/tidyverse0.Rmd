@@ -60,11 +60,12 @@ You now have access to a powerful set of functions for **data manipulation and v
   - grouping
   - queries 
   - join : combining tables
-- reshape : change the table layout ([cheat sheet](pdf/data-import.pdf){target="_blank"})  
+- reshape : change the table layout ([cheatsheet](pdf/data-import.pdf){target="_blank"})  
 
 ## Links 
 - [Tidyverse](https://www.tidyverse.org/)
 - [R for data science ; Hadley Wickham, Garrett Grolemund (online book)](https://r4ds.had.co.nz/)
+- [More cheat sheets (*)](https://rstudio.com/resources/cheatsheets/)
 
 ```{r, child="_related.Rmd"}  
 ``` 

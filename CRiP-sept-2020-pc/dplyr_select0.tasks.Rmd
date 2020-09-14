@@ -31,6 +31,12 @@ survey_cats <- select(survey, name, gender, hand, fold, clap, exercise, smokes, 
 survey_cats
 ```
 
+x) From survey data create *personal information* tibble with variables `Name`, `Age` and `Gender`. 
+
+```{r}
+survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender)
+```
+
 
 2) Reorder the variables as such that name,age and gender come first. 
 
@@ -53,7 +59,7 @@ select(survey, -span1,-span2,-hand,-fold,-clap)
   
 ```{r}
 # Option 1: very tedious, you need to type all the variable names and 
-# only rename the 'm.i' vraiable to 'system'
+# only rename the 'm.i' variable to 'system'
 #
 select(survey , name, gender, span1, span2, hand, fold, pulse, clap, 
        exercise, smokes, height, system=m.i, age)

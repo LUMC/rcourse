@@ -15,7 +15,12 @@ pulse <- read_pulse()
 navigate_slots(params)
 ``` 
 
-Use the `select` function to select variables (columns) from tibbles. Let's take the `pulse` dataset:   
+Use the `select` function to select variables (columns) from tibbles. Given a tibble `select` can be used to : 
+
+  - select a collection of variables and at the same time **reorder** and/or **rename** the variables
+  - **reshuffle** the whole tibble
+
+Let's take the `pulse` dataset:   
 
 ```{r}
 pulse 
