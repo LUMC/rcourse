@@ -33,25 +33,36 @@ edges <- next_slots %>% rename(from=source,to=target)
 nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
 nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
 
-# TEMPORARY SOLTION URL
-# barmsijs
-# nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")
-# local
-nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
+# TEMPORARY SOLTION URL : set barmsijs for correct urls ; FALSE is local url
+barmsijs <- FALSE
+
+if (barmsijs) {
+ nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")  
+} else {
+ nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
+}
 
 # data/time
 nodes$title <- sapply(nodes$id, function(s) {
-  paste("<a>",slots[[s]][["title"]],"</a><br><br>","data: ", slots[[s]][["date"]], "<br> time:",slots[[s]][["time"]]) 
+  if (barmsijs)
+    url <- paste('https://barmsijs.lumc.nl/crip/', s, ".html", sep="")
+  else 
+    url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', s, ".html", sep="")
+  
+  paste("<a href=",url," target=\"_self\">",slots[[s]][["title"]],"</a><br><br>","data: ", slots[[s]][["date"]], 
+        "<br> time:",slots[[s]][["time"]]) 
 })
 
 #
 #
 #
+
 visNetwork(nodes, edges,width = "100%" , height = "700px") %>% 
   visIgraphLayout(layout = "layout_in_circle") %>% 
   visEdges(arrows = list(to=list( scaleFactor=.5)),
            color = list(color = "lightblue", highlight = "red"), shadow = TRUE) %>% 
-           visEvents(doubleClick = "function(e) {
+           # replaced doubleClick with click
+           visEvents(click = "function(e) { 
                                       var nodeID = e.nodes[0];
                                       var url = this.body.nodes[nodeID].options.url;
                                       window.open(url,'_self')

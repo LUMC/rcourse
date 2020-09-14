@@ -3,8 +3,6 @@ title: "Filter (practice)"
 # author: "R. Monajemi"
 ---
 
-## Primary exercises
-
 ```{r , include=FALSE}
 if (!is.null(knitr::opts_knit$get("solutions"))) {
   if (knitr::opts_knit$get("solutions")=="no") {
@@ -18,16 +16,20 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 
 survey <- read_survey()
 ```
-
+ 
 
 ```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
 ``` 
+
+## Primary exercises
+
+In the survey dataset: 
 
 
 1) Select teenagers, assume age range between and including 10 and 19.
   
 ```{r}
-filter(survey, 9<age & age<20) # <=> filter(survey, 10<=age & age<=19)
+filter(survey, 10<=age & age<20)
 ```
 
 2) Select all females with pulse equal to 60
@@ -72,5 +74,12 @@ none_smoker_sportswomen <- nrow( filter(survey, smokes=="never"  &
                                                 gender=="female") )
 total_women <- nrow( filter(survey, gender=="female") ) 
 none_smoker_sportswomen / total_women
+```
+
+2. What is the age range in teenagers? You may use the range function (?range).
+
+```{r}
+teenagers <- filter(survey, 10<=age & age<20) 
+range(teenagers[["age"]])
 ```
 

@@ -15,26 +15,87 @@ pulse <- read_pulse()
 navigate_slots(params)
 ``` 
 
-In the previous section with could select variables (columns) with all its values using the `select` function. In this section we are intersted in collection of 
-observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a condition describing the values to be filtered on.   
+In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are intersted in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
 
-## Single condition
+## Logcical conditions
 
-```{r}
-filter(pulse, age == 22 ) # filter out all observations with age equal to 22 
-```
-
-## Multiple conditions 
+A *logical condition* is a way to express whether some statement is true or false. For example, let's say we want to know *which individuals in our pulse dataset are taller than 190 cm?* You can achieve this with `filter` :
 
 ```{r}
-filter(pulse, age <= 20 & exercise == "moderate") 
+filter(pulse, height>190) # filter all observations with height greater than 190 cm 
 ```
 
-## Condition on multiple values
+or another example would be, *who's weight is exactly 55 kg?*
 
 ```{r}
-filter(pulse, exercise == "high" |  exercise =="moderate") 
+filter(pulse, weight==55) # filter all observations with weight equal to 55 kg 
 ```
+
+`filter` uses logical vectors to achieve this results. You've already seen an example of a [logical vector](basic_vectors0.html#logical_vector) in the section on [Vectors](basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
+
+`r info_block("'!=' stands for 'not equal to'")` 
+
+In the examples above the comparisons `height>190` and `weight==55` are in fact logical vectors with the same length as variables `height` and `weight` in the pulse dataset. 
+
+> The function `filter` takes the logical vector and returns only the rows in positions for which the value is TRUE.
+
+
+## Multiple conditions : and ('&'), or ('|')
+
+In the previous examples with `filter` we only had a single condition. We can expand the conditions to ask more complex questions. For example *which males weigh less than 70?*  Here we have two conditions: 
+
+  - `gender=="male"` : male observations 
+  - `weight<70`      : weigh less than 70  
+
+> And : '&'
+
+Both these conditions must be met, with other words for each observation `gender=="male"` **and**  `weight<70` must be true and this is expressed with the symbol **&** : 
+
+```{r}
+filter(pulse, gender=="male" & weight<70)
+```
+
+
+Another example: *select females with high frequency of exercise*:
+
+```{r}
+filter(pulse, gender=="female" & exercise=="high")
+```
+
+
+> Or : '|'
+
+The *or* conditional operator is true when at least one of the conditions is true. For example, *list all rows with indiviudals who drink or smoke or both*: 
+
+```{r}
+filter(pulse, alcohol=="yes" | smokes=="yes")
+```
+
+There are 70 observations who **at least** do one of the two: drink or smoke.
+
+> Which group is missing from the result above?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "Those that neither smoke nor drink."
+qa(msg)
+``` 
+ 
+Another example,  *filter rows from years 1995 and 1997*
+
+```{r}
+filter(pulse, year==1995 | year==1997)
+```
+
+Here we have the same variable `year` in our `|` construct.
+
+> What is wrong with this command:  filter(pulse, year==1995 & year==1997) ?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "An observation in a variable can not take two values at the same time. Here we have conditions on both sides of '&' on the same varible, in this case <b>year</b>, and since year can not be 1995 and 1997 at the same time for an observation the result of this query is empty."
+qa(msg)
+``` 
+
+
 
 ```{r, child="_exercises_links.Rmd"}
 ```
