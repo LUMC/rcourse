@@ -14,7 +14,7 @@ course:
     CAREMA_Prospectief.sav
   slots:
     introduction0:
-      title: "Introduction"
+      title: "introduction"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -26,7 +26,7 @@ course:
         basic_calculator0
       prev:
     basic_calculator0:
-      title: "Calculator"
+      title: "calculator"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -39,7 +39,7 @@ course:
       prev:
         introduction0
     basic_variables0:
-      title: "Variables"
+      title: "variables"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -52,7 +52,7 @@ course:
       prev:
         basic_calculator0
     basic_vectors0:
-      title: "Basic vectors"
+      title: "vectors"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -66,7 +66,7 @@ course:
       prev:
         basic_variables0
     basic_projects0:
-      title: "RStudio projects"
+      title: "projects"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -79,7 +79,7 @@ course:
       prev:
         basic_vectors0
     basic_scripts0:
-      title: "Scripts/R Markdown"
+      title: "scripts/R Markdown"
       subtitle: ""
       goal: ""
       date: "21-09-2020"
@@ -237,7 +237,7 @@ course:
       prev: dplyr_join0
       next: basic_factors0
     basic_factors0:
-      title: "Factors"
+      title: "factors"
       subtitle: ""
       goal:
       date: "01-09-2020"
@@ -248,7 +248,7 @@ course:
       prev: "tidyr_reshape0"
       next: "basic_lists0"
     basic_lists0:
-      title: "Lists"
+      title: "lists"
       subtitle: ""
       goal:
       date: "01-09-2020"
@@ -257,6 +257,17 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "basic_factors0"
+      next: "basic_formulas0"
+    basic_formulas0:
+      title: "formulas"
+      subtitle: ""
+      goal:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "basic_lists0"
       next: "ggplot_basics0"
     ggplot_basics0:
       title: "ggplot2"
@@ -290,6 +301,17 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_scales0"
+      next: "ggplot_geoms0"
+    ggplot_geoms0:
+      title: "geoms"
+      subtitle: ""
+      goal:
+      date: "01-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_facets_themes0"
       next:
     basic_vectors1:
       title: "vectors*"

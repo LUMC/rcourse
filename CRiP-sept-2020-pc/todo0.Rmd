@@ -5,13 +5,12 @@ output: html_document
 
 # Tasks
 
-- In the pane 'Console' type yourself commands described here. Do not use copy/paste!
-- Familiarize with error messages caused by typing errors.
-
+- saveRDS, readRDS
+- table, prop.table (for logistic regression)
+- formula, lm
 
 # `r todo( "Topics to discuss" )`
 
-- NA
 - `head` and `tail`
 - `rev`
 - nested combine: `c( c( ... ), 1:10 )`
@@ -33,9 +32,6 @@ Provide an image with the first Rmd document with tibble.
 - show table
 - View command  <= Is View necessary? It is not suitable when used with R Markdown. Sometime the command is left in the script which invokes an external excel like program.
 
-# `r todo( "To describe somewhere" )`
-
-- comment char (hash)
 
 # `r todo( "For tibble page" )`
 
