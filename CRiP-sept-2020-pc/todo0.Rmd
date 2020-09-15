@@ -8,6 +8,7 @@ output: html_document
 - saveRDS, readRDS
 - table, prop.table (for logistic regression)
 - formula, lm
+- pull
 
 # `r todo( "Topics to discuss" )`
 

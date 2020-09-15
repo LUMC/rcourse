@@ -13,8 +13,6 @@ build_nocode(params)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-## Concept of a vector
-
 A **vector** is a container of (multiple) elements:
 
 - All elements are of the same type (e.g. all are numbers).
