@@ -9,6 +9,14 @@ output: html_document
 - table, prop.table (for logistic regression)
 - formula, lm
 - pull
+`geom_density`
+`geom_smooth`
+
+`geom_line`
+geom to show function
+geom to show fit
+`geom_heatmap`
+
 
 # `r todo( "Topics to discuss" )`
 
