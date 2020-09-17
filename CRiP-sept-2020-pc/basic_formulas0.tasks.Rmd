@@ -23,5 +23,29 @@ survey <- read_survey()
 
 ## Primary exercises
 
+1. *Simple regression*.  
+Load the `survey.csv` data to variable `survey`.  
+Perform a linear regression of `span1` against `span2` and store the result in `fit` variable.  
+`fit` behaves also like a `list` so show `names` of elements stored in `fit`.  
+Find and print the element corresponding to the coefficients of the regression -- do you see there a coefficient for `span2`?  
+An intended method to access the coefficients is through `coef` function applied to `fit`. Do you get the same result as previously?  
+
+```{r}
+survey <- read_csv( "survey.csv" )
+fit <-lm(span1 ~ span2, data=survey)
+fit
+names( fit )
+fit$coefficients
+coef( fit )
+```
+
 ## Extra exercises
+
+1. *Simple regression diagnostic plots (demo)*.  
+Apply `plot` function to the `fit` object calculated in the above exercise.  
+These are diagnostic plots for the model produced by `lm`.
+
+```{r}
+plot( fit )
+```
 
