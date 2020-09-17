@@ -91,7 +91,16 @@ Typically, logical vectors are results of logical conditions. Try yourself:
 ```{r}
 x <- c( 0, 1.5, 5 )
 x > 2           # The result of greater-sign-operator is a logical vector
-v <- ( x > 2 )  # Here we explicitely catch this logical vector to variable v
+```
+
+The function `sum` might be used on a logical vector to count how many elements are `TRUE`. Enter:
+```{r}
+sum( x > 2 )
+```
+
+We can also explicitely store a calculated logical vector to a variable:
+```{r}
+v <- ( x > 2 )
 v
 ```
 
@@ -104,14 +113,24 @@ x
 
 ## Missing values
 
-Use the word `NA` (not available) to represent a single **missing value**.  
+Use the word `NA` (**not available**) to represent a single **missing value**.  
 Missing values can appear in vectors of any type (see examples in the next section).
 
-When a missing value appears in an expression, the result is usually also a missing value:
+When a missing value appears in a calculation, the result is usually also a missing value:
 
 ```{r}
 x <- c( 1, 2, NA, 4 )
 x + 3
+```
+
+The function `is.na` produces a logical vector which is `TRUE` at the positions at which the missing values are. Try:
+```{r}
+is.na( x + 3 )
+```
+
+When combined with the function `sum`, it allows to **count the number of missing values** in a vector. Try:
+```{r}
+sum( is.na( x + 3 ) )
 ```
 
 ## Length and elements of a vector

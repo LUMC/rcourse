@@ -63,7 +63,8 @@ Cel[3]
 The code `v <- rnorm( 15 )` would store 15 random numbers in the variable `v`.  
 Print `v` and look to find the smallest and the largest of these numbers.  
 Try to use the functions `min` and `max` on `v` -- have you found the same numbers?  
-Calculate the `mean`, `median` and the standard deviation (`sd`) of `v`.
+Calculate the `mean`, `median` and the standard deviation (`sd`) of `v`.  
+Count the number of elements smaller than zero.
 ```{r}
 v <- rnorm( 15 )
 min( v )
@@ -71,6 +72,7 @@ max( v )
 mean( v )
 median( v )
 sd( v )
+sum( v < 0 )
 ```
 
 5. *Combining (appending) vectors*.  
