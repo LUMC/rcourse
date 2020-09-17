@@ -6,15 +6,17 @@ title: "Mutate (practice)"
 ```{r , include=FALSE}
 if (!is.null(knitr::opts_knit$get("solutions"))) {
   if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=TRUE)
   } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=TRUE)
   }
 } else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=TRUE)
 }
 
 survey <- read_survey()
+pulse <- read_pulse()
+
 ```
 
 
@@ -23,5 +25,40 @@ survey <- read_survey()
 
 ## Primary exercises
 
+
+1.  In the survey dataset add a new column `feet` with heights reported in feet unit (1 foot = 30.48 cm).
+
+```{r}
+mutate(survey, feet=height/30.48)
+```
+
+2. In the survey dataset add a new column `diffWritingHandSpan` : the difference of span1 (writing hand) and span2 (non-writing hand). 
+
+```{r}
+mutate(survey, diffWritingHandSpan=span1-span2)
+```
+
+3. In the pulse dataset add new weight variables `pounds` and `stones` (1 kg  = 2.20462 pound = 0.157473 stone).
+
+```{r}
+mutate(pulse, pounds = weight * 2.20462, stones = weight * 0.157473 )
+
+```
+
+
 ## Extra exercises
+
+In the survey dataset: 
+
+1. Add a new column `diffHandSpan` : the absolute difference between span1 (writing hand) and span2 (non-writing hand). Hint: use `abs` function (?abs).  
+
+```{r}
+mutate(survey, diffWritingHandSpan=abs(span1-span2))
+```
+
+2. Change `height` unit from cm to inch (1 cm = 0.393701 inch).
+
+```{r}
+mutate(survey, height=height*0.393701)
+```
 
