@@ -8,6 +8,8 @@ output: html_document
 - (Szymon) saveRDS, readRDS
 - (Bart or extra exercise) table, prop.table (for logistic regression)
 - (Ramin) pull
+- any
+- sum( is.na( v ) )
 
 Exercises geom:
 - show `geom_density` over histogram
@@ -15,8 +17,6 @@ Exercises geom:
 geom to show function
 `geom_smooth`: geom to show fit
 `geom_heatmap`
-
-sum( is.na( v ) )
 
 r_graph_gallery
 barplot with errors
