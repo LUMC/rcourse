@@ -9,7 +9,8 @@ output: html_document
 - (Bart or extra exercise) table, prop.table (for logistic regression)
 - (Ramin) pull
 - any
-- sum( is.na( v ) )
+- (Szymon) sum( is.na( v ) ) for a vector
+- (Ramin) d %>% filter( is.na( a_column ) )
 
 Exercises geom:
 - show `geom_density` over histogram
