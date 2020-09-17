@@ -9,7 +9,6 @@ output: html_document
 - (Bart or extra exercise) table, prop.table (for logistic regression)
 - (Ramin) pull
 - any
-- (Szymon) sum( is.na( v ) ) for a vector, sum( !is.na( v ) )
 - (Ramin) d %>% filter( is.na( a_column ) )
 
 Exercises geom:

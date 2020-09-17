@@ -119,7 +119,7 @@ Missing values can appear in vectors of any type (see examples in the next secti
 When a missing value appears in a calculation, the result is usually also a missing value:
 
 ```{r}
-x <- c( 1, 2, NA, 4 )
+x <- c( 1, 2, NA, 4, 5 )
 x + 3
 ```
 
@@ -131,6 +131,11 @@ is.na( x + 3 )
 When combined with the function `sum`, it allows to **count the number of missing values** in a vector. Try:
 ```{r}
 sum( is.na( x + 3 ) )
+```
+
+Or, when **negated** (with `!` symbol) it allows to **count the number of not missing values** in a vector. Try:
+```{r}
+sum( !is.na( x + 3 ) )
 ```
 
 ## Length and elements of a vector
@@ -173,7 +178,7 @@ x[w]
 z[c(1,1,1,1,2)]
 ```
 
-Note, when a vector is printed, the number reported on the left in square brackets shows the position of the next vector element:
+Note, when a vector is **printed**, the number reported on the left in square brackets shows the position of the next vector element:
 
 ```{r eval=FALSE}
 x <- 101:155
