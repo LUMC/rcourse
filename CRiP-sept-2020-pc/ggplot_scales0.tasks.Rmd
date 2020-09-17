@@ -38,9 +38,8 @@ ggplot( pulse ) +
   scale_color_manual( values = c( ran = "black", sat = "orange" ) )
 ```
 
-2.
-scale fill color
-
 ## Extra exercises
 
-scales::percent?
+1. *Advanced scales*.  
+The [`scales` package](https://scales.r-lib.org/reference/index.html) extends `ggplot2` functionality by providing *"tools to override the default breaks, labels, transformations and palettes"*.  
+Have a look at the package reference manual to get familiar with types of scales it may provide for your projects.

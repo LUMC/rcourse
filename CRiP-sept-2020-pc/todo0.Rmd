@@ -5,31 +5,33 @@ output: html_document
 
 # Tasks
 
+## Ramin's
+
 - (Ramin) d %>% filter( is.na( a_column ) )
 - (Ramin) pull, distinct, rank
+- (Ramin) top_n
+
+## Szymon's
+
 - (Bart or extra exercise) table, prop.table (for logistic regression)
-- any
 - (Szymon) saveRDS, readRDS
-- (Szymon) ggplot geom exercises:
+- (Szymon) exercises ggplot::geom :
   - barplot with errors
   - show `geom_density` over histogram
   - `geom_smooth`: geom to show fit
   - geom to show function
-- (Szymon) add format to all exercises after R Markdown introduced
+- (Szymon) exercises formulas
 
-# `r todo( "Topics to discuss" )`
+## undecided
 
-- `head` and `tail`
 - set/get names() of vector elements
 - `letters` and `LETTERS`; `pi`
 - how to load a vector from file
+- any, all
 
-# `r todo( "For tibble page" )`
+## done
 
+- (Szymon) add format to all exercises after R Markdown introduced
+- (Bart or extra exercise) `table` added, `prop.table` skipped (for logistic regression)
+- (Szymon) exercises ggplot::scales
 
-
-
-
-# `r todo( "RM to do" )`
-
-- top_n
