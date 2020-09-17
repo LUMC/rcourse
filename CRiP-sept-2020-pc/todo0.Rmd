@@ -5,44 +5,34 @@ output: html_document
 
 # Tasks
 
-- saveRDS, readRDS
-- table, prop.table (for logistic regression)
-- formula, lm
-- pull
-`geom_density`
-`geom_smooth`
+- (Szymon) saveRDS, readRDS
+- (Bart or extra exercise) table, prop.table (for logistic regression)
+- (Ramin) pull
 
+Exercises geom:
+- show `geom_density` over histogram
 `geom_line`
 geom to show function
-geom to show fit
+`geom_smooth`: geom to show fit
 `geom_heatmap`
 
+sum( is.na( v ) )
+
+r_graph_gallery
+barplot with errors
 
 # `r todo( "Topics to discuss" )`
 
 - `head` and `tail`
-- `rev`
-- nested combine: `c( c( ... ), 1:10 )`
 - select through a variable
 - set/get names() of vector elements
 - `letters` and `LETTERS`; `pi`
-- `sort`, `order`, `sample`
-- `which`, `which.max`
-- `max`, `min`, `median`, `sd`
 - how to load a vector from file
-
-
-# `r todo( "For tibble page" )`
-
-Provide an image with the first Rmd document with tibble.
-
-- load tidyverse
-- read table
-- show table
-- View command  <= Is View necessary? It is not suitable when used with R Markdown. Sometime the command is left in the script which invokes an external excel like program.
-
+- `rank`
 
 # `r todo( "For tibble page" )`
+
+
 
 # `r todo( "select" )`
 

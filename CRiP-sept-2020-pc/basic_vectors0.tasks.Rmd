@@ -16,7 +16,8 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 
 ## Primary exercises
 
-1. Four patients had daily dietary intakes of 2314, 2178, 1922, 2004 kcal.  
+1. *Kilocalories*.  
+Four patients had daily dietary intakes of 2314, 2178, 1922, 2004 kcal.  
 Make a vector of these four values.  
 What is the type of this vector?  
 Convert these values into in kJ using 1 kcal = 4.184 kJ.  
@@ -28,7 +29,8 @@ class( intakesKCal )
 intakesKCal * 4.184
 ```
 
-2. Make a vector of all numbers between 1 and 100.  
+2. *Sum of a sequence of numbers*.  
+Make a vector of all numbers between 1 and 100.  
 Check the type of that vector (note, that a vector of numbers might be different than `numeric`).  
 Calculate 1+2+3+…+100.  
 Hint: Read help (see `Help` pane) for function `sum`. 
@@ -39,7 +41,8 @@ class( v )
 sum( v )
 ```
 
-3. Degrees Celsius (`Cel`) can be calculated from degrees Fahrenheit (`Fah`) as `Cel = 5/9 * (Fah - 32)`.  
+3. *Temperature units*.  
+Degrees Celsius (`Cel`) can be calculated from degrees Fahrenheit (`Fah`) as `Cel = 5/9 * (Fah - 32)`.  
 How much is 60 degrees Fahrenheit in Celsius?  
 Use `seq` function to create a vector that contains 0,5,10,...,95,100 degrees Fahrenheit.  
 Convert this vector to Celsius degrees.  
@@ -56,9 +59,34 @@ Fah[3]
 Cel[3]
 ```
 
+4. *Descriptive statistics of a set of random numbers*.  
+The code `v <- rnorm( 15 )` would store 15 random numbers in the variable `v`.  
+Print `v` and look to find the smallest and the largest of these numbers.  
+Try to use the functions `min` and `max` on `v` -- have you found the same numbers?  
+Calculate the `mean`, `median` and the standard deviation (`sd`) of `v`.
+```{r}
+v <- rnorm( 15 )
+min( v )
+max( v )
+mean( v )
+median( v )
+sd( v )
+```
+
+5. *Combining (appending) vectors*.  
+How to merge a vector `1:10` with `c( 2314, 2178, 1922, 2004 )`?
+```{r}
+c( 1:10, c( 2314, 2178, 1922, 2004 ) )   # direct solution
+
+x <- 1:10
+y <- c( 2314, 2178, 1922, 2004 )
+c( x, y )                                # indirect solution
+```
+
 ## Extra exercises
 
-1. Read help (see `Help` pane) about `seq` function.  
+1. *More complex sequences of numbers*.  
+Read help (see `Help` pane) about `seq` function.  
 Use it to generate sequence: 10, 7, 4, 1, -2, -5.  
 Understand the error message of `seq( 10, -5, 3 )`.
 
@@ -67,21 +95,34 @@ seq( 10, -5, -3 )
 seq( from = 10, to = -5, by = -3 )
 ```
 
-2. Read help (see `Help` pane) about `rep` function.  
+2. *Repetitions*.  
+Read help (see `Help` pane) about `rep` function.  
 Use it to generate sequence: 0, 1, 0, 1, 0, 1.  
 
 ```{r}
 rep( c( 0, 1 ), 3 )
 ```
 
-3. Check the effect of `sort` function on the vector of names `x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )`.
+3. *Sorting, reversing and sampling*.  
+Check the effect of `sort` function on the vector of names `x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )`.  
+Next, print the effect of `sample` function on `x`.  
+Repeat the last step to see another permutation of `x`.  
+Check `Help` of `sample` and understand the effect of `sample( x, size = 2 )`.  
+Finally, understand effect of the `rev` function applied to the vecotr `x`.
 
 ```{r}
 x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
-sort( x )
+sort( x )              # x sorted alphabetically
+sample( x )            # a random permutation of x
+sample( x )            # a random permutation of x
+sample( x, size = 2 )  # randomly chosen 2 different elements of x
+rev( x )               # x in reversed order
+rev( sort( x ) )       # x sorted in reversed alphabetical order
+sort( x, decreasing = TRUE )  # a faster version of above
 ```
 
-4. Sometimes it is necessary to convert a numerical vector to a character vector.  
+4. *Type conversion to a character vector*.  
+Sometimes it is necessary to convert a numerical vector to a character vector.  
 Understand what the function `as.character` does for argument `1:5`.
 
 ```{r}
@@ -89,9 +130,10 @@ Understand what the function `as.character` does for argument `1:5`.
 as.character( 1:5 )
 ```
 
-5. Sometimes it is necessary to convert a character vector to a numerical vector.  
+5. *Type conversion to a numerical vector*.  
+Sometimes it is necessary to convert a character vector to a numerical vector.  
 Understand what the function `as.numeric` does for argument `c( "1", "-1", "x" )`.  
-What is `NA`?
+Note the warning message. Why is there `NA`?
 
 ```{r}
 as.numeric( c( "1", "-1", "x" ) )
