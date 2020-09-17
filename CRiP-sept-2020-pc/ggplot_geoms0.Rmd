@@ -21,6 +21,8 @@ Try to regenerate the plots in your R Markdown document.
 
 `r go_extern( "https://rstudio.com/resources/cheatsheets/", "RStudio Cheatsheets/Data Visualization Cheatsheet/Panel Scales", "to see numerous geoms provided by the library" )`
 
+`r go_extern( "https://www.r-graph-gallery.com/", "The R Graph Gallery", "to see how R (often with ggplot2 library) can be used for data visualisation" )`
+
 ## Histograms
 
 Let's start with the histogram of the `pulse2` variable from the `pulse` data:

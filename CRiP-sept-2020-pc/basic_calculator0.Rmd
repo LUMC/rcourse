@@ -133,6 +133,16 @@ In the course materials we use spaces to increase readability.
 sqrt(10)
 ```
 
+## Getting help
+
+To show the manual for a function type the function name after `?` in the `Console`.  
+For example:
+```{r eval=FALSE}
+?sqrt
+```
+
+The documentation will be shown in the `Help` pane. Also there you may type the keyword to be searched.
+
 ## Useful console keystrokes
 
 Try the following keystrokes in the console:

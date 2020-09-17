@@ -5,38 +5,29 @@ output: html_document
 
 # Tasks
 
-- (Szymon) saveRDS, readRDS
-- (Bart or extra exercise) table, prop.table (for logistic regression)
-- (Ramin) pull
-- any
 - (Ramin) d %>% filter( is.na( a_column ) )
-
-Exercises geom:
-- show `geom_density` over histogram
-`geom_line`
-geom to show function
-`geom_smooth`: geom to show fit
-`geom_heatmap`
-
-r_graph_gallery
-barplot with errors
+- (Ramin) pull, distinct, rank
+- (Bart or extra exercise) table, prop.table (for logistic regression)
+- any
+- (Szymon) saveRDS, readRDS
+- (Szymon) ggplot geom exercises:
+  - barplot with errors
+  - show `geom_density` over histogram
+  - `geom_smooth`: geom to show fit
+  - geom to show function
+- (Szymon) add format to all exercises after R Markdown introduced
 
 # `r todo( "Topics to discuss" )`
 
 - `head` and `tail`
-- select through a variable
 - set/get names() of vector elements
 - `letters` and `LETTERS`; `pi`
 - how to load a vector from file
-- `rank`
 
 # `r todo( "For tibble page" )`
 
 
 
-# `r todo( "select" )`
-
-- what about selection with indices? At the moment it is left out.
 
 
 # `r todo( "RM to do" )`
