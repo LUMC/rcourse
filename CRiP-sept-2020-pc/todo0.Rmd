@@ -7,9 +7,10 @@ output: html_document
 
 ## Ramin's
 
-- (Ramin) d %>% filter( is.na( a_column ) )
-- (Ramin) pull, distinct, rank
+- (Ramin) d %>% filter( is.na( a_column ) ) => DONE!
+- (Ramin) pull, distinct, rank => DONE except rank. We decided that rank and order are advanced topics. 
 - (Ramin) top_n
+- (Ramin) where is na.rm explained  for the first time?
 
 ## Szymon's
 
@@ -21,6 +22,7 @@ output: html_document
   - `geom_smooth`: geom to show fit
   - geom to show function
 - (Szymon) exercises formulas
+- (Szymon) replace x+3 with x in is.na paragraph in basic vectors. it is distracting.
 
 ## undecided
 
@@ -28,6 +30,8 @@ output: html_document
 - `letters` and `LETTERS`; `pi`
 - how to load a vector from file
 - any, all
+- some sections, for example forcats, has a different icon for info than the info_block function
+		=> make sure that all sections use the same type of icons
 
 ## done
 

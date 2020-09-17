@@ -47,16 +47,18 @@ filter(survey, pulse<60 & gender=="male" & (9<age & age<20) )
 4) How many males do smoke and never exercise?
 
 ```{r}
-nrow( filter(survey, (smokes %in% c("regul","occas")) & exercise=="none" & gender=="male" ) )
+nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male" ) )
+# alternatively
+nrow( filter(survey, (smokes=="regul" | smokes=="occas" | smokes=="heavy") & exercise=="none" & gender=="male" ) )
 ```
 
 5) How many females never smoke and frequently exercise?
 
 ```{r}
-nrow( filter(survey, (smokes %in% c("regul","occas")) & exercise=="none" & gender=="female" ) )
+nrow( filter(survey, smokes=="never" & exercise=="freq" & gender=="female") )
 ```
 
-## Extra exercise
+## Extra exercises
 
 1) What is the percentage of males who never smoke and frequently exercise? Do the same for female.
 
@@ -83,3 +85,8 @@ teenagers <- filter(survey, 10<=age & age<20)
 range(teenagers[["age"]])
 ```
 
+3) How many males do smoke and never exercise? Use '%in%' operator see ?match for more details.
+
+```{r}
+nrow( filter(survey, (smokes %in% c("regul","occas", "heavy")) & exercise=="none" & gender=="male" ) )
+```

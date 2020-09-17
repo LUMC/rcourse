@@ -15,10 +15,9 @@ build_nocode(params)
 navigate_slots(params)
 ``` 
 
-A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
-I'll use these terms interchangeably depending on the context. 
-Each variable has a fixed [type](basic_vectors0.html) such as `character`, `integer` etc. 
-Let's start by creating a tibble manually.
+> A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
+
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
 
 ## Create a tibble
 
@@ -107,6 +106,13 @@ If you want to work with variables as individual vectors then you can do this ei
 favourite_colour[["year"]]
 favourite_colour$year
 ```
+
+In some contexts (later in the course) it is convenient to use the function `pull` which does the same as `[[` and `$` :  
+
+```{r}
+pull(favourite_colour, year) 
+```
+
 
 ## tibble to/from file
 
