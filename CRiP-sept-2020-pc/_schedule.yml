@@ -25,6 +25,7 @@ course:
       next:
         basic_calculator0
       prev:
+      pos: 0
     basic_calculator0:
       title: "calculator"
       subtitle: ""
@@ -38,6 +39,7 @@ course:
         basic_variables0
       prev:
         introduction0
+      pos: 1
     basic_variables0:
       title: "variables"
       subtitle: ""
@@ -51,6 +53,7 @@ course:
         basic_vectors0
       prev:
         basic_calculator0
+      pos: 2
     basic_vectors0:
       title: "vectors"
       subtitle: ""
@@ -65,6 +68,7 @@ course:
         basic_projects0
       prev:
         basic_variables0
+      pos: 3
     basic_projects0:
       title: "projects"
       subtitle: ""
@@ -78,6 +82,7 @@ course:
         basic_scripts0
       prev:
         basic_vectors0
+      pos: 4
     basic_scripts0:
       title: "scripts/R Markdown"
       subtitle: ""
@@ -91,6 +96,7 @@ course:
         tidyverse0
       prev:
         basic_projects0
+      pos: 5
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
@@ -102,6 +108,7 @@ course:
       related:
       next: dplyr_tibble0
       prev: basic_scripts0
+      pos: 6
     packages0:
       title: "packages"
       subtitle: ""
@@ -113,6 +120,7 @@ course:
       related:
       next:
       prev:
+      pos: 
     dplyr_tibble0:
       title: "tibble"
       subtitle: ""
@@ -126,6 +134,7 @@ course:
         packages0
       next: dplyr_select0
       prev: tidyverse0
+      pos: 7
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""
@@ -137,6 +146,7 @@ course:
       related:
       next:
       prev:
+      pos: 
     dplyr_select0:
       title: "select"
       subtitle: ""
@@ -148,6 +158,7 @@ course:
       related:
       next: "dplyr_filter0"
       prev: "dplyr_tibble0"
+      pos: 8
     dplyr_filter0:
       title: "filter"
       subtitle: ""
@@ -159,6 +170,7 @@ course:
       related:
       next: "dplyr_mutate0"
       prev: "dplyr_select0"
+      pos: 9
     dplyr_mutate0:
       title: "mutate"
       subtitle: ""
@@ -170,6 +182,7 @@ course:
       related:
       next: "dplyr_pipe0"
       prev: "dplyr_filter0"
+      pos: 10
     dplyr_pipe0:
       title: "pipe operator"
       subtitle: ""
@@ -181,6 +194,7 @@ course:
       related:
       next: "dplyr_summarise0"
       prev: "dplyr_mutate0"
+      pos: 11
     dplyr_summarise0:
       title: "summarise"
       subtitle: ""
@@ -192,6 +206,7 @@ course:
       related:
       next: dplyr_group0
       prev: "dplyr_pipe0"
+      pos: 12
     dplyr_group0:
       title: "group"
       subtitle: ""
@@ -203,6 +218,7 @@ course:
       related:
       next: dplyr_queries0
       prev: "dplyr_summarise0"
+      pos: 13
     dplyr_queries0:
       title: "queries"
       subtitle: ""
@@ -214,6 +230,7 @@ course:
       related:
       next: dplyr_join0
       prev: "dplyr_group0"
+      pos: 
     dplyr_join0:
       title: "join"
       subtitle: ""
@@ -225,6 +242,7 @@ course:
       related:
       next: tidyr_reshape0
       prev: "dplyr_queries0"
+      pos: 14
     tidyr_reshape0:
       title: "reshape"
       subtitle: ""
@@ -236,6 +254,7 @@ course:
       related:
       prev: dplyr_join0
       next: basic_factors0
+      pos: 15
     basic_factors0:
       title: "factors"
       subtitle: ""
@@ -247,6 +266,7 @@ course:
       related:
       prev: "tidyr_reshape0"
       next: "basic_lists0"
+      pos: 16
     basic_lists0:
       title: "lists"
       subtitle: ""
@@ -258,6 +278,7 @@ course:
       related:
       prev: "basic_factors0"
       next: "basic_formulas0"
+      pos: 17
     basic_formulas0:
       title: "formulas"
       subtitle: ""
@@ -269,6 +290,7 @@ course:
       related:
       prev: "basic_lists0"
       next: "ggplot_basics0"
+      pos: 18
     ggplot_basics0:
       title: "ggplot2"
       subtitle: ""
@@ -280,6 +302,7 @@ course:
       related:
       prev: "basic_lists0"
       next: "ggplot_scales0"
+      pos: 19
     ggplot_scales0:
       title: "scales"
       subtitle: ""
@@ -291,6 +314,7 @@ course:
       related:
       prev: "ggplot_basics0"
       next: "ggplot_facets_themes0"
+      pos: 20
     ggplot_facets_themes0:
       title: "facets"
       subtitle: ""
@@ -302,6 +326,7 @@ course:
       related:
       prev: "ggplot_scales0"
       next: "ggplot_geoms0"
+      pos: 21
     ggplot_geoms0:
       title: "geoms"
       subtitle: ""
@@ -313,14 +338,4 @@ course:
       related:
       prev: "ggplot_facets_themes0"
       next:
-    basic_vectors1:
-      title: "vectors*"
-      subtitle: ""
-      goal: ""
-      date: "21-09-2020"
-      time: "09:00-12:00"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      next:
-      prev: basic_vectors0
+      pos: 22

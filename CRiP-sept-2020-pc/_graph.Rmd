@@ -72,3 +72,29 @@ visNetwork(nodes, edges,width = "100%" , height = "700px") %>%
 
 ```
 
+<div class="alert alert-info" role="alert" style="text-align: left;">Schedule day by day</div>
+
+```{r, results='asis', echo=FALSE}
+
+slot_df <- lapply(names(slots), function(slot) {
+  s <- slots[[slot]]
+  tibble(id=slot, pos=as.numeric(ifelse(is.null(s$pos), NA, s$pos)), 
+         title=s$title, date=s$date, time=s$time, rel=ifelse(is.null(s$related),NA,s$related) )
+}) %>%  bind_rows %>%  arrange(pos)
+
+dates <- slot_df %>%  distinct(date) %>% pull(date) %>% sort()
+
+.devnull <- lapply(dates, function(d) {
+  spd <- slot_df %>%  filter(date==d & !is.na(pos)) %>% arrange(pos) %>% pull(id) # slots per day
+  cat('### Date: ', d, '\n\n')
+  lapply(spd, function(slot){
+    s <- slots[[slot]]
+    cat('\n\n#### ', '[' ,s$title, '](',paste(slot,".html",sep=""),')', '(',s$time,')', '\n\n')
+  })
+})
+
+```
+
+
+
+
