@@ -15,38 +15,55 @@ pulse <- read_pulse()
 navigate_slots(params)
 ```
 
-Descriptive statistics enable you to describe basic features of your data, e.g. counts, sum, mean, median, etc.
+> Descriptive statistics
 
+## Summarise variable(s)
 
-## Counting occurrences of values
+The main function for calculating summaries on variables is `summarise`. Examples of descriptive functions are mean, median sum, and so on. The function consume a vector and produce a single value. `summarise` takes a tibble along with specification of descriptives and produces a single row. 
 
-To count distinct values in a variable:
+For example, let's say we want to know the mean height and weight of all individuals in the pulse dataset:  
 
 ```{r}
-pulse %>% count(year)
-pulse %>% count(gender)
-pulse %>% count(age)
+pulse %>% summarise(meanHeight=mean(height), meanWeight=mean(weight))
 ```
 
-For multiple variables, it is the count of each possible combination:
+The result is a single row with two variables `meanHeight` and `meanWeight` with the corresponding mean values of of all observations.
+
+We can also summarise on variable's range, e.g. `age` : 
+
+```{r}
+pulse %>% summarise(minAge = min(age), maxAge=max(age)) # <=> range(pulse$age)
+```
+
+**n()**: convenient function to calculate total number of rows in summarise context:
+
+```{r}
+pulse %>% summarise( count = n(), meanHeight = mean( height ) )
+```
+
+
+## Frequency tables
+
+With the `count` function we can count the frequency of values in a categorical variables:
+
+```{r}
+pulse %>% count(gender)
+pulse %>% count(smokes)
+pulse %>% count(exercise)
+```
+
+The result enumerates the distinct values of the variable in the first column and their frequency in the last column `n`.
+
+Multiple variables are allowed, it is the count of each possible combination values, also known as `contigency table` or `cross table`: 
 
 ```{r}
 pulse %>% count(gender, exercise)
 pulse %>% count(year, gender)
 ```
 
-## Summarise variable(s)
+## Distinct values in variables
 
-`summarise` function produces a single row of variable(s) summary given `summary function`
-
-```{r}
-pulse %>% summarize( count = n(), meanHeight = mean( height ) )
-pulse %>% summarize( count = n(), meanAge = mean( age ) )
-```
-
-## Distinct values in variable(s)
-
-To identify distinct values in a variable use the function `distinct`:
+To identify distinct values in a variable we use the function `distinct`:
 
 ```{r}
 pulse %>% distinct(year)
@@ -54,13 +71,17 @@ pulse %>% distinct(exercise)
 pulse %>% distinct(ran) 
 ```
 
-For multiple columns it is possible to identify distinct rows:
+For multiple columns it is possible to identify distinct combinations of values:
+
 ```{r}
 pulse %>% distinct(gender, exercise)
 ```
 
+`r info_block("'distinct' produces the same combination of variables values as 'count', except without the frequncy column 'n'.")`
 
+## glimpse
 
+## arrange
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

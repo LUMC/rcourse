@@ -125,17 +125,18 @@ x + 3
 
 The function `is.na` produces a logical vector which is `TRUE` at the positions at which the missing values are. Try:
 ```{r}
-is.na( x + 3 )
+x
+is.na( x )
 ```
 
 When combined with the function `sum`, it allows to **count the number of missing values** in a vector. Try:
 ```{r}
-sum( is.na( x + 3 ) )
+sum( is.na( x ) )
 ```
 
 Or, when **negated** (with `!` symbol) it allows to **count the number of not missing values** in a vector. Try:
 ```{r}
-sum( !is.na( x + 3 ) )
+sum( !is.na( x ) )
 ```
 
 ## Length and elements of a vector

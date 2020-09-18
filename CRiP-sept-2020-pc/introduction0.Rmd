@@ -37,7 +37,7 @@ It had two primary implementations:
 
 Now _R_ is known as "a free software environment for statistical computing and graphics."
 
-### R project
+### R
 
 Current _R_ developments are streamlined by non-profit organisation _The R Project for Statistical Computing_ at https://www.r-project.org/.
 
@@ -59,47 +59,6 @@ It provides useful features to help in development of the R code and in organiza
 
 RStudio is not necessary to work with R programs, but it is highly recommended and is used in this course.
 
-
-## Course overview
-
-### What we teach
-
-This is not a statistics course!  
-The focus is _R_ as a _language_ for data analysis.
-
-The goal of the course is to teach students how _R_ language can be used to build quickly a report with very simple statistical analysis of data provided in a table.  
-Therefore, instead of using base _R_ functionality only, we use an extended version provided by the [_tidyverse_](https://www.tidyverse.org) package.
-
-This course teaches _R_ proficiency:
-
-- The mechanics of _R_.
-- How to use other people's _R_ scripts.
-- How to write your own _R_ scripts.
-- How to use _R_ packages.
-
-
-### Course structure
-
-The course materials are designed for self-study.  
-
-The necessary R concepts are split in a number of small sections.  
-Each section introduces several new R language commands.  
-We ask students to type these commands and observe their effects (do not use copy-paste; own typing is important in order to learn how R communicates mistakes).  
-Exercises at the end of the sections demonstrate other usage of the commands or introduce _extra_ material with related functionality.
-
-
-## The exam
-
-To pass the exam the students are requested to build a knittable R Markdown document reporting analysis of a table. The document has the following parts:
-
-- read a table from a provided file;
-- show some selected content from the table;
-- summarise the table data;
-- produce some plots of the data.
-
-The students are allowed to use the course (or other) materials during the exam but it is strictly forbidden to communicate with other persons during the exam.
-
-The material present in the _extra_ exercises is not necessary for the exam.
 
 ```{r, child="_navigate.Rmd"} 
 ``` 

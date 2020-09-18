@@ -15,9 +15,11 @@ pulse <- read_pulse()
 navigate_slots(params)
 ``` 
 
+> Use `filter` to select observations (rows) from a tibble. 
+
 In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are intersted in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
 
-## Logcical conditions
+## Logical conditions
 
 A *logical condition* is a way to express whether some statement is true or false. For example, let's say we want to know *which individuals in our pulse dataset are taller than 190 cm?* You can achieve this with `filter` :
 
@@ -33,7 +35,7 @@ filter(pulse, weight==55) # filter all observations with weight equal to 55 kg
 
 `filter` uses logical vectors to achieve this results. You've already seen an example of a [logical vector](basic_vectors0.html#logical_vector) in the section on [Vectors](basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
 
-`r info_block("'!=' stands for 'not equal to'")` 
+`r info_block("'==' stands for 'equal to' and '!=' is 'not equal to'")` 
 
 In the examples above the comparisons `height>190` and `weight==55` are in fact logical vectors with the same length as variables `height` and `weight` in the pulse dataset. 
 
