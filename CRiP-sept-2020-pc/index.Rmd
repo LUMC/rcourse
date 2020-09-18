@@ -26,8 +26,8 @@ We will cover the following topics:
 - R expressions.
 - R data objects: vectors, data frames (tibbles), lists.
 - [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports.
-- Data manipulation: filtering, sorting, summarising of a table; joining/merging multiple tables (with [tidyverse/dplyr](https://cran.r-project.org/web/packages/dplyr/README.html) and [tidyverse/tidyr](https://github.com/hadley/tidyr)).
-- Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](http://ggplot2.org/)).
+- Data manipulation: filtering, sorting, summarising of a table; joining/merging multiple tables (with [tidyverse/dplyr](https://dplyr.tidyverse.org/) and [tidyverse/tidyr](https://tidyr.tidyverse.org/)).
+- Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](https://ggplot2.tidyverse.org/)).
 - R packages: installation and usage.
 
 ## Course structure
