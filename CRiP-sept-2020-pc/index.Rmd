@@ -75,31 +75,15 @@ In case of failure, please inform the teachers during the first day of the cours
 
 ## How to pass this course
 
+```{r,echo=FALSE}
+exam <- read_schedule()[["course"]][["exam"]]
 ```
-The course will be covered in 3,5 days : 
 
-Monday    21-09-2020 13:15-17:00  : Introduction, Calculator, Variables, Basic Vectors, 
-                                    RStudio projects, Scripts/R Markdown   
-Tuesday   22-09-2020 09:00-17:00  
-                      - Morining
-                        - R Markdown & RStudio (Q&A)  (SzK)
-                        - tidyverse, tibble select, filter (conditionals), mutate 
-                      - Afternoon 
-                        - pipe operator, summarise, group, queries  
-                                    1h students work on exercises
-                                    10min do sample exercise
-                                    : 20min
-                                    
-                                    
-Wednesday 23-09-2020 09:00-17:00
-                     09:00-12:00  : queries, join, reshape
-                     13:00-17:00  : ggplot: scatter,boxplot, facet, 
-Thursday  22-09-2020 09:00-17:00  : lists with t.test example, formula with lm example  , 
-                                  descriptives 
-                                  
-                                  
-                                  
-```
+
+> There will be an exam on **`r exam$date`, `r exam$time`**. The exam can be found on **`r exam$venue`** and will be released **at 09:00 AM**. 
+
+  
+
 
 <!--
 ## Materials
