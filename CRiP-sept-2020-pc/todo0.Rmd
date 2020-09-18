@@ -20,7 +20,6 @@ output: html_document
   - show `geom_density` over histogram
   - `geom_smooth`: geom to show fit
   - geom to show function
-- (Szymon) exercises formulas
 
 ## undecided
 
@@ -34,4 +33,5 @@ output: html_document
 - (Szymon) add format to all exercises after R Markdown introduced
 - (Bart or extra exercise) `table` added, `prop.table` skipped (for logistic regression)
 - (Szymon) exercises ggplot::scales
+- (Szymon) exercises formulas
 
