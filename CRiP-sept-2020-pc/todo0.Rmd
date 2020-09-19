@@ -23,7 +23,6 @@ output: html_document
   - `geom_smooth`: geom to show fit
   - geom to show function
 - (Szymon) exercises formulas
-- (Szymon) replace x+3 with x in is.na paragraph in basic vectors. it is distracting.
 
 ## undecided
 
@@ -36,6 +35,7 @@ output: html_document
 
 ## done
 
+- (Szymon) replace x+3 with x in is.na paragraph in basic vectors. it is distracting.
 - (Szymon) add format to all exercises after R Markdown introduced
 - (Bart or extra exercise) `table` added, `prop.table` skipped (for logistic regression)
 - (Szymon) exercises ggplot::scales

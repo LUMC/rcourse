@@ -26,6 +26,8 @@ course:
         basic_calculator0
       prev:
       pos: 0
+      slot: 1
+      slotPos: 10
     basic_calculator0:
       title: "calculator"
       subtitle: ""
@@ -40,6 +42,8 @@ course:
       prev:
         introduction0
       pos: 1
+      slot: 1
+      slotPos: 20
     basic_variables0:
       title: "variables"
       subtitle: ""
@@ -54,6 +58,8 @@ course:
       prev:
         basic_calculator0
       pos: 2
+      slot: 1
+      slotPos: 30
     basic_vectors0:
       title: "vectors"
       subtitle: ""
@@ -69,6 +75,8 @@ course:
       prev:
         basic_variables0
       pos: 3
+      slot: 1
+      slotPos: 40
     basic_projects0:
       title: "projects"
       subtitle: ""
@@ -83,6 +91,8 @@ course:
       prev:
         basic_vectors0
       pos: 4
+      slot: 1
+      slotPos: 50
     basic_scripts0:
       title: "scripts/R Markdown"
       subtitle: ""
@@ -97,6 +107,8 @@ course:
       prev:
         basic_projects0
       pos: 5
+      slot: 1
+      slotPos: 60
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
@@ -109,6 +121,8 @@ course:
       next: dplyr_tibble0
       prev: basic_scripts0
       pos: 6
+      slot: 2
+      slotPos: 10
     packages0:
       title: "packages"
       subtitle: ""
@@ -120,7 +134,9 @@ course:
       related:
       next:
       prev:
-      pos: 
+      pos:
+      slot: 2
+      slotPos:
     dplyr_tibble0:
       title: "tibble"
       subtitle: ""
@@ -135,6 +151,8 @@ course:
       next: dplyr_select0
       prev: tidyverse0
       pos: 7
+      slot: 2
+      slotPos: 30
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""
@@ -146,7 +164,9 @@ course:
       related:
       next:
       prev:
-      pos: 
+      pos:
+      slot: 2
+      slotPos:
     dplyr_select0:
       title: "select"
       subtitle: ""
@@ -159,6 +179,8 @@ course:
       next: "dplyr_filter0"
       prev: "dplyr_tibble0"
       pos: 8
+      slot: 2
+      slotPos: 40
     dplyr_filter0:
       title: "filter"
       subtitle: ""
@@ -171,6 +193,8 @@ course:
       next: "dplyr_mutate0"
       prev: "dplyr_select0"
       pos: 9
+      slot: 2
+      slotPos: 50
     dplyr_mutate0:
       title: "mutate"
       subtitle: ""
@@ -183,6 +207,8 @@ course:
       next: "dplyr_pipe0"
       prev: "dplyr_filter0"
       pos: 10
+      slot: 2
+      slotPos: 60
     dplyr_pipe0:
       title: "pipe operator"
       subtitle: ""
@@ -195,6 +221,8 @@ course:
       next: "dplyr_summarise0"
       prev: "dplyr_mutate0"
       pos: 11
+      slot: 3
+      slotPos: 10
     dplyr_summarise0:
       title: "summarise"
       subtitle: ""
@@ -207,6 +235,8 @@ course:
       next: dplyr_group0
       prev: "dplyr_pipe0"
       pos: 12
+      slot: 3
+      slotPos: 20
     dplyr_group0:
       title: "group"
       subtitle: ""
@@ -219,6 +249,8 @@ course:
       next: dplyr_queries0
       prev: "dplyr_summarise0"
       pos: 13
+      slot: 3
+      slotPos: 30
     dplyr_queries0:
       title: "queries"
       subtitle: ""
@@ -230,7 +262,9 @@ course:
       related:
       next: dplyr_join0
       prev: "dplyr_group0"
-      pos: 
+      pos:
+      slot: 3
+      slotPos: 40
     dplyr_join0:
       title: "join"
       subtitle: ""
@@ -243,6 +277,8 @@ course:
       next: tidyr_reshape0
       prev: "dplyr_queries0"
       pos: 14
+      slot: 4
+      slotPos: 10
     tidyr_reshape0:
       title: "reshape"
       subtitle: ""
@@ -255,6 +291,8 @@ course:
       prev: dplyr_join0
       next: basic_factors0
       pos: 15
+      slot: 4
+      slotPos: 20
     basic_factors0:
       title: "factors"
       subtitle: ""
@@ -267,6 +305,8 @@ course:
       prev: "tidyr_reshape0"
       next: "basic_lists0"
       pos: 16
+      slot: 5
+      slotPos: 10
     basic_lists0:
       title: "lists"
       subtitle: ""
@@ -279,6 +319,8 @@ course:
       prev: "basic_factors0"
       next: "basic_formulas0"
       pos: 17
+      slot: 5
+      slotPos: 20
     basic_formulas0:
       title: "formulas"
       subtitle: ""
@@ -291,6 +333,8 @@ course:
       prev: "basic_lists0"
       next: "ggplot_basics0"
       pos: 18
+      slot: 5
+      slotPos: 30
     ggplot_basics0:
       title: "ggplot2"
       subtitle: ""
@@ -303,6 +347,8 @@ course:
       prev: "basic_lists0"
       next: "ggplot_scales0"
       pos: 19
+      slot: 6
+      slotPos: 10
     ggplot_scales0:
       title: "scales"
       subtitle: ""
@@ -315,6 +361,8 @@ course:
       prev: "ggplot_basics0"
       next: "ggplot_facets_themes0"
       pos: 20
+      slot: 6
+      slotPos: 20
     ggplot_facets_themes0:
       title: "facets"
       subtitle: ""
@@ -327,6 +375,8 @@ course:
       prev: "ggplot_scales0"
       next: "ggplot_geoms0"
       pos: 21
+      slot: 6
+      slotPos: 30
     ggplot_geoms0:
       title: "geoms"
       subtitle: ""
@@ -339,3 +389,5 @@ course:
       prev: "ggplot_facets_themes0"
       next:
       pos: 22
+      slot: 6
+      slotPos: 30
