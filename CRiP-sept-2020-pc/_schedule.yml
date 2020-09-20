@@ -69,7 +69,6 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-        basic_vectors1
       next:
         basic_projects0
       prev:

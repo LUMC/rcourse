@@ -6,7 +6,7 @@ output:
 ---
 
 ```{r, child="_schedule_table.Rmd",warning=FALSE,message=FALSE}
-```   
- 
+``` 
+
 ```{r, child="_graph.Rmd"}
 ``` 

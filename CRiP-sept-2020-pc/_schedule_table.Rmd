@@ -2,6 +2,7 @@
 conf <- yaml.load_file("_schedule.yml")
 slots <- conf[["course"]][["slots"]]
 .f <- function( id ) sapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
+.fMult <- function( id ) lapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 
 barmsijs <- FALSE
 if( barmsijs ) {
@@ -15,22 +16,37 @@ if( barmsijs ) {
   })
 }
   
-d <- tibble( 
+allD <- tibble(
   id = names( slots ), title = .f( "title" ), 
   nextId = .f( "next" ), prevId = .f( "prev" ) ,
   date = .f( "date" ), time = .f( "time" ), 
   slot = ordered( as.integer( .f( "slot" ) ) ),
   slotPos = as.integer( .f( "slotPos" ) ),
-) %>%
+  related = .f( "related" )
+)
+
+id2title <- as.list( setNames( allD$title, allD$id ) )
+id2decoTitle <- function( ids ) {
+  v <- sapply( as.character( ids ), function( id ) {
+    if( !is.na( id ) ) {
+      smallIds <- strsplit( id, " " )[[1]]
+      paste0( "<a href=",.url( smallIds )," target=\"_self\">", id2title[smallIds],"</a>", collapse = ", ", sep = "" )
+    } else {
+      ""
+    }
+  } )
+  names( v ) <- names( ids )
+  v
+}
+
+d <- allD %>% 
   filter( !is.na( slotPos ) ) %>% 
-  mutate( id = factor( id, levels = id ) ) %>% 
-  mutate( nextId = factor( nextId, levels = id ) ) %>% 
-  mutate( prevId = factor( prevId, levels = id ) ) %>% 
-  mutate( decoTitle = paste0( "<a href=",.url( id )," target=\"_self\">", title ,"</a>" )) %>%
+  mutate( decoTitle = id2decoTitle( id ) ) %>%
+  mutate( decoRelated = id2decoTitle( related ) ) %>%
   arrange( slot, slotPos )
 
 kableExtra::kable(
-  d %>% select( `Slot` = slot, `Date` = date, `Time` = time, `Topic` = decoTitle ), 
+  d %>% select( `Slot` = slot, `Date` = date, `Time` = time, `Topic` = decoTitle, `Related` =  decoRelated ), 
   format = "pipe",
   escape = FALSE
 ) %>%
