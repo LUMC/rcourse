@@ -30,30 +30,19 @@ In the survey dataset:
   
 ```{r}
 survey_span <- survey %>% gather(key=writing,value=span,span1, span2)
+survey_span
 ```
 
-- Count the groups in the new variable `writing`. Are the counts as expected in relation with  the original table survey? 
+2. ...
 
-```{r}
-# All observations are duplicated to accomodate the new vriable 'writing'. 
-#
-# The number of columns has not changed however the the variables span1 
-# and span2 are replaced with 'writing' and 'span'.  
-#
-survey_span  %>% count(writing)
-```
+## Extra exercises
 
-- Summarise minimum and maximum `span` per `writing`. 
+1. Summarise minimum and maximum `span` per `writing` from the primary exercise (1). 
 
 ```{r}
 survey_span  %>% group_by(writing) %>%  
           summarise(min=min(span,na.rm = T), max=max(span,na.rm = T))
 ```
-
-2. ...
-
-
-## Extra exercises
 
 <!-- 
 1. Two other categorical variables in the pulse dataset which can be gathered are `smokes` and `alcohol`. Do this into new variables `drug_habit` and `drug_use`.

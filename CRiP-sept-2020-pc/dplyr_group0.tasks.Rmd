@@ -23,4 +23,52 @@ survey <- read_survey()
 
 ## Primary exercises
 
+1. Report mean hand spans `{span1,span2}` per gender.
+
+```{r}
+survey %>% group_by(gender) %>% 
+           summarise(meanWritingHand=mean(span1),meanNonWritingHand=mean(span2), .groups='drop')
+```
+
+2. Report mean and median `age` per gender, including the size of each gender group.
+
+```{r}
+survey %>% group_by(gender) %>% 
+           summarise(size=n(), meanAge=mean(age), medianAge=median(age), .groups='drop')
+
+```
+
+3. Report mean `pulse` per `gender` and `exercise` group, including size of each group. Do the same for `gender` and `smokes` group.
+
+```{r}
+# gender,exercise group
+survey %>% group_by(gender, exercise) %>% 
+           summarise(size=n(), meanPulse=mean(pulse, na.rm=TRUE), .groups='drop')
+
+# gender,smokes group
+survey %>% group_by(gender, exercise) %>% 
+           summarise(size=n(), meanPulse=mean(pulse, na.rm=TRUE), .groups='drop')
+
+```
+
+4. Report the mean `age` of those who exercise frequently per `gender` including the group size 
+
+```{r}
+# Solution 1:
+survey %>% filter(exercise=='freq') %>% 
+           group_by(gender) %>% 
+           summarise(size=n(), meanAgeFreqExercise=mean(age), .groups='drop')
+
+# Solution 2: first group and summarise and then filter out exercise group 'freq'. This is a 
+# less optimal solution since it calculates the summary on all exercise groups, whereas the 
+# solution 1 calculates the summary on a smaller table with only 'freq' exercise group.
+# 
+# survey %>% group_by(gender,exercise) %>%
+#            summarise(size=n(), meanAgeFreqExercise=mean(age), .groups='drop') %>%
+#            filter(exercise=='freq') %>%
+#            select(-exercise)
+
+```
+
+
 ## Extra exercises
