@@ -3,6 +3,8 @@ conf <- yaml.load_file("_schedule.yml")
 slots <- conf[["course"]][["slots"]]
 ```
 
+<div class="alert alert-info" role="alert" style="text-align: left;">Schedule day by day</div>
+
 
 ```{r, echo=FALSE}
 rel_slots <- lapply(names(slots), function(slot) {
@@ -72,9 +74,8 @@ visNetwork(nodes, edges,width = "100%" , height = "700px") %>%
 
 ```
 
-<div class="alert alert-info" role="alert" style="text-align: left;">Schedule day by day</div>
 
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, eval=FALSE}
 
 slot_df <- lapply(names(slots), function(slot) {
   s <- slots[[slot]]

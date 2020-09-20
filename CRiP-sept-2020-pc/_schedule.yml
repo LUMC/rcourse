@@ -245,25 +245,11 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      next: dplyr_queries0
+      next: dplyr_join0
       prev: "dplyr_summarise0"
       pos: 13
       slot: 3
       slotPos: 30
-    dplyr_queries0:
-      title: "queries"
-      subtitle: ""
-      goal:
-      date: "22-09-2020"
-      time: "13:00-17:00"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      next: dplyr_join0
-      prev: "dplyr_group0"
-      pos:
-      slot: 3
-      slotPos: 40
     dplyr_join0:
       title: "join"
       subtitle: ""
@@ -274,7 +260,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       next: tidyr_reshape0
-      prev: "dplyr_queries0"
+      prev: "dplyr_group0"
       pos: 14
       slot: 4
       slotPos: 10

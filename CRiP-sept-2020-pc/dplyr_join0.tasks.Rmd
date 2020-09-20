@@ -23,4 +23,70 @@ survey <- read_survey()
 
 ## Primary exercises
 
+For this exercise we will first split  the `survey` dataframe into two separate dataframes 
+in order to join them again! Call these `df1` and `df2`, these will have disjoint set of 
+variables except `name` and `age`, the variables `name` and `age` combined are unique in 
+all observations and will be used later for joining. Take for example all variables related 
+to arm or hand in df1 and the rest in df2:
+
+```
+df1 : "name"   "span1" "span2" "hand"  "fold"   "clap"  "age"
+df2 : "name"   "gender"  "pulse"  "exercise"   "smokes"  "height" "m.i" "age"
+```
+
+```{r}
+df1 <- survey %>%  select(name,age,span1,span2,hand,fold,clap)
+df1
+df2 <- survey %>%  select(name,age,gender,pulse,exercise,smokes,height,m.i)
+df2
+```
+
+1. Join df1 and df2 by `name` and `age` such that you obtain the original survey table. 
+
+```{r}
+survey2 <- inner_join(df1,df2,by=c("name","age")) %>% 
+  select(name,gender,span1,span2,hand,fold,pulse,clap,exercise,smokes,height,m.i,age)
+
+```
+
+2. Does it make any difference to choose either of `inner_join`, `right_join`, `left_join` and `full_join`?       
+
+```{r}
+ij  <- inner_join(df1,df2,by=c("name","age")) %>% 
+  select(name,gender,span1,span2,hand,fold,pulse,clap,exercise,smokes,height,m.i,age)
+
+lj  <- left_join(df1,df2,by=c("name","age")) %>% 
+  select(name,gender,span1,span2,hand,fold,pulse,clap,exercise,smokes,height,m.i,age)
+
+rj  <- right_join(df1,df2,by=c("name","age")) %>% 
+  select(name,gender,span1,span2,hand,fold,pulse,clap,exercise,smokes,height,m.i,age)
+
+fj  <- full_join(df1,df2,by=c("name","age")) %>% 
+  select(name,gender,span1,span2,hand,fold,pulse,clap,exercise,smokes,height,m.i,age)
+
+identical(ij,lj)
+identical(ij,rj)
+identical(ij,fj)
+
+#
+# Answer is no, this because both df1 and df2 come from the 
+# same source `survey` with equal number of observations and exact 
+# matching of the keys. 
+#
+
+```
+
+3. In `semi_join(df1,df2,by=c("name","age"))` is the result equal to `df1` or `df2`?  
+
+```{r}
+sj  <- semi_join(df1,df2,by=c("name","age")) 
+#
+# Since df1 and df2  have exact matching keys and the semi_join 
+# returns only the rows of its first argument matching the second 
+# argument then all rows of df1 are returned.
+#
+sj
+```
+
+
 ## Extra exercises

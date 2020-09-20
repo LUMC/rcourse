@@ -15,6 +15,7 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 }
 
 survey <- read_survey()
+pulse <- read_survey()
 ```
 
 
@@ -23,4 +24,37 @@ survey <- read_survey()
 
 ## Primary exercises
 
+In the survey dataset:
+
+1. The variables `span1` and `span2` are of the same type representing the span of the writing hand and the non-writing hand respectively. We would like to analyse these values in groups. To do this we need to convert  the variables `span1` and `span2` into variables `writing` and `span` with `writing` ranging over *span1* and *span2* and `span` over the values of `span1` and `span2` variables. Use the function `gather(...)`.     
+  
+```{r}
+survey_span <- survey %>% gather(key=writing,value=span,span1, span2)
+```
+
+- Count the groups in the new variable `writing`. Are the counts as expected in relation with  the original table survey? 
+
+```{r}
+# All observations are duplicated to accomodate the new vriable 'writing'. 
+#
+# The number of columns has not changed however the the variables span1 
+# and span2 are replaced with 'writing' and 'span'.  
+#
+survey_span  %>% count(writing)
+```
+
+- Summarise minimum and maximum `span` per `writing`. 
+
+```{r}
+survey_span  %>% group_by(writing) %>%  
+          summarise(min=min(span,na.rm = T), max=max(span,na.rm = T))
+```
+
+2. ...
+
+
 ## Extra exercises
+
+<!-- 
+1. Two other categorical variables in the pulse dataset which can be gathered are `smokes` and `alcohol`. Do this into new variables `drug_habit` and `drug_use`.
+--> 

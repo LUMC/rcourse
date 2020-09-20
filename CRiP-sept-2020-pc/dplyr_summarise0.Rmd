@@ -17,9 +17,9 @@ navigate_slots(params)
 
 > Descriptive statistics
 
-## Summarise variable(s)
+## `summarise` variable(s)
 
-The main function for calculating summaries on variables is `summarise`. Examples of descriptive functions are mean, median sum, and so on. The function consume a vector and produce a single value. `summarise` takes a tibble along with specification of descriptives and produces a single row. 
+The main function for calculating summaries on variables is `summarise`. Examples of descriptive functions are mean, median, sum etc. The functions consume a vector and produce a single value. `summarise` takes a tibble along with specification of descriptives and produces a single row. 
 
 For example, let's say we want to know the mean height and weight of all individuals in the pulse dataset:  
 
@@ -42,28 +42,28 @@ pulse %>% summarise( count = n(), meanHeight = mean( height ) )
 ```
 
 
-## Frequency tables
+## `count` : frequency tables  
 
 With the `count` function we can count the frequency of values in a categorical variables:
 
 ```{r}
-pulse %>% count(gender)
-pulse %>% count(smokes)
-pulse %>% count(exercise)
+pulse %>% count(gender)   # frequency of male/female
+pulse %>% count(smokes)   # frequency of smoking habit 
+pulse %>% count(exercise) # frequency of exercise habit 
 ```
 
 The result enumerates the distinct values of the variable in the first column and their frequency in the last column `n`.
 
-Multiple variables are allowed, it is the count of each possible combination values, also known as `contigency table` or `cross table`: 
+Multiple variables are allowed, it is the count of each possible combination of values, also known as `contigency table` or `cross table`: 
 
 ```{r}
 pulse %>% count(gender, exercise)
 pulse %>% count(year, gender)
 ```
 
-## Distinct values in variables
+## `distinct` values in variables
 
-To identify distinct values in a variable we use the function `distinct`:
+To identify distinct values in a variable or a group of variables we use the function `distinct`:
 
 ```{r}
 pulse %>% distinct(year)
@@ -71,7 +71,7 @@ pulse %>% distinct(exercise)
 pulse %>% distinct(ran) 
 ```
 
-For multiple columns it is possible to identify distinct combinations of values:
+to identify distinct combinations of `gender` and `exercise`:
 
 ```{r}
 pulse %>% distinct(gender, exercise)
@@ -79,9 +79,61 @@ pulse %>% distinct(gender, exercise)
 
 `r info_block("'distinct' produces the same combination of variables values as 'count', except without the frequncy column 'n'.")`
 
-## glimpse
 
-## arrange
+You may use distinct also to check whether certain variables have unique values for each observation. Let's for example check whether all individuals in the `pulse` dataset have different names:
+
+
+```{r}
+pulse %>% nrow()                    # total number of rows 
+pulse %>% distinct(name) %>% nrow() # count the number of distinct names
+```
+
+There are `r pulse %>% distinct(name) %>% nrow()` distinct names and there are `r nrow(pulse)` observations in the `pulse` dataset. This could only mean that there are multiple individuals in the pulse dataset with shared names: 
+
+```{r}
+nrow(pulse) == nrow( pulse %>% distinct(name)) # is 'name' unique for all observations?
+```
+
+
+## `glimpse`
+
+With `glimpse` function you can quickly inspect the top part of all variables in one page with some additional met information, i.e. number of rows and columns and variable types: 
+
+```{r}
+pulse %>% glimpse()
+```
+
+## `arrange`
+
+You may reorder rows by one or more variables with `arrange`.  
+
+Try sorting the pulse dataset by `name` :
+
+```{r}
+pulse %>%  arrange(name)
+```
+
+or by `height`
+
+```{r}
+pulse %>%  arrange(height)
+```
+
+By default the data is sorted in ascending order, to sort in descending order use `desc` function:
+
+```{r}
+pulse %>%  arrange(desc(name))
+```
+
+You may also arrange by multiple variables:  
+
+```{r}
+pulse %>%  arrange(height,weight)
+```
+
+Here the data is first ordered by `height` and then by `weight`. 
+
+
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

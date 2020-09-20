@@ -15,11 +15,9 @@ pulse <- read_pulse()
 navigate_slots(params)
 ```
 
-Family of functions to join two data.frames on common `variable(s)`. `*_join(x,y,by)` 
+> Combine tables 
 
-### Join data.frames by a single variable 
-
-The following data.frames `df1` and `df2` hold the variables `height` and `age` respectively with a single common variable `name` :
+`*_join(x,y,by)`  is a family of functions to combine two tables on common `variable(s)`. For example, take a group of people (n=7) for which we have collected age and height data:
 
 ```{r}
 # height 
@@ -32,24 +30,46 @@ df2 <- tibble(name = c("Fiene","Jaylinn","Mila","Noah","Yara"),
 df2
 ```
 
-**inner_join**
+The information here is incomplete, for some we have only `height` and for some only `age`. Now we want to combine these tables into a single table with variables `name`, `age` and `height`. We can do this with a join function which is able to combine observations (rows) by **matching on the common variable(s) between the two tables**. Matching is done **by** one or more variables, in this case the variable `name`.
+
+`r info_block("Keep in mind that for a proper joining of data, the matched variable(s), also known as the key, must be unique in both tables.")`
+
+## Join : single variable 
+
+You may control the layout of the combined table by choosing one of the three join function laid out below.
+
+### inner_join
 
 Return all rows in `df1` where there are matching values of `name` in `df2` and all columns in both `df1` and `df2`: 
 
 ```{r}
-inner_join(df1,df2,"name")  #  <=> inner_join(df1,df2, by = "name")
+inner_join(df1,df2, by = "name")  #  <=> inner_join(df1,df2, by = "name")
 
 ```
 
-**left_join**
+### left_join
 
 Return all rows from `df1` and all columns in both `df1` and `df2`, `NA` for missing values in `df2`:
 
 ```{r}
-left_join(df1,df2,"name")
+left_join(df1,df2, by = "name")
 ```
 
-**right_join**
+
+### full_join 
+
+All rows and all columns in `df1` and `df2`.
+
+```{r}
+full_join(df1,df2, by = "name")
+```
+
+
+There are several more join functions not covered here such as right_join (opposite of left_join), semi_join and anti_join (see [dplyr cheat sheet](pdf/data-transformation.pdf)).
+
+<!--
+
+#### right_join
 
 Return all rows from `df2` and all columns in both `df1` and `df2`, `NA` for missing values in `df1`
 
@@ -57,15 +77,15 @@ Return all rows from `df2` and all columns in both `df1` and `df2`, `NA` for mis
 right_join(df1,df2,"name")
 ```
 
-**semi_join**
+#### semi_join
 
-Identical to `inner_join` keeping only columns in `df1`  <!-- (exception: no duplicated rows in df1.) -->
+Identical to `inner_join` keeping only columns in `df1`  # (exception: no duplicated rows in df1.)
 
 ```{r}
 semi_join(df1,df2,"name")
 ```
 
-**anti_join**
+#### anti_join
 
 Complement of `semi_join`, return rows from `df1` with no match in `df2`. 
 
@@ -73,19 +93,11 @@ Complement of `semi_join`, return rows from `df1` with no match in `df2`.
 anti_join(df1,df2,"name")
 ```
 
+-->
 
-**full_join**
+## Join : multiple variables 
 
-All rows and all columns in `df1` and `df2`.
-
-```{r}
-full_join(df1,df2,"name")
-```
-
-
-### Join data.frames by multiple variables
-
-Let's split the pulse dataset into two separate dataframes with common variables `name` and `height`: 
+To illustrate let's split the pulse dataset into two separate tables with common variables `name` and `height`: 
 
 ```{r}
 p1 <- pulse  %>% select(name,height,age,gender,year)
@@ -94,16 +106,33 @@ p2 <- pulse  %>% select(-age,-gender,-year)
 p2
 ```
 
-now we want to join them back together using `full_join`: 
+`p1` has the common variables `{name,height}` (the key) and additional variables `{age,gender,year}`, and `p2` has the same key variables `{name,height}` with some other measurement variables such as `pulse1` `pulse2`  etc.
 
-```{r}
-full_join(p1,p2) # common variables are used when no variable is specicified 
+
+> Is the combination `{name,height}` a valid choice as the key to join two tables p1 and p2? 
+
+```{r, echo=FALSE, results='asis'}
+msg <- "Yes. This because the combination is unique in the table. You can check this with the command nrow(distinct(pulse,name,height)) == nrow(pulse)."
+qa(msg)
 ```
 
-It is a better practice to explicitly specify the variables: 
+Now we want to join them back together using `full_join`: 
+
+```{r}
+full_join(p1,p2) # common variables are used when no variable is specified. 
+```
+
+It is a **better practice** to explicitly specify the variables: 
 
 ```{r} 
-full_join(p1,p2, by = c("name","height"))
+pulse_joined <- full_join(p1,p2, by = c("name","height"))
+pulse_joined
+```
+
+You may check: 
+
+```{r}
+all_equal(pulse,pulse_joined)
 ```
 
 
