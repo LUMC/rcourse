@@ -65,7 +65,29 @@ full_join(df1,df2, by = "name")
 ```
 
 
+
+## Variable name conflicts
+
+Take `df1` as defined above and `df3`: 
+
+```{r}
+df3 <- tibble(name =  c("Fiene","Jaylinn","Mila","Noah","Yara"),
+           height = c(165, 172, 179, 173, 170), 
+           ) 
+df3
+```
+
+both of these tables have the variable height, after joining by `name` :
+
+```{r}
+left_join(df1,df3,by="name")
+```
+
+we see that `left_join` somehow needs to distinguish between the `height` from `df1` and the `height` from `df3` with suffixes `.x` and `.y` respectively. 
+
+
 There are several more join functions not covered here such as right_join (opposite of left_join), semi_join and anti_join (see [dplyr cheat sheet](pdf/data-transformation.pdf)).
+
 
 <!--
 

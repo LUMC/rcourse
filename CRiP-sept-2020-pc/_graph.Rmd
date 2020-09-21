@@ -3,7 +3,7 @@ conf <- yaml.load_file("_schedule.yml")
 slots <- conf[["course"]][["slots"]]
 ```
 
-<div class="alert alert-info" role="alert" style="text-align: left;">Schedule day by day</div>
+<div class="alert alert-info" role="alert" style="text-align: left;"></div>
 
 
 ```{r, echo=FALSE}
@@ -36,7 +36,8 @@ nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
 nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
 
 # TEMPORARY SOLTION URL : set barmsijs for correct urls ; FALSE is local url
-barmsijs <- FALSE
+
+barmsijs <- FALSE 
 
 if (barmsijs) {
  nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")  

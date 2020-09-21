@@ -4,7 +4,8 @@ slots <- conf[["course"]][["slots"]]
 .f <- function( id ) sapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 .fMult <- function( id ) lapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 
-barmsijs <- FALSE
+barmsijs <- FALSE 
+
 if( barmsijs ) {
   sitePrefix <- 'https://barmsijs.lumc.nl/crip/'
 } else {
