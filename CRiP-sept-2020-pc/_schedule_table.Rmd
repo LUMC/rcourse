@@ -10,9 +10,9 @@ if( barmsijs ) {
 } else {
   sitePrefix <- paste0('file://',knitr::opts_knit$get("output.dir"),'/_site/')
 }
-.url <- function( ids ) {
+.url <- function( ids, suffix = "" ) {
   sapply( ids, function( id ) {
-    paste0( sitePrefix, id, ".html" )
+    paste0( sitePrefix, id, suffix, ".html" )
   })
 }
   
