@@ -283,7 +283,7 @@ course:
       subtitle: ""
       goal:
       date: "23-09-2020"
-      time: "13:00-17:00"
+      time: "13:00-14:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -297,7 +297,7 @@ course:
       subtitle: ""
       goal:
       date: "23-09-2020"
-      time: "13:00-17:00"
+      time: "14:15-15:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -311,7 +311,7 @@ course:
       subtitle: ""
       goal:
       date: "23-09-2020"
-      time: "13:00-17:00"
+      time: "15:30-16:45"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
