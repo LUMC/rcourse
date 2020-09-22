@@ -117,13 +117,14 @@ pull(favourite_colour, year)
 ## tibble to/from file
 
 Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
-comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv`.
-For more details on reading/writing format see [readr_io0](readr_io0.html).
+comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](data-import.pdf)).
+
+<!-- For more details on reading/writing format see [readr_io0](readr_io0.html). --> 
 
 let us now save our first tibble into a file in csv format:   
 
 ```{r}
-write_csv(x = favourite_colour, path = "data/favourite_colour.csv")
+write_csv(x = favourite_colour, path = "favourite_colour.csv")
 ```
 
 `favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
@@ -140,7 +141,7 @@ This way we can permanently store our results in files for later use. We can now
 environment variable, e.g. `favourite_colour_csv` :
 
 ```{r}
-favourite_colour_csv <- read_csv(file = "data/favourite_colour.csv")
+favourite_colour_csv <- read_csv(file = "favourite_colour.csv")
 ```
 
 `read_csv` gives a summary of the variables and their inferred types.
