@@ -3,7 +3,7 @@
 ```{r, results='asis', echo=FALSE}
 cat("<div class=\"alert alert-danger\" role=\"alert\" style=\"text-align: left;\" >")
 
-cat("**Format** <br> <ul> <li>Work in a R Markdown document, call it `exercises-NNNN.Rmd` (replace `NNNN` with your student number if you have one, otherwise your name). Inside the document make a new section for each block of exercises.</li> <li>Try to limit copy-paste from the course materials, but type the code manually, this to ensure you familiarise yourself with the commands.</li> <li>Use `Run chunk` and `Knit` commands to test your code. To be able to `Knit`, remember to put `library(tidyverse)` and to load the `pulse.csv` data at the top of your R Markdown document.</li>")
+cat("**Format** <br> <ul> <li>Work in a R Markdown document, call it `exercises-NNNN.Rmd` (replace `NNNN` with your student number if you have one, otherwise your name). Inside the document make a new section for each block of exercises.</li> <li>Try to limit copy-paste from the course materials, but type the code manually, this to ensure you familiarise yourself with the commands.</li> <li>Use `Run chunk` and `Knit` commands to test your code. To be able to `Knit`, remember to put `library(tidyverse)` and to load  both `pulse.csv` and `survey.csv` data at the top of your R Markdown document.</li>")
 
 cat("</div>\n")
 ```
