@@ -33,8 +33,6 @@ survey_span <- survey %>% gather(key=writing,value=span,span1, span2)
 survey_span
 ```
 
-2. ...
-
 ## Extra exercises
 
 1. Summarise minimum and maximum `span` per `writing` from the primary exercise (1). 

@@ -23,6 +23,8 @@ survey <- read_survey()
 
 ## Primary exercises
 
+On the survey dataset: 
+
 1. Report mean hand spans `{span1,span2}` per gender.
 
 ```{r}

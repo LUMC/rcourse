@@ -41,7 +41,7 @@ filter(survey, pulse==60 & gender=="female")
 3) Select all male teenagers with pulse above 60.
 
 ```{r}
-filter(survey, pulse<60 & gender=="male" & (9<age & age<20) )
+filter(survey, pulse>60 & gender=="male" & (9<age & age<20) )
 ```
 
 4) How many males do smoke and never exercise?
