@@ -17,7 +17,7 @@ navigate_slots(params)
 
 > Combine tables 
 
-`*_join(x,y,by)`  is a family of functions to combine two tables on common `variable(s)`. For example, take a group of people (n=7) for which we have collected age and height data:
+`*_join(...)` is a family of functions for combining two tables on common `variable(s)` called `key`. For example, take a group of people (n=7) for which we have collected age and height data:
 
 ```{r}
 # height 
@@ -66,7 +66,7 @@ full_join(df1,df2, by = "name")
 
 ## Non-unique keys
 
-If the keys are not unique in either of the tibbles then the result will be ambiguous. Take for example `df1` defined above, we now add another observation with  name `yara`:
+If the keys are not unique in either of the tibbles then the result will be ambiguous. Take for example `df1` defined above, we now add another observation with  name `Yara`:
 
 ```{r}
 df1 <- tibble(name = c("Isa","Jaylinn","Mila","Milas","Yara", "Yara"),
@@ -135,7 +135,7 @@ anti_join(df1,df2,"name")
 
 -->
 
-## Join : multiple variables 
+## Join : multiple variables as the key
 
 To illustrate let's split the pulse dataset into two separate tables with common variables `name` and `height`: 
 

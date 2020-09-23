@@ -98,26 +98,27 @@ left_join(df1,df2, by=c("name", "age"))
 
 ## Extra exercises
 
-1. Explain the result if you  use only the `name` variable as the key in the primary exercise.
+1. Explain the result if you  use only the `name` variable as the key in the primary exercise (1) .
 
 ```{r}
-# The variable name is not unique, so for all those non-unique names the 
+# The variable 'name' is not unique, so for all those non-unique names the 
 # joining of df1 and df2 will result in a product. For example the name 
 # 'Benjamin' appears twice in the survey data, therefore it appears twice
-# in each for the tibbles df1 and df2. The result of the join will be the 
-# product. Each row with the name 'Benjamin' in df1 matches twice to the name
-# 'Benjamin' in df2, so in total there will be 4 rows in the final result.
+# in each for the tibbles df1 and df2. Each row with the name 'Benjamin' 
+# in df1 matches twice to the name 'Benjamin' in df2, so in total there 
+# will be 4 rows in the final result.
 # 
-#
 inner_join(df1,df2,by="name") %>% filter(name=="Benjamin")
 
 # There are 78 more rows extra as the result of the ambiguities in joining
 # with 'name' only. 
 #
-inner_join(df1,df2,by=c("name","age")) %>% nrow() # 'name' and 'age' as the key
-inner_join(df1,df2,by="name") %>% nrow() # only 'name' as the key
+name_age_key_row_count <- inner_join(df1,df2,by=c("name","age")) %>% nrow() # 'name' and 'age' as the key
+name_age_key_row_count
+name_key_row_count <- inner_join(df1,df2,by="name") %>% nrow() # only 'name' as the key
+name_key_row_count
+name_key_row_count - name_age_key_row_count # number of additional rows due to non-unique key 'name'
 ```
-
 
 ```{r, eval=FALSE, echo=FALSE}
 # Maybe another time 
