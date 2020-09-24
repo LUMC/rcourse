@@ -238,6 +238,27 @@ Course <- R6Class("Course",
         }
       },
       #' @description clear generted files, i.e. site/
+      push = function(slot, server="shark", server_dir="/bam-export/crip") {
+        # course 
+        # slot 
+        # remote_url : shark:/bam-export
+        # 
+        all_slots <- self$slots() %>%  unlist
+        if (slot %in% all_slots) {
+          ps <-  private$sources_
+          dest <- paste(server,server_dir, sep=":")
+          src1 <- file.path(ps,"_site",paste(slot,".html",sep=""))
+          src2 <- file.path(ps,"_site",paste(slot,".tasks.html",sep=""))
+          src <- c(src1,src2)[sapply(c(src1,src2),file.exists)]
+          src <- paste(src,collapse = " ")
+          cmd <- paste("scp -p",src,dest)
+          cat('command: ',cmd, '\n')
+          system(cmd)
+        } else{
+          warning("invalid slot name !")
+        }
+      },
+      #' @description clear generted files, i.e. site/
       clean = function() {
         rmarkdown::clean_site(self$src())
       }

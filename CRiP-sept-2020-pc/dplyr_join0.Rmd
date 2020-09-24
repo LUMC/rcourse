@@ -172,7 +172,7 @@ pulse_joined
 You may check: 
 
 ```{r}
-all_equal(pulse,pulse_joined)
+all_equal(pulse,pulse_joined) # caution: all_equal is an experimental function
 ```
 
 `r show_warning(" The function all_equal is an experimental function and may become obsolete! ")`
