@@ -1,5 +1,5 @@
 ---
-title: "Formulas (practice)"
+title: "ggplot2 scales (practice)"
 ---
 
 ```{r , include=FALSE}
