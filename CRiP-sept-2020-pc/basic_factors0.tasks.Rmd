@@ -52,7 +52,7 @@ sample( lvs, 100 )
 ```
 
 ```{r}
-v <- sample( lvs, 200, replace = TRUE )
+v <- sample( lvs, 100, replace = TRUE )
 w <- factor( v, levels = lvs )
 w
 fct_count( w )
