@@ -13,7 +13,7 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
     knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
 }
 
-pulse <- read_pulse()
+pulse <- read_pulse() 
 survey <- read_survey()
 ```
 
