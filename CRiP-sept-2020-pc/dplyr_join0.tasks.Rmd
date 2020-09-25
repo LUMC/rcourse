@@ -60,9 +60,13 @@ all_equal(inner_join(df1,df2,by=c("name","age")), survey)  # inner_join
 all_equal(full_join(df1,df2,by=c("name","age")), survey)   # full_join
 ```
 
-3. Create the following tibbles (copy/paste):
+
+<!--  removind exercise 3 -->
+
 
 ```{r, echo=TRUE, eval=FALSE}
+# 3. Create the following tibbles (copy/paste):
+
 df1 <- tibble(name=c("Bobby","Gerald","Amelia","Lottie","Dennis"),
         height=c(179.1,NA,167.64,170,200), 
         age=c(18.917,16.917,17.333,17.25,18.5),
@@ -72,30 +76,21 @@ df2 <- tibble(name=c("Bobby","Gerald","Amelia","Lottie","Dennis"),
         age=c(18.917,16.917,17.333,17.25,18.5),
         span2=c(19.5,13.3,16.5,18.5,21.5))
 
-```
-  
-  - Join df1 and df2 by `name`. 
-
-```{r}
+# - Join df1 and df2 by `name`. 
 left_join(df1,df2, by="name")
-```
-  
-  - Do the same but now with `{name,age}` as the key. Explain the difference.
-  
-```{r}
+
+# - Do the same but now with `{name,age}` as the key. Explain the difference.
 # When joining only by 'name' we force the join function to resolve the name 
 # conflict on 'age', it generated two columns 'age.x' and 'age.y' for df1$age 
 # and df2$age respectively. But when using 'age' as part of the key (name,age) 
 # then 'age' is treated as a common column and will occur only once.
 
 left_join(df1,df2, by=c("name","age"))
-```
-
-```{r}
 # There is no name conflict here, both 'name' and 'age' are as keys for joining and all other variables have unique names. 
 left_join(df1,df2, by=c("name", "age"))
-```
 
+```
+  
 ## Extra exercises
 
 1. Explain the result if you  use only the `name` variable as the key in the primary exercise (1) .
