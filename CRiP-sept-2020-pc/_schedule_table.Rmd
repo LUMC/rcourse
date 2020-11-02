@@ -4,10 +4,10 @@ slots <- conf[["course"]][["slots"]]
 .f <- function( id ) sapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 .fMult <- function( id ) lapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 
-barmsijs <- FALSE 
+barmsijs <- TRUE 
 
 if( barmsijs ) {
-  sitePrefix <- 'https://barmsijs.lumc.nl/crip/'
+  sitePrefix <- 'https://barmsijs.lumc.nl/crip_test/'
 } else {
   sitePrefix <- paste0('file://',knitr::opts_knit$get("output.dir"),'/_site/')
 }
@@ -50,8 +50,8 @@ kableExtra::kable(
   d %>% select( `Slot` = slot, `Date` = date, `Time` = time, `Topic` = decoTitle, `Related` =  decoRelated ), 
   format = "pipe",
   escape = FALSE
-) %>%
-  kableExtra::kable_paper("striped", full_width = TRUE) %>%
-  kableExtra::group_rows( index = table( fct_inorder( d$slot ) ) )
+) # %>%
+  # kableExtra::kable_paper("striped", full_width = TRUE) %>%
+  # kableExtra::group_rows( index = table( fct_inorder( d$slot ) ) )
 ```
 
