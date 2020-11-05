@@ -1,5 +1,5 @@
 ---
-title: "CRiP: Using R for data analysis"
+title: "Using R for data analysis"
 params:
     basename: "index"
 ---

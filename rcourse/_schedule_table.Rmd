@@ -7,7 +7,7 @@ slots <- conf[["course"]][["slots"]]
 barmsijs <- TRUE 
 
 if( barmsijs ) {
-  sitePrefix <- 'https://barmsijs.lumc.nl/crip_test/'
+  sitePrefix <- 'https://barmsijs.lumc.nl/rcourse/'
 } else {
   sitePrefix <- paste0('file://',knitr::opts_knit$get("output.dir"),'/_site/')
 }
