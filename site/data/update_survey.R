@@ -1,5 +1,0 @@
-survey <- read.delim("data/survey.txt")
-names(survey) <-  c("name", "gender", "span1", "span2", "hand",  "fold", "pulse", "clap", "exercise", "smokes",   "height", "m.i", "age")
-levels(survey$fold) <- c('left', 'neither', 'right')
-levels(survey$hand) <- c('left', 'right')
-write.table(survey, file="data/survey.txt", quote=FALSE, sep='\t')
