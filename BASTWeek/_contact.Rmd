@@ -1,3 +1,0 @@
-- [Jelle Goeman](https://www.lumc.nl/org/bds/medewerkers/812110344192525), Medical Statistics & Bioinformatics, LUMC
-- [Szymon M. Kielbasa](https://www.lumc.nl/org/bds/medewerkers/smkielbasa), Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC (__coordinator at LUMC__)
-- [Ramin Monajemi](https://www.lumc.nl/org/bds/medewerkers/rmonajemi), Bioinformatics Center of Expertise, Medical Statistics & Bioinformatics, LUMC
