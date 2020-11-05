@@ -1,0 +1,103 @@
+```{r _shedule, echo=FALSE}
+conf <- yaml.load_file("_schedule.yml")
+slots <- conf[["course"]][["slots"]]
+
+barmsijs <- FALSE
+
+```
+
+<div class="alert alert-info" role="alert" style="text-align: left;"></div>
+
+
+```{r, echo=FALSE}
+rel_slots <- lapply(names(slots), function(slot) {
+  rel_slots <- slots[[slot]][["related"]] 
+  if (!is.null(rel_slots)) {
+    rel_slots <- strsplit(rel_slots," ")[[1]] 
+  } else {
+    rel_slots <- NULL
+  }
+  lapply(rel_slots, function(x) {
+    tibble(source=slot,target=x)
+  }) %>% bind_rows()
+}) %>% bind_rows() %>% 
+  mutate(dashes=TRUE)
+
+next_slots <- sapply(names(slots), function(x) {
+  v <- slots[[x]][["next"]] 
+  if (is.null(v)) 
+    NA
+  else  
+    v
+}) %>% tibble(source = names(.),target   = .) %>%  filter(!is.na(target)) %>% 
+  mutate(dashes=FALSE)
+
+# edges <- bind_rows(rel_slots, next_slots) %>% rename(from=source,to=target)
+edges <- next_slots %>% rename(from=source,to=target)
+
+nodes <- tibble (id=c(edges$from,edges$to) %>% unique())
+nodes$label <- sapply(nodes$id, function(x) slots[[x]][["title"]]) %>% as.character()
+
+# TEMPORARY SOLTION URL : set barmsijs for correct urls ; FALSE is local url
+
+if (barmsijs) {
+ nodes$url <- paste('https://barmsijs.lumc.nl/crip/', nodes$id, ".html", sep="")  
+} else {
+ nodes$url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', nodes$id, ".html", sep="")
+}
+
+# data/time
+nodes$title <- sapply(nodes$id, function(s) {
+  if (barmsijs)
+    url <- paste('https://barmsijs.lumc.nl/crip/', s, ".html", sep="")
+  else 
+    url <- paste('file://',knitr::opts_knit$get("output.dir"),'/_site/', s, ".html", sep="")
+  
+  paste("<a href=",url," target=\"_self\">",slots[[s]][["title"]],"</a><br><br>","data: ", slots[[s]][["date"]], 
+        "<br> time:",slots[[s]][["time"]]) 
+})
+
+#
+#
+#
+
+visNetwork(nodes, edges,width = "100%" , height = "700px") %>% 
+  visIgraphLayout(layout = "layout_in_circle") %>% 
+  visEdges(arrows = list(to=list( scaleFactor=.5)),
+           color = list(color = "lightblue", highlight = "red"), shadow = TRUE) %>% 
+           # replaced doubleClick with click
+           visEvents(click = "function(e) { 
+                                      var nodeID = e.nodes[0];
+                                      var url = this.body.nodes[nodeID].options.url;
+                                      window.open(url,'_self')
+                                    }"
+                     ) %>% 
+  visInteraction(hover=TRUE) 
+
+```
+
+
+```{r, results='asis', echo=FALSE, eval=FALSE}
+
+slot_df <- lapply(names(slots), function(slot) {
+  s <- slots[[slot]]
+  tibble(id=slot, pos=as.numeric(ifelse(is.null(s$pos), NA, s$pos)), 
+         title=s$title, date=s$date, time=s$time, rel=ifelse(is.null(s$related),NA,s$related) )
+}) %>%  bind_rows %>%  arrange(pos)
+
+dates <- slot_df %>%  distinct(date) %>% pull(date) %>% sort()
+
+.devnull <- lapply(dates, function(d) {
+  spd <- slot_df %>%  filter(date==d & !is.na(pos)) %>% arrange(pos) %>% pull(id) # slots per day
+  cat('### Date: ', d, '\n\n')
+  lapply(spd, function(slot){
+    s <- slots[[slot]]
+    cat('\n\n#### ', '[' ,s$title, '](',paste(slot,".html",sep=""),')', '(',s$time,')', '\n\n')
+  })
+})
+
+```
+
+
+
+

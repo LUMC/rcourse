@@ -1,0 +1,11 @@
+```{r alert_interactive, echo=FALSE, results='asis'}
+cat("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#collapseExample\" 
+     aria-expanded=\"false\" aria-controls=\"collapseExample\"> Answer </a>")
+cat("<div class=\"collapse\" id=\"collapseExample\">  <div class=\"well\">",msg,"</div> </div>")
+```
+
+
+
+
+
+

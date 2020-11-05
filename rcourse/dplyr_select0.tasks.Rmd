@@ -1,0 +1,96 @@
+---
+title: "Select (practice)"
+# author: "R. Monajemi"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+survey <- read_survey()
+```
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+Apply the following to survey data: 
+
+1) Select *personal information* {name, age, gender, height} into a new tibble `survey_personal_info`.
+
+```{r}
+survey_personal_info <- select(survey, name, age, gender, height)
+```
+
+2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with uppercase initials, e.g. `Name`, `Age` etc. 
+
+```{r}
+survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
+```
+
+3) Reorder the variables as such that name,age and gender appear as first, second and the third column followd by the remaining
+variables. 
+
+```{r}
+select(survey, name,age,gender,everything())
+```
+
+4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](data.html#survey)
+
+```{r}
+select(survey, -span1,-span2,-hand,-fold,-clap)
+```
+
+## Extra exercises
+
+1) Rename the `m.i` variable to `system`.
+  
+```{r}
+# Option 1: very tedious, you need to type all the variable names and 
+# only rename the 'm.i' variable to 'system'
+#
+select(survey , name, gender, span1, span2, hand, fold, pulse, clap, 
+       exercise, smokes, height, system=m.i, age)
+# Option 2: shorter, but side-effect is that m.i (now system) comes at 
+# the front.
+select(survey, system=m.i, everything()) 
+# Option 3: use rename function (see ?rename). 
+rename(survey,system=m.i)
+```
+
+
+2) Select `name` along with all categorical variables into a new tibble `survey_cats`.
+
+```{r}
+# Categrical data: variables which take on categories as values, e.g. 
+# 
+# gender   : {male, female}
+# hand     : {left, right}
+# fold     : {left, right, neither} 
+# clap     : {left, right, neither} 
+# exercise : {freq, some, none}
+# smokes   : {heavy, regul, occas, never}
+# m.i      : {metric, imperial}
+#
+# 
+survey_cats <- select(survey, name, gender, hand, fold, clap, exercise, smokes, m.i)
+survey_cats
+```
+
+
+3) Create a new tibble `survey_nums` with `name` and all numerical variables.
+
+```{r}
+survey_nums <- select(survey, name, span1, span2, pulse, height)
+survey_nums
+
+```
+

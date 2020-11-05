@@ -1,0 +1,88 @@
+---
+title: "ggplot2 introduction (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+pulse <- read_pulse()
+survey <- read_survey()
+```
+
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+1. *Necessary libraries and data*.  
+In your R Markdown document load the `tidyverse` library and read the `pulse.csv` file into the `pulse` variable.
+
+2. *A series of charts*.  
+Reproduce the sequence of charts.  
+Each next chart is a small modification of the command.
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point()
+```
+
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( aes( color = exercise ) )
+```
+
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( aes( color = exercise ), alpha = 0.6 )
+```
+
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( aes( color = exercise, shape = gender ), alpha = 0.6 )
+```
+
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( aes( color = exercise, shape = gender ), alpha = 0.6, size = 3 )
+```
+
+3. *Labels*.  
+Check `Help` for commands `xlab`, `ylab`, `ggtitle`.  
+Adjust the last chart to get the chart below.
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( aes( color = exercise, shape = gender ), alpha = 0.6, size = 3 ) +
+  xlab( "Age [years]" ) + ylab( "Weight [kg]" ) +
+  ggtitle( "All subjects from pulse.csv" )
+```
+
+## Extra exercises
+
+1. *Multiple layers*.  
+There can be more than one `geom_` component in a single plot.  
+Compose two `geom_point` components (so, add one more than used above) to reproduce the following chart.
+```{r eval=TRUE}
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( color = "yellow", size = 3 ) +
+  geom_point( color = "black", size = 1, shape = 3 )
+```
+
+2. *Different data in layers*.  
+By default, `geom_` functions use the data provided in the call to the `ggplot` function.  
+This can be changed with the `data` argument: `geom_point( data = otherData )`.  
+  \
+Use the function `filter` to select from `pulse` all subjects with `height >= 190`; store the result in `filtPulse`. Now, modify the previous plot to draw the black symbol only for `filtPulse` subjects.
+```{r eval=TRUE}
+filtPulse <- pulse %>% filter( height >= 190 )
+ggplot( pulse, aes( x = age, y = weight ) ) +
+  geom_point( color = "yellow", size = 3 ) +
+  geom_point( color = "black", size = 1, shape = 3, data = filtPulse )
+```

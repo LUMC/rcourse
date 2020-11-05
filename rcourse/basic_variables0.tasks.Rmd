@@ -1,0 +1,40 @@
+---
+title: "Variables (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+```
+
+## Primary exercises
+
+1. *Create a new variable*.  
+Make a variable `heightInMeters` that contains your height expressed in meters.
+
+```{r}
+heightInMeters <- 1.75
+```
+
+2. *Use a variable in an expression*.  
+Use the variable `heightInMeters` to calculate your height in cm.
+
+```{r}
+heightInMeters * 100
+```
+
+3. *Save result to a variable; print a variable*.  
+Calculate your height once again and store the result in a variable.  
+Show (print) the value of the new variable.
+
+```{r}
+heightInCentimeters <- heightInMeters * 100
+heightInCentimeters
+```

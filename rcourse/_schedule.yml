@@ -1,0 +1,378 @@
+course:
+  title: "CRiP: Using R for data analysis"
+  start: "01-01-2020"
+  end: "10-01-2020"
+  exam:
+    date: "September 28, 2020"
+    time: "09:00-11:00"
+    venue: "Brightspace: Theme R -> Exam"
+  dataset:
+    pulse.csv
+    pulse.sav
+    survey.csv
+    CAREMA_case-control.sav
+    CAREMA_Prospectief.sav
+  slots:
+    introduction0:
+      title: "introduction"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "no" # {yes | no}
+      related:
+      next:
+        basic_calculator0
+      prev:
+      pos: 0
+      slot: 1
+      slotPos: 10
+    basic_calculator0:
+      title: "calculator"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+        basic_variables0
+      prev:
+        introduction0
+      pos: 1
+      slot: 1
+      slotPos: 20
+    basic_variables0:
+      title: "variables"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+        basic_vectors0
+      prev:
+        basic_calculator0
+      pos: 2
+      slot: 1
+      slotPos: 30
+    basic_vectors0:
+      title: "vectors"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+        basic_projects0
+      prev:
+        basic_variables0
+      pos: 3
+      slot: 1
+      slotPos: 40
+    basic_projects0:
+      title: "projects"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "no" # {yes | no}
+      related:
+      next:
+        basic_scripts0
+      prev:
+        basic_vectors0
+      pos: 4
+      slot: 1
+      slotPos: 50
+    basic_scripts0:
+      title: "scripts/R Markdown"
+      subtitle: ""
+      goal: ""
+      date: "21-09-2020"
+      time: "13:15-17:00"
+      venue: "venue"
+      tasks : "no" # {yes | no}
+      related:
+      next:
+        tidyverse0
+      prev:
+        basic_projects0
+      pos: 5
+      slot: 1
+      slotPos: 60
+    tidyverse0:
+      title: "tidyverse"
+      subtitle: ""
+      goal: ""
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: dplyr_tibble0
+      prev: basic_scripts0
+      pos: 6
+      slot: 2
+      slotPos: 10
+    packages0:
+      title: "packages"
+      subtitle: ""
+      goal: "Install and use R packages"
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
+      pos:
+      slot: 2
+      slotPos:
+    dplyr_tibble0:
+      title: "tibble"
+      subtitle: ""
+      goal: ""
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+        dplyr_tibble1
+        packages0
+      next: dplyr_select0
+      prev: tidyverse0
+      pos: 7
+      slot: 2
+      slotPos: 30
+    dplyr_tibble1:
+      title: "tibble*"
+      subtitle: ""
+      goal: "Comparison tibble vs data.frame"
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next:
+      prev:
+      pos:
+      slot: 2
+      slotPos:
+    dplyr_select0:
+      title: "select"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: "dplyr_filter0"
+      prev: "dplyr_tibble0"
+      pos: 8
+      slot: 2
+      slotPos: 40
+    dplyr_filter0:
+      title: "filter"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: "dplyr_mutate0"
+      prev: "dplyr_select0"
+      pos: 9
+      slot: 2
+      slotPos: 50
+    dplyr_mutate0:
+      title: "mutate"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: "dplyr_pipe0"
+      prev: "dplyr_filter0"
+      pos: 10
+      slot: 2
+      slotPos: 60
+    dplyr_pipe0:
+      title: "pipe operator"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "13:00-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: "dplyr_summarise0"
+      prev: "dplyr_mutate0"
+      pos: 11
+      slot: 3
+      slotPos: 10
+    dplyr_summarise0:
+      title: "summarise"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "13:00-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: dplyr_group0
+      prev: "dplyr_pipe0"
+      pos: 12
+      slot: 3
+      slotPos: 20
+    dplyr_group0:
+      title: "group"
+      subtitle: ""
+      goal:
+      date: "22-09-2020"
+      time: "13:00-17:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: dplyr_join0
+      prev: "dplyr_summarise0"
+      pos: 13
+      slot: 3
+      slotPos: 30
+    dplyr_join0:
+      title: "join"
+      subtitle: ""
+      goal:
+      date: "23-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      next: tidyr_reshape0
+      prev: "dplyr_group0"
+      pos: 14
+      slot: 4
+      slotPos: 10
+    tidyr_reshape0:
+      title: "reshape"
+      subtitle: ""
+      goal:
+      date: "23-09-2020"
+      time: "09:00-09:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: dplyr_join0
+      next: basic_factors0
+      pos: 15
+      slot: 4
+      slotPos: 20
+    basic_factors0:
+      title: "factors"
+      subtitle: ""
+      goal:
+      date: "23-09-2020"
+      time: "13:00-14:15"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "tidyr_reshape0"
+      next: "basic_lists0"
+      pos: 16
+      slot: 5
+      slotPos: 10
+    basic_lists0:
+      title: "lists"
+      subtitle: ""
+      goal:
+      date: "23-09-2020"
+      time: "14:15-15:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "basic_factors0"
+      next: "basic_formulas0"
+      pos: 17
+      slot: 5
+      slotPos: 20
+    basic_formulas0:
+      title: "formulas"
+      subtitle: ""
+      goal:
+      date: "23-09-2020"
+      time: "15:30-16:45"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "basic_lists0"
+      next: "ggplot_basics0"
+      pos: 18
+      slot: 5
+      slotPos: 30
+    ggplot_basics0:
+      title: "ggplot2"
+      subtitle: ""
+      goal:
+      date: "24-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "basic_lists0"
+      next: "ggplot_scales0"
+      pos: 19
+      slot: 6
+      slotPos: 10
+    ggplot_scales0:
+      title: "scales"
+      subtitle: ""
+      goal:
+      date: "24-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_basics0"
+      next: "ggplot_facets_themes0"
+      pos: 20
+      slot: 6
+      slotPos: 20
+    ggplot_facets_themes0:
+      title: "facets"
+      subtitle: ""
+      goal:
+      date: "24-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_scales0"
+      next: "ggplot_geoms0"
+      pos: 21
+      slot: 6
+      slotPos: 30
+    ggplot_geoms0:
+      title: "geoms"
+      subtitle: ""
+      goal:
+      date: "24-09-2020"
+      time: "09:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "ggplot_facets_themes0"
+      next:
+      pos: 22
+      slot: 6
+      slotPos: 30

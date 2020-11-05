@@ -1,0 +1,23 @@
+<script>
+$(document).ready(function() {
+  $(".fold").prepend("<button class=\"fold-btn\">Answer</button>");
+  $(".fold").children("code").toggle();
+  $(".fold-btn").on("click", function() {
+    if($(this).text() === "Hide") {
+      $(this).text("Answer");
+    } else {
+      $(this).text("Hide");
+    }
+    $(this).next("code").toggle("linear");
+  });
+});
+</script>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>

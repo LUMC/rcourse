@@ -1,0 +1,139 @@
+---
+title: "%>% : Pipe operator (practice)"
+# author: "R. Monajemi"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+survey <- read_survey()
+```
+
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+\newcommand{\pipe}{{\small \;\;{\%}{>}{\%}\;\;} }
+
+## Primary exercises
+
+> Use $\pipe$ as much as possible in your solutions. 
+
+In the survey dataset:
+
+1. Right-handedness  
+- How many individuals are right handed? 
+
+```{r}
+survey %>%  filter(hand=="right") %>% nrow()
+```
+
+- Are there more right-handed males than females?   
+
+```{r}
+# right-handed females
+rh_females <- survey %>%  
+              filter(hand=="right" & gender=="female")  %>% 
+              nrow() 
+# right-handed males
+rh_males <- survey %>%  
+            filter(hand=="right" & gender=="male") %>% 
+            nrow()
+
+# Test whether there are strictly more right-handed males than females. 
+#
+# FALSE => the answer is no 
+# TRUE => answer is yes
+rh_males > rh_females  
+```
+
+2. Count the number of females who never smoke. Do the same for males.
+
+```{r}
+female_smokers <- survey %>% filter(smokes=="never" & gender=="female") %>% nrow()
+female_smokers
+male_smokers <- survey %>% filter(smokes=="never" & gender=="male") %>%  nrow()
+male_smokers
+```
+
+3. Produce the percentages of female and male non-smokers.
+
+```{r}
+tot_females <- survey %>% filter(gender=="female") %>%  nrow() # total females
+tot_males <- survey %>% filter(gender=="male") %>%  nrow()     # total males
+
+# Take female_smokers and male_smokers from previous exercise
+(female_smokers/tot_females)*100 # % female smokers
+(male_smokers/tot_males)*100     # % male smokers
+
+```
+
+4. The variables `pulse`, `height` and `m.i` have missing values (`NA`).
+
+  - Count for each variable number of missing (NA). Use the function `is.na` ([ref](basic_vectors0.html)) as a condition to find the missing values.
+  
+```{r}
+pulse_NAs <- survey %>% filter(is.na(pulse)) %>%  nrow()   # nr. of NA's pulse variable 
+pulse_NAs
+height_NAs <- survey %>% filter(is.na(height)) %>%  nrow()  # nr. of NA's height variable 
+height_NAs
+mi_NAs <- survey %>% filter(is.na(m.i)) %>%  nrow()     # nr. of NA's m.i variable 
+mi_NAs
+```
+  
+  - The variables height and m.i have the same amount of missing (NA), is it the case that these missing values are in the same observations (rows), i.e. that if height is missing then also m.i is missing at the same row? 
+  
+```{r}
+# From the first part of this exercise we know that 27 observations are missing (NA) 
+# in 'height' and 'm.i'. We only need to count how many observations in survey are 
+# missing height and m.i at the same time. If that is equal to 27 then the answer is 
+# yes.
+
+# number of observation for which we have height=m.i=NA
+( survey %>% filter(is.na(height) & is.na(m.i))  %>% nrow() ) == height_NAs
+```
+  
+  
+
+## Extra exercises
+
+1. What is the maximum female height in inch units from the pulse dataset? 
+
+```{r}
+# The 'height' variable has missing values, i.e. 'NA'. Most functions in R, e.g. sum, 
+# max, min, median, mean and so on,  when operating on vectors with missing values 
+# produce a NA, and rightly so. However, the functions are equipped with an additional 
+# argument 'na.rm' if you choose to run the function on the non-missing part of the 
+# vector. Beware that max(weig) 
+
+survey %>% filter(gender=="female") %>%  
+          mutate(height_inch=height * 0.393701) %>% 
+          pull(height_inch) %>%  max(na.rm = TRUE)
+```
+
+2. What is right-handedness percentage in females who frequently exercise? What about males?
+
+```{r}
+# 1) First we create a tibble 'female_exercise_freq' for females with exercise=="freq"
+female_exercise_freq <- survey %>% 
+  filter(gender=="female" & exercise=="freq") 
+
+# 2) From the group in 'female_exercise_freq' calculate the total ('female_freq_count') 
+# and the nr. of right-handed ones ('female_freq_rh_count').
+female_freq_count <- female_exercise_freq %>% 
+  nrow()  # calculate total nr. of females who frequently exercise
+female_freq_rh_count <- female_exercise_freq %>% 
+  filter(hand=="right") %>% nrow() #  nr. of right-handed ones
+
+# 3) calculate the fraction and the percentage.
+(female_freq_rh_count / female_freq_count)*100  # % 
+```
+

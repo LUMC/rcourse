@@ -1,0 +1,96 @@
+---
+title: "CRiP: Using R for data analysis"
+params:
+    basename: "index"
+---
+
+## Prerequisites
+
+Participants must be able to use a laptop/computer capable of running recent 
+[RStudio](https://www.rstudio.com/products/rstudio/). See below for the [Installation section](#Installation).
+
+## What we teach
+
+[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods. 
+
+The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. **This is not a statistics course!** The course assumes no prior programming knowledge. Elementary statistics knowledge is necessary to understand examples.
+
+After the course you will be able to:
+
+- Understand and write (`tidyverse`-based) R code.
+- Use R to perform statistical analyses of your own data tables.
+- Generate reproducible reports from your own data in HTML, PDF or DOC formats.
+
+We will cover the following topics:
+
+- R expressions.
+- R data objects: vectors, data frames (tibbles), lists.
+- [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports.
+- Data manipulation: filtering, sorting, summarising of a table; joining/merging multiple tables (with [tidyverse/dplyr](https://dplyr.tidyverse.org/) and [tidyverse/tidyr](https://tidyr.tidyverse.org/)).
+- Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](https://ggplot2.tidyverse.org/)).
+- R packages: installation and usage.
+
+## Course structure
+
+The course is divided in 7 half-day slots followed by 2 hour exam.
+
+### The slots
+
+The topics are split in a number of small sections (a few per a half-day slot) and each section will have:
+
+- a short **online** introduction/demonstration,
+- followed by a **self/group-study practice session** (with *primary exercises* end *extra exercises*),
+- closed by a question and answer **online** (live) session.
+
+The students are asked to **type the commands** being presented and observe their effects (**avoid copy-paste**; own typing is important in order to learn how R responds to mistakes).  
+
+### The exam
+
+```{r,echo=FALSE}
+exam <- read_schedule()[["course"]][["exam"]]
+```
+
+There will be an exam on **`r exam$date`, `r exam$time`**. The exam can be found on **`r exam$venue`** and will be released **at 09:00 AM**. 
+
+To pass the exam the students are requested to prepare a R Markdown document reporting an analysis on a dataset. You will carry out the following steps:
+
+- Create a RStudio project, knit a R Markdown document.
+- Read a table which will be provided.
+- Show some filtered/summarized content of the table.
+- Produce some plots of the data.
+
+It is allowed to use the course (or other) materials during the exam but it is strictly forbidden to communicate with other persons during the exam.
+
+The **extra exercises** material is not necessary for the exam.
+
+## Installation
+
+Before the course prepare your computer:
+
+- **Install R**: go to *the R Project for Statistical Computing* (https://www.r-project.org/) and follow the download and installation instructions.
+- **Install RStudio**: go to *the RStudio download page* (https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio.
+
+Some additional packages are needed for the course.
+During the course the participants will learn how to install packages but this process occasionally fails (because e.g.: additional steps are needed in a particular operating system, or there is lack of permissions to access some system directories, or other software is too old, ...).
+Resolving installation problems during the course may be impossible, therefore please try to follow the steps below.
+In case of failure, please inform the teachers during the first day of the course.
+
+- **install package tidyverse**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
+- **install packages needed for R Markdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing R Markdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
+
+
+
+
+  
+
+
+<!--
+## Materials
+
+The course materials are served:
+
+- as [HTML pages](`r params$RCourseURL`/index.html) at `r params$RCourseURL`/index.html
+- as a [.zip file](`r params$RCourseURL`/R_course.zip)
+- as a [.tar.gz file](`r params$RCourseURL`/R_course.tgz)
+
+The materials contain a [`data` directory](`r params$RCourseURL`/data) with the __data__ __files__ used in the presentations/tasks. The directory can be also accessed at `r params$RCourseURL`/data -->

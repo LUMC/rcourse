@@ -258,6 +258,14 @@ Course <- R6Class("Course",
           warning("invalid slot name !")
         }
       },
+      #' @description publish _site to remote site with rsync
+      publish = function(server="shark", remote_dir="/bam-export/rcourse") {
+        dst_ <- paste(server,remote_dir, sep=":")
+        src_ <- file.path(private$sources_, "_site", "") # "" adds a final / to the path, needed for rsync ! 
+        cmd <- paste("rsync -avp ", src_, dst_)
+        cat('command: ',cmd, '\n')
+        system(cmd)
+      },
       #' @description clear generted files, i.e. site/
       clean = function() {
         rmarkdown::clean_site(self$src())

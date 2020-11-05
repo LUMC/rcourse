@@ -1,0 +1,130 @@
+---
+title: "Join (practice)"
+# author: "R. Monajemi"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+survey <- read_survey()
+```
+
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+For this exercise we will first split  the `survey` dataset into two separate tables 
+in order to join them again! Call these `df1` and `df2`, these will have disjoint set of 
+variables except `name` and `age`, the variables `name` and `age` combined are unique in 
+all observations and will be used later for joining. Take for example all variables related 
+to arm or hand in df1 and the rest in df2:
+
+```
+df1 : "name"   "span1" "span2" "hand"  "fold"   "clap"  "age"
+df2 : "name"   "gender"  "pulse"  "exercise"   "smokes"  "height" "m.i" "age"
+```
+
+```{r}
+df1 <- survey %>%  select(name,age,span1,span2,hand,fold,clap)
+df1
+df2 <- survey %>%  select(name,age,gender,pulse,exercise,smokes,height,m.i)
+df2
+```
+
+1. Join df1 and df2 by `name` and `age` such that you obtain the original survey table. 
+
+```{r}
+inner_join(df1,df2,by=c("name","age"))
+```
+
+2. Does it make any difference to choose either of `inner_join`, `left_join` and `full_join`? Hint: compare two tables with function `all_equal`.       
+
+```{r}
+# Answer is no, this because both df1 and df2 come from the same source 
+# `survey` with equal number of observations and exact matching of the 
+# unique keys. 
+#
+
+all_equal(left_join(df1,df2,by=c("name","age")), survey)   # left_join
+all_equal(inner_join(df1,df2,by=c("name","age")), survey)  # inner_join
+all_equal(full_join(df1,df2,by=c("name","age")), survey)   # full_join
+```
+
+
+<!--  removind exercise 3 -->
+
+
+```{r, echo=TRUE, eval=FALSE}
+# 3. Create the following tibbles (copy/paste):
+
+df1 <- tibble(name=c("Bobby","Gerald","Amelia","Lottie","Dennis"),
+        height=c(179.1,NA,167.64,170,200), 
+        age=c(18.917,16.917,17.333,17.25,18.5),
+        span1=c(20,18,15.9,19,22))
+
+df2 <- tibble(name=c("Bobby","Gerald","Amelia","Lottie","Dennis"),
+        age=c(18.917,16.917,17.333,17.25,18.5),
+        span2=c(19.5,13.3,16.5,18.5,21.5))
+
+# - Join df1 and df2 by `name`. 
+left_join(df1,df2, by="name")
+
+# - Do the same but now with `{name,age}` as the key. Explain the difference.
+# When joining only by 'name' we force the join function to resolve the name 
+# conflict on 'age', it generated two columns 'age.x' and 'age.y' for df1$age 
+# and df2$age respectively. But when using 'age' as part of the key (name,age) 
+# then 'age' is treated as a common column and will occur only once.
+
+left_join(df1,df2, by=c("name","age"))
+# There is no name conflict here, both 'name' and 'age' are as keys for joining and all other variables have unique names. 
+left_join(df1,df2, by=c("name", "age"))
+
+```
+  
+## Extra exercises
+
+1. Explain the result if you  use only the `name` variable as the key in the primary exercise (1) .
+
+```{r}
+# The variable 'name' is not unique, so for all those non-unique names the 
+# joining of df1 and df2 will result in a product. For example the name 
+# 'Benjamin' appears twice in the survey data, therefore it appears twice
+# in each for the tibbles df1 and df2. Each row with the name 'Benjamin' 
+# in df1 matches twice to the name 'Benjamin' in df2, so in total there 
+# will be 4 rows in the final result.
+# 
+inner_join(df1,df2,by="name") %>% filter(name=="Benjamin")
+
+# There are 78 more rows extra as the result of the ambiguities in joining
+# with 'name' only. 
+#
+name_age_key_row_count <- inner_join(df1,df2,by=c("name","age")) %>% nrow() # 'name' and 'age' as the key
+name_age_key_row_count
+name_key_row_count <- inner_join(df1,df2,by="name") %>% nrow() # only 'name' as the key
+name_key_row_count
+name_key_row_count - name_age_key_row_count # number of additional rows due to non-unique key 'name'
+```
+
+```{r, eval=FALSE, echo=FALSE}
+# Maybe another time 
+#
+# 2. Calculate the number of additional rows without doing the join using the column `name` only.   
+# We can calculate the number of additional rows by using the frequency of 
+# the non-unique names in survey 
+freq_non_uniq_names <- survey %>% count(name) %>% filter(n>1) %>% pull(n)
+freq_non_uniq_names
+# The total additional rows should be the sum of the product of all the these frequencies minus the correct 
+#  matches (if 'age' was used.):
+sum(freq_non_uniq_names*freq_non_uniq_names - freq_non_uniq_names) 
+```
+

@@ -1,0 +1,174 @@
+---
+title: 'Tibble'
+# author: "R. Monajemi"
+params:
+  basename: "dplyr_tibble0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params)  
+```
+
+ 
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 
+
+> A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
+
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
+
+## Create a tibble
+
+To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](installation0.html) for more details.  
+
+Enter the following to load *tidyverse* package:
+
+```{r}
+library(tidyverse) 
+```
+
+Creating a __tibble__ is done using the keyword _tibble_ taking a list of `name=value` pairs where:
+
+- `name` is the variable (column) name,
+- `value` is the values of the observation.  
+
+
+Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
+
+```{r, echo=TRUE}
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+```
+
+`r info_block("When creating a tibble the column vectors must be of the same length.")`
+
+The variable `favourite_colour` now holds the data. Enter its name in the R `Console` for inspection:
+
+```{r}
+favourite_colour
+```
+
+> What additional pieces of information do you see beside the content we provided?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with dimensions 4x3 (4 observations 
+and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
+qa(msg)
+``` 
+
+## Inspect your data
+
+Type the following to find out the dimensions of the tibble:
+
+```{r}
+ncol(favourite_colour)  # number of variables (columns)
+nrow(favourite_colour)  # number of observations (rows)
+dim(favourite_colour)   # dimensions : 4 rows and 3 columns 
+```
+
+## Head and tail
+
+Show top and bottom rows of the tibble: 
+
+```{r}
+head(favourite_colour, 2)  # first 2 observations (rows)
+tail(favourite_colour, 3)  # last 3 observations (rows)
+```
+
+With the second argument to `head` and `tail` functions you can control the number of rows.
+
+`r info_block("By default head and tail show 6 rows, i.e. when the second argument is omitted : head(favourite_colour) or tail(favourite_colour).")`
+
+## Select variables: [
+
+Often you may need to select certain variables, this can be done using square brackets `[` :
+
+```{r}
+favourite_colour["colour"]
+```
+
+or combination of variables:
+
+```{r}
+favourite_colour[c("name","year")]
+```
+ 
+`r info_block("Subset result of a tibble is always a tibble.")`
+
+## Extract variables as vectors:  [[ or $
+
+If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
+
+```{r}
+favourite_colour[["year"]]
+favourite_colour$year
+```
+
+In some contexts (later in the course) it is convenient to use the function `pull` which does the same as `[[` and `$` :  
+
+```{r}
+pull(favourite_colour, year) 
+```
+
+
+## tibble to/from file
+
+Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
+comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](data-import.pdf)).
+
+<!-- For more details on reading/writing format see [readr_io0](readr_io0.html). --> 
+
+let us now save our first tibble into a file in csv format:   
+
+```{r}
+write_csv(x = favourite_colour, path = "favourite_colour.csv")
+```
+
+`favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
+
+```
+name,year,colour
+Lucas,1995,Blue
+Lotte,1995,Green
+Noa,1995,Yellow
+Wim,1994,Purple
+```
+
+This way we can permanently store our results in files for later use. We can now read the csv file back into a R 
+environment variable, e.g. `favourite_colour_csv` :
+
+```{r}
+favourite_colour_csv <- read_csv(file = "favourite_colour.csv")
+```
+
+`read_csv` gives a summary of the variables and their inferred types.
+
+```{r}
+favourite_colour_csv
+```
+
+## Type of a tibble
+
+Now inspect the type of the tibble we just created:
+
+```{r}
+class(favourite_colour)
+```
+
+A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+
+
+`r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_related.Rmd"} 
+``` 
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 

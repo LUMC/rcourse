@@ -1,0 +1,99 @@
+---
+title: 'Formulas'
+params:
+  basename: "basic_formulas0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) 
+pulse <- read_pulse()
+```
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+```
+
+A **formula** is a way to tell R that one variable depends on another.  
+A formula has a form of an expression. For example, to specify a (statistical) model in which `y` depends on `x`, say:
+```{r eval=FALSE}
+y ~ x
+```
+
+The above code does not directly use values of `y` and `x`. It only declares the form of relation between these two variables.  
+The relation might be passed as an argument to functions.  
+Such a function, in order to perform a calculation needs a `tibble` (`data.frame`) containing `y` and `x` columns. Typically, the `tibble` will be provided to the function by the argument called `data`.
+
+A formula can be stored in a variable; try:
+```{r}
+form <- y ~ x
+form
+class(form)
+```
+
+## Example: Student's t-test
+
+Let's use the `pulse` data to test with **Student's t-test** the hypothesis whether between the two `gender` groups there is a significant difference of the mean pulses before the exercise (`pulse1`).
+
+The `t.test` function might be called with two *vectors* of numbers.  
+Let's put female pulses to the first vector and the male pulses to the second vector. Try:
+```{r}
+femalePulse1 <- pulse %>% filter( gender == "female" ) %>% pull( pulse1 )
+malePulse1 <- pulse %>% filter( gender == "male" ) %>% pull( pulse1 )
+```
+
+Then, we may call `t.test` on these two vectors:
+```{r}
+t.test( femalePulse1, malePulse1 )
+```
+
+But the manual extraction of the `malePulse1` and `femalePulse1` vectors is not necessary for the format of data available in the `pulse` tibble.  
+Try the code below to see the `t.test` function used with the formula notation.  
+You will see the same result as above:
+```{r}
+t.test( pulse1 ~ gender, data = pulse )
+```
+
+Sometimes, it might be convenient to have the formula stored in a separate variable.  
+The following code is also possible:
+```{r}
+form <- pulse1 ~ gender
+t.test( form, data = pulse )
+```
+
+Note, that the result of the `t.test` function has a form of a list. Try:
+```{r}
+h <- t.test( pulse1 ~ gender, data = pulse )
+names( h )
+h$p.value
+```
+
+## Example: simple linear regression
+
+Let's use the `pulse` data and try to model individual `weight` as a **linear function** of `height`.
+
+The command for linear regression is `lm` (for **linear model**).  
+The arguments needs to specify the a tibble containing the `data` and a formula specyfing dependence of the variables to be modelled. Try:
+```{r}
+fit <- lm(weight ~ height, data = pulse)
+fit
+```
+
+Again, the returned object resembles a list. Check its `names`:
+```{r}
+names( fit )
+```
+
+The formulas might have a more complex form. The exact meaning of such formulas is beyond the scope of this introduction. Here just an example:
+```{r}
+lm(pulse2 ~ pulse1 + exercise + pulse1:exercise, data=pulse)
+```
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 
+
