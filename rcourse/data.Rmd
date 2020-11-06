@@ -65,40 +65,25 @@ survey
 ```
 
 
-## CAREMA
+## SPSS files
 
-
-To read a SPSS file, e.g. `CAREMA_case-control.sav`,  we need the function `read_spss` from the R package `haven`. Try `library(haven)`, if the package is not installed then you'll get an error `threre is no package called 'haven'`, in that case you'll need to install it using:
-
+For SPSS files (.sav) we need the function `read_spss` from the R package `haven`. Try `library(haven)`, if the package is not installed then you'll get an error `threre is no package called 'haven'`, in that case you'll need to install it first using:
 
 ```{r, eval=FALSE}
 install.packages("haven")
 ```
 
-Once the `haven` package is installed then we need to load it into the current R session first using `library(haven)` upon which we can read the 
-CAREMA prospective SPSS file as follows:
+Once the `haven` package is installed then we need to load it into the current R session first using `library(haven)` upon which we can read `SPSS` files, e.g. `my_spss_file.sav`) :  
 
 ```{r, message=FALSE, eval=FALSE} 
 ## CAREMA
 library(haven)
-carema <- read_spss(file = "data/CAREMA_case-control.sav") 
-str(carema)
+msf <- read_spss(file = "my_spss_file.sav") 
+str(msf)
 ```
 
-
-```{r, message=FALSE, eval=FALSE, echo=FALSE}
-## CAREMA Prospective  
-carema_prosp <- read.spss(file = "data/CAREMA_Prospectief.sav") 
-str(carema_prosp)
-```
 
 ## Download data 
 
-Download all 
-(tar.gz <a href="data/crip_data2020.tar.gz" class="fas fa-download" download target="_blank"></a>,
-zip <a href="data/crip_data2020.zip" class="fas fa-download" download target="_blank"></a>)
-or individual files: 
 pulse.csv<a href="data/pulse.csv" class="fas fa-download" download target="_blank"></a>
 survey.csv<a href="data/survey.csv" class="fas fa-download" download target="_blank"></a>
-CAREMA_case-control.sav <a href="data/CAREMA_case-control.sav" class="fas fa-download" download target="_blank"></a>
-CAREMA_Prospectief.sav <a href="data/CAREMA_Prospectief.sav" class="fas fa-download" download target="_blank"></a>

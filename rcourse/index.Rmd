@@ -50,7 +50,7 @@ The students are asked to **type the commands** being presented and observe thei
 exam <- read_schedule()[["course"]][["exam"]]
 ```
 
-There will be an exam on **`r exam$date`, `r exam$time`**. The exam can be found on **`r exam$venue`** and will be released **at 09:00 AM**. 
+There will be an exam on **`r exam$date`, `r exam$time`** by **`r exam$venue`**.
 
 To pass the exam the students are requested to prepare a R Markdown document reporting an analysis on a dataset. You will carry out the following steps:
 

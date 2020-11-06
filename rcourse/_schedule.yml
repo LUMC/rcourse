@@ -3,9 +3,9 @@ course:
   start: "01-01-2020"
   end: "10-01-2020"
   exam:
-    date: "September 28, 2020"
-    time: "09:00-11:00"
-    venue: "Brightspace: Theme R -> Exam"
+    date: "November 13, 2020"
+    time: "14:30-16:30"
+    venue: "Remindo (proctoring)"
   dataset:
     pulse.csv
     pulse.sav
@@ -17,8 +17,8 @@ course:
       title: "introduction"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "09:15-10:30"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
@@ -32,8 +32,8 @@ course:
       title: "calculator"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "09:15-10:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -48,8 +48,8 @@ course:
       title: "variables"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "10:45-12:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -64,8 +64,8 @@ course:
       title: "vectors"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "10:45-12:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -80,8 +80,8 @@ course:
       title: "projects"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "13:15-14:30"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
@@ -96,8 +96,8 @@ course:
       title: "scripts/R Markdown"
       subtitle: ""
       goal: ""
-      date: "21-09-2020"
-      time: "13:15-17:00"
+      date: "09-11-2020"
+      time: "13:15-14:30"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
@@ -112,8 +112,8 @@ course:
       title: "tidyverse"
       subtitle: ""
       goal: ""
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "09-11-2020"
+      time: "14:45-16:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -126,8 +126,8 @@ course:
       title: "packages"
       subtitle: ""
       goal: "Install and use R packages"
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "09-11-2020"
+      time: "14:45-16:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -140,8 +140,8 @@ course:
       title: "tibble"
       subtitle: ""
       goal: ""
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "09-11-2020"
+      time: "14:45-16:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -156,8 +156,8 @@ course:
       title: "tibble*"
       subtitle: ""
       goal: "Comparison tibble vs data.frame"
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "09-11-2020"
+      time: "14:45-16:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -170,8 +170,8 @@ course:
       title: "select"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "09-11-2020"
+      time: "16:15-17:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -184,8 +184,8 @@ course:
       title: "filter"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "10-11-2020"
+      time: "09:15-10:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -198,8 +198,8 @@ course:
       title: "mutate"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "09:00-12:00"
+      date: "10-11-2020"
+      time: "09:15-10:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -212,8 +212,8 @@ course:
       title: "pipe operator"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "13:00-17:00"
+      date: "10-11-2020"
+      time: "10:45-12:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -226,8 +226,8 @@ course:
       title: "summarise"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "13:00-17:00"
+      date: "10-11-2020"
+      time: "13:15-14:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -240,8 +240,8 @@ course:
       title: "group"
       subtitle: ""
       goal:
-      date: "22-09-2020"
-      time: "13:00-17:00"
+      date: "10-11-2020"
+      time: "13:15-14:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -254,8 +254,8 @@ course:
       title: "join"
       subtitle: ""
       goal:
-      date: "23-09-2020"
-      time: "09:00-09:30"
+      date: "10-11-2020"
+      time: "14:45-15:45"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -268,8 +268,8 @@ course:
       title: "reshape"
       subtitle: ""
       goal:
-      date: "23-09-2020"
-      time: "09:00-09:30"
+      date: "10-11-2020"
+      time: "16:00-17:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -282,8 +282,8 @@ course:
       title: "factors"
       subtitle: ""
       goal:
-      date: "23-09-2020"
-      time: "13:00-14:15"
+      date: "11-11-2020"
+      time: "09:00-10:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -296,8 +296,8 @@ course:
       title: "lists"
       subtitle: ""
       goal:
-      date: "23-09-2020"
-      time: "14:15-15:30"
+      date: "11-11-2020"
+      time: "10:15-11:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -310,8 +310,8 @@ course:
       title: "formulas"
       subtitle: ""
       goal:
-      date: "23-09-2020"
-      time: "15:30-16:45"
+      date: "11-11-2020"
+      time: "11:15-12:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -324,8 +324,8 @@ course:
       title: "ggplot2"
       subtitle: ""
       goal:
-      date: "24-09-2020"
-      time: "09:00-12:00"
+      date: "11-11-2020"
+      time: "13:15-14:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -338,8 +338,8 @@ course:
       title: "scales"
       subtitle: ""
       goal:
-      date: "24-09-2020"
-      time: "09:00-12:00"
+      date: "11-11-2020"
+      time: "14:10-14:50"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -352,7 +352,7 @@ course:
       title: "facets"
       subtitle: ""
       goal:
-      date: "24-09-2020"
+      date: "11-11-2020"
       time: "09:00-12:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
@@ -366,8 +366,8 @@ course:
       title: "geoms"
       subtitle: ""
       goal:
-      date: "24-09-2020"
-      time: "09:00-12:00"
+      date: "12-11-2020"
+      time: "15:00-15:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
