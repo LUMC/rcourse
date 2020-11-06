@@ -1,8 +1,0 @@
-```{r exercises_links, echo=FALSE}
-.task <- paste0(params$basename,".tasks.nocode.html")
-.solution <- paste0(params$basename,".tasks.html")
-```
-
-> Quick task(s):
-> Solve the [task(s)](`r .task`), and check your solution(s) [here](`r .solution`).
-
