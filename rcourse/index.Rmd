@@ -9,6 +9,11 @@ params:
 Participants must be able to use a laptop/computer capable of running recent 
 [RStudio](https://www.rstudio.com/products/rstudio/). See below for the [Installation section](#Installation).
 
+## Teachers
+
+- **Szymon M. Kiełbasa**, BDS LUMC, (smkielbasa@lumc.nl)
+- **Ramin Monajemi**, BDS LUMC, (rmonajemi@lumc.nl)
+
 ## What we teach
 
 [R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods. 
@@ -32,17 +37,22 @@ We will cover the following topics:
 
 ## Course structure
 
-The course is divided in 7 half-day slots followed by 2 hour exam.
+The course is divided in 7 half-day slots followed by the final exam. The teachers are available for chatting online during all teaching slots.
 
-### The slots
+### The slots #1-#6: practicing
 
-The topics are split in a number of small sections (a few per a half-day slot) and each section will have:
+Each half-day slot is split in a few small topics. Each topic will have:
 
-- a short **online** introduction/demonstration,
-- followed by a **self/group-study practice session** (with *primary exercises* end *extra exercises*),
-- closed by a question and answer **online** (live) session.
+- a short **online (live video) lecture** for introduction/demonstration,
+- followed by a **self/group-study practice session** (with *primary exercises* end *extra exercises*) with chat interactions,
+- closed by a short **chat question** and **live video answers** session.
 
 The students are asked to **type the commands** being presented and observe their effects (**avoid copy-paste**; own typing is important in order to learn how R responds to mistakes).  
+
+### The slot #7: trial exam
+
+A **trial exam** will be offered during the last (#7) slot. A set of assignments will be provided to be solved in the following 2 hours (proctoring will not be used). After the trial exam there will be a **chat question** and **live video answers** session.
+
 
 ### The exam
 
@@ -50,7 +60,7 @@ The students are asked to **type the commands** being presented and observe thei
 exam <- read_schedule()[["course"]][["exam"]]
 ```
 
-There will be an exam on **`r exam$date`, `r exam$time`**. The exam can be found on **`r exam$venue`** and will be released **at 09:00 AM**. 
+There will be an exam on **`r exam$date`, `r exam$time`**. The exam will be made available on **`r exam$venue`**. 
 
 To pass the exam the students are requested to prepare a R Markdown document reporting an analysis on a dataset. You will carry out the following steps:
 
@@ -61,7 +71,7 @@ To pass the exam the students are requested to prepare a R Markdown document rep
 
 It is allowed to use the course (or other) materials during the exam but it is strictly forbidden to communicate with other persons during the exam.
 
-The **extra exercises** material is not necessary for the exam.
+The *lecture* and *primary exercises* material will be sufficient to carry out the exam successfully. 
 
 ## Installation
 
