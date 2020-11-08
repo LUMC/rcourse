@@ -24,8 +24,8 @@ navbar:
 #        - text: "Past courses"
 #          href: 
   right:
-    #- icon: fa-download
-    #  href: crip.tar.gz
+    - icon: fa-download
+      href: data/rcourse_datasets.tar.gz
     - icon: fa-question fa-lg
       href: contact.html
 output:

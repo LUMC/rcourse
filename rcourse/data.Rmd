@@ -76,7 +76,6 @@ install.packages("haven")
 Once the `haven` package is installed then we need to load it into the current R session first using `library(haven)` upon which we can read `SPSS` files, e.g. `my_spss_file.sav`) :  
 
 ```{r, message=FALSE, eval=FALSE} 
-## CAREMA
 library(haven)
 msf <- read_spss(file = "my_spss_file.sav") 
 str(msf)
