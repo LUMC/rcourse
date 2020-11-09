@@ -63,7 +63,7 @@ pulse %>% group_by(age,gender) %>%
 
 ## Queries
 
-We are now have all the tools we need to apply more complex queries on our data. For example, group per `gender` on those that `ran` and summarize on mean `age`, `pulse1` and `pulse2`. First we need to filter only those who  *ran* (see explanation on `ran` in [pulse](data.html)) and only then group and summarise:  
+We now have all the tools we need to apply more complex queries on our data. For example, group per `gender` on those that `ran` and summarize on mean `age`, `pulse1` and `pulse2`. First we need to filter only those who  *ran* (see explanation on `ran` in [pulse](data.html)) and only then group and summarise:  
 
 ```{r}
 pulse %>% filter(ran == "ran") %>% 

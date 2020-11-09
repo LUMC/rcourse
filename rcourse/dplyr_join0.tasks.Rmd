@@ -64,7 +64,7 @@ all_equal(full_join(df1,df2,by=c("name","age")), survey)   # full_join
 <!--  removind exercise 3 -->
 
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 # 3. Create the following tibbles (copy/paste):
 
 df1 <- tibble(name=c("Bobby","Gerald","Amelia","Lottie","Dennis"),

@@ -62,7 +62,7 @@ pulse_bmi
 ```
 
 
-In the examples above we added a new variable to our dataset, but you can also update an existing a variable. For example, let's say we want to have the age expressed (roughly) in days instead of years: 
+In the examples above we added a new variable to our dataset, but you can also update an existing variable. For example, let's say we want to have the age expressed (roughly) in days instead of years: 
 
 ```{r}
 mutate(pulse, age=age*365)
