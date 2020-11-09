@@ -86,3 +86,4 @@ str(msf)
 
 pulse.csv<a href="data/pulse.csv" class="fas fa-download" download target="_blank"></a>
 survey.csv<a href="data/survey.csv" class="fas fa-download" download target="_blank"></a>
+Zip<a href="data/rcourse_dataset.zip" class="fas fa-download" download target="_blank"></a>
