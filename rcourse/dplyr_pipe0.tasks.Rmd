@@ -105,7 +105,7 @@ mi_NAs
 
 ## Extra exercises
 
-1. What is the maximum female height in inch units from the pulse dataset? 
+1. What is the maximum female height in inch units from the survey dataset? 
 
 ```{r}
 # The 'height' variable has missing values, i.e. 'NA'. Most functions in R, e.g. sum, 
