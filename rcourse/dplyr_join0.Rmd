@@ -43,7 +43,7 @@ You may control the layout of the combined table by choosing one of the three jo
 Return all rows in `df1` where there are matching values of `name` in `df2` and all columns in both `df1` and `df2`: 
 
 ```{r}
-inner_join(df1,df2, by = "name")  #  <=> inner_join(df1,df2, by = "name")
+inner_join(df1,df2, by = "name")
 
 ```
 

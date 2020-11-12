@@ -73,7 +73,7 @@ h$p.value
 Let's use the `pulse` data and try to model individual `weight` as a **linear function** of `height`.
 
 The command for linear regression is `lm` (for **linear model**).  
-The arguments needs to specify the a tibble containing the `data` and a formula specyfing dependence of the variables to be modelled. Try:
+The arguments needs to specify the a tibble containing the `data` and a formula specifying dependence of the variables to be modelled. Try:
 ```{r}
 fit <- lm(weight ~ height, data = pulse)
 fit
