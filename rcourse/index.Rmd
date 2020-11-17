@@ -7,7 +7,9 @@ params:
 ## Prerequisites
 
 Participants must be able to use a laptop/computer capable of running recent 
-[RStudio](https://www.rstudio.com/products/rstudio/). See below for the [Installation section](#Installation).
+[RStudio](https://www.rstudio.com/products/rstudio/). See below for the RStudio [Installation section](#installation).
+
+Moreover, [Zoom **Client**](https://zoom.us/download) needs to be installed (please do not join in a browser window; we observe problems then).
 
 ## Teachers
 
@@ -18,7 +20,7 @@ Participants must be able to use a laptop/computer capable of running recent
 
 [R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods. 
 
-The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. **This is not a statistics course!** The course assumes no prior programming knowledge. Elementary statistics knowledge is necessary to understand examples.
+The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. The course assumes no prior programming knowledge. **This is not a statistics course!** Elementary statistics knowledge is necessary to understand examples.
 
 After the course you will be able to:
 
@@ -37,9 +39,10 @@ We will cover the following topics:
 
 ## Course structure
 
-The course is divided in 7 half-day slots followed by the final exam. The teachers are available for chatting online during all teaching slots.
+The course is divided in 8 half-day slots (23-26.11.2020: morning slot 9:00-12:30 and afternoon slot 13:30-17:00).  
+The teachers are available for chatting online during all teaching slots.
 
-### The slots #1-#6: practicing
+### The slots #1-#7: practicing
 
 Each half-day slot is split in a few small topics. Each topic will have:
 
@@ -49,29 +52,16 @@ Each half-day slot is split in a few small topics. Each topic will have:
 
 The students are asked to **type the commands** being presented and observe their effects (**avoid copy-paste**; own typing is important in order to learn how R responds to mistakes).  
 
-### The slot #7: trial exam
+### The slot #8: self study assignment
 
-A **trial exam** will be offered during the last (#7) slot. A set of assignments will be provided to be solved in the following 2 hours (proctoring will not be used). After the trial exam there will be a **chat question** and **live video answers** session.
+A **self study assignment** (SSA) will be offered during the last (#8) slot. A set of tasks will be provided to be solved within 2 hours. After there will be a **chat question** and **live video answers** session.
 
-
-### The exam
-
-```{r,echo=FALSE}
-exam <- read_schedule()[["course"]][["exam"]]
-```
-
-There will be an exam on **`r exam$date`, `r exam$time`** by **`r exam$venue`**.
-
-To pass the exam the students are requested to prepare a R Markdown document reporting an analysis on a dataset. You will carry out the following steps:
+The overall SSA goal will be to prepare an R Markdown document reporting an analysis of a dataset. You will carry out the following steps:
 
 - Create a RStudio project, knit a R Markdown document.
 - Read a table which will be provided.
 - Show some filtered/summarized content of the table.
 - Produce some plots of the data.
-
-It is allowed to use the course (or other) materials during the exam but it is strictly forbidden to communicate with other persons during the exam.
-
-The *lecture* and *primary exercises* material will be sufficient to carry out the exam successfully. 
 
 ## Installation
 
@@ -87,20 +77,3 @@ In case of failure, please inform the teachers during the first day of the cours
 
 - **install package tidyverse**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
 - **install packages needed for R Markdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing R Markdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
-
-
-
-
-  
-
-
-<!--
-## Materials
-
-The course materials are served:
-
-- as [HTML pages](`r params$RCourseURL`/index.html) at `r params$RCourseURL`/index.html
-- as a [.zip file](`r params$RCourseURL`/R_course.zip)
-- as a [.tar.gz file](`r params$RCourseURL`/R_course.tgz)
-
-The materials contain a [`data` directory](`r params$RCourseURL`/data) with the __data__ __files__ used in the presentations/tasks. The directory can be also accessed at `r params$RCourseURL`/data -->
