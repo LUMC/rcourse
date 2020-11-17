@@ -44,13 +44,15 @@ The teachers are available for chatting online during all teaching slots.
 
 ### The slots #1-#7: practicing
 
-Each half-day slot is split in a few small topics. Each topic will have:
+Each half-day slot is organised as follows:
 
-- a short **online (live video) lecture** for introduction/demonstration,
-- followed by a **self/group-study practice session** (with *primary exercises* end *extra exercises*) with chat interactions,
-- closed by a short **chat question** and **live video answers** session.
+- the first 3h: online **plenary room** with a few small topics cycling as follows:
+    - a short online (live video) lecture for introduction/demonstration,
+    - a self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions,
+    - (when needed) a short chat question and live video answers session.
+- the last 30min: group **breakout rooms**; solving remaining exercises and chat/video interactions between all (participants and teachers). 
 
-The students are asked to **type the commands** being presented and observe their effects (**avoid copy-paste**; own typing is important in order to learn how R responds to mistakes).  
+The students are asked to **type the commands** being presented and observe their effects (**avoid copy-paste**; own typing is important in order to learn how R responds to mistakes).   
 
 ### The slot #8: self study assignment
 
