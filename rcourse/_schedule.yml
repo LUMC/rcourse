@@ -286,7 +286,7 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev: "tidyr_reshape0"
+      prev: "dplyr_group0"
       next: "basic_lists0"
       pos: 16
       slot: 5
