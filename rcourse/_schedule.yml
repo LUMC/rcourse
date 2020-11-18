@@ -244,7 +244,7 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev: "dplyr_group0"
+      prev:  ggplot_geoms0
       next: tidyr_reshape0
       pos: 14
       slot: 8
@@ -259,7 +259,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: dplyr_join0
-      next: basic_factors0
+      next: advanced_user_functions0
       pos: 15
       slot: 8
       slotPos: 20
@@ -371,7 +371,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_facets_themes0"
-      next:
+      next: dplyr_join0
       pos: 22
       slot: 7
       slotPos: 40
