@@ -338,54 +338,54 @@ course:
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "09:00-09:40"
+      time: "13:30-14:10"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev: "basic_lists0"
+      prev: "basic_matrices0"
       next: "ggplot_scales0"
       pos: 19
-      slot: 7
+      slot: 6
       slotPos: 10
     ggplot_scales0:
       title: "scales"
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "09:50-10:30"
+      time: "14:20-15:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_basics0"
       next: "ggplot_facets_themes0"
       pos: 20
-      slot: 7
+      slot: 6
       slotPos: 20
     ggplot_facets_themes0:
       title: "facets"
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "10:40-11:10"
+      time: "15:10-15:40"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_scales0"
       next: "ggplot_geoms0"
       pos: 21
-      slot: 7
+      slot: 6
       slotPos: 30
     ggplot_geoms0:
       title: "geoms"
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "11:20-12:00"
+      time: "15:50-16:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "ggplot_facets_themes0"
       next: dplyr_join0
       pos: 22
-      slot: 7
+      slot: 6
       slotPos: 40
