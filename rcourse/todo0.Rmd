@@ -6,7 +6,24 @@ output: html_document
 # Tasks
 
  (selection: unique, which.max, match, sort, order, duplicated, rank, round, ceiling, complete.cases, expand.grid, complete, combn/sample, choose, median)
- 
+naming vector elements
+
+## Extra exercises
+
+1. Practice the integer division operator `%/%`. Compare `4 / 3` with `4 %/% 3`. 
+
+```{r}
+4 / 3     # floating division
+4 %/% 3   # largest integer smaller/equal to the floating division result
+```
+
+2. Understand result of `-4 %/% 3`, compared to `4 %/% 3`.
+
+```{r}
+4 %/% 3   # largest integer smaller/equal to the floating division result
+-4 %/% 3  # largest integer SMALLER/EQUAL to the floating division result
+```
+
 ## Ramin's
 
 - (Ramin) d %>% filter( is.na( a_column ) ) => DONE!

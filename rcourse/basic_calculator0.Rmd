@@ -1,7 +1,7 @@
 ---
 title: "Calculator"
 # date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
+params: 
   basename: "basic_calculator0"
 ---
 

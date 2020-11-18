@@ -16,30 +16,42 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 
 ## Primary exercises
 
-1. Calculate 25 plus the square of 12.
+1. *Simple expression.*  
+Calculate 25 plus the square of 12.
 
 ```{r}
 25 + 12^2
 ```
 
-2. What is the square root of the number you have just calculated?
+2. *Calling a function.*  
+What is the square root of the number you have just calculated (here type the number directly)?
 
 ```{r}
 sqrt( 25 + 12^2 )
 ```
 
-## Extra exercises
-
-1. Practice the integer division operator `%/%`. Compare `4 / 3` with `4 %/% 3`. 
-
-```{r}
-4 / 3     # floating division
-4 %/% 3   # largest integer smaller/equal to the floating division result
-```
-
-2. Understand result of `-4 %/% 3`, compared to `4 %/% 3`.
+3. *Prompt with `+`.*  
+In the console type an incomplete expression `(1+2` and press Enter. Practice how to return to the proper console prompt `>`. Finally, clear the console.
 
 ```{r}
-4 %/% 3   # largest integer smaller/equal to the floating division result
--4 %/% 3  # largest integer SMALLER/EQUAL to the floating division result
+# To stop in the console press: Esc or Ctrl-C
+# To clear in the console press: Ctrl-L
 ```
+
+4. *Some error messages.*  
+In the console type an error expression `(1+2)*(3+4))`. Understand the error message. Also understand errors reported for expressions: `0,25`, `sin()`, `xyz`.
+
+```{r}
+# (1+2)*(3+4))     -> forgotten (
+# 0,25             -> use dot as decimal point: 0.25
+# sin()            -> sin needs an argument
+# xyz              -> xyz is not known
+```
+
+5. *Getting help.*  
+Find the manual page for the `sin` function.
+
+```{r}
+# In the console type: ?sin
+```
+
