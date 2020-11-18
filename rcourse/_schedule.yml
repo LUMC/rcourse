@@ -47,52 +47,66 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: basic_calculator0
-      next: basic_vectors0
+      next: basic_projects0
       pos: 2
       slot: 1
       slotPos: 30
-    basic_vectors0:
-      title: "vectors"
-      subtitle: ""
-      goal: ""
-      date: "23-11-2020"
-      time: "10:40-12:00"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      prev: basic_variables0
-      next: basic_projects0
-      pos: 3
-      slot: 1
-      slotPos: 40
     basic_projects0:
       title: "projects"
       subtitle: ""
       goal: ""
       date: "23-11-2020"
-      time: "13:30-14:50"
+      time: "10:40-12:00"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
-      prev: basic_vectors0
+      prev: basic_variables0
       next: basic_scripts0
       pos: 4
-      slot: 2
-      slotPos: 1
+      slot: 1
+      slotPos: 40
     basic_scripts0:
       title: "scripts/R Markdown"
       subtitle: ""
       goal: ""
       date: "23-11-2020"
-      time: "13:30-14:50"
+      time: "10:40-12:00"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
       prev: basic_projects0
-      next: tidyverse0
+      next: basic_vectors0
       pos: 5
+      slot: 1
+      slotPos: 50
+    basic_vectors0:
+      title: "vectors"
+      subtitle: ""
+      goal: ""
+      date: "23-11-2020"
+      time: "13:30-14:50"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: basic_scripts0
+      next: basic_factors0
+      pos: 3
       slot: 2
-      slotPos: 2
+      slotPos: 10
+    basic_factors0:
+      title: "factors"
+      subtitle: ""
+      goal:
+      date: "23-11-2020"
+      time: "15:10-16:30"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: basic_vectors0
+      next: tidyverse0
+      pos: 16
+      slot: 2
+      slotPos: 20
     tidyverse0:
       title: "tidyverse"
       subtitle: ""
@@ -102,16 +116,16 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev: basic_scripts0
+      prev: basic_factors0
       next: dplyr_tibble0
       pos: 6
-      slot: 2
+      slot: 3
       slotPos: 10
     packages0:
       title: "packages"
       subtitle: ""
       goal: "Install and use R packages"
-      date: "23-11-2020"
+      date: "24-11-2020"
       time: "15:10-16:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
@@ -273,24 +287,10 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: tidyr_reshape0
-      next: 
+      next:
       pos: 16
       slot: 8
       slotPos: 21
-    basic_factors0:
-      title: "factors"
-      subtitle: ""
-      goal:
-      date: "25-11-2020"
-      time: "09:00-09:55"
-      venue: "venue"
-      tasks : "yes" # {yes | no}
-      related:
-      prev: "dplyr_group0"
-      next: "basic_lists0"
-      pos: 16
-      slot: 5
-      slotPos: 10
     basic_lists0:
       title: "lists"
       subtitle: ""

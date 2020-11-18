@@ -5,6 +5,8 @@ output: html_document
 
 # Tasks
 
+ (selection: unique, which.max, match, sort, order, duplicated, rank, round, ceiling, complete.cases, expand.grid, complete, combn/sample, choose, median)
+ 
 ## Ramin's
 
 - (Ramin) d %>% filter( is.na( a_column ) ) => DONE!
