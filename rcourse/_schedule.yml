@@ -1,5 +1,5 @@
 course:
-  title: "CRiP: Using R for data analysis"
+  title: "Using R for data analysis"
   start: "23-11-2020"
   end: "26-11-2020"
   dataset:
@@ -97,8 +97,8 @@ course:
       title: "tidyverse"
       subtitle: ""
       goal: ""
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "09:00-09:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -125,8 +125,8 @@ course:
       title: "tibble"
       subtitle: ""
       goal: ""
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "09:15-10:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
@@ -135,134 +135,148 @@ course:
       prev: tidyverse0
       next: dplyr_select0
       pos: 7
-      slot: 2
+      slot: 3
       slotPos: 30
     dplyr_tibble1:
       title: "tibble*"
       subtitle: ""
       goal: "Comparison tibble vs data.frame"
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "09:15-10:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev:
       next:
       pos:
-      slot: 2
+      slot: 3
       slotPos:
     dplyr_select0:
       title: "select"
       subtitle: ""
       goal:
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "10:30-11:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_tibble0"
       next: "dplyr_filter0"
       pos: 8
-      slot: 2
+      slot: 3
       slotPos: 40
     dplyr_filter0:
       title: "filter"
       subtitle: ""
       goal:
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "11:00-11:45"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_select0"
       next: "dplyr_mutate0"
       pos: 9
-      slot: 2
+      slot: 3
       slotPos: 50
     dplyr_mutate0:
       title: "mutate"
       subtitle: ""
       goal:
-      date: "23-11-2020"
-      time: "15:10-16:30"
+      date: "24-11-2020"
+      time: "12:00-12:30"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_filter0"
       next: "dplyr_pipe0"
       pos: 10
-      slot: 2
+      slot: 3
       slotPos: 60
     dplyr_pipe0:
       title: "pipe operator"
       subtitle: ""
       goal:
       date: "24-11-2020"
-      time: "09:00-09:55"
+      time: "13:30-14:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_mutate0"
       next: "dplyr_summarise0"
       pos: 11
-      slot: 3
+      slot: 4
       slotPos: 10
     dplyr_summarise0:
       title: "summarise"
       subtitle: ""
       goal:
       date: "24-11-2020"
-      time: "10:05-10:55"
+      time: "14:30-15:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_pipe0"
       next: dplyr_group0
       pos: 12
-      slot: 3
+      slot: 4
       slotPos: 20
     dplyr_group0:
       title: "group"
       subtitle: ""
       goal:
       date: "24-11-2020"
-      time: "11:05-12:00"
+      time: "15:30-16:15"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_summarise0"
       next: dplyr_join0
       pos: 13
-      slot: 3
+      slot: 4
       slotPos: 30
     dplyr_join0:
       title: "join"
       subtitle: ""
       goal:
-      date: "24-11-2020"
-      time: "13:30-14:50"
+      date: "26-11-2020"
+      time: "13:30-14:45"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_group0"
       next: tidyr_reshape0
       pos: 14
-      slot: 4
+      slot: 8
       slotPos: 10
     tidyr_reshape0:
       title: "reshape"
       subtitle: ""
       goal:
-      date: "24-11-2020"
-      time: "15:10-16:30"
+      date: "26-11-2020"
+      time: "15:00-15:45"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: dplyr_join0
       next: basic_factors0
       pos: 15
-      slot: 4
+      slot: 8
       slotPos: 20
+    advanced_user_functions0:
+      title: "functions"
+      subtitle: ""
+      goal:
+      date: "26-11-2020"
+      time: "16:00-16:45"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: tidyr_reshape0
+      next: 
+      pos: 16
+      slot: 8
+      slotPos: 21
     basic_factors0:
       title: "factors"
       subtitle: ""
