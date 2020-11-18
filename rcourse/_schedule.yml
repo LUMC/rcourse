@@ -296,25 +296,39 @@ course:
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "10:05-10:55"
+      time: "09:00-10:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev: "basic_factors0"
-      next: "basic_formulas0"
+      prev:
+      next: basic_formulas0
       pos: 17
       slot: 5
-      slotPos: 20
+      slotPos: 10
     basic_formulas0:
       title: "formulas"
       subtitle: ""
       goal:
       date: "25-11-2020"
-      time: "11:05-12:00"
+      time: "11:15-11:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: "basic_lists0"
+      next: "basic_matrices0"
+      pos: 18
+      slot: 5
+      slotPos: 20
+    basic_matrices0:
+      title: "matrices"
+      subtitle: ""
+      goal:
+      date: "25-11-2020"
+      time: "11:15-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: "basic_formulas0"
       next: "ggplot_basics0"
       pos: 18
       slot: 5
