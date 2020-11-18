@@ -231,7 +231,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_summarise0"
-      next: dplyr_join0
+      next: basic_factors0
       pos: 13
       slot: 4
       slotPos: 30
