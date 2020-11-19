@@ -245,7 +245,7 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: "dplyr_summarise0"
-      next: basic_factors0
+      next: basic_lists0
       pos: 13
       slot: 4
       slotPos: 30
@@ -300,7 +300,7 @@ course:
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
-      prev:
+      prev: dplyr_group0
       next: basic_formulas0
       pos: 17
       slot: 5

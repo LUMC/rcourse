@@ -23,16 +23,18 @@ survey <- read_survey()
 
 ## Primary exercises
 
-1. *Simple regression*.  
+1. *A formula in a function; simple linear regression*.  
 Load the `survey.csv` data to variable `survey`.  
-Perform a linear regression of `span1` against `span2` and store the result in `fit` variable.  
+You may make a simple scatter plot with `plot( survey$span2, survey$span1 )`.  
+Perform a linear regression of `span1` being dependent on `span2`; store the result in `fit` variable.  
 `fit` behaves also like a `list` so show `names` of elements stored in `fit`.  
 Find and print the element corresponding to the coefficients of the regression -- do you see there a coefficient for `span2`?  
-An intended method to access the coefficients is through `coef` function applied to `fit`. Do you get the same result as previously?  
+An intended method to access the coefficients is through `coef` function applied to `fit`. Try it. Do you get the same result as observed above?  
 
-```{r}
+```{r message=FALSE}
 survey <- read_csv( "survey.csv" )
-fit <-lm(span1 ~ span2, data=survey)
+plot( survey$span2, survey$span1 )
+fit <- lm( span1 ~ span2, data = survey )
 fit
 names( fit )
 fit$coefficients
@@ -47,5 +49,19 @@ These are diagnostic plots for the model produced by `lm`.
 
 ```{r}
 plot( fit )
+```
+
+2. *Another test for association/correlation*.  
+In one of the extra list exercises a test for correlation between two random vectors was performed.  
+Follow the same steps to test correlation between `span1` and `span2` of `survey`.  
+Is correlation between these vectors significant?
+
+```{r}
+h <- cor.test( survey$span2, survey$span1 ) # vector notation
+h <- cor.test( formula = ~ span2 + span1, data = survey )  # formula notation
+h
+names( h )
+h[[ 'estimate' ]]   # correlation coefficient
+h[[ 'p.value' ]]    # significance, is < 0.05, strongly significant association
 ```
 

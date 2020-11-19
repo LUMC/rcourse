@@ -50,6 +50,12 @@ When printed, both values and levels of a factor are shown:
 hairColors
 ```
 
+Class of a factor, as expected, is:
+
+```{r}
+class( hairColors )
+```
+
 ## Levels and coding
 
 In R the factor is stored as two vectors.  

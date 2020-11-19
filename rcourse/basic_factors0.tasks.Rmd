@@ -14,9 +14,6 @@ if (!is.null(knitr::opts_knit$get("solutions"))) {
 }
 ```
 
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
-
 ## Primary exercises
 
 1. *Manually created factor.*  
