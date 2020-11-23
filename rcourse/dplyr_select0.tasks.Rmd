@@ -36,7 +36,7 @@ survey_personal_info <- select(survey, name, age, gender, height)
 survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
 ```
 
-3) Reorder the variables as such that name,age and gender appear as first, second and the third column followd by the remaining
+3) Reorder the variables as such that name,age and gender appear as first, second and the third column followed by the remaining
 variables. 
 
 ```{r}
@@ -59,7 +59,7 @@ head( survey_sub , 20)
 ```
 
 
-6) Reproduce the following tibbles:
+6) Reproduce the following tibbles (note that variables are renamed and reshuffled):
 
   6.1) First 5 observations.
 
