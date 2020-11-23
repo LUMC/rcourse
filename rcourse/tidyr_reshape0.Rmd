@@ -46,8 +46,14 @@ This is called the long version of the original (wide) table and contains the sa
 > Can you find ohter variables in the pulse data set which can be 'gathered'?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes, for example smokes and alcohol, both are categorical with values {yes,no}. You may 'gather' these variables into drug_habit= {smokes,alcohol} and drug_use={yes,no}."
+msg <- "Yes, for example smokes and alcohol, both are categorical with values {yes,no}."
 qa(msg)
+```
+
+Let's reshape the pulse dataset with variables `drug_habit` = {smokes,alcohol} and `drug_use` = {yes,no}.
+
+```{r}
+pulse %>% gather(drug_habit, drug_use, smokes, alcohol)
 ```
 
 ## `spread` : long to wide format
@@ -56,6 +62,9 @@ qa(msg)
 dfWide <- dfLong %>% spread(key=pulse,value=level)
 dfWide
 ```
+
+
+
 
 ```{r, child="_exercises_links.Rmd"}
 ``` 

@@ -47,9 +47,12 @@ filter(survey, pulse>60 & gender=="male" & (10<=age & age<20) )
 4) How many males do smoke and never exercise?
 
 ```{r}
-nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male" ) )
-# alternatively
+# The conditions are 'do smoke' and 'never exercise'. With 'do smoke' we have the categories {regul,occas,heavy} therefore 'or' (|) logical connective is in place. For 'never exercise' we have the category 'none'. Since both conditions must be true we will have the 'and' (&) logical connective.
+
 nrow( filter(survey, (smokes=="regul" | smokes=="occas" | smokes=="heavy") & exercise=="none" & gender=="male" ) )
+# Alternatively: a shorter condition for 'smokes' is smokes!="never". It means accept all values for 'smokes' as long as it is not equal to "never" and those are exactly {regul,occas,heavy}.
+
+nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male" ) )
 ```
 
 5) How many females never smoke and frequently exercise?
@@ -57,6 +60,24 @@ nrow( filter(survey, (smokes=="regul" | smokes=="occas" | smokes=="heavy") & exe
 ```{r}
 nrow( filter(survey, smokes=="never" & exercise=="freq" & gender=="female") )
 ```
+
+6) Reproduce the following tibbles:
+
+6.1) Personal information {Name,Age,Gender,Height} of all teenagers.
+
+```{r}
+filter(select(survey, Name=name, Age=age, Gender=gender, Height=height ), 10<=Age & Age<20)
+```
+
+6.2) Personal information of males with Height between and inclusive 170 to 180.
+
+```{r}
+filter(select(survey, Name=name, Age=age, Gender=gender, Height=height),
+        170<=Height & Height<=180 & Gender=="male")
+
+
+```
+
 
 ## Extra exercises
 

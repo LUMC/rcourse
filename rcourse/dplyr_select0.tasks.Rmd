@@ -49,6 +49,32 @@ select(survey, name,age,gender,everything())
 select(survey, -span1,-span2,-hand,-fold,-clap)
 ```
 
+5) Select the top 20 names along with gender.
+
+```{r}
+survey_sub <- select(survey, name,gender)
+head( survey_sub , 20)
+# shorter solution without intermediate variable 'survey_sub' :
+# head(select(survey,name),20)
+```
+
+
+6) Reproduce the following tibbles:
+
+  6.1) First 5 observations.
+
+```{r, eval=TRUE}
+head( select(survey, SPAN1=span1, SPAN2=span2, everything()), 5)
+```
+
+  6.2) Last 3 observations.
+
+```{r, eval=TRUE}
+head( select(survey, hand,fold,clap, everything()), 3)
+```
+
+
+
 ## Extra exercises
 
 1) Rename the `m.i` variable to `system`.
