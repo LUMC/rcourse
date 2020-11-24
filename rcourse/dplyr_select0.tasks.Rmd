@@ -70,7 +70,7 @@ head( select(survey, SPAN1=span1, SPAN2=span2, everything()), 5)
   6.2) Last 3 observations.
 
 ```{r, eval=TRUE}
-head( select(survey, hand,fold,clap, everything()), 3)
+tail( select(survey, hand,fold,clap, everything()), 3)
 ```
 
 
