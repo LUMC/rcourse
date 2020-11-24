@@ -273,18 +273,18 @@ course:
       tasks : "yes" # {yes | no}
       related:
       prev: dplyr_join0
-      next: advanced_user_functions0
+      next: user_functions0
       pos: 15
       slot: 8
       slotPos: 20
-    advanced_user_functions0:
-      title: "functions"
+    useful_functions0:
+      title: "useful functions"
       subtitle: ""
       goal:
       date: "26-11-2020"
       time: "16:00-16:45"
       venue: "venue"
-      tasks : "yes" # {yes | no}
+      tasks : "no" # {yes | no}
       related:
       prev: tidyr_reshape0
       next:
