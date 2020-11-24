@@ -80,7 +80,7 @@ pulse %>% filter(smokes=="no" & alcohol=="no") %>%
 **Complex example:** We are asked to list only the names of the females in the pulse dataset with average pulse $>110$. We can break down the problem into:
 
   1. take only female observations (filter)
-  2. add a new variable `averqgePulse` (mutate)
+  2. add a new variable `averagePulse` (mutate)
   3. take only those average pulses above 110 (filter)
   4. extract names 
 
