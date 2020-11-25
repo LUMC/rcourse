@@ -1,0 +1,56 @@
+---
+title: "User-defind functions (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+survey <- read_survey()
+```
+
+## Primary exercises
+
+- Write the function `even` which tests whether a number is even.
+
+```{r}
+even <- function(x) {
+  x %% 2 == 0
+}
+```
+
+- Write a function `divisible` which given values `x` and `m` tests whether `x` is integer divisible by `m`.
+
+```{r}
+divisible <- function(x,m) {
+  x %% m == 0
+}
+```
+
+- There are two systems for weight and height measurements: metric (cm,kg) and imperial (inch,lbs). The relation between the measurements in different systems is  (1 kg = 2.2 lbs) and  (1 inch = 2.54 cm). Write the following unit conversion functions:
+    - cm2meter : convert cm to meter
+    - lbs2kg   : convert weight unit pound to kg
+    - inch2cm  : convert inch to cm
+
+```{r, eval=FALSE, echo=TRUE}
+# examples:
+> inch2cm(70)
+[1] 177.8
+> lbs2kg(10)
+[1] 4.545455
+> cm2m(190)
+[1] 1.9
+```
+
+```{r}
+cm2m    <- function(x) x*0.01  # cm to meter
+lbs2kg  <- function(x) x/2.2   # pound to kg
+inch2cm <- function(x) x*2.54  # inch to cm
+```
