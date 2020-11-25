@@ -4,9 +4,9 @@ slots <- conf[["course"]][["slots"]]
 .f <- function( id ) sapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 .fMult <- function( id ) lapply( slots, function( s ) if( is.null( s[[id]] ) ) NA else s[[id]] )
 
-#sitePrefix <- ''
-sitePrefix <- 'https://barmsijs.lumc.nl/rcourse/'
-# sitePrefix <- paste0('file://',knitr::opts_knit$get("output.dir"),'/_site/')
+sitePrefix <- ''
+#sitePrefix <- 'https://barmsijs.lumc.nl/rcourse1/'
+#sitePrefix <- paste0('file://',knitr::opts_knit$get("output.dir"),'/_site/')
 
 .url <- function( ids, suffix = "" ) {
   sapply( ids, function( id ) {

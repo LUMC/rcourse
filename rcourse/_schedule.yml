@@ -254,39 +254,67 @@ course:
       subtitle: ""
       goal:
       date: "26-11-2020"
-      time: "13:30-14:45"
+      time: "09:00-09:50"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev:  ggplot_geoms0
       next: tidyr_reshape0
       pos: 14
-      slot: 8
+      slot: 7
       slotPos: 10
     tidyr_reshape0:
       title: "reshape"
       subtitle: ""
       goal:
       date: "26-11-2020"
-      time: "15:00-15:45"
+      time: "09:50-11:00"
       venue: "venue"
       tasks : "yes" # {yes | no}
       related:
       prev: dplyr_join0
-      next: user_functions0
+      next: advanced_user_functions0
       pos: 15
-      slot: 8
+      slot: 7
+      slotPos: 20
+    advanced_user_functions0:
+      title: "user-defined functions"
+      subtitle: ""
+      goal:
+      date: "26-11-2020"
+      time: "11:00-12:00"
+      venue: "venue"
+      tasks : "yes" # {yes | no}
+      related:
+      prev: tidyr_reshape0
+      next: useful_functions0
+      pos: 15
+      slot: 7
       slotPos: 20
     useful_functions0:
       title: "useful functions"
       subtitle: ""
       goal:
       date: "26-11-2020"
-      time: "16:00-16:45"
+      time: "13:30-14:00"
       venue: "venue"
       tasks : "no" # {yes | no}
       related:
-      prev: tidyr_reshape0
+      prev: advanced_user_functions0
+      next: ssa0
+      pos: 16
+      slot: 8
+      slotPos: 21
+    ssa0:
+      title: "Self Study Assignment (SSA)"
+      subtitle: ""
+      goal:
+      date: "26-11-2020"
+      time: "14:00-15:30"
+      venue: "venue"
+      tasks : "no" # {yes | no}
+      related:
+      prev: useful_functions0
       next:
       pos: 16
       slot: 8

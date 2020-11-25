@@ -1,5 +1,5 @@
 ---
-title: "User functions"
+title: "Useful functions"
 # date: "`r format(Sys.time(), '%d %B %Y')`"
 params:
   basename: "useful_functions0"
@@ -12,8 +12,6 @@ build_nocode(params)
 
 ```{r, child="_navigate.Rmd"} 
 ``` 
-
-# Useful user functions
 
 ## Sandbox vectors
 
