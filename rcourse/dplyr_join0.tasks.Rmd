@@ -23,7 +23,7 @@ survey <- read_survey()
 
 ## Primary exercises
 
-For this exercise we will first split  the `survey` dataset into two separate tables 
+1. For this exercise we will first split  the `survey` dataset into two separate tables 
 in order to join them again! Call these `df1` and `df2`, these will have disjoint set of 
 variables except `name` and `age`, the variables `name` and `age` combined are unique in 
 all observations and will be used later for joining. Take for example all variables related 
@@ -41,18 +41,19 @@ df2 <- survey %>%  select(name,age,gender,pulse,exercise,smokes,height,m.i)
 df2
 ```
 
-1. Join df1 and df2 by `name` and `age` such that you obtain the original survey table. 
+a. Join df1 and df2 by `name` and `age` such that you obtain the original survey table. 
 
 ```{r}
+# In the join the order of the variables are different than the original survey tibble 
+# but the content is identical.
 inner_join(df1,df2,by=c("name","age"))
 ```
 
-2. Does it make any difference to choose either of `inner_join`, `left_join` and `full_join`? Hint: compare two tables with function `all_equal`.       
+b. In exercise (a) does it make any difference to choose either of `inner_join`, `left_join` or `full_join`? Hint: compare two tables with function `all_equal`.       
 
 ```{r}
 # Answer is no, this because both df1 and df2 come from the same source 
-# `survey` with equal number of observations and exact matching of the 
-# unique keys. 
+# `survey` with equal number of matching observations with matching keys. 
 #
 
 all_equal(left_join(df1,df2,by=c("name","age")), survey)   # left_join
@@ -60,8 +61,21 @@ all_equal(inner_join(df1,df2,by=c("name","age")), survey)  # inner_join
 all_equal(full_join(df1,df2,by=c("name","age")), survey)   # full_join
 ```
 
+c. Are the pairs `name` and `age`  also good candidates as the key, i.e. is the combination of `name` and `age` uniquely identify each observation in the survey data? What about the combination of `name` with `span1` or `span2`? 
 
-<!--  removind exercise 3 -->
+```{r}
+# Yes, there are no duplicates in the pairs (name,age) in survey data.
+sum(duplicated(survey %>% select(name,age)))==0
+# The pair name and span1 will also suffice as a key.
+sum(duplicated(survey %>% select(name,span1)))==0
+# Multiple observations in the survey data have the same 
+# name span2 combinations, therefore not a good candidate 
+# as a key.
+sum(duplicated(survey %>% select(name,span2)))==0
+```
+
+
+<!--  removed exercise 3 -->
 
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -93,7 +107,17 @@ left_join(df1,df2, by=c("name", "age"))
   
 ## Extra exercises
 
-1. Explain the result if you  use only the `name` variable as the key in the primary exercise (1) .
+1. The `name` and `span2` where not good combinations as a key, show the rows with identical 
+ `name` and `span2` values.
+ 
+```{r}
+dups <- duplicated(survey %>% select(name,span2))
+left_join( survey %>% filter(dups) %>% select(name,span2), survey, c("name","span2")) 
+```
+ 
+
+
+2. Explain the result if you  use only the `name` variable as the key in the primary exercise (1) .
 
 ```{r}
 # The variable 'name' is not unique, so for all those non-unique names the 

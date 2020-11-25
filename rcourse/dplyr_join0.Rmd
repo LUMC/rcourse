@@ -152,7 +152,8 @@ p2
 > Is the combination `{name,height}` a valid choice as the key to join two tables p1 and p2? 
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes. This because the combination is unique in the table. You can check this with the command nrow(distinct(pulse,name,height)) == nrow(pulse)."
+msg <- "Yes. This because the combination is unique in the table. You can check this with the command 
+sum(duplicated(pulse %>% select(name,height)))==0, see also ?duplicated."
 qa(msg)
 ```
 
