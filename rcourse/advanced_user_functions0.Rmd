@@ -14,75 +14,83 @@ pulse <- read_pulse()
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-## Motivation
 
-Here is a scenario of a data analysis based on the pulse dataset. We will develop our analysis step by step :  
-
-> Calculate mean height for individuals in range 50 to 60 kg.
+Often we want to repeat certain series of steps in the analysis but each time with a subtle changes to the variables involved. This leads to repetition of the code in the script. This leads to codes that are difficult to maintain or share with others. To that end R provides the `function` construct to develop your own functions with your own defined arguments. The following is a scenario to motivate the usage of user-defined functions.
 
 
-```{r, collapse=TRUE}
-pulse %>% filter(weight >= 50 & weight <= 60) %>% summarise(meanHeight=mean(height))
-```
+> Motivation 
 
-> For the same individuals, for how many of them did the pulse increase?
+Here is a scenario of a data analysis based on the pulse dataset and we will develop our analysis step by step.
 
-```{r, collapse=TRUE}
+The initial problems definition is  to *calculate the mean height for individuals ranging over 50 to 60 kg*.
+
+
+```{r}
 pulse %>% filter(weight >= 50 & weight <= 60) %>% 
     summarise(meanHeight=mean(height))
+```
+
+now for the same individuals *how many of them did the pulse increase?*
+
+```{r}
 pulse %>% filter(weight >= 50 & weight <= 60) %>% 
     summarise(increasedPulse=sum(pulse1<pulse2))
 ```
 
-> Refactor (removing repeatitions) and make sure `increasedPulse` does not produce NA's.
+refactor (removing repeatitions) and make sure `increasedPulse` does not produce NA's.
 
-```{r, collapse=TRUE}
-pulse %>% filter(weight >= 50 & weight <= 60) %>% 
-  summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE))
-```
-
-> Repeat this for other weight ranges 60-70 and 70-80.
-
-Here you'll need to decide on the intervals end points. For example whether you want to include 60 in the interval above when you consider a second interval from 60 to 70. Should 60 be taken in 50-60 or in 60-70? Here we choose the include the lower bound of the interval and exclude the upper bound, i.e `weight >= 50 & weight < 60`. 
-
-
-```{r collapse=TRUE}
+```{r}
 pulse %>% filter(weight >= 50 & weight < 60) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE))
+            increasedPulse=sum(pulse1<pulse2))
+```
+
+Next, repeat this for other weight ranges 60-70 and 70-80.
+
+
+```{r}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+  summarise(meanHeight=mean(height),
+            increasedPulse=sum(pulse1<pulse2))
 
 pulse %>% filter(weight >= 60 & weight < 70) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE))
+            increasedPulse=sum(pulse1<pulse2))
 
 pulse %>% filter(weight >= 70 & weight < 80) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE))
+            increasedPulse=sum(pulse1<pulse2))
 ```
 
-> Summarise the number of individuals in all groups.
 
-```{r, collapse=TRUE}
+include number of individuals in all groups.
+
+```{r}
+
 pulse %>% filter(weight >= 50 & weight < 60) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE), individuals=n())
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+
 pulse %>% filter(weight >= 60 & weight < 70) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE), individuals=n())
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+
 pulse %>% filter(weight >= 70 & weight < 80) %>% 
   summarise(meanHeight=mean(height),
-            increasedPulse=sum(pulse1<pulse2, na.rm = TRUE), individuals=n())
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+
 ```
 
 
-> Define the function `weightRangeSummary` which takes pulse dataset along with the interval and produces the summary as shown below: 
+> 
+
+Define the function `weightRangeSummary` which takes pulse dataset along with the weight interval and produces the summary: 
 
 ```{r, echo=FALSE}
 weightRangeSummary <- function(x, lowerBound,upperBound) {
   x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
     summarise(meanHeight=mean(height),
-              increasedPulse=sum(pulse1<pulse2, na.rm = TRUE), individuals=n())
+              increasedPulse=sum(pulse1<pulse2), individuals=n())
 }
 
 ```
@@ -92,7 +100,7 @@ weightRangeSummary(pulse,50,60)
 ```
 
 
-## Simple function
+## User-defined functions in R
 
 **Functions** are constructs that encapsulate series of **statements** so you do not repeat the same statements all over again when needed. 
 
@@ -104,7 +112,7 @@ functionName <- function(...) {
 } 
 ```
 
-### First example
+### Example 1
 
 We **define** the following function `add_one`. It takes the value of an **argument** `x` and adds number `1` to it. The sum is the **result** of the function:
 
@@ -133,7 +141,7 @@ What is the class of `add_one`?
 class( add_one )
 ```
 
-### Second example
+### Example 2
 
 Now let's define a function to calculate $x^2 + 1$:
 
@@ -200,7 +208,22 @@ odd(31)
 odd( x = 6 ) # more readable than '6 %% 2 != 0' 
 ```
 
-*Quiz:* what if `x` is  i) not a whole number, ii) a vector or iii) a character value?
+> what if `x` is  i) a vector or ii) a character value?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with dimensions 4x3 (4 observations 
+and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
+qa(msg)
+``` 
+
+```{r}
+weightRangeSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
+    summarise(meanHeight=mean(height),
+              increasedPulse=sum(pulse1<pulse2), individuals=n())
+}
+```
+
 
 ## Some observations
 
