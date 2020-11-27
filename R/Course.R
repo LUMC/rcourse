@@ -116,7 +116,15 @@ Course <- R6Class("Course",
       },
       #' @description Path to site's directory containing all Rmd files. 
       src = function() {
-        file.path(rprojroot::find_rstudio_root_file(),private$sources_)
+        prj_path <- try(rprojroot::find_rstudio_root_file(), silent=TRUE)
+        if (class(prj_path)!="try-error") {
+          file.path(prj_path,private$sources_)
+        } else {
+          if (grepl("^(/|[A-Za-z]:|\\\\|~)", private$sources_)) # absolute path (ref. HW) 
+            private$sources_
+          else 
+            file.path(getwd(),private$sources_)
+        }
       },
       #' @description clear generated nocode html file
       clear_nocode_html = function() {
