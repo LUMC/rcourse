@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 .Rbuildignore
+.DS_Store
 rooc.Rproj
 site
 workshop-may-2020
