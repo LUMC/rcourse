@@ -12,9 +12,9 @@ knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
 ```{r, child="_navigate.Rmd"} 
 ``` 
 
-<a href="https://barmsijs.lumc.nl/smkielbasa/SSA_Boerhaave.pdf" class="fas fa-download" download target="_blank">Self Study Assignment</a>
+<a href="https://barmsijs.lumc.nl/rcourse/pdf/SSA_Boerhaave.pdf" class="fas fa-download" download target="_blank">Self Study Assignment</a>
 <br>
-<a href="https://barmsijs.lumc.nl/smkielbasa/SSA_Boerhaave_solutions.pdf" class="fas fa-download" download target="_blank">Self Study Assignment solutions</a>
+<a href="https://barmsijs.lumc.nl/rcourse/pdf/SSA_Boerhaave_solutions.pdf" class="fas fa-download" download target="_blank">Self Study Assignment solutions</a>
 
 
 ```{r, child="_navigate.Rmd"} 
