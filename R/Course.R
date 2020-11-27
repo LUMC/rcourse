@@ -259,10 +259,12 @@ Course <- R6Class("Course",
         }
       },
       #' @description publish _site to remote site with rsync
-      publish = function(server="shark", remote_dir="/bam-export/rcourse") {
-        dst_ <- paste(server,remote_dir, sep=":")
+      publish = function(remote=NULL, remote_dir="/bam-export",server="shark",group="5-A-SHARK_BioCentEXP") {
+        if (is.null(remote))
+          stop("missing remote !")
+        dst_ <- paste(server,file.path(remote_dir,remote), sep=":")
         src_ <- file.path(private$sources_, "_site", "") # "" adds a final / to the path, needed for rsync ! 
-        cmd <- paste("rsync -avp ", src_, dst_)
+        cmd <- paste("rsync -avp ",paste("--chown=:",group,sep=""), src_, dst_)
         cat('command: ',cmd, '\n')
         system(cmd)
       },
