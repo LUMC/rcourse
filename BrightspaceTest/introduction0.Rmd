@@ -1,0 +1,50 @@
+---
+title: 'Introduction'
+#author: "R. Monajemi"
+---
+
+## Why this course? 
+
+Modern science requires modern statistical methods:
+ 
+- Genomics/bioinformatics
+- Advanced survival analysis
+- Causal modelling
+- ...
+
+Statisticians develop new methods and often make them first available as packages in R.  
+No need to wait until these methods are programmed into SPSS.
+
+## What is _R_? 
+
+### A short history
+
+_S_ was a programming language for statistics developed by John Chambers (Bell Labs) in the 1970s-80s.  
+It had two primary implementations:
+
+- S-plus (1988, commercial);
+- _R_ (1993, GNU public license) by Robert Gentleman and Ross Ihaka (Univ. of Auckland).
+
+Now _R_ is known as "a free software environment for statistical computing and graphics."
+
+### R
+
+Current _R_ developments are streamlined by non-profit organisation _The R Project for Statistical Computing_ at https://www.r-project.org/.
+
+The project supports a large and continuously growing community of users and package developers:
+
+- volunteer work (mostly by academics);
+- anyone can see the source code;
+- anyone can contribute (write code, report bugs, write documentation).
+
+_CRAN_ (_Comprehensive R Archive Network_) at https://cloud.r-project.org/ is a central repository for R language interpreter and R packages.  
+It also contains manuals and mailing lists (well indexed on google).  
+Free download. New major version every year, minor versions in between.
+
+### RStudio
+
+_RStudio_ from https://rstudio.com/ is an open source integrated development environment for programming in _R_ language.
+
+It provides useful features to help in development of the R code and in organization of projects.
+
+RStudio is not necessary to work with R programs, but it is highly recommended and is used in this course.

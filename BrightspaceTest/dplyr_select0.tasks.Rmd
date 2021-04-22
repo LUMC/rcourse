@@ -1,0 +1,108 @@
+---
+title: "Select (practice)"
+---
+
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
+```
+
+## Primary exercises
+
+Apply the following to survey data: 
+
+1) Select *personal information* {name, age, gender, height} into a new tibble `survey_personal_info`.
+
+```{r}
+survey_personal_info <- select(survey, name, age, gender, height)
+```
+
+2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with uppercase initials, e.g. `Name`, `Age` etc. 
+
+```{r}
+survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
+```
+
+3) Reorder the variables as such that name,age and gender appear as first, second and the third column followed by the remaining
+variables. 
+
+```{r}
+select(survey, name,age,gender,everything())
+```
+
+4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](data.html#survey)
+
+```{r}
+select(survey, -span1,-span2,-hand,-fold,-clap)
+```
+
+5) Select the top 20 names along with gender.
+
+```{r}
+survey_sub <- select(survey, name,gender)
+head( survey_sub , 20)
+# shorter solution without intermediate variable 'survey_sub' :
+# head(select(survey,name),20)
+```
+
+
+6) Reproduce the following tibbles (note that variables are renamed and reshuffled):
+
+  6.1) First 5 observations.
+
+```{r, eval=TRUE}
+head( select(survey, SPAN1=span1, SPAN2=span2, everything()), 5)
+```
+
+  6.2) Last 3 observations.
+
+```{r, eval=TRUE}
+tail( select(survey, hand,fold,clap, everything()), 3)
+```
+
+
+
+## Extra exercises
+
+1) Rename the `m.i` variable to `system`.
+  
+```{r}
+# Option 1: very tedious, you need to type all the variable names and 
+# only rename the 'm.i' variable to 'system'
+#
+select(survey , name, gender, span1, span2, hand, fold, pulse, clap, 
+       exercise, smokes, height, system=m.i, age)
+# Option 2: shorter, but side-effect is that m.i (now system) comes at 
+# the front.
+select(survey, system=m.i, everything()) 
+# Option 3: use rename function (see ?rename). 
+rename(survey,system=m.i)
+```
+
+
+2) Select `name` along with all categorical variables into a new tibble `survey_cats`.
+
+```{r}
+# Categrical data: variables which take on categories as values, e.g. 
+# 
+# gender   : {male, female}
+# hand     : {left, right}
+# fold     : {left, right, neither} 
+# clap     : {left, right, neither} 
+# exercise : {freq, some, none}
+# smokes   : {heavy, regul, occas, never}
+# m.i      : {metric, imperial}
+#
+# 
+survey_cats <- select(survey, name, gender, hand, fold, clap, exercise, smokes, m.i)
+survey_cats
+```
+
+
+3) Create a new tibble `survey_nums` with `name` and all numerical variables.
+
+```{r}
+survey_nums <- select(survey, name, span1, span2, pulse, height)
+survey_nums
+```
+

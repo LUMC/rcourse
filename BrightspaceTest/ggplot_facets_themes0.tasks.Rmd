@@ -1,0 +1,51 @@
+---
+title: "ggplot2 facets and themes (practice)"
+---
+
+```{r , include=FALSE, eval=TRUE}
+pulse <- read_pulse()
+survey <- read_survey()
+```
+
+## Primary exercises
+
+1. *Visualize effect of running on pulse*.  
+Reconstruct the following image based on the `pulse` data.  
+Add component `coord_fixed()` to enforce that unit sizes are identical for both axes.  
+Use `geom_abline( slope = 1 )` to get the line showing where `pulse1` and `pulse2` are equal.  
+Disable the warning message.
+
+```{r warning=FALSE,eval=TRUE}
+ggplot( pulse ) +
+  aes( x = pulse1, y = pulse2 ) +
+  geom_point() +
+  facet_wrap( ~ ran ) +
+  coord_fixed() +
+  geom_abline( slope = 1, color = "red", linetype = 2 ) +
+  theme_bw() +
+  xlab( "pulse1 (before exercise) [1/min]" ) +
+  ylab( "pulse2 (after exercise) [1/min]" )
+```
+
+
+## Extra exercises
+
+1. *Rotate axis labels*.  
+When using facets the numbers on the bottom axis often overlap.  
+Modify the top chart above by adding (after `theme_bw`):  
+`  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))`.  
+`vjust` and `hjust` are numbers in range [0,1]. Understand their effect.  
+Try `angle=45`.
+
+```{r warning=FALSE,eval=TRUE}
+ggplot( pulse ) +
+  aes( x = pulse1, y = pulse2 ) +
+  geom_point() +
+  facet_wrap( ~ ran ) +
+  coord_fixed() +
+  geom_abline( slope = 1, color = "red", linetype = 2 ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab( "pulse1 (before exercise) [1/min]" ) +
+  ylab( "pulse2 (after exercise) [1/min]" )
+```

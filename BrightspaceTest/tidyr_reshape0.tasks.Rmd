@@ -1,0 +1,55 @@
+---
+title: "Reshape (practice)"
+#author: "R. Monajemi"
+---
+
+```{r , include=FALSE,eval=TRUE}
+survey <- read_survey()
+pulse <- read_pulse()
+```
+
+## Primary exercises
+
+In the survey dataset:
+
+1. The variables `span1` and `span2` are of the same type representing the span of the writing hand and the non-writing hand respectively. We would like to analyse these values in groups. To do this we need to convert the variables `span1` and `span2` into variables `span` and `size` with `span` ranging over *span1* and *span2* and `size` over the values of `span1` and `span2` variables.     
+  
+```{r}
+survey %>% gather(key=span,value=size,span1, span2)
+```
+
+2. Reproduce the following plot:  
+
+```{r, eval=TRUE}
+ggplot(survey %>% gather(key=span,value=size,span1, span2)) + 
+  aes(x=gender, y=size, color=span) + geom_boxplot()
+```
+
+
+## Extra exercises
+
+1. Often reshaping of the variables are necessary to visualize the information with ggplot. From *pulse* dataset reproduce the  *boxplot* shown below. Here `level` is the values of  `pulse1` and `pulse2`.   
+
+```{r, eval=TRUE}
+ggplot(pulse %>% 
+        drop_na() %>% 
+        mutate(exercise=fct_relevel(exercise, c("low","moderate","high"))) %>%
+        gather(pulse,level, pulse1,pulse2)) + 
+  aes(x=exercise, y=level, color=pulse) + geom_boxplot()
+```
+
+
+
+
+
+
+
+```{r, include=FALSE}
+# 1. Summarise minimum and maximum `span` per `writing` from the primary exercise (1). 
+survey %>% gather(span,size, span1,span2)  %>% group_by() %>%  
+          summarise(min=min(span,na.rm = T), max=max(span,na.rm = T))
+```
+
+<!-- 
+1. Two other categorical variables in the pulse dataset which can be gathered are `smokes` and `alcohol`. Do this into new variables `drug_habit` and `drug_use`.
+--> 

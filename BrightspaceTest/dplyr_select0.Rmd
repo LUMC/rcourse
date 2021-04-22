@@ -1,0 +1,82 @@
+---
+title: 'Select'
+---
+
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
+```
+
+> Use the `select` function to select variables (columns) from a tibble. 
+
+Given a tibble `select` can be used to : 
+
+  - take a collection of variables and simultaneously **reorder** and/or **rename** the variables
+  - **reshuffle** the variable order
+
+Let's take the `pulse` dataset:   
+
+```{r}
+pulse 
+```
+
+`select` takes as it first argument a tibble, followed by a comma separated list of variables of your choice and returns a tibble with those chosen variables:
+
+```{r}
+select(pulse, name, age)
+```
+
+> After this selection, does `pulse` tibble still contain the variables 'name' and 'age'?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "Yes, 'select' returns the selection as a tibble and does not modify the underlying tibble. You can check this by entering 'pulse' in the R console." 
+qa(msg)
+``` 
+
+If you want to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `pulse_name_age_only`:
+
+```{r}
+pulse_name_age_only <- select(pulse, name, age)
+pulse_name_age_only
+```
+
+##  Variable order
+
+The order of the selected variables is reflected in the resulting tibble:  
+
+```{r}
+select(pulse, age, name )
+```
+
+## Deselect variables 
+
+You may also deselect variables, with other words the complement of your selection. This is done by the `-` sign:
+
+```{r}
+select(pulse, -smokes, -alcohol)
+```
+
+## Select and rename 
+
+With selection it is possible to change the variable names simultaneously:  
+
+```{r}
+select(pulse, FirstName = name, Age = age)
+```
+
+> What is the variable name in the pulse dataset, 'Age' or 'age'?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "age, this because we only run select and do not store its result with assignment ('<-') back into pulse tibble."
+qa(msg)
+``` 
+
+## Reshuffle variables 
+
+With `select` we can reshuffle the variables. Sometimes tibbles may have large number of variables, you can bring the more 'important' variables in front with `select` and a convenience function `evertything`:   
+
+```{r}
+select(pulse, name, age, everything()) 
+```
+
+`everything` function lists all other variable other than `name` and `age` and `select` function places them after `name` and `age`.

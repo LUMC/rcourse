@@ -1,0 +1,115 @@
+---
+title: "User-defind functions (practice)"
+---
+
+```{r , include=FALSE, eval=TRUE}
+survey <- read_survey()
+```
+
+## Primary exercises
+
+1. For weight and height measurements we have the `metric` (cm,kg) and 
+`imperial` (inch,lbs) systems. The relation between the measurements in different systems 
+is (1 kg = 2.2 lbs) and  (1 inch = 2.54 cm). Write the following unit conversion 
+functions:
+    - cm2meter : convert cm to meter
+    - lbs2kg   : convert weight unit pound to kg
+    - inch2cm  : convert inch to cm
+    
+
+
+```{r, eval=FALSE, echo=TRUE}
+# Some example calls to the functions:
+> inch2cm(70)
+[1] 177.8
+> lbs2kg(10)
+[1] 4.545455
+> cm2m(190)
+[1] 1.9
+```
+
+```{r}
+cm2m    <- function(x) x*0.01  # cm to meter
+lbs2kg  <- function(x) x/2.2   # pound to kg
+inch2cm <- function(x) x*2.54  # inch to cm
+```
+
+2. Write a function for the survey dataset to report a summary on average pulse and the number of individuals in the given age range. Call it `ageRangeHeightSummary` and  it should take 3 arguments, the survey data, minimum age and maximum age, for example: 
+
+
+```{r, echo=FALSE, eval=TRUE}
+ageRangeHeightSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(age >= lowerBound & age < upperBound) %>% 
+    summarise(meanpulse=mean(pulse, na.rm = TRUE),individuals=n())
+}
+```
+
+```{r}
+ageRangeHeightSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(age >= lowerBound & age < upperBound) %>% 
+    summarise(meanpulse=mean(pulse, na.rm = TRUE),individuals=n())
+}
+```
+
+```{r, eval=TRUE, echo=TRUE}
+ageRangeHeightSummary(survey, 16,17)
+```
+
+
+
+3. Take the function `weightRangeSummary` in the lecture notes, make the necessary update such that it includes the weight intervals.
+
+```{r}
+weightRangeSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
+    summarise(meanHeight=mean(height),
+              increasedPulse=sum(pulse1<pulse2, na.rm = TRUE),
+              weightLowerBound=lowerBound,
+              weightUpperBound=upperBound,
+              individuals=n())
+}
+```
+
+## Extra exercises
+
+1. Write a function `odd` which takes a number as argument and returns a logical `TRUE` if the number is an odd number and FALSE otherwise. A whole number is odd when it is not integer divisible by 2. We can check whether a number is divisible by 2 by using the integer division remainder operator `%%`, known as modulo. The operator returns the remainder of integer (whole number) division:      
+
+```{r eval=TRUE, echo=TRUE}
+9 %% 2  # remainder after dividing 9 by 2 
+8 %% 2  # remainder after dividing 8 by 2
+1:10 %% 2 # remainder after dividing 1..10 by 2
+```
+
+As you can see the outcome is 0 if the number at the left is integer divisible by 2 and 1 if not.  We can use this fact to test whether a number is odd, i.e. not divisible by 2.   
+
+```{r}
+odd <- function(x) {
+  x %% 2 != 0
+}
+
+odd(31) 
+odd( x = 6 ) # more readable than '6 %% 2 != 0' 
+```
+
+2. Write the function `even` which tests whether a number is even.
+
+```{r}
+even <- function(x) {
+  x %% 2 == 0
+}
+# Alternatively: define the even function in terms of the 'negated' odd function.
+
+even <- function(x) {
+  ! odd(x)
+}
+
+```
+
+3. Write a function `divisible` which given values `x` and `m` tests whether `x` is integer divisible by `m`.
+
+```{r}
+divisible <- function(x,m) {
+  x %% m == 0
+}
+```
+

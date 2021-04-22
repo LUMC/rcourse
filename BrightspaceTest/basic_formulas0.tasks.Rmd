@@ -1,0 +1,56 @@
+---
+title: "Formulas (practice)"
+---
+
+```{r , include=FALSE, eval=TRUE}
+pulse <- read_pulse()
+survey <- read_survey()
+```
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+1. *A formula in a function; simple linear regression*.  
+Load the `survey.csv` data to variable `survey`.  
+You may make a simple scatter plot with `plot( survey$span2, survey$span1 )`.  
+Perform a linear regression of `span1` being dependent on `span2`; store the result in `fit` variable.  
+`fit` behaves also like a `list` so show `names` of elements stored in `fit`.  
+Find and print the element corresponding to the coefficients of the regression -- do you see there a coefficient for `span2`?  
+An intended method to access the coefficients is through `coef` function applied to `fit`. Try it. Do you get the same result as observed above?  
+
+```{r message=FALSE}
+survey <- read_csv( "survey.csv" )
+plot( survey$span2, survey$span1 )
+fit <- lm( span1 ~ span2, data = survey )
+fit
+names( fit )
+fit$coefficients
+coef( fit )
+```
+
+## Extra exercises
+
+1. *Simple regression diagnostic plots (demo)*.  
+Apply `plot` function to the `fit` object calculated in the above exercise.  
+These are diagnostic plots for the model produced by `lm`.
+
+```{r}
+plot( fit )
+```
+
+2. *Another test for association/correlation*.  
+In one of the extra list exercises a test for correlation between two random vectors was performed.  
+Follow the same steps to test correlation between `span1` and `span2` of `survey`.  
+Is correlation between these vectors significant?
+
+```{r}
+h <- cor.test( survey$span2, survey$span1 ) # vector notation
+h <- cor.test( formula = ~ span2 + span1, data = survey )  # formula notation
+h
+names( h )
+h[[ 'estimate' ]]   # correlation coefficient
+h[[ 'p.value' ]]    # significance, is < 0.05, strongly significant association
+```
+
