@@ -560,7 +560,7 @@ BaseRenderer <- R6Class(
       outRmdFile <- normalizePath(
         file.path(
           course$dir(),
-          gsub( "[.]Rmd$", ".", doc$type( TRUE ), ".Rmd", doc$rmdFile() )
+          gsub( "[.]Rmd$", paste0( ".", doc$type( TRUE ), ".Rmd" ), doc$rmdFile() )
         ),
         mustWork = FALSE
       )
@@ -695,7 +695,7 @@ BookRenderer <- R6Class(
 )
 # ------------------------------------------------------------------------
 
-if( interactive() ) {
+if( 0 ) {
   course <- theCourse( id = "Boerhaave_2021_Jun", dir = "BrightspaceTest" )
   course <- course$add(
     session( id = "slot1", title = "R and RStudio basics" ) %>%
