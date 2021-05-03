@@ -552,10 +552,18 @@ BaseRenderer <- R6Class(
         message( "Created output directory '", outDir, "'" )
       }
 
-      srcRmdFile <- normalizePath( file.path( course$dir(), doc$rmdFile() ), mustWork = TRUE )
+      srcRmdFile <- normalizePath(
+        file.path( course$dir(), doc$rmdFile() ), mustWork = TRUE
+      )
       #includedFiles <- self$detectIncludes( srcRmdFile )
 
-      outRmdFile <- normalizePath( file.path( course$dir(), gsub( "[.]Rmd$", ".nrz.Rmd", doc$rmdFile() ) ), mustWork = FALSE )
+      outRmdFile <- normalizePath(
+        file.path(
+          course$dir(),
+          gsub( "[.]Rmd$", ".", doc$type( TRUE ), ".Rmd", doc$rmdFile() )
+        ),
+        mustWork = FALSE
+      )
       message( "Normalizing '", srcRmdFile, "' to '", outRmdFile, "'..." )
       private$normalizeRmdFile(
         from = srcRmdFile, to = outRmdFile, overwrite = TRUE,
@@ -659,6 +667,32 @@ testthat::test_that( "BrightspaceRenderer properties", {
 #cat( "<a href='basic_calculator0.html' class='d2l-nav-next'>Calculator</a>" )
 #cat( "</div>" )
 
+# BookRenderer -----------------------------------------------------------
+
+BookRenderer <- R6Class(
+  "BookRenderer", inherit = BaseRenderer,
+  private = list(),
+  public = list(
+    navigationBarHtml = function( course, doc ) c(),
+    tstRenderAll = function() {
+      bookdown::render_book(
+        input = outRmdFile,
+        output_format = "html_document",
+        clean = TRUE,
+        envir = e,
+        output_dir = outDir,
+        new_session = TRUE,
+        preview = FALSE,
+        config_file = "_book.yml",
+
+        output_file = outHtmlFile,
+        intermediates_dir = outDir,
+        runtime = "static",
+        quiet = quiet
+      )
+    }
+  )
+)
 # ------------------------------------------------------------------------
 
 if( interactive() ) {
