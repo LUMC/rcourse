@@ -7,9 +7,6 @@ pulse <- read_pulse()
 survey <- read_survey()
 ```
 
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
-
 ## Primary exercises
 
 1. *A formula in a function; simple linear regression*.  
@@ -20,8 +17,11 @@ Perform a linear regression of `span1` being dependent on `span2`; store the res
 Find and print the element corresponding to the coefficients of the regression -- do you see there a coefficient for `span2`?  
 An intended method to access the coefficients is through `coef` function applied to `fit`. Try it. Do you get the same result as observed above?  
 
-```{r message=FALSE}
+```{r message=FALSE,eval=FALSE}
 survey <- read_csv( "survey.csv" )
+```
+
+```{r message=FALSE}
 plot( survey$span2, survey$span1 )
 fit <- lm( span1 ~ span2, data = survey )
 fit

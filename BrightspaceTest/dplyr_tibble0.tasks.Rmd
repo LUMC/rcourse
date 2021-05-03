@@ -55,7 +55,7 @@ mean(exercise_group[["height"]])
 
 1. Read `pulse.csv` data set into R and inspect its dimensions.
 
-```{r, message=FALSE}
+```{r, message=FALSE,eval=FALSE}
 pulse <- read_csv(file = "pulse.csv")
 ```
 
@@ -68,7 +68,7 @@ dim(pulse)  # dimensions (rows, columns)
 
 2. Read `survey.csv` data set into R. 
 
-```{r, message=FALSE}
+```{r, message=FALSE,eval=FALSE}
 survey <- read_csv(file = "survey.csv")
 ```
 
