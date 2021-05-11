@@ -197,7 +197,7 @@ Doc <- R6Class(
       } else {
         ( c(
           "?" = "unknown", "l" = "lecture",
-          "s" = "solutions", "p" = "practice"
+          "s" = "solutions", "p" = "practice", "c" = "toc"
         ) )[[ private$type_ ]]
       }
     },
@@ -388,7 +388,7 @@ TheCourse <- R6Class(
         naviIds = list(
           "prev" = li$lecture.prevId,
           "next" = li$lecture.nextId,
-          "exercises" = li$lecture.noCodeExercisesId
+          "tasks" = li$lecture.hasTasks
         ),
         type = "l",
         lectureIdx = li$lecture.idx,
@@ -427,7 +427,16 @@ TheCourse <- R6Class(
       )
     },
     tocDoc = function() {
-
+      Doc$new(
+        id = "toc",
+        label = "Table of Contents",
+        rmdFile = NULL,
+        naviIds = list(),
+        type = 'c',
+        lectureIdx = 1,
+        sessionIdx = 0,
+        setupFun = function() {}
+      )
     }
   )
 )
@@ -467,18 +476,22 @@ BaseRenderer <- R6Class(
       if( file.exists( to ) && !overwrite ) {
         stop( "Can't overwrite '", to, "'." )
       }
-      if( !is.null( from ) ) {
-        lines <- readLines( from )
-      } else {
-        lines <- course$generateLines( doc )
-      }
-      blks <- private$splitRmdBlocks( lines )
-      private$assertNoH1HeadersInBlocks( blks )
 
       outCon <- file( to, "wt" )
       private$writeDocHeader( outCon, course, doc )
       private$writeHeadNavi( outCon, course, doc )
-      private$writeRmdBlocks( outCon, blks )
+
+      if( !is.null( from ) ) {
+        lines <- readLines( from )
+        blks <- private$splitRmdBlocks( lines )
+        private$assertNoH1HeadersInBlocks( blks )
+        private$writeRmdBlocks( outCon, blks )
+      } else if( doc$type( TRUE ) == "toc" ) {
+        lines <- private$writeToc( outCon, course = course )
+      } else {
+        stop( "Don't know how to generate content." )
+      }
+
       private$writeFootNavi( outCon, course, doc )
       close( outCon )
     },
@@ -566,7 +579,8 @@ BaseRenderer <- R6Class(
       writeLines( con = outCon, text = docHeader )
     },
     writeHeadNavi = function( outCon, course, doc ) {},
-    writeFootNavi = function( outCon, course, doc ) {}
+    writeFootNavi = function( outCon, course, doc ) {},
+    writeToc = function( outCon, course ) {}
   ),
   public = list(
     initialize = function( outDir ) {
@@ -598,9 +612,14 @@ BaseRenderer <- R6Class(
 
     renderAll = function( course, ... ) {
       self$clearDir()
-      self$renderLectures( course )
+      self$renderToc( course, ... )
+      self$renderLectures( course, ... )
       self$renderTasks( course, enableCode = FALSE, ... )
       self$renderTasks( course, enableCode = TRUE, ... )
+    },
+    renderToc = function( course, ... ) {
+      doc <- course$tocDoc()
+      self$renderDoc( course = course, doc = doc, ... )
     },
     renderLectures = function( course, lectureIds = NULL, ... ) {
       if( is.null( lectureIds ) ) lectureIds <- course$lectureIds()
@@ -650,19 +669,18 @@ BaseRenderer <- R6Class(
         message( "Created output directory '", outDir, "'" )
       }
 
-      rmdFile <- doc$rmdFile()
       outRmdFile <- normalizePath( file.path( course$dir(), self$mapOutRmdFile( doc ) ), mustWork = FALSE )
 
+      rmdFile <- doc$rmdFile()
       if( !is.null( rmdFile ) ) {
         srcRmdFile <- normalizePath( file.path( course$dir(), doc$rmdFile() ), mustWork = TRUE )
         #includedFiles <- self$detectIncludes( srcRmdFile )
         message( "Normalizing '", srcRmdFile, "' to '", outRmdFile, "'..." )
+        private$normalizeRmdFile( from = srcRmdFile, to = outRmdFile, overwrite = TRUE, course = course, doc = doc )
       } else {
-        srcRmdFile <- NULL
         message( "Generating '", outRmdFile, "'..." )
+        private$normalizeRmdFile( from = NULL, to = outRmdFile, overwrite = TRUE, course = course, doc = doc )
       }
-
-      private$normalizeRmdFile( from = srcRmdFile, to = outRmdFile, overwrite = TRUE, course = course, doc = doc )
 
       outHtmlFile <- normalizePath( file.path( self$outDir(), self$mapOutHtmlFile( doc ) ), mustWork = FALSE )
       e <- new.env()
@@ -713,22 +731,56 @@ Renderer <- R6Class(
     },
     lectureNavigationBarHtml = function( course, doc ) {
       elems <- c()
+
+      aDoc <- course$tocDoc()
+      url <- self$mapOutHtmlFile( aDoc )
+      elems <- c( elems, private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
+
       naviIds <- doc$naviIds()
+      if( !is.null( naviIds$tasks ) && naviIds$tasks ) {
+        aDoc <- course$taskDoc( lectureId = doc$id(), enableCode = FALSE )
+        url <- self$mapOutHtmlFile( aDoc )
+        elems <- c( elems, private$intRefHtml( '&darr;&nbsp;Practice', url = url ) )
+      }
       if( !is.null( naviIds$prev ) && !is.na( naviIds$prev ) ) {
         aDoc <- course$lectureDoc( lectureId = naviIds$prev )
         url <- self$mapOutHtmlFile( aDoc )
-        elems <- c( elems, private$intRefHtml( '&#171;&nbsp;', aDoc$label(), url = url ) )
+        elems <- c( elems, private$intRefHtml( '&larr;&nbsp;', aDoc$label(), url = url ) )
       }
       if( !is.null( naviIds$`next` ) && !is.na( naviIds$`next` ) ) {
         aDoc <- course$lectureDoc( lectureId = naviIds$`next` )
         url <- self$mapOutHtmlFile( aDoc )
-        elems <- c( elems, private$intRefHtml( aDoc$label(), '&nbsp;&#187;', url = url ) )
+        elems <- c( elems, private$intRefHtml( aDoc$label(), '&nbsp;&rarr;', url = url ) )
       }
+
+      self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
+    },
+    taskNavigationBarHtml = function( course, doc, enableCode, label ) {
+      lectureId <- doc$naviIds()$lecture
+
+      elems <- c()
+
+      aDoc <- course$tocDoc()
+      url <- self$mapOutHtmlFile( aDoc )
+      elems <- c( elems, private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
+
+      aDoc <- course$lectureDoc( lectureId = lectureId )
+      url <- self$mapOutHtmlFile( aDoc )
+      elems <- c( elems, private$intRefHtml( '&uarr;&nbsp;Lecture', url = url ) )
+
+      aDoc <- course$taskDoc( lectureId = lectureId, enableCode = enableCode )
+      url <- self$mapOutHtmlFile( aDoc )
+      elems <- c( elems, private$intRefHtml( '&#x21c4;&nbsp;', label, url = url ) )
+
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
     navigationBarHtml = function( course, doc ) {
       if( doc$type( long = TRUE ) == "lecture" ) {
         text <- private$lectureNavigationBarHtml( course, doc )
+      } else if( doc$type( long = TRUE ) == "practice" ) {
+        text <- private$taskNavigationBarHtml( course, doc, TRUE, "Solutions" )
+      } else if( doc$type( long = TRUE ) == "solutions" ) {
+        text <- private$taskNavigationBarHtml( course, doc, FALSE, "Practice" )
       } else {
         text <- ""
       }
@@ -746,7 +798,7 @@ Renderer <- R6Class(
       d <- course$asTibble()
       dd <- d %>%
         mutate( Session = session.label, Title = lecture.label ) %>%
-        mutate( Lecture = "", Exercises = "" )
+        mutate( Lecture = "", Practice = "", Solutions = "" )
       for( idx in seq_len( nrow( dd ) ) ) {
         aDoc <- course$lectureDoc( lectureId = d$lecture.id[[idx]] )
         url <- self$mapOutHtmlFile( aDoc )
@@ -754,12 +806,17 @@ Renderer <- R6Class(
         if( d$lecture.hasTasks[[idx]] ) {
           aDoc <- course$taskDoc( lectureId = d$lecture.id[[idx]], enableCode = FALSE )
           url <- self$mapOutHtmlFile( aDoc )
-          dd$Exercises[[idx]] <- private$intRefHtml( "Exercises", url = url )
+          dd$Practice[[idx]] <- private$intRefHtml( "Practice", url = url )
+
+          aDoc <- course$taskDoc( lectureId = d$lecture.id[[idx]], enableCode = TRUE )
+          url <- self$mapOutHtmlFile( aDoc )
+          dd$Solutions[[idx]] <- private$intRefHtml( "Solutions", url = url )
         }
       }
       r <- rle( dd$Session )
-      ke <- kableExtra::kbl( dd %>% select( Title, Lecture, Exercises ), format = "html" ) %>%
-        kableExtra::kable_paper("striped", full_width = F) %>%
+      ke <- kableExtra::kbl( dd %>% select( Title, Lecture, Practice, Solutions ), format = "html", escape = FALSE ) %>%
+        #kableExtra::kable_paper("striped", full_width = F) %>%
+        kableExtra::kable_styling(bootstrap_options = c("hover", "condensed")) %>%
         kableExtra::pack_rows( "Session", index = setNames( r$lengths, r$values ) )
 
       writeLines( c(
@@ -769,7 +826,8 @@ Renderer <- R6Class(
         "",
         "## Table of Contents"
       ), con = outCon )
-      cat( ka, file = outCon, append = TRUE )
+
+      cat( ke, file = outCon, append = TRUE )
     }
   ),
   public = list()
@@ -799,7 +857,7 @@ testthat::test_that( "BrightspaceRenderer properties", {
 # ------------------------------------------------------------------------
 
 genTestCourse <- function() {
-  course <- theCourse( id = "Boerhaave_2021_Jun", dir = "BrightspaceTest" )
+  course <- theCourse( id = "Boerhaave_2021_Jun", dir = "BrightspaceTest", label = "LUMC/Boerhaave, June 2021: R for data analysis" )
   course <- course$add(
     session( id = "slot1", label = "R and RStudio basics" ) %>%
       add( lecture( id = "index", label = "Course Introduction", hasTasks = FALSE, min = 5 ) ) %>%
