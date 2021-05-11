@@ -4,15 +4,6 @@ params:
   basename: "packages0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-# build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
-```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-
 R packages are a collection of related functions, possibly with data, built to tackle a specific problem. R comes with several pre-installed 
 packages such as `base`, `stats`, `datasets` etc. These packages pretty much cover all that is needed for 
 basic data science exercises. However sometimes we need to do more. R allows installation of external R packages for use. The R community keeps building advanced methodologies in the form of R packages and they are publicly available. In the following I'll describe how to install packages on your machine and how to use them.
@@ -50,8 +41,3 @@ This call will load the package and gives you direct access to the functions ins
 
 
 `r info_block("A package is installed once, but it must be loaded with each new R session to be able to use it.")`
-
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
