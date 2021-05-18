@@ -59,7 +59,23 @@ fct_count( w2 )
 
 ## Extra exercises
 
-1. *Special ordering of levels.*  
+1. *Counting with table(); getting counts for single levels*.  
+`fct_count` is a `tidyverse`/`forcats` method of counting factor elements and produces a result as a table (`tibble` object).  
+An base-R version of counting elements is provided by `table()` function.  
+Reuse the factor `w` from the first primary exercise.  
+Try `table( w )` and compare its output with `fct_count( w )`.  
+Store the counts as follows `cnts <- table( w )`. Use square brackets on `cnts` to get the count of `oncePerWeek`.
+```{r}
+v <- c( "severalPerWeek", "none", "none", "oncePerWeek", "oncePerWeek", "oncePerWeek", "oncePerWeek", NA, "none", "none" )
+w <- factor( v, levels = c( "none", "oncePerWeek", "severalPerWeek", "daily" ) )
+w
+table( w )
+fct_count( w )
+cnts <- table( w )
+cnts[ "oncePerWeek" ]
+```
+
+2. *Special ordering of levels.*  
 `r go_extern( "https://forcats.tidyverse.org/#cheatsheet", "forcats cheat sheet", "to find how to order the factor by the frequency of occurrences" )`  
 Reuse `w` from the previous exercise and construct a factor `w3` with the same values and with the levels sorted by descending number of occurrences.  
 Count the occurrences to demonstrate correctness.  

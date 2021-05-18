@@ -42,3 +42,37 @@ Observe the error shown when you try to print the variable but you make a typo.
 ```{r error=TRUE}
 height.in.meters      # Error: object 'height.in.meters' not found
 ```
+
+## Extra exercises
+
+1. *The pi*.  
+`pi` is a variable built in R. Use it to calculate the area of a circle of radius 2.0.
+
+```{r}
+radius <- 2.0
+pi * radius^2
+```
+
+2. *Various assignment operators*.  
+In addition to `<-` R has other assignment operators `=` (equivalent to `<-`) and `->` (the variable name on the right side).  
+Use each of these operators in an assignment. When do you think `->` might be useful?
+
+```{r}
+x <- 1
+x
+y = 2
+y
+3 -> z
+z
+1 + 1/(
+  1 + 1/(
+    1 + 1/(
+      1 + 1/(
+        1
+      )
+    )
+  )
+) -> u # right arrow is handy while typing and when the cursor is at the end of a long expression,
+u      # but makes code less readable (do not use in production code)
+```
+

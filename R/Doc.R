@@ -599,9 +599,9 @@ BaseRenderer <- R6Class(
     },
     specialBlockHtml = function( ... ) {
       paste0(
-        '<div class="alert alert-info" role="alert" style="text-align: right;">',
+        '\n\n<div class="alert alert-info" role="alert" style="text-align: right;">',
         ...,
-        '</div>',
+        '</div>\n\n',
         collapse = "", sep = ""
       )
     },
@@ -816,7 +816,9 @@ Renderer <- R6Class(
       r <- rle( dd$Session )
       ke <- kableExtra::kbl( dd %>% select( Title, Lecture, Practice, Solutions ), format = "html", escape = FALSE ) %>%
         #kableExtra::kable_paper("striped", full_width = F) %>%
-        kableExtra::kable_styling(bootstrap_options = c("hover", "condensed")) %>%
+        #kableExtra::kable_styling(bootstrap_options = c("hover", "condensed")) %>%
+        kableExtra::kable_styling(bootstrap_options = c("hover"),full_width = TRUE) %>%
+        #kable_material(c("striped", "hover")) %>%
         kableExtra::pack_rows( "Session", index = setNames( r$lengths, r$values ) )
 
       writeLines( c(

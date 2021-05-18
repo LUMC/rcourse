@@ -138,4 +138,4 @@ Try the following keystrokes in the console:
 
 - _Up-arrow_ or _Down-arrow_ scroll through the history of the commands typed before.
 - _Ctrl-R_ shows the history, and then you may type characters to search this list.
-- _Ctrl_L_ clears the console (but not the history).
+- _Ctrl-L_ clears the console (but not the history).

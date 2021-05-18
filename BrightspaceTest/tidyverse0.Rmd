@@ -2,9 +2,9 @@
 title: 'tidyverse'
 ---
 
-## tidyverse package
+## Package tidyverse
 
-[Tidverse](https://www.tidyverse.org/) is a colection of R packages which we will be using intensively for the remainder of this course. If you haven't installed `tidyverse` then you can do this with:
+[Tidverse](https://www.tidyverse.org/) is a collection of R packages which we will be using intensively for the remainder of this course. If you haven't installed `tidyverse` then you can do this with:
 
 ```{r, eval=FALSE}
 install.packages("tidyverse") # needed only once
@@ -37,9 +37,9 @@ It shows the sub-packages and the versions and also some conflicts.
 
 You now have access to a powerful set of functions for **data manipulation and visualisation**. 
 
-## outline
+## Outline
 
-- Data transformation with dplyr ([cheat sheet](pdf/data-transformation.pdf){target="_blank"})
+- `dplyr`: Data transformation ([cheat sheet](pdf/data-transformation.pdf){target="_blank"})
   - tibble : a two-dimensional data structure with rows and columns
   - functions to manipulate tibble:
     - select : extract columns
@@ -50,9 +50,11 @@ You now have access to a powerful set of functions for **data manipulation and v
   - grouping
   - queries 
   - join : combining tables
-- reshape : change the table layout ([cheatsheet](pdf/data-import.pdf){target="_blank"})  
+- `reshape`: Change the table layout ([cheatsheet](pdf/data-import.pdf){target="_blank"})  
+- `forcats`: Manipulation on factors and their levels
 
-## Links 
+## Links
+
 - [Tidyverse](https://www.tidyverse.org/)
 - [R for data science ; Hadley Wickham, Garrett Grolemund (online book)](https://r4ds.had.co.nz/)
 - [More cheat sheets (*)](https://rstudio.com/resources/cheatsheets/)

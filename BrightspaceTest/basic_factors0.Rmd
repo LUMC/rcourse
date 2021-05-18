@@ -72,6 +72,8 @@ as.integer( hairColors )
 Type the following function to produce a tibble with counts of occurrences of all levels in a factor:
 
 ```{r}
+# library( forcats )   # fct_* functions are in this library
+# library( tidyverse ) # might be used instead of library( forcats ) 
 fct_count( hairColors )
 ```
 
