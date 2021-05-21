@@ -62,7 +62,7 @@ names( h )
 h$p.value
 ```
 
-## Example: simple linear regression
+## Example: Simple linear regression
 
 Let's use the `pulse` data and try to model individual `weight` as a **linear function** of `height`.
 

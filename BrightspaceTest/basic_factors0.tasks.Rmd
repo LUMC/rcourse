@@ -60,8 +60,8 @@ fct_count( w2 )
 ## Extra exercises
 
 1. *Counting with table(); getting counts for single levels*.  
-`fct_count` is a `tidyverse`/`forcats` method of counting factor elements and produces a result as a table (`tibble` object).  
-An base-R version of counting elements is provided by `table()` function.  
+The `fct_count()` is a `tidyverse`/`forcats` function for counting factor elements and produces the result in a form of a table (the `tibble` object).  
+The `table()` function from base-R provides a similar functionality but returns the result in another format.  
 Reuse the factor `w` from the first primary exercise.  
 Try `table( w )` and compare its output with `fct_count( w )`.  
 Store the counts as follows `cnts <- table( w )`. Use square brackets on `cnts` to get the count of `oncePerWeek`.

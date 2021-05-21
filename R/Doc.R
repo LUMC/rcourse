@@ -684,9 +684,9 @@ BaseRenderer <- R6Class(
 
       outHtmlFile <- normalizePath( file.path( self$outDir(), self$mapOutHtmlFile( doc ) ), mustWork = FALSE )
       e <- new.env()
-      assign( x = ".renderer", value = renderer, envir = e )
-      assign( x = ".course", value = course, envir = e )
-      assign( x = ".doc", value = doc, envir = e )
+      #assign( x = ".renderer", value = self, envir = e )
+      #assign( x = ".course", value = course, envir = e )
+      #assign( x = ".doc", value = doc, envir = e )
 
       message( "Rendering '", outRmdFile, "' to '", outHtmlFile, "'..." )
       setupFun <- doc$setupFun()
