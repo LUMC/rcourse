@@ -774,11 +774,19 @@ BaseRenderer <- R6Class(
 
     makeAll = function( course, ... ) {
       self$clearDir()
-      self$makeToc( course, ... )
-      self$makeMaterials( course, ... )
-      self$makeLectures( course, ... )
-      self$makeTasks( course, enableCode = FALSE, ... )
-      self$makeTasks( course, enableCode = TRUE, ... )
+      allFiles <- c(
+        self$makeLectures( course, ... ),
+        self$makeTasks( course, enableCode = FALSE, ... ),
+        self$makeTasks( course, enableCode = TRUE, ... ),
+        self$makeToc( course, ... ),
+        self$makeMaterials( course, ... )
+      ) %>% unlist() %>% as.vector()
+
+      outZipFile <- paste0( self$outDir(), ".zip" )
+      attr( outZipFile, "contentType" ) <- "application/zip"
+      file.remove( outZipFile )
+      zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
+      invisible( outZipFile )
     },
     makeToc = function( course, ... ) {
       doc <- course$tocDoc()
@@ -786,13 +794,13 @@ BaseRenderer <- R6Class(
     },
     makeMaterials = function( course, materialIds = NULL, ... ) {
       doc <- course$materialsDoc()
-      self$makeDoc( course = course, doc = doc, ... )
+      ret <- self$makeDoc( course = course, doc = doc, ... )
 
       if( is.null( materialIds ) ) materialIds <- course$materialIds()
       lapply( setNames( nm = materialIds ), function( materialId ) {
         doc <- course$materialDoc( materialId = materialId )
         self$makeDoc( course = course, doc = doc, ... )
-      } )
+      } ) %>% c( ret )
     },
     makeLectures = function( course, lectureIds = NULL, ... ) {
       if( is.null( lectureIds ) ) lectureIds <- course$lectureIds()
@@ -850,12 +858,12 @@ BaseRenderer <- R6Class(
       }
     },
 
-    makeDoc = function( course, doc, quiet = TRUE ) {
+    makeDoc = function( course, doc ) {
       message()
       message( "----- Processing document '", doc$id(), "' -----" )
 
       if( inherits( doc, "RenderedDoc" ) ) {
-        self$renderDoc( course, doc, quiet )
+        self$renderDoc( course, doc )
       } else if( inherits( doc, "CopiedDoc" ) ) {
         self$copyDoc( course, doc )
       } else {
@@ -874,6 +882,7 @@ BaseRenderer <- R6Class(
       }
       stopifnot( file.copy( from = srcPath, to = outPath, overwrite = TRUE ) )
       stopifnot( file.exists( outPath ) )
+      file.path( self$outDir(), doc$outPath() )
     },
     renderDoc = function( course, doc, quiet = TRUE ) {
       stopifnot( inherits( doc, "RenderedDoc" ) )
@@ -907,6 +916,7 @@ BaseRenderer <- R6Class(
         runtime = "static",
         envir = e, clean = TRUE, quiet = quiet
       )
+      file.path( self$outDir(), self$mapOutHtmlFile( doc ) )
     }
   )
 )
@@ -942,7 +952,7 @@ Renderer <- R6Class(
     },
     lectureNavigationBarHtml = function( course, doc ) {
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) ),
+        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
         private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) )
       )
 
@@ -968,7 +978,7 @@ Renderer <- R6Class(
       lectureId <- doc$naviIds()$lecture
 
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) ),
+        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
         private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) ),
         private$intRefHtml( '&uarr;&nbsp;Lecture', url = self$docUrl( course$lectureDoc( lectureId = lectureId ) ) ),
         private$intRefHtml( '&#x21c4;&nbsp;', label, url = self$docUrl( course$taskDoc( lectureId = lectureId, enableCode = enableCode ) ) )
@@ -983,7 +993,7 @@ Renderer <- R6Class(
     },
     materialsNavigationBarHtml = function( course ) {
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) )
+        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) )
       )
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
@@ -1043,7 +1053,7 @@ Renderer <- R6Class(
         paste0( "title: '", course$label(), "'" ),
         "---",
         "",
-        "## Table of Contents (Index)"
+        "## Contents"
       ), con = outCon )
 
       cat( ke, file = outCon, append = TRUE )
@@ -1106,7 +1116,7 @@ genTestCourse <- function( testOnly = FALSE ) {
       add( lecture( id = "introduction0", label = "R Introduction", hasTasks = FALSE, min = 30 ) ) %>%
       add( lecture( id = "basic_calculator0", label = "Calculator", min = 45 ) ) %>%
       add( lecture( id = "basic_variables0", label = "Variables", min = 45 ) ) %>%
-      #add( lecture( id = "data", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) ) %>%
+      add( lecture( id = "course_data0", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) ) %>%
       add( lecture( id = "basic_projects0", label = "Projects", hasTasks = FALSE, min = 45 ) ) %>%
       add( lecture( id = "basic_scripts0", label = "Scripts", hasTasks = FALSE, min = 45 ) )
   )
@@ -1163,5 +1173,5 @@ genTestCourse <- function( testOnly = FALSE ) {
   renderer$makeAll( course = course )
 }
 if( 0 ) {
-  genTestCourse( TRUE )
+  l <- genTestCourse( TRUE )
 }
