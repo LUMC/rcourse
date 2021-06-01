@@ -188,39 +188,28 @@ CopiedDoc <- R6Class(
   "CopiedDoc",
   inherit = Doc,
   private = list(
-    file_ = NULL,
-    outFile_ = NULL,
-    outDir_ = NULL
+    path_ = NULL,
+    outPath_ = NULL
   ),
   public = list(
     initialize = function(
-      file, outFile = NULL, outDir = NULL, ...
+      path, outPath = NULL, ...
     ) {
       super$initialize( ... )
-      private$file_ <- file
-      private$outFile_ <- outFile
-      private$outDir_ <- outDir
+      private$path_ <- path
+      private$outPath_ <- outPath
     },
-    file = function() { private$file_ },
-    outFile = function() {
-      if( is.null( private$outFile_ ) ) private$file_ else private$outFile_
-    },
-    outDir = function() { private$outDir_ },
-    url = function() {
-      u <- self$outFile()
-      if( !is.null( self$outDir() ) ) {
-        u <- paste0( self$outDir(), "/", u )
-      }
-      u
-    }
+    path = function() { private$path_ },
+    outPath = function() { private$outPath_ },
+    url = function() { private$outPath_ }
   )
 )
 
 testthat::test_that( "CopiedDoc properties", {
-  doc <- CopiedDoc$new( id = "lecture1", label = "Lecture 1", file = "abc.Rmd" )
+  doc <- CopiedDoc$new( id = "lecture1", label = "Lecture 1", path = "abc.Rmd", outPath = "src/abc.Rmd" )
   testthat::expect_identical( doc$id(), "lecture1" )
-  testthat::expect_identical( doc$outFile(), "abc.Rmd" )
-  testthat::expect_identical( doc$url(), "abc.Rmd" )
+  testthat::expect_identical( doc$path(), "abc.Rmd" )
+  testthat::expect_identical( doc$outPath(), "src/abc.Rmd" )
   #testthat::expect_identical( doc$outDir(), NULL )
 } )
 
@@ -397,24 +386,26 @@ Material <- R6Class(
   private = list(
     id_ = NULL,
     label_ = NULL,
-    file_ = NULL,
-    path_ = NULL
+    path_ = NULL,
+    outPath_ = NULL
   ),
   public = list(
-    initialize = function( id, label, file, path ) {
+    initialize = function( id, label, path, outPath ) {
       stopifnot( !is.null( id ) )
+      stopifnot( !is.null( path ) )
       private$id_ <- id
       private$label_ <- label
-      private$file_ <- file
       private$path_ <- path
+      private$outPath_ <- outPath
     },
     id = function() { private$id_ },
     label = function() { private$label_ },
-    file = function() { private$file_ },
     path = function() { private$path_ },
+    outPath = function() { private$outPath_ },
     asTibble = function() {
       d <- tibble(
-        id = self$id(), label = self$label(), file = self$file(), path = self$path()
+        id = self$id(), label = self$label(),
+        path = self$path(), outPath = self$outPath()
       )
       colnames( d ) <- paste0( "material.", colnames( d ) )
       d
@@ -426,7 +417,7 @@ material <- function( ... ) { Material$new( ... ) }
 add.Material <- function( x, ... ) x$add( ... )
 
 testthat::test_that( "Material properties", {
-  m1 <- material( id = "material1", label = "First dataset", file = "material1.csv", path = "data" )
+  m1 <- material( id = "material1", label = "First dataset", path = "material1.csv", outPath = "data/material1.csv" )
   testthat::expect_equal( m1$id(), "material1" )
 })
 
@@ -577,7 +568,8 @@ TheCourse <- R6Class(
       CopiedDoc$new(
         id = materialId,
         label = li$material.label,
-        file = li$material.file
+        path = li$material.path,
+        outPath = li$material.outPath
       )
     }
   )
@@ -593,7 +585,7 @@ testthat::test_that( "TheCourse properties", {
   l22 <- lecture( id = "lecture22", min = 45 )
   s1 <- session( id = "session1" ) %>% add( l11 ) %>% add( l12 )
   s2 <- session( id = "session2" ) %>% add( l21 ) %>% add( l22 )
-  m1 <- material( id = "material1", label = "First dataset", file = "material1.csv", path = "data" )
+  m1 <- material( id = "material1", label = "First dataset", path = "material1.csv", outPath = "data/material1.csv" )
   course <- theCourse( id = "course", dir = "." ) %>% add( s1 ) %>% add( s2 ) %>% add( m1 )
   testthat::expect_identical( course$sessionIds(), c( "session1", "session2" ) )
   testthat::expect_identical( course$lectureIds(), c( "lecture11", "lecture12", "lecture21", "lecture22" ) )
@@ -792,9 +784,15 @@ BaseRenderer <- R6Class(
       doc <- course$tocDoc()
       self$makeDoc( course = course, doc = doc, ... )
     },
-    makeMaterials = function( course, ... ) {
+    makeMaterials = function( course, materialIds = NULL, ... ) {
       doc <- course$materialsDoc()
       self$makeDoc( course = course, doc = doc, ... )
+
+      if( is.null( materialIds ) ) materialIds <- course$materialIds()
+      lapply( setNames( nm = materialIds ), function( materialId ) {
+        doc <- course$materialDoc( materialId = materialId )
+        self$makeDoc( course = course, doc = doc, ... )
+      } )
     },
     makeLectures = function( course, lectureIds = NULL, ... ) {
       if( is.null( lectureIds ) ) lectureIds <- course$lectureIds()
@@ -839,7 +837,7 @@ BaseRenderer <- R6Class(
       )
     },
     mapOutMaterialFile = function( doc ) {
-      doc$id()
+      doc$outPath()
     },
     clearDir = function() {
       outDir <- normalizePath( file.path( self$outDir() ), mustWork = FALSE )
@@ -867,29 +865,33 @@ BaseRenderer <- R6Class(
     copyDoc = function( course, doc ) {
       stopifnot( inherits( doc, "CopiedDoc" ) )
 
-      srcFile <- normalizePath( file.path( course$dir(), doc$dir(), doc$file() ), mustWork = TRUE )
+      srcPath <- normalizePath( file.path( course$dir(), doc$path() ), mustWork = TRUE )
       outDir <- normalizePath( file.path( self$outDir() ), mustWork = TRUE )
-      outFile <- normalizePath( file.path( outDir, doc$dir(), doc$file() ), mustWork = FALSE )
-      message( "Copying '", srcFile, "' to '", outFile, "'..." )
-      file.copy( from = srcFile, to = outFile )
+      outPath <- normalizePath( file.path( outDir, doc$outPath() ), mustWork = FALSE )
+      message( "Copying '", srcPath, "' to '", outPath, "'..." )
+      if( !identical( dirname( outPath ), "." ) ) {
+        dir.create( dirname( outPath ), recursive = TRUE )
+      }
+      stopifnot( file.copy( from = srcPath, to = outPath, overwrite = TRUE ) )
+      stopifnot( file.exists( outPath ) )
     },
     renderDoc = function( course, doc, quiet = TRUE ) {
       stopifnot( inherits( doc, "RenderedDoc" ) )
 
       # ----- rewrite the Rmd source with header/footer added (in srcDir) -----
-      tmpRmdFile <- normalizePath( file.path( course$dir(), self$mapTmpRmdFile( doc ) ), mustWork = FALSE )
-      on.exit( file.remove( tmpRmdFile ), add = TRUE )
-      srcRmdFile <- doc$rmdFile()
-      if( !is.null( srcRmdFile ) ) {
-        srcRmdFile <- normalizePath( file.path( course$dir(), srcRmdFile ), mustWork = TRUE )
+      tmpRmdPath <- normalizePath( file.path( course$dir(), self$mapTmpRmdFile( doc ) ), mustWork = FALSE )
+      on.exit( file.remove( tmpRmdPath ), add = TRUE )
+      srcRmdPath <- doc$rmdFile()
+      if( !is.null( srcRmdPath ) ) {
+        srcRmdPath <- normalizePath( file.path( course$dir(), srcRmdPath ), mustWork = TRUE )
+        stopifnot( !identical( srcRmdPath, tmpRmdPath ) ) # avoid accidental src overwrite
       }
-      stopifnot( !identical( srcRmdFile, tmpRmdFile ) ) # avoid accidental src overwrite
-      private$normalizeRmdFile( from = srcRmdFile, to = tmpRmdFile, overwrite = TRUE, course = course, doc = doc )
+      private$normalizeRmdFile( from = srcRmdPath, to = tmpRmdPath, overwrite = TRUE, course = course, doc = doc )
 
       # ----- render Rmd (from srcDir) to html (to outDir) -----
       outDir <- normalizePath( file.path( self$outDir() ), mustWork = TRUE )
-      outHtmlFile <- normalizePath( file.path( outDir, self$mapOutHtmlFile( doc ) ), mustWork = FALSE )
-      message( "Rendering '", tmpRmdFile, "' to '", outHtmlFile, "'..." )
+      outHtmlPath <- normalizePath( file.path( outDir, self$mapOutHtmlFile( doc ) ), mustWork = FALSE )
+      message( "Rendering '", tmpRmdPath, "' to '", outHtmlPath, "'..." )
 
       e <- new.env()
       #assign( x = ".renderer", value = self, envir = e )
@@ -898,8 +900,8 @@ BaseRenderer <- R6Class(
       setupFun <- doc$setupFun()
       if( !is.null( setupFun ) ) setupFun()
       rmarkdown::render(
-        input = tmpRmdFile, output_dir = outDir,
-        output_format = "html_document", output_file = outHtmlFile,
+        input = tmpRmdPath, output_dir = outDir,
+        output_format = "html_document", output_file = outHtmlPath,
         intermediates_dir = outDir,
         #knit_root_dir = outDir,
         runtime = "static",
@@ -1054,7 +1056,7 @@ Renderer <- R6Class(
         url <- self$mapOutMaterialFile( aDoc )
         tibble(
           Title = aDoc$label(),
-          Material = private$intRefFile( aDoc$file(), url = url, file = aDoc$file() )
+          Material = private$intRefFile( aDoc$path(), url = url, file = basename( aDoc$path() ) )
         )
       } ) )
 
@@ -1106,7 +1108,7 @@ genTestCourse <- function( testOnly = FALSE ) {
       add( lecture( id = "introduction0", label = "R Introduction", hasTasks = FALSE, min = 30 ) ) %>%
       add( lecture( id = "basic_calculator0", label = "Calculator", min = 45 ) ) %>%
       add( lecture( id = "basic_variables0", label = "Variables", min = 45 ) ) %>%
-      add( lecture( id = "data", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) ) %>%
+      #add( lecture( id = "data", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) ) %>%
       add( lecture( id = "basic_projects0", label = "Projects", hasTasks = FALSE, min = 45 ) ) %>%
       add( lecture( id = "basic_scripts0", label = "Scripts", hasTasks = FALSE, min = 45 ) )
   )
@@ -1153,9 +1155,9 @@ genTestCourse <- function( testOnly = FALSE ) {
     )
   }
   course <- course$add(
-    material( id = "pulse", label = "Pulse dataset, CSV format", file = "pulse.csv", path = "data" ),
-    material( id = "survey", label = "Survey dataset, CSV format", file = "survey.csv", path = "data" ),
-    material( id = "exProjDir", label = "RStudio project directory example", file = "RStudio_Project_Dir_Example.zip", path = "materials" )
+    material( id = "pulse", label = "Pulse dataset, CSV format", path = "data/pulse.csv", outPath = "data/pulse.csv"  ),
+    material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" )
+    #material( id = "exProjDir", label = "RStudio project directory example", path = "RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
   )
 
   renderer <- Renderer$new( outDir = "tmp" )
@@ -1163,5 +1165,28 @@ genTestCourse <- function( testOnly = FALSE ) {
   renderer$makeAll( course = course )
 }
 if( 0 ) {
-  genTestCourse()
+  genTestCourse( TRUE )
+}
+
+
+g2 <- function( testOnly = FALSE ) {
+  course <- theCourse( id = "Boerhaave_2021_Jun", dir = "BrightspaceTest", label = "LUMC/Boerhaave, June 2021: R for data analysis" )
+  course <- course$add(
+    session( id = "slot1", label = "R and RStudio basics" ) %>%
+      add( lecture( id = "data", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) )# %>%
+#      add( lecture( id = "basic_projects0", label = "Projects", hasTasks = FALSE, min = 45 ) ) #%>%
+    #  add( lecture( id = "basic_scripts0", label = "Scripts", hasTasks = FALSE, min = 45 ) )
+  )
+  course <- course$add(
+    material( id = "pulse", label = "Pulse dataset, CSV format", path = "data/pulse.csv", outPath = "data/pulse.csv"  ),
+    material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" )
+    #material( id = "exProjDir", label = "RStudio project directory example", path = "RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
+  )
+
+  renderer <- Renderer$new( outDir = "tmp" )
+  #renderer <- BrightspaceRenderer$new( outDir = "tmp" )
+  renderer$makeAll( course = course )
+}
+if( 0 ) {
+  g2( TRUE )
 }
