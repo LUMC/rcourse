@@ -941,20 +941,14 @@ Renderer <- R6Class(
       )
     },
     lectureNavigationBarHtml = function( course, doc ) {
-      elems <- c()
-
-      aDoc <- course$tocDoc()
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
-
-      aDoc <- course$materialsDoc()
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = url ) )
+      elems <- c(
+        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) ),
+        private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) )
+      )
 
       naviIds <- doc$naviIds()
       if( !is.null( naviIds$tasks ) && naviIds$tasks ) {
-        aDoc <- course$taskDoc( lectureId = doc$id(), enableCode = FALSE )
-        url <- self$docUrl( aDoc )
+        url <- self$docUrl( course$taskDoc( lectureId = doc$id(), enableCode = FALSE ) )
         elems <- c( elems, private$intRefHtml( '&darr;&nbsp;Practice', url = url ) )
       }
       if( !is.null( naviIds$prev ) && !is.na( naviIds$prev ) ) {
@@ -973,31 +967,24 @@ Renderer <- R6Class(
     taskNavigationBarHtml = function( course, doc, enableCode, label ) {
       lectureId <- doc$naviIds()$lecture
 
-      elems <- c()
-
-      aDoc <- course$tocDoc()
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
-
-      aDoc <- course$materialsDoc()
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = url ) )
-
-      aDoc <- course$lectureDoc( lectureId = lectureId )
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( '&uarr;&nbsp;Lecture', url = url ) )
-
-      aDoc <- course$taskDoc( lectureId = lectureId, enableCode = enableCode )
-      url <- self$docUrl( aDoc )
-      elems <- c( elems, private$intRefHtml( '&#x21c4;&nbsp;', label, url = url ) )
-
+      elems <- c(
+        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) ),
+        private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) ),
+        private$intRefHtml( '&uarr;&nbsp;Lecture', url = self$docUrl( course$lectureDoc( lectureId = lectureId ) ) ),
+        private$intRefHtml( '&#x21c4;&nbsp;', label, url = self$docUrl( course$taskDoc( lectureId = lectureId, enableCode = enableCode ) ) )
+      )
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
-    materialsNavigationBarHtml = function( course, doc ) {
-      aDoc <- course$tocDoc()
-      url <- self$docUrl( aDoc )
-      elems <- c( private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
-
+    tocNavigationBarHtml = function( course ) {
+      elems <- c(
+        private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) )
+      )
+      self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
+    },
+    materialsNavigationBarHtml = function( course ) {
+      elems <- c(
+        private$intRefHtml( "&#x2302;&nbsp;Index", url = self$docUrl( course$tocDoc() ) )
+      )
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
     navigationBarHtml = function( course, doc ) {
@@ -1007,8 +994,10 @@ Renderer <- R6Class(
         text <- private$taskNavigationBarHtml( course, doc, TRUE, "Solutions" )
       } else if( doc$type( long = TRUE ) == "solutions" ) {
         text <- private$taskNavigationBarHtml( course, doc, FALSE, "Practice" )
+      } else if( doc$type( long = TRUE ) == "toc" ) {
+        text <- private$tocNavigationBarHtml( course )
       } else if( doc$type( long = TRUE ) == "materials" ) {
-        text <- private$materialsNavigationBarHtml( course, doc )
+        text <- private$materialsNavigationBarHtml( course )
       } else {
         text <- ""
       }
@@ -1165,8 +1154,8 @@ genTestCourse <- function( testOnly = FALSE ) {
   }
   course <- course$add(
     material( id = "pulse", label = "Pulse dataset, CSV format", path = "data/pulse.csv", outPath = "data/pulse.csv"  ),
-    material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" )
-    #material( id = "exProjDir", label = "RStudio project directory example", path = "RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
+    material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" ),
+    material( id = "exProjDir", label = "RStudio project directory example", path = "materials/RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
   )
 
   renderer <- Renderer$new( outDir = "tmp" )
@@ -1175,27 +1164,4 @@ genTestCourse <- function( testOnly = FALSE ) {
 }
 if( 0 ) {
   genTestCourse( TRUE )
-}
-
-
-g2 <- function( testOnly = FALSE ) {
-  course <- theCourse( id = "Boerhaave_2021_Jun", dir = "BrightspaceTest", label = "LUMC/Boerhaave, June 2021: R for data analysis" )
-  course <- course$add(
-    session( id = "slot1", label = "R and RStudio basics" ) %>%
-      add( lecture( id = "data", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 5 ) )# %>%
-#      add( lecture( id = "basic_projects0", label = "Projects", hasTasks = FALSE, min = 45 ) ) #%>%
-    #  add( lecture( id = "basic_scripts0", label = "Scripts", hasTasks = FALSE, min = 45 ) )
-  )
-  course <- course$add(
-    material( id = "pulse", label = "Pulse dataset, CSV format", path = "data/pulse.csv", outPath = "data/pulse.csv"  ),
-    material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" )
-    #material( id = "exProjDir", label = "RStudio project directory example", path = "RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
-  )
-
-  renderer <- Renderer$new( outDir = "tmp" )
-  #renderer <- BrightspaceRenderer$new( outDir = "tmp" )
-  renderer$makeAll( course = course )
-}
-if( 0 ) {
-  g2( TRUE )
 }
