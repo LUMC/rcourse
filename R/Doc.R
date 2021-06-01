@@ -993,6 +993,13 @@ Renderer <- R6Class(
 
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
+    materialsNavigationBarHtml = function( course, doc ) {
+      aDoc <- course$tocDoc()
+      url <- self$docUrl( aDoc )
+      elems <- c( private$intRefHtml( "&#x2302;&nbsp;Index", url = url ) )
+
+      self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
+    },
     navigationBarHtml = function( course, doc ) {
       if( doc$type( long = TRUE ) == "lecture" ) {
         text <- private$lectureNavigationBarHtml( course, doc )
@@ -1000,6 +1007,8 @@ Renderer <- R6Class(
         text <- private$taskNavigationBarHtml( course, doc, TRUE, "Solutions" )
       } else if( doc$type( long = TRUE ) == "solutions" ) {
         text <- private$taskNavigationBarHtml( course, doc, FALSE, "Practice" )
+      } else if( doc$type( long = TRUE ) == "materials" ) {
+        text <- private$materialsNavigationBarHtml( course, doc )
       } else {
         text <- ""
       }
