@@ -76,3 +76,27 @@ z
 u      # but makes code less readable (do not use in production code)
 ```
 
+3. *List defined variables; remove a variable*.  
+Use `ls()` to find what variables are currently known. Compare the output with the content of the `Environment` pane.  
+Define a new variable `xyz = 5`. Find how to use `rm` to remove the variable from the current environment.
+
+```{r error=TRUE}
+xyz <- 5
+rm( xyz )
+xyz
+```
+
+4. *Restart R session*.  
+(Warning: you are going to loose all what you have typed).  
+First define several variables (so you can see some in the `Envinroment` pane).  
+Try `Restart R` option from the `Session` menu.  
+What happened? What happened to the variables?
+
+```{r}
+# Restarting brings R to the initial state.
+# Note, that in menu "Tools/Global options" it is possible to enable:
+#   "Restore .RData into workspace at startup".
+# When this option is enabled some variables might be present when R is restarted.
+# This might lead to unreproducible results so we suggest to disable that option.
+```
+
