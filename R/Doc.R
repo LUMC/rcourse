@@ -1,11 +1,14 @@
 library( R6 )
 library( tidyverse )
 
+#' @export
 add <- function( x, ... ) UseMethod( "add", x )
+
 validOr <- function( a, b ) if( !is.null( a ) && !is.na( a ) ) a else b
 
 # Old style functions ----------------------------------------------------
 
+#' @export
 read_pulse <- function() {
   read_csv("data/pulse.csv", col_types = cols(
     id = col_character(),
@@ -24,6 +27,7 @@ read_pulse <- function() {
   ) )
 }
 
+#' @export
 read_survey <- function() {
   read_csv("data/survey.csv", col_types = cols(
     name = col_character(),
@@ -41,18 +45,22 @@ read_survey <- function() {
   ) )
 }
 
+#' @export
 build_nocode <- function( ... ) {
 #  warning( "building_nocode is oboleted" )
 }
 
+#' @export
 navigate_slots <- function( ... ) {
 #  warning( "navigate_slots is oboleted" )
 }
 
+#' @export
 related_slots <- function( ... ) {
 #  warning( "related_slots is oboleted" )
 }
 
+#' @export
 qa <- function(msg) {
   id <- paste("tag",digest::digest(msg, algo="md5"),sep="")
   txt <- paste("<a class=\"btn btn-primary\" role=\"button\" data-toggle=\"collapse\" href=\"#",id,"\"",sep="")
@@ -61,6 +69,7 @@ qa <- function(msg) {
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
+#' @export
 show_emoji <- function( id, text = id, color = "red" ) {
 #  if( .hasEmo ) {
     emo::ji( id )
@@ -69,6 +78,7 @@ show_emoji <- function( id, text = id, color = "red" ) {
 #  }
 }
 
+#' @export
 show_link <- function( url, title, newTab = TRUE ) {
   if( newTab ) {
     paste0( "[", title, "](", url, '){target="_blank"}' )
@@ -77,6 +87,7 @@ show_link <- function( url, title, newTab = TRUE ) {
   }
 }
 
+#' @export
 show_menu <- function( menu ) {
   paste0(
     sapply( menu, function( v ) paste0( "`", v, "`" ) ),
@@ -85,6 +96,7 @@ show_menu <- function( menu ) {
   )
 }
 
+#' @export
 todo <- function( text, color = "yellow" ) {
   paste0(
     show_emoji( "construction", text = "TODO", color = color ),
@@ -92,6 +104,7 @@ todo <- function( text, color = "yellow" ) {
   )
 }
 
+#' @export
 suggest <- function( text ) {
   paste0(
     show_emoji( "warning", text = "?"),
@@ -99,6 +112,7 @@ suggest <- function( text ) {
   )
 }
 
+#' @export
 direct_exercise <- function( text, color = "black" ) {
   paste0(
     show_emoji( "running_man", text = "EXERCISE", color = color ),
@@ -106,6 +120,7 @@ direct_exercise <- function( text, color = "black" ) {
   )
 }
 
+#' @export
 show_warning <- function( text, color = "orange" ) {
   paste0(
     show_emoji( "warning", text = "WARNING", color = color ),
@@ -113,6 +128,7 @@ show_warning <- function( text, color = "orange" ) {
   )
 }
 
+#' @export
 show_info <- function( text, color = "blue" ) {
   paste0(
     show_emoji( "information", text = "INFO", color = color ),
@@ -120,6 +136,7 @@ show_info <- function( text, color = "blue" ) {
   )
 }
 
+#' @export
 go_extern <- function( url, title, goal, color = "blue" ) {
   paste0(
     show_emoji( "right_arrow", text = "GO TO", color = color ),
@@ -128,6 +145,7 @@ go_extern <- function( url, title, goal, color = "blue" ) {
   )
 }
 
+#' @export
 watch_extern_video <- function( url, title, src = NULL, color = "blue" ){
   paste0(
     show_emoji( "movie_camera", text = "VIDEO", color = color ),
@@ -137,15 +155,18 @@ watch_extern_video <- function( url, title, src = NULL, color = "blue" ){
   )
 }
 
+#' @export
 info_block0 <- function(msg) {
   txt <- paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
+#' @export
 info_block <- function(msg) {
   paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
 }
 
+#' @export
 data_file <- function( files = list.files( path = "data", pattern = "*" ) ) {
   fs <- sapply( files, function( f ) {
     paste0(
@@ -158,6 +179,7 @@ data_file <- function( files = list.files( path = "data", pattern = "*" ) ) {
 
 # Doc --------------------------------------------------------------------
 
+#' @export
 Doc <- R6Class(
   "Doc",
   private = list(
@@ -283,6 +305,7 @@ testthat::test_that( "RenderedDoc properties", {
 
 # Lecture ----------------------------------------------------------------
 
+#' @export
 Lecture <- R6Class(
   classname = "Lecture",
   private = list(
@@ -318,6 +341,7 @@ Lecture <- R6Class(
   )
 )
 
+#' @export
 lecture <- function( ... ) { Lecture$new( ... ) }
 
 testthat::test_that( "Lecture properties", {
@@ -334,6 +358,7 @@ testthat::test_that( "Lecture properties", {
 
 # Session ----------------------------------------------------------------
 
+#' @export
 Session <- R6Class(
   classname = "Session",
   private = list(
@@ -369,7 +394,10 @@ Session <- R6Class(
   )
 )
 
+#' @export
 session <- function( ... ) { Session$new( ... ) }
+
+#' @export
 add.Session <- function( x, ... ) x$add( ... )
 
 testthat::test_that( "Session properties", {
@@ -413,7 +441,10 @@ Material <- R6Class(
   )
 )
 
+#' @export
 material <- function( ... ) { Material$new( ... ) }
+
+#' @export
 add.Material <- function( x, ... ) x$add( ... )
 
 testthat::test_that( "Material properties", {
@@ -424,6 +455,7 @@ testthat::test_that( "Material properties", {
 
 # TheCourse --------------------------------------------------------------
 
+#' @export
 TheCourse <- R6Class(
   "TheCourse",
   private = list(
@@ -575,7 +607,10 @@ TheCourse <- R6Class(
   )
 )
 
+#' @export
 theCourse <- function( ... ) TheCourse$new( ... )
+
+#' @export
 add.TheCourse <- function( x, ... ) x$add( ... )
 
 testthat::test_that( "TheCourse properties", {
@@ -603,6 +638,7 @@ testthat::test_that( "TheCourse properties", {
 
 # BaseRenderer -----------------------------------------------------------
 
+#' @export
 BaseRenderer <- R6Class(
   "BaseRenderer",
   private = list(
@@ -932,6 +968,7 @@ testthat::test_that( "BaseRenderer properties", {
 
 # Renderer ---------------------------------------------------------------
 
+#' @export
 Renderer <- R6Class(
   "Renderer", inherit = BaseRenderer,
   private = list(
@@ -1088,6 +1125,7 @@ Renderer <- R6Class(
 
 # BrightspaceRenderer ----------------------------------------------------
 
+#' @export
 BrightspaceRenderer <- R6Class(
   "BrightspaceRenderer", inherit = BaseRenderer,
   private = list(),
