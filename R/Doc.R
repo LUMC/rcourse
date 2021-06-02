@@ -1113,10 +1113,11 @@ Renderer <- R6Class(
         extract( col = session.timeRange, into = c( "session.startTime" ), regex = "^([0-9:]+)" ) %>%
         mutate( session.startTime = lubridate::parse_date_time( session.startTime, c("%H:%M"), exact = TRUE ) ) %>%
         mutate( Title = lecture.label ) %>%
+        mutate( Title = if_else( Title == "Break", "&#x2015; *break* &#x2015;", Title ) ) %>%
         mutate( Lecture = "", Practice = "", Solutions = "" ) %>%
         group_by( Session ) %>%
           mutate( Time = if_else( !is.na( slot.min ), paste0(
-              lubridate::stamp( "23:45", quiet = TRUE )( session.startTime + (cumsum( slot.min ) - slot.min )*60L ),
+              lubridate::stamp( "23:45", quiet = TRUE )( session.startTime + ( cumsum( slot.min ) - slot.min )*60L ),
               "-",
               lubridate::stamp( "23:45", quiet = TRUE )( session.startTime + cumsum( slot.min )*60L )
             ), "" ) ) %>%
@@ -1138,7 +1139,6 @@ Renderer <- R6Class(
       r <- rle( dd$Session )
       ke <- dd %>%
         select( Title, Time, Lecture, Practice, Solutions ) %>%
-        mutate( Lecture = if_else( Title == "Break", "*(break)*", Title ) ) %>%
         kableExtra::kbl( format = "html", escape = FALSE ) %>%
         #kableExtra::kable_paper("striped", full_width = F) %>%
         #kableExtra::kable_styling(bootstrap_options = c("hover", "condensed")) %>%
