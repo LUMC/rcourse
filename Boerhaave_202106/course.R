@@ -4,23 +4,24 @@ genCourse <- function( dir, testOnly = FALSE ) {
   startDate <- as.Date( "2021-06-08" )
   morning <- "09:00-12:30"
   afternoon <- "13:30-17:00"
+  breaks3x60 <- "l60:b15:l60:b15:l60"
   course <- theCourse( id = "Boerhaave_202106", dir = dir, label = "LUMC/Boerhaave, Jun2021: Using R for data analysis" )
   course <- course$add(
-    session( id = "slot1", label = "R and RStudio basics", date = startDate, timeRange = morning ) %>%
+    session( id = "slot1", label = "R and RStudio basics", date = startDate, timeRange = morning, breaksPattern = breaks3x60 ) %>%
       add( lecture( id = "index", label = "Course Introduction", hasTasks = FALSE, min = 15 ) ) %>%
-      add( lecture( id = "introduction0", label = "R Introduction", hasTasks = FALSE, min = 10 ) ) %>%
-      add( lecture( id = "basic_calculator0", label = "Calculator", min = 25 ) ) %>%
-      add( lecture( id = "basic_variables0", label = "Variables", min = 25, pauseMin = 30 ) ) %>%
+      add( lecture( id = "introduction0", label = "R Introduction", hasTasks = FALSE, min = 15 ) ) %>%
+      add( lecture( id = "basic_calculator0", label = "Calculator", min = 30 ) ) %>%
+      add( lecture( id = "basic_variables0", label = "Variables", min = 30 ) ) %>%
       add( lecture( id = "course_data0", label = "Example data (pulse, survey)", hasTasks = FALSE, min = 10 ) ) %>%
       add( lecture( id = "basic_projects0", label = "Projects", hasTasks = FALSE, min = 20 ) ) %>%
       add( lecture( id = "basic_scripts0", label = "Scripts", hasTasks = FALSE, min = 60 ) )
   )
   if( !testOnly ) {
     course <- course$add(
-      session( id = "slot2", label = "Data structures 1/2", date = startDate, timeRange = afternoon ) %>%
-        add( lecture( id = "basic_vectors0", label = "Vectors", min = 120, pauseMin = 30 ) ) %>%
+      session( id = "slot2", label = "Data structures 1/2", date = startDate, timeRange = afternoon, breaksPattern = breaks3x60 ) %>%
+        add( lecture( id = "basic_vectors0", label = "Vectors", min = 100 ) ) %>%
         add( lecture( id = "basic_factors0", label = "Factors", min = 60 ) ) %>%
-        add( lecture( id = "packages0", label = "Install/use packages", hasTasks = FALSE, min = 30 ) )
+        add( lecture( id = "packages0", label = "Install/use packages", hasTasks = FALSE, min = 20 ) )
     )
     course <- course$add(
       session( id = "slot3", label = "Data manipulation 1/3", date = startDate + 1, timeRange = morning ) %>%
@@ -70,7 +71,8 @@ genCourse <- function( dir, testOnly = FALSE ) {
 }
 
 course <- genCourse( dir = "Boerhaave_202106", FALSE )
+#course$lecturesTibble( TRUE ) # check times
+
 renderer <- Renderer$new( outDir = "Boerhaave_202106.site" )
 #renderer <- BrightspaceRenderer$new( outDir = "tmp" )
 renderer$makeAll( course = course )
-

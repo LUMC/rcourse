@@ -312,15 +312,17 @@ Lecture <- R6Class(
     id_ = NULL,
     label_ = NULL,
     rmdFile_ = NULL,
-    hasTasks_ = NULL
+    hasTasks_ = NULL,
+    min_ = NULL
   ),
   public = list(
-    initialize = function( id, label = NULL, rmdFile = NULL, hasTasks = TRUE, ... ) {
+    initialize = function( id, label = NULL, rmdFile = NULL, hasTasks = TRUE, min = NA, ... ) {
       stopifnot( !is.null( id ) )
       private$id_ <- id
       private$label_ <- label
       private$rmdFile_ <- rmdFile
       private$hasTasks_ <- hasTasks
+      private$min_ <- min
     },
     id = function() { private$id_ },
     label = function() { validOr( private$label_, private$id_ ) },
@@ -330,10 +332,11 @@ Lecture <- R6Class(
       rmdFile
     },
     hasTasks = function() { private$hasTasks_ },
+    min = function() { private$min_ },
     asTibble = function() {
       d <- tibble(
         id = self$id(), label = self$label(), rmdFile = self$rmdFile(),
-        hasTasks = self$hasTasks()
+        hasTasks = self$hasTasks(), min = self$min()
       )
       colnames( d ) <- paste0( "lecture.", colnames( d ) )
       d
@@ -482,6 +485,47 @@ TheCourse <- R6Class(
           mutate( lecture.prevId = lag( lecture.id ) ) %>%
           mutate( lecture.nextId = lead( lecture.id ) )
       }
+    },
+    addLectureBreaks = function( d ) {
+      d %>% split( .$session.id ) %>% lapply( function( ls ) {
+        if( nrow( ls ) > 0 ) {
+          sess <- ls %>% select( matches( "^(course|session)[.]" ) ) %>% distinct() %>%
+            mutate( lecture.label = "Break" )
+          stopifnot( nrow( sess ) == 1 )
+          if( !is.na( sess$session.breaksPattern ) ) {
+            bs <- strsplit( sess$session.breaksPattern, "[:]" ) %>% unlist() %>% lapply( function( b ) {
+              m <- regmatches( b, regexec( "^([lb])([0-9]+)$", b ) )[[1]]
+              tibble( isBreak = m[2] == "b", min = as.numeric( m[3] ) )
+            } ) %>% bind_rows()
+
+            ret <- tibble()
+            while( nrow( bs ) > 0L || nrow( ls ) > 0L ) {
+              if( nrow( bs ) == 0L && nrow( ls ) > 0L ) {
+                stop( "Session '", sess$session.id, "' too long." )
+              } else if( nrow( bs ) > 0L && nrow( ls ) == 0L ) {
+                warning( "Session '", sess$session.id, "' too short." )
+                break
+              } else if( bs$isBreak[[1]] ) {
+                ret <- bind_rows( ret, sess %>% mutate( slot.min = bs$min[[1]] ) ) # emit break
+                bs <- bs[-1,]
+              } else {
+                if( ls$lecture.min[[1]] <= bs$min[[1]] ) {
+                  bs$min[[1]] <- bs$min[[1]] - ls$lecture.min[[1]]
+                  ret <- bind_rows( ret, ls[1,] %>% mutate( slot.min = lecture.min[[1]] ) ) # emit complete lecture
+                  ls <- ls[-1,]
+                  if( bs$min[[1]] <= 0 ) bs <- bs[-1,]
+                } else {
+                  ls$lecture.min[[1]] <- ls$lecture.min[[1]] - bs$min[[1]]
+                  ret <- bind_rows( ret, ls[1,] %>% mutate( slot.min = bs$min[[1]] ) ) # emit part of lecture
+                  bs <- bs[-1,]
+                }
+              }
+            }
+            ls <- ret
+          }
+        }
+        ls %>% mutate( slot.idx = seq_len( n() ) )
+      } ) %>% bind_rows()
     }
   ),
   public = list(
@@ -530,9 +574,13 @@ TheCourse <- R6Class(
     materialsTibble = function() {
       bind_rows( lapply( private$materials_, function( l ) l$asTibble() ) )
     },
-    lecturesTibble = function() {
+    lecturesTibble = function( withBreaks = FALSE ) {
       private$validate()
-      private$d_
+      d <- private$d_
+      if( withBreaks ) {
+        d <- private$addLectureBreaks( d )
+      }
+      d
     },
     lectureDoc = function( lectureId ) {
       d <- self$lecturesTibble() %>% filter( lecture.id == lectureId )
@@ -1059,30 +1107,42 @@ Renderer <- R6Class(
       writeLines( text = text, con = outCon )
     },
     writeRmdBodyToc = function( outCon, course ) {
-      d <- course$lecturesTibble()
+      d <- course$lecturesTibble( TRUE )
       dd <- d %>%
-        mutate( Session = sprintf( "%s (%s, %s)", session.label, lubridate::stamp( "Sunday, May 1" )( session.date ), session.timeRange ) )%>%
+        mutate( Session = sprintf( "%s (%s, %s)", session.label, lubridate::stamp( "Sunday, May 1", quiet = TRUE )( session.date ), session.timeRange ) )%>%
+        extract( col = session.timeRange, into = c( "session.startTime" ), regex = "^([0-9:]+)" ) %>%
+        mutate( session.startTime = lubridate::parse_date_time( session.startTime, c("%H:%M"), exact = TRUE ) ) %>%
         mutate( Title = lecture.label ) %>%
-        mutate( Lecture = "", Practice = "", Solutions = "" )
+        mutate( Lecture = "", Practice = "", Solutions = "" ) %>%
+        group_by( Session ) %>%
+          mutate( Time = if_else( !is.na( slot.min ), paste0(
+              lubridate::stamp( "23:45", quiet = TRUE )( session.startTime + (cumsum( slot.min ) - slot.min )*60L ),
+              "-",
+              lubridate::stamp( "23:45", quiet = TRUE )( session.startTime + cumsum( slot.min )*60L )
+            ), "" ) ) %>%
+        ungroup()
       for( idx in seq_len( nrow( dd ) ) ) {
-        aDoc <- course$lectureDoc( lectureId = d$lecture.id[[idx]] )
-        url <- self$docUrl( aDoc )
-        dd$Lecture[[idx]] <- private$intRefHtml( "Lecture", url = url )
-        if( d$lecture.hasTasks[[idx]] ) {
-          aDoc <- course$taskDoc( lectureId = d$lecture.id[[idx]], enableCode = FALSE )
-          url <- self$docUrl( aDoc )
-          dd$Practice[[idx]] <- private$intRefHtml( "Practice", url = url )
+        lId <- d$lecture.id[[idx]]
+        if( !is.na( lId ) ) {
+          url <- self$docUrl( aDoc <- course$lectureDoc( lectureId = lId ) )
+          dd$Lecture[[idx]] <- private$intRefHtml( "Lecture", url = url )
+          if( d$lecture.hasTasks[[idx]] ) {
+            url <- self$docUrl( course$taskDoc( lectureId = lId, enableCode = FALSE ) )
+            dd$Practice[[idx]] <- private$intRefHtml( "Practice", url = url )
 
-          aDoc <- course$taskDoc( lectureId = d$lecture.id[[idx]], enableCode = TRUE )
-          url <- self$docUrl( aDoc )
-          dd$Solutions[[idx]] <- private$intRefHtml( "Solutions", url = url )
+            url <- self$docUrl( course$taskDoc( lectureId = lId, enableCode = TRUE ) )
+            dd$Solutions[[idx]] <- private$intRefHtml( "Solutions", url = url )
+          }
         }
       }
       r <- rle( dd$Session )
-      ke <- kableExtra::kbl( dd %>% select( Title, Lecture, Practice, Solutions ), format = "html", escape = FALSE ) %>%
+      ke <- dd %>%
+        select( Title, Time, Lecture, Practice, Solutions ) %>%
+        mutate( Lecture = if_else( Title == "Break", "*(break)*", Title ) ) %>%
+        kableExtra::kbl( format = "html", escape = FALSE ) %>%
         #kableExtra::kable_paper("striped", full_width = F) %>%
         #kableExtra::kable_styling(bootstrap_options = c("hover", "condensed")) %>%
-        kableExtra::kable_styling(bootstrap_options = c("hover"),full_width = TRUE) %>%
+        kableExtra::kable_styling( bootstrap_options = c( "hover" ), full_width = TRUE ) %>%
         #kable_material(c("striped", "hover")) %>%
         kableExtra::pack_rows( "Session", index = setNames( r$lengths, r$values ) )
 
