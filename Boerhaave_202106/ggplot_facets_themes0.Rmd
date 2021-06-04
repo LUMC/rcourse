@@ -52,24 +52,14 @@ p
 
 ## Facets
 
-Let's use the plot stored in the variable `p` and combine it with **facets**.  
-Try each of the following lines and understand the effects:
-```{r eval=FALSE}
+Let's use the plot stored in the variable `p` and combine it with a **facet** command.  
+Compare the plot below to the plot above.  
+Points corresponding to different levels of `exercise` are shown in separate plot panels.  
+Note, that a formula of a form `y_var ~ x_var` is used to specify which variables should define panels in the vertical (`y_var`) and horizontal (`x_var`) directions.  
+`.` is used when there should be no panels in a given direction.
+```{r}
 p + facet_grid( . ~ exercise )
-p + facet_grid( exercise ~ . )
-p + facet_grid( gender ~ exercise )
-p + facet_grid( exercise ~ gender )
-p + facet_grid( exercise ~ gender, scales = "free" )
 ```
-
-Now compare `facet_wrap` with `facet_grid`:
-```{r eval=FALSE}
-p + facet_grid( . ~ year )
-p + facet_grid( year ~ . )
-p + facet_wrap( ~ year )
-p + facet_wrap( ~ year, scales = "free" )
-```
-
 
 ## Themes
 

@@ -48,7 +48,7 @@ genCourse <- function( dir, testOnly = FALSE ) {
       session( id = "slot6", label = "Graphics", date = startDate + 2, timeRange = afternoon, breaksPattern = breaks2x90 ) %>%
         add( lecture( id = "ggplot_basics0", label = "Plots/ggplot2", min = 45 ) ) %>%
         add( lecture( id = "ggplot_scales0", label = "Plot axes/scales", min = 45 ) ) %>%
-        add( lecture( id = "ggplot_facets_themes0", label = "Plot panels/facets", min = 45 ) ) %>%
+        add( lecture( id = "ggplot_facets_themes0", label = "Plot panels/facets/size", min = 45 ) ) %>%
         add( lecture( id = "ggplot_geoms0", label = "Plot types", hasTasks = FALSE, min = 45 ) )
     )
     course <- course$add(

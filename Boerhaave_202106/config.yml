@@ -1,5 +1,5 @@
-# 
-# Global 
+#
+# Global
 #
 startDate : "2021-06-08"
 morning   : "09:00-12:30"
@@ -23,9 +23,9 @@ slots:
       - "introduction0:R Introduction:FALSE:10"
       - "basic_calculator0:Calculator:TRUE:25"
       - "basic_variables0:Variables:TRUE:30"
-      - "course_data0:Example data (pulse, survey):FALSE:10" 
-      - "basic_projects0:Projects:FALSE:20" 
-      - "basic_scripts0:Scripts:FALSE:60" 
+      - "course_data0:Example data (pulse, survey):FALSE:10"
+      - "basic_projects0:Projects:FALSE:20"
+      - "basic_scripts0:Scripts:FALSE:60"
   slot2:
     slot_label : "Data structures 1/2"
     slot_date:
@@ -67,7 +67,7 @@ slots:
     lectures:
       - "ggplot_basics0:Plots/ggplot2:TRUE:45"
       - "ggplot_scales0:Plot axes/scales:TRUE:30"
-      - "ggplot_facets_themes0:Plot panels/facets:TRUE:30"
+      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:30"
       - "ggplot_geoms0:Plot types:FALSE:30"
   slot7:
     slot_label : "Data manipulation 3/3 and functions"
@@ -83,12 +83,12 @@ slots:
     slot_date :
     slot_time : "13:30-17:00"
     lectures:
-  
-# 
+
+#
 # materials : material+
 # material  : id:label:path:out_path "<id>:<label>:<>:<minutes>"
 materials:
   - "pulse:Pulse dataset, CSV format:data/pulse.csv:data/pulse.csv"
   - "survey:Survey dataset, CSV format:data/survey.csv:data/survey.csv"
   - "exProjDir:RStudio project directory example:materials/RStudio_Project_Dir_Example.zip:materials/RStudio_Project_Dir_Example.zip"
-  
+
