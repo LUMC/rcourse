@@ -59,7 +59,8 @@ genCourse <- function( dir, testOnly = FALSE ) {
         add( lecture( id = "useful_functions0", label = "Useful R functions", hasTasks = FALSE, min = 30 ) )
     )
     course <- course$add(
-      session( id = "slot8", label = "Self-study assignment", date = startDate + 3, timeRange = afternoon )
+      session( id = "slot8", label = "Self-study assignment", date = startDate + 3, timeRange = afternoon ) %>%
+        add( lecture( id = "flow_control", label = "Flow control (if/else, for)", hasTasks = FALSE ) )
     )
   }
   course <- course$add(
