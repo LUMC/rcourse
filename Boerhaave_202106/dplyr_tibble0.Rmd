@@ -9,11 +9,11 @@ survey <- read_survey()
 
 > A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
 
-I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
 
 ## Create a tibble
 
-To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](installation0.html) for more details.  
+To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](S01L01l_index.html) for more details.  
 
 Enter the following to load *tidyverse* package:
 

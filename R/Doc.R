@@ -163,7 +163,9 @@ info_block0 <- function(msg) {
 
 #' @export
 info_block <- function(msg) {
-  paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
+  # paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
+  paste(icon_style( icons::ionicons("information-circle"),
+                    position = "relative",  right= "40px", top="30px", scale = 2, fill="skyblue") , "___", msg, "___","<br><br>", sep="")
 }
 
 #' @export

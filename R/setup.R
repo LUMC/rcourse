@@ -48,9 +48,16 @@ info_block0 <- function(msg) {
   cat(knitr::knit_child(text=txt, quiet=TRUE), sep = "\n")
 }
 
+
 info_block <- function(msg) {
-  paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
+  # paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
+  msg_ <- paste("<p style=\"text-indent:35px\">", paste('___', msg, '___', sep=""), "</p>")
+  paste(icon_style( icons::ionicons("information-circle"),
+                    position = "relative",  top="30px", scale = 2, fill="skyblue") , msg_,"<br><br>", sep="")
 }
+# info_block <- function(msg) {
+#   paste("<ion-icon name=\"information-circle\" size=\"large\"></ion-icon> ", "___", msg, "___","<br><br>", sep="")
+# }
 
 navigate_slots <- function(...) alert_block(...)
 
