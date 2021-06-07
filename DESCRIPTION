@@ -5,13 +5,14 @@ Description: ROOC is an R package to develop a course in a modular fashion.
 License: GPLv3
 Depends: 
     tidyverse,
+    plotly,
     yaml,
     digest,
     visNetwork,
     kableExtra
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Authors@R: 
     person(given = "Ramin",
            family = "Monajemi",

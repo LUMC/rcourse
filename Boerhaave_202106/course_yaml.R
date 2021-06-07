@@ -1,9 +1,8 @@
 library( rooc )
-library(yaml)
 
 genCourse <- function(dir, testOnly = FALSE) {
   
-  # Read YAML file
+  # Course config file (YAML)
   config <- yaml.load_file(file.path(dir,"config.yml"))
   # global course info
   startDate <- as.Date( config[["startDate"]] )
@@ -17,11 +16,11 @@ genCourse <- function(dir, testOnly = FALSE) {
   invisible( lapply(1:length(slots), function(i) {
     slot_id <- names(slots[i])
     slot <- slots[[i]]
-    session_ <- Session$new( id = slot_id, label = slot[["slot_label"]], date = startDate + ((i-1)%/%2), timeRange = slot[["slot_time"]] ) 
+    session_ <- Session$new( id = slot_id, label = slot[["slot_label"]], date = startDate + ((i-1)%/%2), timeRange = slot[["slot_time"]] , breaksPattern = slot[["slot_plan"]] ) 
     # add lectures
     lectures <- lapply(slot[["lectures"]], function(lecture) {
       lecture_ <- strsplit(lecture,":")[[1]] # [id,label,hasTasks,min]
-      session_$add(Lecture$new(id=lecture_[1], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=lecture_[4]))
+      session_$add(Lecture$new(id=lecture_[1], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=as.numeric(lecture_[4])))
     })
     course$add(session_)
   })) 

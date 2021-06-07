@@ -412,6 +412,7 @@ testthat::test_that( "Session properties", {
 
 # Material ---------------------------------------------------------------
 
+#' @export
 Material <- R6Class(
   classname = "Material",
   private = list(
@@ -901,7 +902,7 @@ BaseRenderer <- R6Class(
       } )
     },
 
-    #' returns local url to the document (based at the course root reference)
+    # returns local url to the document (based at the course root reference)
     docUrl = function( doc ) {
       if( inherits( doc, "RenderedDoc" ) ) {
         sprintf(

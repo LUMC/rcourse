@@ -77,6 +77,8 @@ rcourse$view()
 \item \href{#method-lstmod}{\code{Course$lstmod()}}
 \item \href{#method-listing}{\code{Course$listing()}}
 \item \href{#method-zip}{\code{Course$zip()}}
+\item \href{#method-push}{\code{Course$push()}}
+\item \href{#method-publish}{\code{Course$publish()}}
 \item \href{#method-clean}{\code{Course$clean()}}
 \item \href{#method-clone}{\code{Course$clone()}}
 }
@@ -292,6 +294,31 @@ Create a zip archive.
 }
 \if{html}{\out{</div>}}
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-push"></a>}}
+\if{latex}{\out{\hypertarget{method-push}{}}}
+\subsection{Method \code{push()}}{
+clear generted files, i.e. site/
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$push(slot, server = "shark", server_dir = "/bam-export/crip")}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-publish"></a>}}
+\if{latex}{\out{\hypertarget{method-publish}{}}}
+\subsection{Method \code{publish()}}{
+publish _site to remote site with rsync
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$publish(
+  remote = NULL,
+  remote_dir = "/bam-export",
+  server = "shark",
+  group = "5-A-SHARK_BioCentEXP"
+)}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clean"></a>}}
