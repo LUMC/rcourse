@@ -24,7 +24,7 @@ or another example would be, *who's weight is exactly 55 kg?*
 filter(pulse, weight==55) # filter all observations with weight equal to 55 kg 
 ```
 
-`filter` uses logical vectors to achieve this results. You've already seen an example of a [logical vector](basic_vectors0.html#logical_vector) in the section on [Vectors](basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
+`filter` uses logical vectors to achieve this results. You've already seen an example of a `logical vector` in the section on [Vectors](S02L01l_basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
 
 `r info_block("'==' stands for 'equal to' and '!=' is 'not equal to'")` 
 

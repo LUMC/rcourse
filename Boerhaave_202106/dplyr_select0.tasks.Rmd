@@ -30,7 +30,7 @@ variables.
 select(survey, name,age,gender,everything())
 ```
 
-4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](data.html#survey)
+4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](S01L05l_course_data0.html)
 
 ```{r}
 select(survey, -span1,-span2,-hand,-fold,-clap)

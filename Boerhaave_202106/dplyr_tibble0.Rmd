@@ -3,8 +3,12 @@ title: 'Tibble'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-pulse <- read_pulse() 
+pulse <- read_pulse()
 survey <- read_survey()
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/setup.R")
+
 ```
 
 > A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
@@ -109,7 +113,7 @@ pull(favourite_colour, year)
 ## tibble to/from file
 
 Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
-comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](data-import.pdf)).
+comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)).
 
 <!-- For more details on reading/writing format see [readr_io0](readr_io0.html). --> 
 
@@ -142,6 +146,47 @@ favourite_colour_csv <- read_csv(file = "favourite_colour.csv")
 favourite_colour_csv
 ```
 
+## Bind tibbles by rows and columns
+
+Often we have different data sets with i) the same set of variables or ii) same set of observations but different variables which we would like to combine: 
+
+- **bind_rows(...)**  function creates a new tibble from a set of tibbles with common variables. 
+- **bind_cols(...)**  function creates a new tibble from a set of tibbles with common observations. 
+
+Take for example the following two data sets with common variables name,year and colour:
+
+```{r}
+favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour1
+favourite_colour2  <- tibble(name=c("Raul", "Isaac"), 
+                           year=c(1998,1998), 
+                           colour=c("Red", "Green"))
+favourite_colour2
+```
+
+then the following gives the combined tibble:
+
+```{r}
+favourite_colour1_2 <- bind_rows(favourite_colour1, favourite_colour2)
+favourite_colour1_2
+```
+
+Let us now combine another tibble with variable 'height' for the same set of observations in `favourite_colour1_2`:
+
+
+```{r}
+
+heights <- tibble(height=c(173, 179, 167, 181 , 173, 184))
+heights
+bind_cols(favourite_colour1_2,heights)
+```
+
+`r info_block("Only tibbles with identical set of variables or observations may be bound.")`
+
+
+
 ## Type of a tibble
 
 Now inspect the type of the tibble we just created:
@@ -150,7 +195,9 @@ Now inspect the type of the tibble we just created:
 class(favourite_colour)
 ```
 
-A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+A tibble is in its core a 'data.frame', a base R data structure. 
+
+
 
 
 `r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`

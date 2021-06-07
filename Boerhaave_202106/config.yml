@@ -40,10 +40,10 @@ slots:
     slot_label : "Data manipulation 1/3"
     slot_date :
     slot_time : "09:00-12:30"
-    slot_plan: "l30:b15:l60:b15:l60"
+    slot_plan: "l60:b15:l60:b15:l60"
     lectures:
-      - "tidyverse0:Tidyverse library:FALSE:10"
-      - "dplyr_tibble0:Tibble:TRUE:20"                
+      - "tidyverse0:Tidyverse library:FALSE:15"
+      - "dplyr_tibble0:Tibble:TRUE:45"                
       - "dplyr_select0:Select variables/cols:TRUE:30"
       - "dplyr_filter0:Filter observations/rows:TRUE:30"
       - "dplyr_mutate0:Add/modify variables:TRUE:30"
