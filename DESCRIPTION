@@ -14,8 +14,8 @@ Depends:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Authors@R: 
-    person(given = "Ramin",
-           family = "Monajemi",
-           role = c("aut","cre") ,
-           email = "r.monajemi@lumc.nl")
+Authors@R: c(
+    person(given = "Ramin", family = "Monajemi", role = c("aut","cre"),
+           email = "r.monajemi@lumc.nl"),
+    person(given = "Szymon", family = "Kiełbasa", role = c("aut"),
+           email = "smkielbasa@lumc.nl"))

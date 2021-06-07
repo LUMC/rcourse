@@ -1,6 +1,8 @@
 library( rooc )
 
 genCourse <- function( dir, testOnly = FALSE ) {
+  if( !testOnly ) stop( "This is obsolete. Use course_yaml.R" )
+
   startDate <- as.Date( "2021-06-08" )
   morning <- "09:00-12:30"
   afternoon <- "13:30-17:00"
