@@ -21,8 +21,8 @@ slots:
     slot_plan: "l60:b15:l60:b15:l60"
     lectures:
       - "index:Course Introduction:FALSE:15"
-      - "introduction0:R Introduction:FALSE:10"
-      - "basic_calculator0:Calculator:TRUE:25"
+      - "introduction0:R Introduction:FALSE:15"
+      - "basic_calculator0:Calculator:TRUE:30"
       - "basic_variables0:Variables:TRUE:30"
       - "course_data0:Example data (pulse, survey):FALSE:10"
       - "basic_projects0:Projects:FALSE:20"
@@ -33,9 +33,9 @@ slots:
     slot_time: "13:30-17:00"
     slot_plan: "l60:b15:l60:b15:l60"
     lectures:
-      - "basic_vectors0:Vectors:TRUE:30"
+      - "basic_vectors0:Vectors:TRUE:100"
       - "basic_factors0:Factors:TRUE:60"
-      - "packages0:Install/use packages:FALSE:30"
+      - "packages0:Install/use packages:FALSE:20"
   slot3:
     slot_label : "Data manipulation 1/3"
     slot_date :
@@ -53,18 +53,18 @@ slots:
     slot_time : "13:30-17:00"
     slot_plan: "l60:b15:l60:b15:l60"
     lectures:
-      - "dplyr_pipe0:Pipe operator:TRUE:45"
-      - "dplyr_summarise0:Summarise:TRUE:30"
-      - "dplyr_group0:Groups:TRUE:30"
+      - "dplyr_pipe0:Pipe operator:TRUE:60"
+      - "dplyr_summarise0:Summarise:TRUE:60"
+      - "dplyr_group0:Groups:TRUE:60"
   slot5:
     slot_label : "Data structures 2/2"
     slot_date :
     slot_time : "09:00-12:30"
     slot_plan: "l60:b15:l60:b15:l60"
     lectures:
-      - "basic_lists0:Lists:TRUE:45"
-      - "basic_formulas0:Formulas:TRUE:30"
-      - "basic_matrices0:Matrices:TRUE:30"
+      - "basic_lists0:Lists:TRUE:60"
+      - "basic_formulas0:Formulas:TRUE:60"
+      - "basic_matrices0:Matrices:TRUE:60"
   slot6:
     slot_label : "Graphics"
     slot_date :
@@ -72,9 +72,9 @@ slots:
     slot_plan: "l90:b30:l90"
     lectures:
       - "ggplot_basics0:Plots/ggplot2:TRUE:45"
-      - "ggplot_scales0:Plot axes/scales:TRUE:30"
-      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:30"
-      - "ggplot_geoms0:Plot types:FALSE:30"
+      - "ggplot_scales0:Plot axes/scales:TRUE:45"
+      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:45"
+      - "ggplot_geoms0:Plot types:FALSE:45"
   slot7:
     slot_label : "Data manipulation 3/3 and functions"
     slot_date :
@@ -91,6 +91,7 @@ slots:
     slot_time : "13:30-17:00"
     slot_plan: "l60:b15:l60:b15:l60"
     lectures:
+      - "flow_control:Flow control (if/else, for):FALSE:60"
 
 #
 # materials : material+
