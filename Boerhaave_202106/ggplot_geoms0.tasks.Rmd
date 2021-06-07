@@ -18,7 +18,7 @@ Finally, execute `ggplotly( p )` to produce a dynamic plot.
 
 ```{r fig.width=7,fig.height=5}
 # install.packages( "plotly" )
-# library( plotly )
+library( plotly )
 
 p <- ggplot( pulse ) +
   aes( x = weight, y = height, color = gender, shape = alcohol ) +
