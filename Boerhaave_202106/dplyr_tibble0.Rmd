@@ -25,7 +25,7 @@ Enter the following to load *tidyverse* package:
 library(tidyverse) 
 ```
 
-Creating a __tibble__ is done using the keyword _tibble_ taking a list of `name=value` pairs where:
+Creating a __tibble__ is done using the keyword _tibble_ taking a sequence of `name=value` pairs where:
 
 - `name` is the variable (column) name,
 - `value` is the values of the observation.  
@@ -94,6 +94,21 @@ favourite_colour[c("name","year")]
  
 `r info_block("Subset result of a tibble is always a tibble.")`
 
+
+Selection of variables can also be achieved with indices as we saw in vectors:
+
+```{r}
+favourite_colour[2:3]
+favourite_colour[c(1,3)]
+```
+
+To deselect use negative indices:
+
+```{r}
+favourite_colour[-2]
+```
+
+
 ## Extract variables as vectors:  [[ or $
 
 If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
@@ -120,10 +135,10 @@ comma-separated-value (csv) format in this course. The functions involved for th
 let us now save our first tibble into a file in csv format:   
 
 ```{r}
-write_csv(x = favourite_colour, path = "favourite_colour.csv")
+write_csv(x = favourite_colour, file = "favourite_colour.csv")
 ```
 
-`favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
+`favourite_colour` tibble is written to `favourite_colour.csv` text file. You may inspect the file with any editor and it should look something like: 
 
 ```
 name,year,colour

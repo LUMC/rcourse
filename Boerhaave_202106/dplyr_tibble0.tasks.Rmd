@@ -91,7 +91,7 @@ tail(survey,7)
 mean(survey$age) 
 ```
 
-  - (*) Calculate the mean height in survey data. See also ?mean for more help on the `mean` function.
+  - Calculate the mean height in survey data.
 
 ```{r}
 # Here we use a second argument 'na.rm = TRUE' because there are missing values (NA) in 
@@ -125,4 +125,20 @@ survey_first15_last30 <- bind_rows(head(survey,15), tail(survey,30)) # combined 
 mean(survey_first15_last30$height, na.rm = TRUE)  # mean of the combined observations
 ```
 
-3. Create a 
+3. Make a tibble where the variable `age` comes directly after `name`.
+
+```{r}
+# Some solutions
+#
+# 1) list names : exhaustive 
+survey[c("name", "age", "gender", "span1" ,"span2","hand","fold", 
+   "pulse", "clap", "exercise", "smokes", "height", "m.i")] 
+# 2) indices  
+survey[c(1,ncol(survey),2:(ncol(survey)-1))]
+
+# 3) The select(...) function is a more concise solution which will be discussed 
+#    in the next section. 
+```
+
+
+

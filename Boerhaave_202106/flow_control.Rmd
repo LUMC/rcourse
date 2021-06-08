@@ -128,7 +128,7 @@ meanScores
 
 ## Example: a function with `if`/`else` statements
 
-Let's take the following from a [World Health Organization document](https://www.who.int/hiv/pub/guidelines/arv2013/intro/keyterms/en/):
+Let's take the following from a [World Health Organization document]():
 
   - *An `adult` is a person older than 19 years of age unless national law defines a person as being an adult at an earlier age.*
   - *An `adolescent` is a person aged 10 to 19 years inclusive.*

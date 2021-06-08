@@ -17,7 +17,7 @@ Apply the following to survey data:
 survey_personal_info <- select(survey, name, age, gender, height)
 ```
 
-2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with uppercase initials, e.g. `Name`, `Age` etc. 
+2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with variable names initials in uppercase, e.g. `Name`, `Age` etc. 
 
 ```{r}
 survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)

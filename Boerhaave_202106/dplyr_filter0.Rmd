@@ -8,7 +8,7 @@ pulse <- read_pulse()
 
 > Use `filter` to select observations (rows) from a tibble. 
 
-In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are intersted in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
+In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are interested in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
 
 ## Logical conditions
 
@@ -58,7 +58,7 @@ filter(pulse, gender=="female" & exercise=="high")
 
 > Or : '|'
 
-The *or* conditional operator is true when at least one of the conditions is true. For example, *list all rows with indiviudals who drink or smoke or both*: 
+The *or* conditional operator is true when at least one of the conditions is true. For example, *list all rows with individuals who drink or smoke or both*: 
 
 ```{r}
 filter(pulse, alcohol=="yes" | smokes=="yes")
