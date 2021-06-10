@@ -79,19 +79,19 @@ slots:
     slot_label : "Data manipulation 3/3 and functions"
     slot_date :
     slot_time : "09:00-12:30"
-    slot_plan: "l60:b15:l60:b15:l60"
+    slot_plan: "l45:b15:l45:b15:l45:b15:l30"
     lectures:
       - "dplyr_join0:Merging/joining tables:TRUE:45"
-      - "tidyr_reshape0:Reshaping tables:TRUE:30"
-      - "advanced_user_functions0:User-defined functions:TRUE:30"
-      - "useful_functions0:Useful R functions:FALSE:30"
+      - "tidyr_reshape0:Reshaping tables:TRUE:45"
+      - "advanced_user_functions0:User-defined functions:TRUE:45"
+      - "flow_control:Flow control (if/else, for):FALSE:30"
   slot8:
     slot_label : "Self-study assignment"
     slot_date :
     slot_time : "13:30-17:00"
     slot_plan: "l45:b15:l120:l30"
     lectures:
-      - "flow_control:Flow control (if/else, for):FALSE:45"
+      - "useful_functions0:Useful R functions:FALSE:30"
       - "SSA:Self-study assignment:FALSE:120"
       - "QA:Q/A:FALSE:30"
 
