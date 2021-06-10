@@ -34,25 +34,25 @@ lbs2kg  <- function(x) x/2.2   # pound to kg
 inch2cm <- function(x) x*2.54  # inch to cm
 ```
 
-2. Write a function for the survey dataset to report a summary on average pulse and the number of individuals in the given age range. Call it `ageRangeHeightSummary` and  it should take 3 arguments, the survey data, minimum age and maximum age, for example: 
+2. Write a function for the survey dataset to report a summary on average pulse and the number of individuals in the given age range. Call it `ageRangePulseSummary` and  it should take 3 arguments, the survey data, minimum age and maximum age, for example: 
 
 
 ```{r, echo=FALSE, eval=TRUE}
-ageRangeHeightSummary <- function(x, lowerBound,upperBound) {
+ageRangePulseSummary <- function(x, lowerBound,upperBound) {
   x %>% filter(age >= lowerBound & age < upperBound) %>% 
     summarise(meanpulse=mean(pulse, na.rm = TRUE),individuals=n())
 }
 ```
 
 ```{r}
-ageRangeHeightSummary <- function(x, lowerBound,upperBound) {
+ageRangePulseSummary <- function(x, lowerBound,upperBound) {
   x %>% filter(age >= lowerBound & age < upperBound) %>% 
     summarise(meanpulse=mean(pulse, na.rm = TRUE),individuals=n())
 }
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
-ageRangeHeightSummary(survey, 16,17)
+ageRangePulseSummary(survey, 16,17)
 ```
 
 
