@@ -44,8 +44,8 @@ slots:
     lectures:
       - "tidyverse0:Tidyverse library:FALSE:15"
       - "dplyr_tibble0:Tibble:TRUE:45"                
-      - "dplyr_select0:Select variables/cols:TRUE:30"
-      - "dplyr_filter0:Filter observations/rows:TRUE:30"
+      - "dplyr_select0:Select variables/cols:TRUE:45"
+      - "dplyr_filter0:Filter observations/rows:TRUE:45"
       - "dplyr_mutate0:Add/modify variables:TRUE:30"
   slot4:
     slot_label : "Data manipulation 2/3"
