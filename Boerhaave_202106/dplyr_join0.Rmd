@@ -6,9 +6,9 @@ title: 'Join'
 pulse <- read_pulse() 
 ```
 
-> Combine tables 
+> Combine tibbles 
 
-`*_join(...)` is a family of functions for combining two tables on common `variable(s)` called `key`. For example, take a group of people (n=7) for which we have collected age and height data:
+`*_join(...)` is a family of functions for combining two tibbles on common `variable(s)` called `key`. For example, take a group of people (n=7) for which we have collected age and height data:
 
 ```{r}
 # height 
@@ -21,9 +21,9 @@ df2 <- tibble(name = c("Fiene","Jaylinn","Mila","Noah","Yara"),
 df2
 ```
 
-The information here is incomplete, for some we have only `height` and for some only `age`. Now we want to combine these tables into a single table with variables `name`, `age` and `height`. We can do this with a join function which is able to combine observations (rows) by **matching on the common variable(s) between the two tables**. Matching is done **by** one or more variables, in this case the variable `name`.
+The information here is incomplete, for some we have only `height` and for some only `age`. Now we want to combine these tibbles into a single table with variables `name`, `age` and `height`. We can do this with a join function which is able to combine observations (rows) by **matching on the common variable(s) between the two tibbles**. Matching is done **by** one or more variables, in this case the variable `name`.
 
-`r info_block("Keep in mind that for a proper joining of data, the matched variable(s), also known as the key, must be unique in both tables.")`
+`r info_block("Keep in mind that for a proper joining of data, the matched variable(s), also known as the key, must be unique in both tibbles.")`
 
 ## Join : single variable 
 
@@ -105,7 +105,7 @@ df3 <-   df1 %>% mutate(height=height/30.48)
 df3
 ```
 
-both of these tables have the variable height, after joining by `name` :
+both of these tibbles have the variable height, after joining by `name` :
 
 ```{r}
 left_join(df1,df3,by="name")
@@ -206,7 +206,7 @@ the sum here is non-zero therefore there are duplicated values, i.e. the key set
 
 ## Join : multiple variables as the key
 
-To illustrate let's split the pulse dataset into two separate tables with common variables `name` and `height`: 
+To illustrate let's split the pulse dataset into two separate tibbles with common variables `name` and `height`: 
 
 ```{r}
 p1 <- pulse  %>% select(name,height,age,gender,year)
@@ -218,7 +218,7 @@ p2
 `p1` has the common variables `{name,height}` (the key) and additional variables `{age,gender,year}`, and `p2` has the same key variables `{name,height}` with some other measurement variables such as `pulse1` `pulse2`  etc.
 
 
-> Is the combination `{name,height}` a valid choice as the unique key to join two tables p1 and p2? 
+> Is the combination `{name,height}` a valid choice as the unique key to join two tibbles p1 and p2? 
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "Yes. This because the combination is unique in the table. You can check the uniqueness of {name,height} with the command duplicated, see also ?base::duplicated.  The statement
