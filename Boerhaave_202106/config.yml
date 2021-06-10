@@ -91,7 +91,7 @@ slots:
     slot_time : "13:30-17:00"
     slot_plan: "l45:b15:l120:l30"
     lectures:
-      - "useful_functions0:Useful R functions:FALSE:30"
+      - "useful_functions0:Useful R functions:FALSE:45"
       - "SSA:Self-study assignment:FALSE:120"
       - "QA:Q/A:FALSE:30"
 
