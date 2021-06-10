@@ -89,9 +89,11 @@ slots:
     slot_label : "Self-study assignment"
     slot_date :
     slot_time : "13:30-17:00"
-    slot_plan: "l60:b15:l60:b15:l60"
+    slot_plan: "l45:b15:l120:l30"
     lectures:
-      - "flow_control:Flow control (if/else, for):FALSE:60"
+      - "flow_control:Flow control (if/else, for):FALSE:45"
+      - "SSA:Self-study assignment:FALSE:120"
+      - "QA:Q/A:FALSE:30"
 
 #
 # materials : material+
@@ -100,4 +102,5 @@ materials:
   - "pulse:Pulse dataset, CSV format:data/pulse.csv:data/pulse.csv"
   - "survey:Survey dataset, CSV format:data/survey.csv:data/survey.csv"
   - "exProjDir:RStudio project directory example:materials/RStudio_Project_Dir_Example.zip:materials/RStudio_Project_Dir_Example.zip"
-
+  - "SSA:Self-study assignment:data/ssa0.pdf:data/ssa0.pdf"
+  - "SSA_Solutions:Self-study assignment (solutions):data/ssa0_solutions.pdf:data/ssa0_solutions.pdf"
