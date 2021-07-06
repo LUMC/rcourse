@@ -1,0 +1,62 @@
+---
+title: 'tidyverse'
+---
+
+## Package tidyverse
+
+[Tidverse](https://www.tidyverse.org/) is a collection of R packages which we will be using intensively for the remainder of this course. If you haven't installed `tidyverse` then you can do this with:
+
+```{r, eval=FALSE}
+install.packages("tidyverse") # needed only once
+```
+
+and load it into R: 
+
+```{r, eval=FALSE}
+library(tidyverse) # each time you start RStudio
+```
+
+Something similar to the following will appear on your screen after loading tidyverse:
+
+```
+> library(tidyverse)
+── Attaching packages ────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+✓ tibble  3.1.2     ✓ dplyr   1.0.6
+✓ tidyr   1.1.3     ✓ stringr 1.4.0
+✓ readr   1.4.0     ✓ forcats 0.5.1
+── Conflicts ───────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+> 
+```
+
+It shows the sub-packages and the versions and also some conflicts. 
+
+`r show_warning("You may ignore these Conflicts.")`
+
+You now have access to an extensive set of functions for **data manipulation and visualisation**. 
+
+## Outline
+
+- `dplyr`: Data transformation ([cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf){target="_blank"})
+  - tibble : a two-dimensional data structure with rows and columns
+  - functions to manipulate tibble:
+    - select : extract columns
+    - filter : extract rows
+    - mutate : add a new column
+  - pipe operator `%>%` 
+  - summaries and sorting 
+  - grouping
+  - queries 
+  - join : combining tables
+- `reshape`: Change the table layout ([cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf){target="_blank"})  
+- `forcats`: Manipulation on factors and their levels
+
+
+## Links
+
+- [Tidyverse](https://www.tidyverse.org/)
+- [R for data science ; Hadley Wickham, Garrett Grolemund (online book)](https://r4ds.had.co.nz/)
+- [More cheat sheets (*)](https://rstudio.com/resources/cheatsheets/)
+

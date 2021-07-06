@@ -1,0 +1,134 @@
+---
+title: "TODO notes"
+output: html_document
+---
+
+# Tasks
+
+ (selection: unique, which.max, match, sort, order, duplicated, rank, round, ceiling, complete.cases, expand.grid, complete, combn/sample, choose, median)
+naming vector elements
+
+## Extra exercises
+
+3. *Sorting, reversing and sampling*.  
+Check the effect of `sort` function on the vector of names `x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )`.  
+Next, print the effect of `sample` function on `x`.  
+Repeat the last step to see another permutation of `x`.  
+Check `Help` of `sample` and understand the effect of `sample( x, size = 2 )`.  
+Finally, understand effect of the `rev` function applied to the vecotr `x`.
+
+```{r}
+x <- c( "Jay", "Gloria", "Claire", "Phil", 'Mitchell', 'Cameron' )
+sort( x )              # x sorted alphabetically
+sample( x )            # a random permutation of x
+sample( x )            # a random permutation of x
+sample( x, size = 2 )  # randomly chosen 2 different elements of x
+rev( x )               # x in reversed order
+rev( sort( x ) )       # x sorted in reversed alphabetical order
+sort( x, decreasing = TRUE )  # a faster version of above
+```
+
+4. *Counting elements, finding unique elements*.  
+Let's consider the following vector: `x<-c( 1,3,2,3,5,5,8,NA,2,1,6,8,NA,3,3,5 )`.  
+Read the `Help` for `unique`. Apply `unique` to `x` and study the result.  
+Understand the output of `table(x)`.
+```{r}
+x <- c( 1,3,2,3,5,5,8,NA,2,1,6,8,NA,3,3,5 )
+unique(x)    # all elements present in x with no duplications
+table( x )   # number of occurrences of elements from x; no NA
+```
+
+
+2. *Sum of a sequence of numbers*.  
+Make a vector of all numbers between 1 and 100.  
+Check the type of that vector (note, that a vector of numbers might be different than `numeric`).  
+Calculate 1+2+3+…+100.  
+Hint: Read help (see `Help` pane) for function `sum`. 
+
+```{r}
+v <- 1:100
+class( v )
+sum( v )
+```
+
+
+3. *Temperature units*.  
+Degrees Celsius (`Cel`) can be calculated from degrees Fahrenheit (`Fah`) as `Cel = 5/9 * (Fah - 32)`.  
+How much is 60 degrees Fahrenheit in Celsius?  
+Use `seq` function to create a vector that contains 0,5,10,...,95,100 degrees Fahrenheit.  
+Convert this vector to Celsius degrees.  
+From your calculation in the previous exercise, select 10 Fahrenheit in Celcius.
+
+```{r}
+Fah <- 60
+Cel <- 5 / 9 * (Fah - 32)
+Cel
+Fah <- seq( 0, 100, 5 )
+Cel <- 5 / 9 * (Fah - 32)
+Cel
+Fah[3]
+Cel[3]
+```
+
+
+5. *Combining (appending) vectors*.  
+How to merge a vector `1:10` with `c( 2314, 2178, 1922, 2004 )`?
+```{r}
+c( 1:10, c( 2314, 2178, 1922, 2004 ) )   # direct solution
+
+x <- 1:10
+y <- c( 2314, 2178, 1922, 2004 )
+c( x, y )                                # indirect solution
+```
+
+
+1. Practice the integer division operator `%/%`. Compare `4 / 3` with `4 %/% 3`. 
+
+```{r}
+4 / 3     # floating division
+4 %/% 3   # largest integer smaller/equal to the floating division result
+```
+
+2. Understand result of `-4 %/% 3`, compared to `4 %/% 3`.
+
+```{r}
+4 %/% 3   # largest integer smaller/equal to the floating division result
+-4 %/% 3  # largest integer SMALLER/EQUAL to the floating division result
+```
+
+## Ramin's
+
+- (Ramin) d %>% filter( is.na( a_column ) ) => DONE!
+- (Ramin) pull, distinct, rank => DONE except rank. We decided that rank and order are advanced topics. 
+- (Ramin) top_n
+- (Ramin) where is na.rm explained for the first time? 
+    - (Szymon says) It is not explained yet!
+
+## Szymon's
+
+- (Bart or extra exercise) table, prop.table (for logistic regression)
+- (Szymon) saveRDS, readRDS
+- (Szymon) exercises ggplot::geom :
+  - barplot with errors
+  - show `geom_density` over histogram
+  - `geom_smooth`: geom to show fit
+  - geom to show function
+- (Szymon) exercises formulas
+
+## undecided
+
+- set/get names() of vector elements
+- `letters` and `LETTERS`; `pi`
+- how to load a vector from file
+- any, all
+- some sections, for example forcats, has a different icon for info than the info_block function
+		=> make sure that all sections use the same type of icons
+
+## done
+
+- (Szymon) replace x+3 with x in is.na paragraph in basic vectors. it is distracting.
+- (Szymon) add format to all exercises after R Markdown introduced
+- (Bart or extra exercise) `table` added, `prop.table` skipped (for logistic regression)
+- (Szymon) exercises ggplot::scales
+- (Szymon) exercises formulas
+

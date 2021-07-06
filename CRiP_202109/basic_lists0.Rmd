@@ -1,0 +1,98 @@
+---
+title: "Lists"
+# date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_lists0"
+---
+
+## List concept
+
+A **list** can be thought of as zero or more data elements (of _any type_), kept in order.  
+The elements can be accessed by their **position**  (or **index**): first element, second element, ...  
+Typically the elements are also named and consequently can be also accessed by the **names**.
+
+A list allows to keep together related information.  
+For example, functions often return lists when they calculate more than one value at once.
+
+## Create a list
+
+Type the following code to **manualy create** a list and store it in a variable `person`: 
+```{r}
+person <- list(
+  name = "Bob",
+  age = 44,
+  children = c( "Amy", "Dan", "Eve" )
+)
+```
+
+Now, check how the `person` list is printed:
+```{r}
+person
+```
+
+Test the class of `person`:
+```{r}
+class( person )
+```
+
+Try the function `str` (**structure**) on `person`.  
+It gives a compact display of data stored in a variable and is useful for a `list`:
+```{r}
+str( person )
+```
+
+## Length and elements by position
+
+Use `length` to find the **number of elements** in a list:
+```{r}
+length( person )
+```
+
+Elements of a list can be accessed **by their position** (first, second, ...) with help of `[[...]]` (double bracket) operator.  
+Try the following to get the first and the last elements:
+```{r}
+person[[1]]
+person[[ length(person) ]]
+```
+
+You may indeed observe that the elements of the `person` list are of different classes:
+```{r}
+class( person[[1]] )
+class( person[[2]] )
+```
+
+## Names and elements name
+
+To **get names** of all elements of a list enter:
+```{r}
+names( person )
+```
+
+Each of these names can be used with the `[[...]]` operator to **get/set an element by name**:
+```{r}
+person[[ 'name' ]]
+person[[ 'children' ]]
+```
+
+Try to **add a new element** to the list using:
+```{r}
+person[[ 'smoker' ]] <- TRUE
+person
+```
+
+and next **change the element**:
+```{r}
+person[[ 'smoker' ]] <- FALSE
+person
+```
+
+and then **remove that element** from the list:
+```{r}
+person[[ 'smoker' ]] <- NULL
+person
+```
+
+Note what happens when you try to access a **not present element**:
+```{r}
+person[[ 'isMarried' ]]
+```

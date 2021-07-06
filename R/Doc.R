@@ -388,7 +388,8 @@ Session <- R6Class(
     },
     lecturesTibble = function() {
       d <- tibble( id = private$id_ )
-      if( length( private$attrs_ ) > 0 ) d <- d %>% bind_cols( as_tibble( private$attrs_ ) )
+      a <- map( private$attrs_, ~ ( if( is.null( .x ) ) NA else .x ) )
+      if( length( private$attrs_ ) > 0 ) d <- d %>% bind_cols( as_tibble( a ) )
       colnames( d ) <- paste0( "session.", colnames( d ) )
       bind_rows( lapply( seq_len( length( private$lectures_ ) ), function( idx ) {
         d %>% bind_cols(

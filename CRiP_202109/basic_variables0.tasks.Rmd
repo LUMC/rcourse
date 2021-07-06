@@ -1,0 +1,102 @@
+---
+title: "Variables (practice)"
+---
+
+## Primary exercises
+
+1. *Create a new variable*.  
+Make a variable `heightInMeters` that contains your height expressed in meters.  
+Print the variable.  
+Find the variable and its value in the Environment pane.
+
+```{r}
+heightInMeters <- 1.75
+heightInMeters
+```
+
+2. *Use a variable in an expression*.  
+Use the variable `heightInMeters` to calculate your height in cm.  
+Calculate the height in cm once again and store the result in a variable `heightInCentimeters`.  
+Show/print `heightInCentimeters`.
+
+```{r}
+heightInMeters * 100
+heightInCentimeters <- heightInMeters * 100
+heightInCentimeters
+```
+
+3. *Change a value of a variable*.  
+Increase the height stored in `heightInMeters` by 0.1m.  
+Check whether the value of the variable indeed changed.  
+Has also the value of `heightInCentimeters` changed? Why?
+
+```{r error=TRUE}
+heightInMeters <- heightInMeters + 0.1
+heightInMeters
+heightInCentimeters      # not changed, for change assignment is needed
+```
+
+4. *Typo in variable name*.  
+Observe the error shown when you try to print the variable but you make a typo.
+
+```{r error=TRUE}
+height.in.meters      # Error: object 'height.in.meters' not found
+```
+
+## Extra exercises
+
+1. *The pi*.  
+`pi` is a variable built in R. Use it to calculate the area of a circle of radius 2.0.
+
+```{r}
+radius <- 2.0
+pi * radius^2
+```
+
+2. *Various assignment operators*.  
+In addition to `<-` R has other assignment operators `=` (equivalent to `<-`) and `->` (the variable name on the right side).  
+Use each of these operators in an assignment. When do you think `->` might be useful?
+
+```{r}
+x <- 1
+x
+y = 2
+y
+3 -> z
+z
+1 + 1/(
+  1 + 1/(
+    1 + 1/(
+      1 + 1/(
+        1
+      )
+    )
+  )
+) -> u # right arrow is handy while typing and when the cursor is at the end of a long expression,
+u      # but makes code less readable (do not use in production code)
+```
+
+3. *List defined variables; remove a variable*.  
+Use `ls()` to find what variables are currently known. Compare the output with the content of the `Environment` pane.  
+Define a new variable `xyz = 5`. Find how to use `rm` to remove the variable from the current environment.
+
+```{r error=TRUE}
+xyz <- 5
+rm( xyz )
+xyz
+```
+
+4. *Restart R session*.  
+(Warning: you are going to loose all what you have typed).  
+First define several variables (so you can see some in the `Envinroment` pane).  
+Try `Restart R` option from the `Session` menu.  
+What happened? What happened to the variables?
+
+```{r}
+# Restarting brings R to the initial state.
+# Note, that in menu "Tools/Global options" it is possible to enable:
+#   "Restore .RData into workspace at startup".
+# When this option is enabled some variables might be present when R is restarted.
+# This might lead to unreproducible results so we suggest to disable that option.
+```
+

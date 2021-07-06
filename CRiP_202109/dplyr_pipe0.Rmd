@@ -1,0 +1,88 @@
+---
+title: '%>% : Pipe operator'
+---
+
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
+```
+
+\newcommand{\pipe}{{\small \;\;{\%}{>}{\%}\;\;} }
+
+> Use $\pipe$ to chain calculations. 
+
+The $\pipe$ operator allows you to run your calculations in sequence instead of *nested calls*:  
+
+$${\Large f(g(x)) \;\;\;\; \Leftrightarrow  \;\;\;\; x \pipe g \pipe f}$$
+Here $f$ and $g$ are functions and $x$ is a data object, possibly a vector but in majority of cases a tibble. The left hand side of the equivalence $f(g(x))$ is the standard in R, it calls first the $g(x)$ and then the result of $g(x)$ is taken as input to the function $f$. The right hand side, $x \pipe g \pipe f$,  will lead to the same result as $f(g(x))$.  
+
+**For example**,  recall exercise 4  in `filter` practice section on `survey` data:  
+
+*How many males do smoke and never exercise?*  
+
+The solution: 
+
+```{r}
+nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male") )
+```
+
+Here, **first** function `filter` is run on the tibble `survey` with some conditions resulting into a tibble with rows fulfilling those conditions, **second** the function `nrow` is called on the resulting tibble, hence our answer `r nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male") )`. 
+
+Here is the same result using the $\pipe$ operator:
+
+```{r}
+survey %>% filter(smokes!="never" & exercise=="none" & gender=="male") %>% nrow()
+```
+
+The solution now reads from left to right $survey \pipe filter(...) \pipe nrow$ instead of $nrow(filter(survey,...))$.  
+
+**Observation** In the $\pipe$ example above, note that `filter` does not have the `survey` as its first argument, the same is true for `nrow`. The is basically what the $\pipe$ operator does, take the result of the left hand side and place it as the first argument of the function at its right hand side.  
+
+`r info_block("The main advantage of $\\pipe$ syntax is that it enables you to concentrate on the steps in the order they happen rather than the mathematical notation, e.g. $f(g(h(i(...))))$")` 
+
+**Examples:**  
+
+From the pulse dataset produce a tibble of personal information (name, age and gender): 
+
+1. of individuals taller than 190 cm.
+
+```{r}
+pulse %>% filter(height>190) %>% 
+  select(name,age,gender)
+```
+
+2. of individuals with weights between 40 and 50 kg.
+
+```{r}
+pulse %>% filter(weight>40 & weight<50) %>% 
+  select(name,age,gender)
+```
+
+3. of individuals that neither smoke nor drink.
+
+```{r}
+pulse %>% filter(smokes=="no" & alcohol=="no") %>% 
+  select(name,age,gender)
+
+```
+
+
+**Complex example:** We are asked to list only the names of the females in the pulse dataset with average pulse $>110$. We can break down the problem into:
+
+  1. take only female observations (filter)
+  2. add a new variable `averagePulse` (mutate)
+  3. take only those average pulses above 110 (filter)
+  4. extract names 
+
+i.e.: 
+
+```{r}
+pulse %>%  filter(gender=="female")  %>%               # tibble females 
+           mutate(averagePulse=(pulse1+pulse2)/2) %>%  # tibble females with averagePulse
+           filter(averagePulse>110) %>%                # tibble females with averagePulse>100
+           pull(name)                                  # vector of names
+```
+
+`r show_warning(" When in R Markdown file Each line in a sequence of commands with pipe must always end with the $\\pipe$ symbol except the last line, otherwise it is an error. See above example. Note also that each line may contain multiple $\\pipe$ symbols, e.g. first line in the example above, as long as it ends with a $\\pipe$ before the command on the next line. This way R know that there will be more commands on the next line.")`
+
+`r info_block("Use ctrl-M to get $\\pipe$ symbol.")`

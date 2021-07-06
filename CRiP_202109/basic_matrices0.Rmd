@@ -1,0 +1,145 @@
+---
+title: "Matrices"
+---
+
+## Matrix concept
+
+A **matrix** is a two-dimensional, rectangular structure of elements of _the same type_.  
+The elements can be accessed by their **two-dimensional position**  (**row, column**).  
+The rows and columns of the matrix might additionally be named and consequently can be also accessed by a pair (**rowname, colname**).
+
+## Create a matrix
+
+A `matrix` can be **manually created** from a vector.  
+Depending on the arguments, elements are put to the matrix in a different order:
+
+```{r}
+m <- matrix( 1:6, nrow = 2 );
+m
+m <- matrix( 1:6, nrow = 2, byrow = TRUE );
+m
+m <- matrix( 1:6, ncol = 2 );
+m
+```
+
+Test the class of `m`:
+```{r}
+class( m )
+```
+
+Try the function `str` to get a compact summary of matrix content:
+```{r}
+str( m )
+```
+
+## Dimensions
+
+There are several functions to get dimensions of a matrix.
+
+**Number of columns** is provided by:
+```{r}
+ncol( m )
+```
+
+**Number of rows** is provided by:
+```{r}
+nrow( m )
+```
+
+**Dimensions** (two elements: number of rows and number of columns):
+```{r}
+dim( m )
+```
+
+## Names of the columns and rows
+
+`colnames( m )` and `rownames( m )` are used to set and get the vectors with columns and rows names.
+
+Try to **set the names**:
+```{r}
+m
+colnames( m ) <- c( "A", "B" )
+m
+rownames( m ) <- c( "X", "Y", "Z" )
+m
+```
+
+To **get the names** use:
+```{r}
+rownames( m )
+colnames( m )
+```
+
+## Accessing matrix elements
+
+Use single brackets notation with two arguments `[ row(s), col(s) ]` to **get/set elements**.  
+Note, when getting only a single row or a single column the result is returned as a vector, not matrix.
+
+```{r}
+m[ 3, 1 ]             # a single element as a vector
+m[ 3, ]               # a single row as a vector
+m[ , 1 ]              # a single column as a vector
+m[ c( 2, 3 ), 1 ]     # two rows/one column, still a vector
+m[ c( 2, 3 ), c( "B", "A" ) ]     # a matrix
+m[ c( F, T, T ), c( "B", "A" ) ]  # a matrix
+```
+
+Notice the difference in the output class when only a single element is requested:
+```{r}
+class( m[ 3, 1 ] )
+class( m[ c( 2, 3 ), c( "B", "A" ) ] )
+```
+
+With the `drop` argument you may enforce that always a matrix is returned (never a vector):
+```{r}
+m[ 3, 1 ]                 # a vector
+m[ 3, 1, drop = FALSE ]   # a matrix
+class( m[ 3, 1, drop = FALSE ] )
+```
+
+Empty row/column argument field means **all rows** and/or **all columns**:
+```{r}
+m[ , c( "B", "A" ) ]       # all rows, selected columns
+m[ c( "Z", "X", "Y" ), ]   # selected rows, all columns
+m[ , ]                     # all rows and columns, same as just "m"
+```
+
+## Useful matrix functions
+
+Short summary of matrix operations: http://www.statmethods.net/advstats/matrix.html
+
+### Transposition
+
+```{r}
+m <- matrix( 1:6, nrow = 3 );
+colnames( m ) <- c( "A", "B" )
+rownames( m ) <- c( "X", "Y", "Z" )
+m
+t(m)
+```
+
+### Matrix multiplication
+
+```{r}
+m
+t( m )
+m %*% t( m )
+```
+
+### Element-wise multiplication
+
+```{r}
+m
+m+1
+m * (m+1)
+```
+
+### Row/columns means/sums
+
+```{r}
+m
+rowMeans( m )
+rowSums( m )
+colMeans( m )
+colSums( m )
+```
