@@ -1,0 +1,96 @@
+---
+title: "Summarise (practice)"
+# author: "R. Monajemi"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+survey <- read_survey()
+```
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+In the survey data:  
+
+1. Take a look at the table with `glimpse` and inspect its dimensions and types.
+
+```{r}
+survey %>% glimpse()
+```
+
+2. Summarise on mean hand spans `{span1,span2}` and  median `pulse`.
+
+```{r}
+# 'pulse' variable has missing values (NA), therefore the use 
+# of 'na.rm=TRUE' in the function 'median'.
+#
+survey %>% summarise(meanWritingHand=mean(span1), 
+                     meanNonWritingHand=mean(span2), 
+                     medianPulse=median(pulse, na.rm=TRUE))
+```
+
+3. Summarise on mean `age` and median `height`.
+
+```{r}
+survey %>% summarise(meanAge=mean(age), medianHeight=median(height, na.rm=TRUE))
+```
+
+4. Count the number of males and females.
+
+```{r}
+survey %>% count(gender)
+```
+
+5. Produce the cross table on `gender` and `fold`. Do the same including `clap`. 
+
+```{r}
+survey %>% count(gender, fold)       # (1)
+survey %>% count(gender, fold, clap) # (2)
+```
+
+## Extra exercises
+
+1. Produce the cross table on `gender` and `smokes`,  only females. 
+
+```{r}
+survey %>% filter(gender=="female") %>% count(gender,smokes)
+```
+
+2. Produce the cross table on `gender`, `exercise` and `smokes` but only for male smokers.
+
+```{r}
+# smoker is someone that smokes 'occas', 'regul' or 'heavy', i.e. smokes !='never'
+#
+survey %>% filter(gender=="male" & smokes!="never") %>% count(gender,exercise, smokes)
+```
+
+3. Do individuals all have different names? Put differently, is each observation uniquely identifiable with the variable `name`?
+
+```{r}
+# The answer is no, because the number of unique names is less than 
+# total number of observations:
+#
+nrow( survey %>% distinct(name)) == nrow(survey)
+```
+
+4. Find pairs of variables which can uniquely identify each observation. Use `name` and one other variable for this purpose.
+
+```{r}
+# We see here that name and age combination is unique in the entire table.
+nrow( survey %>% distinct(name, age)) == nrow(survey)
+nrow( survey %>% distinct(name, height)) == nrow(survey) # The same is true for name and height
+```
+
+

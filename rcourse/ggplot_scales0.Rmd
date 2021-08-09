@@ -1,21 +1,10 @@
 ---
 title: 'ggplot2 scales'
-params:
-  basename: "ggplot_scales0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-
-
-
 
 In `ggplot2` the scales describe how to map your data to point colors, shapes, ...  
 Majority of commands to modify scales start with `scale_` followed by the name of the aesthetics which you want to describe: `scale_x_`, `scale_color_`, ...
@@ -170,12 +159,4 @@ ggplot( pulse ) +
   ) +
   scale_shape_manual( values = c( "male" = 15, "female" = 19 ) )
 ```
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 

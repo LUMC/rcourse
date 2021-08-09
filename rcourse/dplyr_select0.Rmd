@@ -1,20 +1,11 @@
 ---
 title: 'Select'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_select0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params)
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-
 
 > Use the `select` function to select variables (columns) from a tibble. 
 
@@ -89,14 +80,3 @@ select(pulse, name, age, everything())
 ```
 
 `everything` function lists all other variable other than `name` and `age` and `select` function places them after `name` and `age`.
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_related.Rmd"}  
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 

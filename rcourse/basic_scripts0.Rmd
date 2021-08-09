@@ -1,19 +1,6 @@
 ---
 title: "R scripts and R Markdown documents"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "basic_scripts0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
-
-# R scripts and R Markdown documents
 
 ## What is an R script
 
@@ -132,10 +119,11 @@ In case of troubles consult the images provided below.
 
 ### How to create
 
-```{r echo=FALSE}
-backtick <- "`"
+```{r echo=FALSE,eval=TRUE}
+msg <- "Follow the steps from the sections above to create a new R Markdown document `Lesson_2.Rmd`. Be sure to work in the project `Learning_R` (where you copied the table file)."
 ```
-`r direct_exercise( paste0( "Follow the steps from the sections above to create a new R Markdown document ", backtick, "Lesson_2.Rmd", backtick, ". Be sure to work in the project ", backtick, "Learning_R", backtick, " where you copied the table file." ) )`
+
+`r direct_exercise( paste0( msg ) )`
 
 `r direct_exercise( "In the R Markdown document: fill the header of the file with correct author/date and remove all demo chunks." )`
 
@@ -182,5 +170,3 @@ pulse
 
 ![](images/RStudio_pulse_code_rep.png)
 
-```{r, child="_navigate.Rmd"} 
-``` 

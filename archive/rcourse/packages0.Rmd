@@ -1,0 +1,57 @@
+---
+title: 'packages'
+params:
+  basename: "packages0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+# build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+```
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 
+
+R packages are a collection of related functions, possibly with data, built to tackle a specific problem. R comes with several pre-installed 
+packages such as `base`, `stats`, `datasets` etc. These packages pretty much cover all that is needed for 
+basic data science exercises. However sometimes we need to do more. R allows installation of external R packages for use. The R community keeps building advanced methodologies in the form of R packages and they are publicly available. In the following I'll describe how to install packages on your machine and how to use them.
+
+## The Comprehensive R Archive Network (CRAN) 
+
+The Comprehensive R Archive Network, CRAN for short, is possibly the only one you need to know for now. There are other archives, such as 
+[bioconductor (https://www.bioconductor.org/)](https://www.bioconductor.org/) with its own framework and installation procedure. 
+
+> How to find the name your R package of interest?
+
+There are various overview sites cataloguing packages, however the easiest way to find your R package is to google with your key words of interest. For example lets say we want to read/write SPSS file formats. Simply google *'read write spss r package'*. There will be many pages with links and descriptions on several packages which can help you on your query. I have reviewed some of the packages, one of which being the package **haven**, and that is the one we are going to install next. 
+
+> Install packages
+
+CRAN is the default archive accessible from R and packages can be installed either by entering the function call `install.packages("your-package-name")` in the console:
+
+```{r, eval=FALSE}
+install.packages("haven")
+```
+
+The same can be achieved by selecting the `Packages` pane and clicking install  and in the pop-up dialogue enter the package name, i.e. `haven`  
+
+`r info_block("You only need to install a package once.")`
+
+> How to use an installed R package?
+
+You've just installed an R package, to use the functions in the package you'll need one more command: 
+
+```{r}
+library(haven)
+```
+
+This call will load the package and gives you direct access to the functions inside the package. If you close the R session, then the next time you start R, you'll need to load the package again.
+
+
+`r info_block("A package is installed once, but it must be loaded with each new R session to be able to use it.")`
+
+
+```{r, echo=FALSE, results='asis'}
+navigate_slots(params)
+``` 

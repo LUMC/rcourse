@@ -1,25 +1,11 @@
 ---
 title: "Join (practice)"
-# author: "R. Monajemi"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 survey <- read_survey()
 ```
-
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -107,12 +93,15 @@ left_join(df1,df2, by=c("name", "age"))
   
 ## Extra exercises
 
-1. The `name` and `span2` where not good combinations as a key, show the rows with identical 
+1. The `name` and `span2` were not good combinations as a key, show the rows with identical 
  `name` and `span2` values.
  
 ```{r}
-dups <- duplicated(survey %>% select(name,span2))
-left_join( survey %>% filter(dups) %>% select(name,span2), survey, c("name","span2")) 
+# step 1 : first find the {name,span2} of duplicated rows as a tibble
+dups <- survey %>%  filter(duplicated(survey %>% select(name,span2)))  %>% select(name,span2) 
+dups
+# step 2 : join all observations from survey where there is a match with {name,span2} in dups
+inner_join(survey, dups , c("name","span2")) 
 ```
  
 

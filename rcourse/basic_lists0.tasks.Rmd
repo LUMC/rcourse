@@ -2,20 +2,9 @@
 title: "Lists (practice)"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
+```{r setup, include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -134,5 +123,40 @@ length( scores$Bob )  # number of topics for which Bob has scores
 scores[[ "Dan" ]][[ "physics" ]]
 scores$Dan$physics
 scores$Dan[[ "physics" ]]
+```
+
+## Multitopic exercises
+
+1. *(ADV) Split a table into list of tables by a column factor; merge back*.  
+Some functions might require an input to be provided as a list of tables.  
+Let's assume that the `pulse` table should be split into a list of table parts based on the `exercise` argument.  
+Load the `pulse.csv` data to variable `pulse`.  
+Try `l <- pulse %>% split( .$exercise )` and investigate the `class`, `length` and `names` of the result `l`.  
+Use double square bracket to extract the part for `exercise` being `low`.  
+Finally, check that with `bind_rows` applied to `l` you can recreate the `pulse` table (but with a different order of rows).
+```{r}
+l <- pulse %>% split( .$exercise )  # . represents the object on the left side of %>%
+class( l )
+length( l )
+names( l )
+l[[ "low" ]]
+recreatedPulse <- bind_rows( l )
+dim( pulse )
+dim( recreatedPulse )
+```
+
+2. *(ADV) Split a table by a column and write each part to a different file*.  
+Continue with the setup of the previous exercise.  
+Study/type/exectute the following example.  
+Find the newly created files in your filesystem.
+
+```{r echo=TRUE,eval=FALSE}
+l <- pulse %>% split( .$exercise )
+exercises <- names( l )                   # name in l of each table chunk
+for( exercise in exercises ) {            # exercise will be a name of a single chunk
+  fileName <- paste0( "pulse_", exercise, ".csv" )  # name of the file for the chunk
+  message( "Writing file '", fileName, "'..." )
+  write_csv( l[[ exercise ]], file = fileName )
+}
 ```
 

@@ -1,19 +1,8 @@
 ---
 title: "RStudio projects"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "basic_projects0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
-
-# RStudio projects
+## RStudio projects
 
 A typical data analysis involves multiple files:
 
@@ -58,5 +47,4 @@ Once the files are present in the project directory, they should be visible in t
 
 ![](images/RStudio_data_files.png)
 
-```{r, child="_navigate.Rmd"} 
-``` 
+

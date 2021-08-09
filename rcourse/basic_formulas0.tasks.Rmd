@@ -2,24 +2,10 @@
 title: "Formulas (practice)"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r , include=FALSE, eval=TRUE}
 pulse <- read_pulse()
 survey <- read_survey()
 ```
-
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -31,8 +17,11 @@ Perform a linear regression of `span1` being dependent on `span2`; store the res
 Find and print the element corresponding to the coefficients of the regression -- do you see there a coefficient for `span2`?  
 An intended method to access the coefficients is through `coef` function applied to `fit`. Try it. Do you get the same result as observed above?  
 
-```{r message=FALSE}
+```{r message=FALSE,eval=FALSE}
 survey <- read_csv( "survey.csv" )
+```
+
+```{r message=FALSE}
 plot( survey$span2, survey$span1 )
 fit <- lm( span1 ~ span2, data = survey )
 fit
@@ -65,3 +54,86 @@ h[[ 'estimate' ]]   # correlation coefficient
 h[[ 'p.value' ]]    # significance, is < 0.05, strongly significant association
 ```
 
+## Multitopic exercises
+
+### (ADV) Fitting multiple simple linear regressions to parts of a table.
+
+Load the `pulse.csv` dataset into the `pulse` variable.  
+Let's define the following goal: **separately for each `gender`** calculate
+a linear fit of `weight` as a function of `height`.
+
+First `split` the `pulse` table by `gender` into the `pulseByGender` variable.
+```{r}
+pulseByGender <- pulse %>% split( .$gender )
+```
+
+Now, `pulseByGender` is a list and can be accessed with `[[...]]` operator.  
+Write the code to perform a linear fit of `weight` as a function of `height` 
+**for females only** (obtained from `pulseByGender` list).
+```{r}
+lm( weight ~ height, data = pulseByGender[[ "female" ]] )
+```
+
+The next goal is to perform the above fit multiple times, separately for each gender.  
+Define a variable `genders` with all genders present in the split object.
+```{r}
+genders <- names( pulseByGender )
+genders
+```
+
+Now a loop is needed.  
+A variable `gender` should iterate over all `genders`.  
+For each value of `gender` the respective linear fit should be performed.  
+Understand and try the following code:
+```{r echo=TRUE}
+for( gender in genders ) {
+  lm( weight ~ height, data = pulseByGender[[ gender ]] )
+}
+```
+
+The above code calculates all needed fits but does show/store the results anywhere.  
+The results need to be stored, for example in a list.  
+Understand/modify the code as follows:
+```{r echo=TRUE}
+fitByGender <- list()
+for( gender in genders ) {
+  fitByGender[[gender]] <- lm( weight ~ height, data = pulseByGender[[ gender ]] )
+}
+fitByGender
+fitByGender[[ "female" ]]
+```
+
+A special function `lapply` allows to write the above code differently.  
+In R this is a preferred notation (despite being less intuitive at the first glance).  
+Rewrite the `for` loop into `lapply` as follows:
+```{r echo=TRUE}
+fitByGender <- lapply( genders, function( gender ) {
+  lm( weight ~ height, data = pulseByGender[[ gender ]] )
+} )
+fitByGender
+names( fitByGender )
+```
+
+As you can see, `fitByGender` is a list but the elements are not named.  
+This is because `lapply` names the elements as they were named in the iterated input.  
+Check `names` of `genders` (you will see `NULL` names).
+```{r}
+genders
+names( genders )
+```
+
+Consequently, set the names of `genders` elements to be equal to the element values.
+```{r}
+names( genders ) <- genders
+genders
+```
+
+Now, let's repeat the `lapply` loop and check the result.  
+Check (by eye) that `fitByGender[[ 'female' ]]` shows the same result as at the top of this example.
+```{r}
+fitByGender <- lapply( genders, function( gender ) {
+  lm( weight ~ height, data = pulseByGender[[ gender ]] )
+} )
+fitByGender
+fitByGender[[ 'female' ]] # compare to lm( weight ~ height, data = pulseByGender[[ "female" ]] )
+```

@@ -3,24 +3,10 @@ title: "Reshape (practice)"
 #author: "R. Monajemi"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r , include=FALSE,eval=TRUE}
 survey <- read_survey()
 pulse <- read_pulse()
 ```
-
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -29,26 +15,37 @@ In the survey dataset:
 1. The variables `span1` and `span2` are of the same type representing the span of the writing hand and the non-writing hand respectively. We would like to analyse these values in groups. To do this we need to convert the variables `span1` and `span2` into variables `span` and `size` with `span` ranging over *span1* and *span2* and `size` over the values of `span1` and `span2` variables.     
   
 ```{r}
-survey %>% gather(key=span,value=size,span1, span2)
+survey %>% pivot_longer(c(span1,span2), names_to = "span", values_to = "size")
 ```
 
 2. Reproduce the following plot:  
 
 ```{r, eval=TRUE}
-ggplot(survey %>% gather(key=span,value=size,span1, span2)) + 
+ggplot(survey %>% pivot_longer(c(span1,span2), names_to = "span", values_to = "size")) + 
   aes(x=gender, y=size, color=span) + geom_boxplot()
 ```
 
 
 ## Extra exercises
 
-1. Often reshaping of the variables are necessary to visualize the information with ggplot. From *pulse* dataset reproduce the  *boxplot* shown below. Here `level` is the values of  `pulse1` and `pulse2`.   
+1. Produce the following summary per gender from variables hand, fold and clap.
+
+```{r, eval=TRUE}
+survey %>% 
+  select(gender,hand,fold,clap) %>% 
+  pivot_longer(!gender, names_to = "action", values_to = "side") %>% 
+  group_by(gender,side) %>% 
+  summarise(count=n(), .groups='drop') %>% 
+  pivot_wider(names_from = "side",values_from = "count")
+```
+  
+2. Often reshaping of the variables are necessary to visualize the information with ggplot. From *pulse* dataset reproduce the  *boxplot* shown below. Here `level` is the values of  `pulse1` and `pulse2`.   
 
 ```{r, eval=TRUE}
 ggplot(pulse %>% 
         drop_na() %>% 
         mutate(exercise=fct_relevel(exercise, c("low","moderate","high"))) %>%
-        gather(pulse,level, pulse1,pulse2)) + 
+        pivot_longer(c(pulse1,pulse2), names_to = "pulse",values_to = "level") ) + 
   aes(x=exercise, y=level, color=pulse) + geom_boxplot()
 ```
 
@@ -60,7 +57,7 @@ ggplot(pulse %>%
 
 ```{r, include=FALSE}
 # 1. Summarise minimum and maximum `span` per `writing` from the primary exercise (1). 
-survey %>% gather(span,size, span1,span2)  %>% group_by() %>%  
+survey %>% pivot_longer(c(span1,span2), names_to = "span", values_to = "size") %>% group_by() %>%  
           summarise(min=min(span,na.rm = T), max=max(span,na.rm = T))
 ```
 

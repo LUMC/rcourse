@@ -1,20 +1,10 @@
 ---
 title: '%>% : Pipe operator'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_pipe0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) # build nocode version of tasks ; replace with source("setup.R") when running stand-alone (knit)
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 survey <- read_survey()
-```
-
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
 ```
 
 \newcommand{\pipe}{{\small \;\;{\%}{>}{\%}\;\;} }
@@ -96,11 +86,3 @@ pulse %>%  filter(gender=="female")  %>%               # tibble females
 `r show_warning(" When in R Markdown file Each line in a sequence of commands with pipe must always end with the $\\pipe$ symbol except the last line, otherwise it is an error. See above example. Note also that each line may contain multiple $\\pipe$ symbols, e.g. first line in the example above, as long as it ends with a $\\pipe$ before the command on the next line. This way R know that there will be more commands on the next line.")`
 
 `r info_block("Use ctrl-M to get $\\pipe$ symbol.")`
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
- 
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-```

@@ -1,18 +1,10 @@
 ---
 title: 'ggplot2 facets and themes'
-params:
-  basename: "ggplot_facets_themes0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 
 `ggplot2` facets allow to split a plot into panels depending on one (or more) categorical variables.  
 `ggplot2` themes configure plot graphical settings: colors, fonts, ...
@@ -60,24 +52,14 @@ p
 
 ## Facets
 
-Let's use the plot stored in the variable `p` and combine it with **facets**.  
-Try each of the following lines and understand the effects:
-```{r eval=FALSE}
+Let's use the plot stored in the variable `p` and combine it with a **facet** command.  
+Compare the plot below to the plot above.  
+Points corresponding to different levels of `exercise` are shown in separate plot panels.  
+Note, that a formula of a form `y_var ~ x_var` is used to specify which variables should define panels in the vertical (`y_var`) and horizontal (`x_var`) directions.  
+`.` is used when there should be no panels in a given direction.
+```{r}
 p + facet_grid( . ~ exercise )
-p + facet_grid( exercise ~ . )
-p + facet_grid( gender ~ exercise )
-p + facet_grid( exercise ~ gender )
-p + facet_grid( exercise ~ gender, scales = "free" )
 ```
-
-Now compare `facet_wrap` with `facet_grid`:
-```{r eval=FALSE}
-p + facet_grid( . ~ year )
-p + facet_grid( year ~ . )
-p + facet_wrap( ~ year )
-p + facet_wrap( ~ year, scales = "free" )
-```
-
 
 ## Themes
 
@@ -91,11 +73,3 @@ p + theme_minimal()
 p + theme_dark()
 p + theme_bw()
 ```
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-

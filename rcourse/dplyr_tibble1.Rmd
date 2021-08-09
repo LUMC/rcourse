@@ -1,17 +1,12 @@
 ---
 title: 'tibble vs data.frame*'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_tibble1"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
+```{r, echo=FALSE, message=FALSE}
+library(rooc)
+source("../R/Doc.R")
+source("../R/setup.R")
 ```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 A **tibble** is the upgraded version of base R **data.frame** data type with some convenient additional features, moreover, it is the standard data structure in [tidyverse](https://www.tidyverse.org/). In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.
 
@@ -211,7 +206,3 @@ class(favourite_colour_tibble)
 ```{r, echo=FALSE}
 ## CAREMA data set (?)
 ```
-
-
-```{r, child="_navigate.Rmd"} 
-``` 

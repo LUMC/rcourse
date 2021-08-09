@@ -1,18 +1,12 @@
 ---
 title: 'Formulas'
-params:
-  basename: "basic_formulas0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
 
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-```
+## Formula concept
 
 A **formula** is a way to tell R that one variable depends on another.  
 A formula has a form of an expression. For example, to specify a (statistical) model in which `y` depends on `x`, say:
@@ -68,7 +62,7 @@ names( h )
 h$p.value
 ```
 
-## Example: simple linear regression
+## Example: Simple linear regression
 
 Let's use the `pulse` data and try to model individual `weight` as a **linear function** of `height`.
 
@@ -88,12 +82,4 @@ The formulas might have a more complex form. The exact meaning of such formulas 
 ```{r}
 lm(pulse2 ~ pulse1 + exercise + pulse1:exercise, data=pulse)
 ```
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 

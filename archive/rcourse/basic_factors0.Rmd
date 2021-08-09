@@ -1,0 +1,135 @@
+---
+title: "Factors"
+# date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "basic_factors0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) 
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+
+
+A **factor** is a vector of categorical values -- from a limited set of possibilities (levels).  
+
+For example, a factor can be used to store hair color of some people.  
+Let's assume that we can classify each person to one of the following hair colors.  
+This will be the **levels** of the factor:
+
+```{r eval=FALSE}
+c( "black", "brown", "ginger", "blond", "gray", "white" )
+```
+
+Now, let's assume that for 10 people we observed the following hair colors.  
+`NA` (not available, missing value) stands for a person whose hair color could not be determined.  
+This will be the **values** of the factor:
+
+```{r eval=FALSE}
+c( "brown", "ginger", "black", "brown", NA, "brown", "black", "brown", "blond", "gray" ) 
+```
+
+## Create a factor
+
+Enter the following to **create the factor** and store it in a variable `hairColors`:
+
+```{r}
+hairColors <- factor(
+  c( "brown", "ginger", "black", "brown", NA, "brown", "black", "brown", "blond", "gray" ),
+  levels = c( "black", "brown", "ginger", "blond", "gray", "white" )
+)
+```
+
+When printed, both values and levels of a factor are shown:
+
+```{r}
+hairColors
+```
+
+Class of a factor, as expected, is:
+
+```{r}
+class( hairColors )
+```
+
+## Levels and coding
+
+In R the factor is stored as two vectors.  
+The first vector codes the levels with subsequent integers: `1=black`, `2=brown`, ...  
+Type the following to get this vector:
+
+```{r}
+levels( hairColors )
+```
+
+and to find the **number of factor levels** enter:
+```{r}
+nlevels( hairColors )
+```
+
+The second vector keeps integers corresponding to the values.  
+Try the following and understand the relation of the integers and the levels:
+
+```{r}
+as.integer( hairColors )
+```
+
+## Count occurrences
+
+Type the following function to produce a tibble with counts of occurrences of all levels in a factor:
+
+```{r}
+fct_count( hairColors )
+```
+
+## Rename levels
+
+`r show_info( "The need to rename levels of a factor often arises when factors are plotted and the levels appear in legends." )`
+
+Try to use `fct_recode` to change levels by providing providing pairs of `new_level = "old_level"`.  
+For example, compare `hairColors` before and after `fct_recode`:
+
+```{r}
+hairColors
+fct_recode( hairColors, BROWN = "brown", GRAY = "gray" )
+```
+
+## Change levels order
+
+`r show_info( "The need to reorder levels of a factor often arises when factors are plotted and elements of plot are drawn in levels order. Also, when fitting models, the first level of the factor is often taken as the baseline/reference." )`
+
+Try to use `fct_relevel` to move provided levels to the front.  
+For example, compare `hairColors` before and after `fct_relevel`:
+
+```{r}
+hairColors
+fct_relevel( hairColors, c( "gray", "white" ) )
+```
+
+
+## Collapse (merge) levels
+
+`r show_info( "The need to collapse levels of a factor often arises when there are too many rare levels." )`
+
+Try to use `fct_collapse` to collapse several old levels into one new level using notation `new_level = c( "old_level_1", "old_level2" )`.  
+For example, compare `hairColors` before and after `fct_collapse`:
+
+```{r}
+hairColors
+fct_collapse( hairColors, dark = c( "brown", "black" ), light = c( "blond", "white" ) )
+```
+
+## Notes
+
+In this course we use functionality of the [`forcats` library](https://forcats.tidyverse.org/) from the `tidyverse` package to perform factor operations.  
+`r go_extern( "https://forcats.tidyverse.org/#cheatsheet", "cheat sheet section", "to obtain a pdf with summary of functions for factors" )`
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

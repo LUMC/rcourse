@@ -1,23 +1,14 @@
 ---
 title: 'Filter'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_filter0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 
 > Use `filter` to select observations (rows) from a tibble. 
 
-In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are intersted in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
+In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are interested in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
 
 ## Logical conditions
 
@@ -33,7 +24,7 @@ or another example would be, *who's weight is exactly 55 kg?*
 filter(pulse, weight==55) # filter all observations with weight equal to 55 kg 
 ```
 
-`filter` uses logical vectors to achieve this results. You've already seen an example of a [logical vector](basic_vectors0.html#logical_vector) in the section on [Vectors](basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
+`filter` uses logical vectors to achieve this results. You've already seen an example of a `logical vector` in the section on [Vectors](S02L01l_basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
 
 `r info_block("'==' stands for 'equal to' and '!=' is 'not equal to'")` 
 
@@ -67,7 +58,7 @@ filter(pulse, gender=="female" & exercise=="high")
 
 > Or : '|'
 
-The *or* conditional operator is true when at least one of the conditions is true. For example, *list all rows with indiviudals who drink or smoke or both*: 
+The *or* conditional operator is true when at least one of the conditions is true. For example, *list all rows with individuals who drink or smoke or both*: 
 
 ```{r}
 filter(pulse, alcohol=="yes" | smokes=="yes")
@@ -95,16 +86,4 @@ Here we have the same variable `year` in our `|` construct.
 ```{r, echo=FALSE, results='asis'}
 msg <- "An observation in a variable can not take two values at the same time. Here we have conditions on both sides of '&' on the same varible, in this case <b>year</b>, and since year can not be 1995 and 1997 at the same time for an observation the result of this query is empty."
 qa(msg)
-``` 
-
-
-
-```{r, child="_exercises_links.Rmd"}
-```
-
-```{r, child="_related.Rmd"}  
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
 ``` 

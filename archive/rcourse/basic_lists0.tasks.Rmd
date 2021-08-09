@@ -1,0 +1,138 @@
+---
+title: "Lists (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+```
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+1. *Create and investigate a list*.  
+Three students received different sets of grades (Amy: 1,6,7,9,10; Bob: 6,7,4,3,5,2,2,1,4; Dan: 9,9,10).  
+In a variable `scores` create a `list` (the names of the list elements should be the names of the students and the values should be the corresponding grades).  
+Print the list, its `class`, `length` and structure (`str`) of `scores`.
+```{r}
+scores <- list(
+  Amy = c( 1,6,7,9,10 ),
+  Bob = c( 6,7,4,3,5,2,2,1,4 ),
+  Dan = c( 9,9,10 )
+)
+scores
+class( scores )
+length( scores )
+str( scores )
+```
+
+2. *Add an element*, *change an element*.  
+Reuse `scores` from the previous exercise.  
+Add there grades for Eve (7,3,5,8,8,9) and print the list.  
+Then, for Dan merge new grades (8,8,6,7) with the existing grades (hint: use the combine function `c` to combine existing Dan's grades with the new grades then put the result back to `scores`; do not type again `9,9,10`).
+```{r}
+scores[[ 'Eve' ]] <- c(7,3,5,8,8,9)
+scores
+scores[[ "Dan" ]] <- c( scores[[ "Dan" ]], c(8,8,6,7) )
+scores
+```
+
+3. *Single and double bracket operators*.  
+Reuse `scores` from the previous exercises.  
+Investigate the difference between `scores[[ "Bob" ]]` and `scores[ "Bob" ]`.  
+Look at what is printed and what is the class of each result.  
+Then compare `scores[[ c( "Amy", "Bob" ) ]]` with `scores[ c( "Amy", "Bob" ) ]`.  
+Understand, why the error is reported.
+```{r error=TRUE}
+scores[[ "Bob" ]]             # Returns the value of Bob element (vector)
+scores[ "Bob" ]               # Creates a new list with only Bob there (list)
+class( scores[[ "Bob" ]] )
+class( scores[ "Bob" ] )
+scores[[ c( "Amy", "Bob" ) ]] # A list is needed to return two elements
+scores[ c( "Amy", "Bob" ) ]   # This creates a list, so many elements are ok
+```
+
+4. *Dollar operator*.  
+Reuse `scores` from the previous exercises.  
+Investigate the (lack of) difference between `scores$Bob` and `scores[[ "Bob" ]]`.  
+Look at what is printed and what is the class of each result.  
+Then compare `scores$Bo` with `scores[[ "Bo" ]]`.  
+Understand, why the `NULL` is returned.
+
+```{r}
+scores$Bob        # another way to access Bob
+scores[[ "Bob" ]] # get an element with exact name Bob
+class( scores$Bob )
+class( scores[[ "Bob" ]] )
+scores$Bo         # strange matching of names, it still finds Bob
+scores[[ "Bo" ]]  # there is no "Bo" so NULL is returned
+```
+
+## Extra exercises
+
+1. *A list returned by a function; test for association/correlation*.  
+For this exercise we need two random numerical vectors.  
+Let's create `x` and `y`, each of 30 elements sampled from the normal distribution: `x <- rnorm( 30 )` and `y <- rnorm( 30 )`.  
+Print these vectors. You may also produce a scatter plot: `plot( x, y )`.  
+  \
+The function `cor.test` tests for association between corresponding elements of two vectors.  
+Use `h <- cor.test( x, y )` and print `h` to see a report of the association test.  
+Internally `h` is stored as a list. Print names of the elements stored in `h`.  
+Now, read `Help` for `cor.test`. In the section `Value` you will see the description of the `h` elements.  
+Get directy the values of elements `estimate` and `p.value`.
+```{r}
+x <- rnorm( 30 )
+y <- rnorm( 30 )
+x
+y
+plot( x, y )
+h <- cor.test( x, y )
+h
+names( h )
+h[[ 'estimate' ]]
+h[[ 'p.value' ]]
+```
+
+2. *A nested list*.  
+Let's extend the concept of `scores` to describe various topics (see the code below).  
+Check `class` and `str` of `scores`.  
+Calculate how many students are in the `scores` list.  
+Get Dan's scores in physics.
+
+```{r echo=TRUE}
+scores <- list(
+  Amy = list(
+    math = c( 1,6,7,9,10 ),
+    biology = c( 7,6,8 )
+  ),
+  Bob = list(
+    math = c( 6,7,4,3,5,2,2,1,4 ),
+    physics = c( 8,7 )
+  ),
+  Dan = list(
+    math = c( 9,9,10 ),
+    physics = c( 10, 10, 10 ),
+    biology = c( 3, 5, 7 )
+  )
+)
+```
+
+```{r}
+class( scores )
+str( scores )
+length( scores )      # number of students
+length( scores$Bob )  # number of topics for which Bob has scores
+scores[[ "Dan" ]][[ "physics" ]]
+scores$Dan$physics
+scores$Dan[[ "physics" ]]
+```
+

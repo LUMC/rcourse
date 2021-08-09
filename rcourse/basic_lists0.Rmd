@@ -5,13 +5,7 @@ params:
   basename: "basic_lists0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
+## List concept
 
 A **list** can be thought of as zero or more data elements (of _any type_), kept in order.  
 The elements can be accessed by their **position**  (or **index**): first element, second element, ...  
@@ -102,9 +96,3 @@ Note what happens when you try to access a **not present element**:
 ```{r}
 person[[ 'isMarried' ]]
 ```
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 

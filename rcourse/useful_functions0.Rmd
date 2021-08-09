@@ -1,17 +1,6 @@
 ---
 title: "Useful functions"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "useful_functions0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 ## Sandbox vectors
 
@@ -188,6 +177,3 @@ expand_grid( x = c( 1:3, NA ), y = c( "a", "b" ) )
 combn( c( "a", "b", "c", "d", "e" ), m = 2, simplify = TRUE )
 combn( c( "a", "b", "c", "d", "e" ), m = 3, simplify = TRUE )
 ```
-
-```{r, child="_navigate.Rmd"} 
-``` 

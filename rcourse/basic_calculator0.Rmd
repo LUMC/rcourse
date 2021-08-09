@@ -1,17 +1,6 @@
 ---
 title: "Calculator"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params: 
-  basename: "basic_calculator0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 ## Console pane
 
@@ -149,11 +138,4 @@ Try the following keystrokes in the console:
 
 - _Up-arrow_ or _Down-arrow_ scroll through the history of the commands typed before.
 - _Ctrl-R_ shows the history, and then you may type characters to search this list.
-- _Ctrl_L_ clears the console (but not the history).
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 
+- _Ctrl-L_ clears the console (but not the history).

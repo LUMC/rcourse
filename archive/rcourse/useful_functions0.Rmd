@@ -1,0 +1,193 @@
+---
+title: "Useful functions"
+# date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  basename: "useful_functions0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params) 
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+## Sandbox vectors
+
+Let's define some vectors which can be used for demonstrations:
+```{r}
+manyNumbers <- sample( 1:1000, 20 )
+manyNumbers
+manyNumbersWithNA <- sample( c( NA, NA, NA, manyNumbers ) )
+manyNumbersWithNA
+duplicatedNumbers <- sample( 1:5, 10, replace = TRUE )
+duplicatedNumbers
+letters
+LETTERS
+mixedLetters <- c( sample( letters, 5 ), sample( LETTERS, 5 ) )
+mixedLetters
+```
+
+## Are all/any elements TRUE
+
+- *Input:* logical vector
+- *Output:* single logical value
+- *Task:* try, understand what happens when you use `manyNumbersWithNA` instead of `manyNumbers`.
+
+```{r}
+all( manyNumbers <= 1000 )
+all( manyNumbers <= 500 )
+any( manyNumbers > 1000 )
+any( manyNumbers > 500 )
+all( !is.na( manyNumbers ) )
+any( is.na( manyNumbers ) )
+```
+
+## Which elements are TRUE
+
+*Input:* logical vector
+*Output:* vector of numbers (positions)
+
+```{r}
+which( manyNumbers > 900 )
+which( manyNumbersWithNA > 900 )
+which( is.na( manyNumbersWithNA ) )
+```
+
+## Filtering vector elements
+
+- *Input:* any vector and filtering condition
+- *Output:* elements of the input vector
+- *Note:* several ways to get the same effect
+
+```{r}
+manyNumbers[ manyNumbers > 900 ] # indexing by logical vector
+manyNumbers[ which( manyNumbers > 900 ) ] # indexing by positions
+
+somePositions <- which( manyNumbers > 900 )
+manyNumbers[ somePositions ]
+```
+
+## Are some elements among other elements
+
+- *Input:* two vectors
+- *Output:* a logical vector corresponding to the first input vector
+
+```{r}
+"A" %in% LETTERS
+c( "X", "Y", "Z" ) %in% LETTERS
+all( c( "X", "Y", "Z" ) %in% LETTERS )
+all( mixedLetters %in% LETTERS )
+any( mixedLetters %in% LETTERS )
+mixedLetters[ mixedLetters %in% LETTERS ]
+mixedLetters[ !( mixedLetters %in% LETTERS ) ]
+```
+
+```{r}
+manyNumbers %in% 300:600
+which( manyNumbers %in% 300:600 )
+sum( manyNumbers %in% 300:600 )
+```
+
+## Pick one of two (three) depending on condition
+
+- *Input:* a logical vector and two vectors additional vectors (for TRUE, for FALSE)
+- *Output:* elements of the additional vectors
+- *Note:* it can take care of `NA`s
+
+```{r}
+if_else( manyNumbersWithNA >= 500, "large", "small" )
+if_else( manyNumbersWithNA >= 500, "large", "small", "UNKNOWN" )
+
+# here integer 0L is needed instead of real 0.0 
+# manyNumbersWithNA contains integer numbers and the method complains
+if_else( manyNumbersWithNA >= 500, manyNumbersWithNA, 0L ) 
+```
+
+## Duplicates and unique elements
+
+- *Input:* a vector
+
+```{r}
+unique( duplicatedNumbers )
+unique( c( NA, duplicatedNumbers, NA ) )
+duplicated( duplicatedNumbers )
+```
+
+## Positions of max/min elements
+
+```{r}
+which.max( manyNumbersWithNA )
+manyNumbersWithNA[ which.max( manyNumbersWithNA ) ]
+which.min( manyNumbersWithNA )
+manyNumbersWithNA[ which.min( manyNumbersWithNA ) ]
+range( manyNumbersWithNA, na.rm = TRUE )
+```
+
+## Sorting/ordering of vectors
+
+```{r}
+manyNumbersWithNA
+sort( manyNumbersWithNA )
+sort( manyNumbersWithNA, na.last = TRUE )
+sort( manyNumbersWithNA, na.last = TRUE, decreasing = TRUE )
+```
+
+```{r}
+manyNumbersWithNA[1:5]
+order( manyNumbersWithNA[1:5] )
+rank( manyNumbersWithNA[1:5] )
+```
+
+```{r}
+sort( mixedLetters )
+```
+
+## Ranking of vectors
+
+```{r}
+manyDuplicates <- sample( 10:15, 10, replace = TRUE )
+rank( manyDuplicates )
+rank( manyDuplicates, ties.method = "min" )
+rank( manyDuplicates, ties.method = "random" )
+```
+
+## Rounding numbers
+
+```{r}
+v <- c( -1, -0.5, 0, 0.5, 1, rnorm( 10 ) )
+v
+round( v, 0 )
+round( v, 1 )
+round( v, 2 )
+floor( v )
+ceiling( v )
+```
+
+## Naming vector elements
+
+```{r}
+heights <- c( Amy = 166, Eve = 170, Bob = 177 )
+heights
+names( heights )
+names( heights ) <- c( "AMY", "EVE", "BOB" )
+heights
+heights[[ "EVE" ]]
+```
+
+## Generating grids
+
+```{r}
+expand_grid( x = c( 1:3, NA ), y = c( "a", "b" ) )
+```
+
+## Generating combinations
+
+```{r}
+combn( c( "a", "b", "c", "d", "e" ), m = 2, simplify = TRUE )
+combn( c( "a", "b", "c", "d", "e" ), m = 3, simplify = TRUE )
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 

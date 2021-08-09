@@ -1,18 +1,10 @@
 ---
 title: 'Summarise'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_summarise0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
-pulse <- read_pulse()
-```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
 ```
 
 > Descriptive statistics
@@ -129,11 +121,3 @@ pulse %>%  arrange(height,weight)
 ```
 
 Here the data is first ordered by `height` and then by `weight`. 
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-```
-

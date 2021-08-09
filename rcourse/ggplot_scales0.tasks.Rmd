@@ -2,24 +2,9 @@
 title: "ggplot2 scales (practice)"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r , include=FALSE, eval=TRUE}
 pulse <- read_pulse()
-survey <- read_survey()
 ```
-
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 

@@ -2,18 +2,6 @@
 title: "Calculator (practice)"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-```
-
 ## Primary exercises
 
 1. *Simple expression.*  
@@ -53,5 +41,38 @@ Find the manual page for the `sin` function.
 
 ```{r}
 # In the console type: ?sin
+```
+
+## Extra exercises
+
+1. *Command history.*  
+In the console try: `history()`. Locate the `History` pane and observe what happens when you double-click a line there.  
+A save button allows to save typed commands but this is not a practical way to save the code.
+
+```{r}
+# history() in RStudio simply shows History pane
+# double click copies a line from History to the Console
+# we will learn to write scripts instead of saving History
+```
+
+2. *Logarithms and exponentials.*  
+Check the manual to understand the difference between `log10( 100 )`, `log2( 100 )` and `log( 100 )`.  
+Find what would be the result of `exp( 1 )`.
+
+```{r}
+log10( 100 )   # logarithm base 10 of 100, 10^2 = 100
+log2( 100 )    # logarithm base 2 of 100
+log( 100 )     # natural logarithm of 100
+exp( 1 )       # base of natural logarithm, e^1
+```
+
+3. *Trigonometry.*  
+Calculate $cos(90^{\circ})$.  
+Remember that in R the trigonometric functions require angles specified in [radians](https://en.wikipedia.org/wiki/Radian).
+
+```{r}
+cos( 90 / 180 * pi ) # conversion from degrees to radians
+                     # the result is very close to zero, but not exact zero
+                     # the numeric calculation is approximate
 ```
 

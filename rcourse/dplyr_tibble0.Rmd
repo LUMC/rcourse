@@ -1,27 +1,23 @@
 ---
 title: 'Tibble'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_tibble0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params)  
-```
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse()
+survey <- read_survey()
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/setup.R")
 
- 
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
+```
 
 > A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
 
-I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
 
 ## Create a tibble
 
-To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](installation0.html) for more details.  
+To create a tibble you need to make sure that the package [tidyverse](https://www.tidyverse.org/) is installed and loaded. See [installation](S01L01l_index.html) for more details.  
 
 Enter the following to load *tidyverse* package:
 
@@ -29,7 +25,7 @@ Enter the following to load *tidyverse* package:
 library(tidyverse) 
 ```
 
-Creating a __tibble__ is done using the keyword _tibble_ taking a list of `name=value` pairs where:
+Creating a __tibble__ is done using the keyword _tibble_ taking a sequence of `name=value` pairs where:
 
 - `name` is the variable (column) name,
 - `value` is the values of the observation.  
@@ -98,6 +94,21 @@ favourite_colour[c("name","year")]
  
 `r info_block("Subset result of a tibble is always a tibble.")`
 
+
+Selection of variables can also be achieved with indices as we saw in vectors:
+
+```{r}
+favourite_colour[2:3]
+favourite_colour[c(1,3)]
+```
+
+To deselect use negative indices:
+
+```{r}
+favourite_colour[-2]
+```
+
+
 ## Extract variables as vectors:  [[ or $
 
 If you want to work with variables as individual vectors then you can do this either by double square brackets or $ sign: 
@@ -117,17 +128,17 @@ pull(favourite_colour, year)
 ## tibble to/from file
 
 Tibbles can be written to data files and read back again. Many data formats exist but for brevity we will be using
-comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](data-import.pdf)).
+comma-separated-value (csv) format in this course. The functions involved for this purpose are `write_csv` and `read_csv` (see [data import cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)).
 
 <!-- For more details on reading/writing format see [readr_io0](readr_io0.html). --> 
 
 let us now save our first tibble into a file in csv format:   
 
 ```{r}
-write_csv(x = favourite_colour, path = "favourite_colour.csv")
+write_csv(x = favourite_colour, file = "favourite_colour.csv")
 ```
 
-`favourite_colour` tibble is written to `favourite_colour.csv` text file in sub-directory `data`. You may inspect the file with any editor and it should look something like: 
+`favourite_colour` tibble is written to `favourite_colour.csv` text file. You may inspect the file with any editor and it should look something like: 
 
 ```
 name,year,colour
@@ -150,6 +161,47 @@ favourite_colour_csv <- read_csv(file = "favourite_colour.csv")
 favourite_colour_csv
 ```
 
+## Bind tibbles by rows and columns
+
+Often we have different data sets with i) the same set of variables or ii) same set of observations but different variables which we would like to combine: 
+
+- **bind_rows(...)**  function creates a new tibble from a set of tibbles with common variables. 
+- **bind_cols(...)**  function creates a new tibble from a set of tibbles with common observations. 
+
+Take for example the following two data sets with common variables name,year and colour:
+
+```{r}
+favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour1
+favourite_colour2  <- tibble(name=c("Raul", "Isaac"), 
+                           year=c(1998,1998), 
+                           colour=c("Red", "Green"))
+favourite_colour2
+```
+
+then the following gives the combined tibble:
+
+```{r}
+favourite_colour1_2 <- bind_rows(favourite_colour1, favourite_colour2)
+favourite_colour1_2
+```
+
+Let us now combine another tibble with variable 'height' for the same set of observations in `favourite_colour1_2`:
+
+
+```{r}
+
+heights <- tibble(height=c(173, 179, 167, 181 , 173, 184))
+heights
+bind_cols(favourite_colour1_2,heights)
+```
+
+`r info_block("Only tibbles with identical set of variables or observations may be bound.")`
+
+
+
 ## Type of a tibble
 
 Now inspect the type of the tibble we just created:
@@ -158,17 +210,9 @@ Now inspect the type of the tibble we just created:
 class(favourite_colour)
 ```
 
-A tibble is in its core a 'data.frame', a base R data structure. For those of you interested in differences between tibble and data.frame please see [tibble vs data.frame*](dplyr_tibble1.html).
+A tibble is in its core a 'data.frame', a base R data structure. 
+
+
 
 
 `r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_related.Rmd"} 
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 

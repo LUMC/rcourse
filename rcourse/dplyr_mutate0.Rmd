@@ -1,19 +1,10 @@
 ---
 title: 'Mutate'
-# author: "R. Monajemi"
-params:
-  basename: "dplyr_mutate0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=TRUE)
-build_nocode(params) 
-pulse <- read_pulse()
-```
-
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+survey <- read_survey()
 ```
 
 > Use `mutate` to add new variables or modify the existing ones. 
@@ -69,14 +60,3 @@ mutate(pulse, age=age*365)
 ```
 
 here we keep the variable `age` but change its unit from year to days.
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_related.Rmd"}  
-``` 
- 
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-```

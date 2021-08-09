@@ -1,24 +1,11 @@
 ---
 title: "Select (practice)"
-# author: "R. Monajemi"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 survey <- read_survey()
 ```
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -30,7 +17,7 @@ Apply the following to survey data:
 survey_personal_info <- select(survey, name, age, gender, height)
 ```
 
-2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with uppercase initials, e.g. `Name`, `Age` etc. 
+2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with variable names initials in uppercase, e.g. `Name`, `Age` etc. 
 
 ```{r}
 survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
@@ -43,7 +30,7 @@ variables.
 select(survey, name,age,gender,everything())
 ```
 
-4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](data.html#survey)
+4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](S01L05l_course_data0.html)
 
 ```{r}
 select(survey, -span1,-span2,-hand,-fold,-clap)
@@ -117,6 +104,5 @@ survey_cats
 ```{r}
 survey_nums <- select(survey, name, span1, span2, pulse, height)
 survey_nums
-
 ```
 

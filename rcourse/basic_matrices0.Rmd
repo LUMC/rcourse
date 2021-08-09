@@ -1,17 +1,8 @@
 ---
 title: "Matrices"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "basic_matrices0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
+## Matrix concept
 
 A **matrix** is a two-dimensional, rectangular structure of elements of _the same type_.  
 The elements can be accessed by their **two-dimensional position**  (**row, column**).  
@@ -152,9 +143,3 @@ rowSums( m )
 colMeans( m )
 colSums( m )
 ```
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 

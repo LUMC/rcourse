@@ -1,0 +1,56 @@
+---
+title: "Variables (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+```
+
+## Primary exercises
+
+1. *Create a new variable*.  
+Make a variable `heightInMeters` that contains your height expressed in meters.  
+Print the variable.  
+Find the variable and its value in the Environment pane.
+
+```{r}
+heightInMeters <- 1.75
+heightInMeters
+```
+
+2. *Use a variable in an expression*.  
+Use the variable `heightInMeters` to calculate your height in cm.  
+Calculate the height in cm once again and store the result in a variable `heightInCentimeters`.  
+Show/print `heightInCentimeters`.
+
+```{r}
+heightInMeters * 100
+heightInCentimeters <- heightInMeters * 100
+heightInCentimeters
+```
+
+3. *Change a value of a variable*.  
+Increase the height stored in `heightInMeters` by 0.1m.  
+Check whether the value of the variable indeed changed.  
+Has also the value of `heightInCentimeters` changed? Why?
+
+```{r error=TRUE}
+heightInMeters <- heightInMeters + 0.1
+heightInMeters
+heightInCentimeters      # not changed, for change assignment is needed
+```
+
+4. *Typo in variable name*.  
+Observe the error shown when you try to print the variable but you make a typo.
+
+```{r error=TRUE}
+height.in.meters      # Error: object 'height.in.meters' not found
+```

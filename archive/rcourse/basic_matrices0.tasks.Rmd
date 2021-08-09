@@ -1,0 +1,89 @@
+---
+title: "Matrices (practice)"
+---
+
+```{r , include=FALSE}
+if (!is.null(knitr::opts_knit$get("solutions"))) {
+  if (knitr::opts_knit$get("solutions")=="no") {
+    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
+  } else  {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+  }
+} else {
+    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
+}
+
+pulse <- read_pulse()
+survey <- read_survey()
+```
+
+
+```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
+``` 
+
+## Primary exercises
+
+## Extra exercises
+
+1. *Correlated vectors.*  
+Let's define a parameter `size <- 12`. Later this will be the number of rows of the matrix.  
+From normal distribution let's create a random vector `x <- rnorm( size )`.  
+Now let's create another vector `x1` by adding (on average 10 times smaller) noise to `x`: `x1 <- x + rnorm( size )/10`.  
+Correlation coefficient of `x` and `x1` should be close to 1.0: check this with function `cor`.  
+Finally, create similarly vectors `x2` and `x3` by adding (other) noise to `x`.
+
+```{r}
+size <- 12
+x <- rnorm( size )
+x1 <- x + rnorm( size )/10
+cor( x, x1 )
+x2 <- x + rnorm( size )/10
+x3 <- x + rnorm( size )/10
+```
+
+2. *Matrix from vectors; matrix heatmap.*  
+Let's merge `x1`, `x2` and `x3` column-wise into a matrix using  `m <- cbind( x1, x2, x3 )`.  
+Check class of `m`.  
+Show the first few rows of `m`.  
+Try a simple heatmap visualisation of the matrix: `heatmap( m, Colv = NA, Rowv = NA, scale = "none" )`.  
+Which colors correspond to lowest/highest matrix values?  
+Do the vectos appear correlated?
+```{r}
+m <- cbind( x1, x2, x3 )
+class( m )
+head( m )
+heatmap( m, Colv = NA, Rowv = NA, scale = "none" ) # high is dark red, low is yellow
+                # x1, x2, x3 follow similar color pattern, they should be correlated
+```
+
+3. *Matrix of correlated and uncorrelated vectors.*  
+Repeat the first exercise and create several additional correlated vectors `y1`...`y4` (but not correlated with `x`), of the same length `size`.  
+Now build again `m` from columns `x1`...`x3`,`y1`...`y4` in some random order.  
+Show again the heatmap; you should see similarity between some columns.
+```{r}
+y <- rnorm( size )
+y1 <- y + rnorm( size )/10
+y2 <- y + rnorm( size )/10
+y3 <- y + rnorm( size )/10
+y4 <- y + rnorm( size )/10
+m <- cbind( y4, y3, x2, y1, x1, x3, y2 )
+heatmap( m, Colv = NA, Rowv = NA, scale = "none" ) # high is dark red, low is yellow
+```
+
+4. *Matrix of correlations.*  
+Use `cc <- cor( m )` to build the matrix of correlation coefficients between columns of `m`.  
+Use `round( cc, 3 )` to show this matrix with 3 digits precision.  
+Can you interpret the values?  
+```{r}
+cc <- cor( m )
+round( cc, 3 ) # 
+heatmap( cc, symm = TRUE, scale = "none" )
+# E.g. value for (row: x1, col: y1) is the corerlation of vectors x1, y1.
+# Values of 1.0 are on the diagonal: e.g. x1 is perfectly correlated with x1.
+# Correlations between x, x vectors are close to 1.0.
+# Correlations between y, y vectors are close to 1.0.
+# Correlations between x, y vectors are close to 0.0.
+```
+
+
+

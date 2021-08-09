@@ -1,17 +1,6 @@
 ---
 title: "Variables"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "basic_variables0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 ## Variable and its value
 
@@ -115,9 +104,3 @@ Naturally, there are some limitations. Do not use variable names:
 RStudio provides autocomplete feature, useful for long variable names.
 
 Start typing the first letters of a (variable) name and press `Tab`.
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 

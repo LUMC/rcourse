@@ -1,18 +1,10 @@
 ---
 title: 'ggplot2 geoms'
-params:
-  basename: "ggplot_geoms0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE,warning=FALSE,message=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 
 Generally speaking, `ggplot2` geoms specify **plot types**.  
 Each **geom** produces a plot **layer** and multiple layers can be combined.  
@@ -113,11 +105,3 @@ ggplot( pulse ) +
   aes( x = pulse1, y = pulse2, label = name, color = gender ) +
   geom_text( angle = -45, size = 3 )
 ```
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-

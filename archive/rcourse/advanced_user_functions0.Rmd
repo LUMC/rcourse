@@ -1,0 +1,205 @@
+---
+title: 'User-defined functions'
+params:
+  basename: "advanced_user_functions0"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
+build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+pulse <- read_pulse()
+
+```
+
+```{r, child="_navigate.Rmd"} 
+``` 
+
+
+Often we want to repeat certain series of steps in the analysis but each time with a subtle changes to the variables involved. This leads to repetition of the code in the script and consequently difficult to maintain or share with others. To that end, R provides the `function` construct to develop your own functions with your own defined arguments. The following is a scenario to motivate the usage of user-defined functions.
+
+
+> Motivation 
+
+Here is a scenario based on the pulse dataset and we will develop our analysis step by step. The initial problem definition is to 
+*calculate the mean height for individuals ranging over 50 to 60 kg*.
+
+```{r}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+    summarise(meanHeight=mean(height))
+```
+
+Now for the same individuals, *how many of them did the pulse increase?*
+
+```{r, collapse=TRUE}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+    summarise(meanHeight=mean(height))
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+    summarise(increasedPulse=sum(pulse1<pulse2))
+```
+
+Let's remove repetitions: 
+
+```{r}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+    summarise(meanHeight=mean(height), 
+              increasedPulse=sum(pulse1<pulse2))
+
+```
+
+We may want to produce other weight ranges, e.g. 60-70 and 70-80:
+
+```{r, collapse=TRUE}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+  summarise(meanHeight=mean(height), 
+            increasedPulse=sum(pulse1<pulse2))
+
+pulse %>% filter(weight >= 60 & weight < 70) %>% 
+  summarise(meanHeight=mean(height), 
+            increasedPulse=sum(pulse1<pulse2))
+
+pulse %>% filter(weight >= 70 & weight < 80) %>% 
+  summarise(meanHeight=mean(height),
+            increasedPulse=sum(pulse1<pulse2))
+```
+
+Now include the number of individuals in different ranges:
+
+```{r, collapse=TRUE}
+pulse %>% filter(weight >= 50 & weight < 60) %>% 
+  summarise(meanHeight=mean(height),
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+
+pulse %>% filter(weight >= 60 & weight < 70) %>% 
+  summarise(meanHeight=mean(height),
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+
+pulse %>% filter(weight >= 70 & weight < 80) %>% 
+  summarise(meanHeight=mean(height),
+            increasedPulse=sum(pulse1<pulse2), individuals=n())
+```
+
+> weightRangeSummary function
+
+Define the function `weightRangeSummary` which takes pulse dataset along with the weight interval and produces the summary: 
+
+```{r, eval=TRUE, echo=FALSE}
+weightRangeSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
+    summarise(meanHeight=mean(height),
+              increasedPulse=sum(pulse1<pulse2), individuals=n())
+}
+
+```
+
+```{r, collapse=TRUE}
+weightRangeSummary(pulse,50,60)
+weightRangeSummary(pulse,60,70)
+weightRangeSummary(pulse,70,80)
+```
+
+
+## User-defined functions in R
+
+**Functions** are constructs that encapsulate series of **statements** so you do not repeat the same statements all over again when needed. 
+
+```{r, eval=FALSE}
+functionName <- function(...) {
+  statement
+  ...
+  <value>  # the result of the function, alternatively: return(<value>)
+} 
+```
+
+### Example 1
+
+We **define** the following function `add_one`. It takes the value of an **argument** `x` and adds number `1` to it. The sum is the **result** of the function:
+
+```{r}
+add_one <- function(x) {
+	x + 1
+}
+```
+
+This function can now be **called** with different values of the argument `x`:
+
+```{r}
+add_one(2)
+add_one(-1)
+```
+
+Type the function name without any `()` to see the **body** (definition) of the function?
+
+```{r}
+add_one
+```
+
+What is the class of `add_one`? 
+
+```{r}
+class( add_one )
+```
+
+### Example 2
+
+Now let's define a function to calculate $x^2 + 1$:
+
+```{r}
+square_add_one <- function(x) {
+	result <- x^2    # choose a variable for temporary result
+	result + 1
+}
+
+square_add_one(2) # 2^2 + 1 = 5
+square_add_one(-1) # (-1)^2 + 1 = 2
+
+```
+
+The following versions of this functions are all equivalent:
+
+```{r, eval=FALSE}
+# (v1) One operation per line.
+square_add_one <- function(x) {
+	result <- x^2
+	result <- result + 1
+	result    # The last statement is returned as the value.
+}
+# (v2) No additional 'result' variable needed 
+square_add_one <- function(x) {
+	x^2 + 1
+}
+```
+
+> weightRangeSummary function definition 
+
+```{r}
+weightRangeSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
+    summarise(meanHeight=mean(height),
+              increasedPulse=sum(pulse1<pulse2), individuals=n())
+}
+```
+
+
+Account for the missing value in `increasedPulse` : 
+
+```{r}
+weightRangeSummary <- function(x, lowerBound,upperBound) {
+  x %>% filter(weight >= lowerBound & weight < upperBound) %>% 
+    summarise(meanHeight=mean(height),
+              increasedPulse=sum(pulse1<pulse2, na.rm = TRUE), individuals=n())
+}
+```
+
+
+## Some observations
+
+  - User-defined functions lead to a more structured and easier to read code.
+  - Variables declared inside a function cease to exist once the function terminates.
+  - Arguments are given in the same order as they are declared in the function unless the argument names are provided explicitly.
+
+
+```{r, child="_exercises_links.Rmd"}
+``` 
+
+```{r, child="_navigate.Rmd"} 
+``` 

@@ -4,16 +4,9 @@ params:
   basename: "advanced_user_functions0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params)  # UNCOMMENT IF SLOT HAS TASKS.
+```{r setup, include=FALSE,eval=TRUE}
 pulse <- read_pulse()
-
 ```
-
-```{r, child="_navigate.Rmd"} 
-``` 
-
 
 Often we want to repeat certain series of steps in the analysis but each time with a subtle changes to the variables involved. This leads to repetition of the code in the script and consequently difficult to maintain or share with others. To that end, R provides the `function` construct to develop your own functions with your own defined arguments. The following is a scenario to motivate the usage of user-defined functions.
 
@@ -196,10 +189,3 @@ weightRangeSummary <- function(x, lowerBound,upperBound) {
   - User-defined functions lead to a more structured and easier to read code.
   - Variables declared inside a function cease to exist once the function terminates.
   - Arguments are given in the same order as they are declared in the function unless the argument names are provided explicitly.
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 

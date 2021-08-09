@@ -1,17 +1,6 @@
 ---
 title: "Vectors"
-# date: "`r format(Sys.time(), '%d %B %Y')`"
-params:
-  basename: "basic_vectors0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 A **vector** is a container of (multiple) elements:
 
@@ -213,10 +202,3 @@ class( x )
 class(y)
 class( z )
 ```
-
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, child="_navigate.Rmd"} 
-``` 

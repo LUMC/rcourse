@@ -1,17 +1,7 @@
 ---
 title: 'Introduction'
 #author: "R. Monajemi"
-params:
-  basename: "introduction0"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-# build_nocode(params)
-```
-
-```{r, child="_navigate.Rmd"} 
-``` 
 
 ## Why this course? 
 
@@ -58,8 +48,3 @@ _RStudio_ from https://rstudio.com/ is an open source integrated development env
 It provides useful features to help in development of the R code and in organization of projects.
 
 RStudio is not necessary to work with R programs, but it is highly recommended and is used in this course.
-
-
-```{r, child="_navigate.Rmd"} 
-``` 
-  

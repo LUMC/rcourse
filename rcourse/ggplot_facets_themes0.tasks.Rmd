@@ -2,28 +2,59 @@
 title: "ggplot2 facets and themes (practice)"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r , include=FALSE, eval=TRUE}
 pulse <- read_pulse()
 survey <- read_survey()
 ```
 
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
-
 ## Primary exercises
 
-1. *Visualize effect of running on pulse*.  
+1. *Facets (grid): variable for rows and/or variable for columns*.  
+Try each of the following `facet_grid` lines and understand the effects:
+```{r echo=TRUE}
+p <- ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 )
+p + facet_grid( . ~ exercise )
+p + facet_grid( exercise ~ . )
+p + facet_grid( gender ~ exercise )
+p + facet_grid( exercise ~ gender )
+p + facet_grid( exercise ~ gender, scales = "free" )
+```
+
+```{r}
+# p + facet_grid( . ~ exercise )
+#     Here . (dot) is used to state that no facetting should be done for rows.
+
+# p + facet_grid( exercise ~ . )
+#     Here . (dot) is used to state that no facetting should be done for columns.
+
+# p + facet_grid( exercise ~ gender, scales = "free" )
+#     The scales="free" argument allows ranges on the axes to be different
+#     in each row/column.
+```
+
+2. *Facets (wrap): multi-level variable in multiple rows and columns*.  
+Now compare `facet_wrap` with `facet_grid`:
+```{r echo=TRUE}
+p <- ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise, shape = gender ) +
+  geom_point( size = 3, alpha = 0.8 )
+p + facet_grid( . ~ year )
+p + facet_grid( year ~ . )
+p + facet_wrap( ~ year )
+p + facet_wrap( ~ year, scales = "free" )
+```
+
+```{r}
+# facet_grid always enforces that a single variable goes in one direction
+#     (either rows or columns)
+#
+# facet_wrap distributes levels of the variable to fill the whole plot
+#     area "nicely"
+```
+
+3. *Visualize effect of running on pulse*.  
 Reconstruct the following image based on the `pulse` data.  
 Add component `coord_fixed()` to enforce that unit sizes are identical for both axes.  
 Use `geom_abline( slope = 1 )` to get the line showing where `pulse1` and `pulse2` are equal.  
@@ -46,7 +77,7 @@ ggplot( pulse ) +
 
 1. *Rotate axis labels*.  
 When using facets the numbers on the bottom axis often overlap.  
-Modify the top chart above by adding (after `theme_bw`):  
+Modify the chart from the previous exercise by adding (after `theme_bw`):  
 `  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))`.  
 `vjust` and `hjust` are numbers in range [0,1]. Understand their effect.  
 Try `angle=45`.

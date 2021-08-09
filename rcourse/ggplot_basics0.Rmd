@@ -1,18 +1,10 @@
 ---
 title: 'ggplot2 introduction'
-params:
-  basename: "ggplot_basics0"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = NA, paged.print=FALSE)
-build_nocode(params) 
-pulse <- read_pulse()
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 ```
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
 
 The [ggplot2](https://ggplot2.tidyverse.org/) library is a part of the `tidyverse` package.  
 Citing the original description:
@@ -120,11 +112,3 @@ ggplot( pulse, aes( x = weight ) ) +
   aes( fill = exercise ) +
   geom_point( shape = 21, alpha = 0.65, color = "black", aes( size = pulse1 ) )
 ```
-
-```{r, child="_exercises_links.Rmd"}
-``` 
-
-```{r, echo=FALSE, results='asis'}
-navigate_slots(params)
-``` 
-

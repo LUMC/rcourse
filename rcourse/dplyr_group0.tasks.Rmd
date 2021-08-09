@@ -1,25 +1,11 @@
 ---
 title: "Group (practice)"
-# author: "R. Monajemi"
 ---
 
-```{r , include=FALSE}
-if (!is.null(knitr::opts_knit$get("solutions"))) {
-  if (knitr::opts_knit$get("solutions")=="no") {
-    knitr::opts_chunk$set(echo = FALSE, eval = FALSE, comment = NA, paged.print=FALSE)
-  } else  {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-  }
-} else {
-    knitr::opts_chunk$set(echo = TRUE, eval = TRUE, comment = NA, paged.print=FALSE)
-}
-
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
 survey <- read_survey()
 ```
-
-
-```{r, child="_exercises_format.Rmd",eval=TRUE,echo=FALSE} 
-``` 
 
 ## Primary exercises
 
@@ -74,3 +60,29 @@ survey %>% filter(exercise=='freq') %>%
 
 
 ## Extra exercises
+
+1. Produce the following results:
+
+1.a frequency of `hand` categories per gender.
+
+```{r eval=TRUE}
+survey %>%  group_by(gender,hand) %>%  summarise(n=n())
+```
+
+1.b frequency of `fold` categories of females.
+
+```{r eval=TRUE}
+survey %>%  filter(gender=="female") %>% group_by(gender,fold) %>% summarise(n=n(), .groups = "drop")
+
+# Alternative solution to b) however less efficient, since the grouping is now done on a 
+# larger set including male observations. 
+# 
+# survey %>%   group_by(gender,fold)  %>% summarise(n=n(), .groups = "drop") %>% filter(gender=="female")
+```
+
+1.c most popular name initials in descending order of popularity.  
+
+```{r eval=TRUE}
+survey %>% mutate(initial=str_sub(name, 1,1)) %>% group_by(initial) %>% summarise(n=n()) %>% arrange(desc(n))
+```
+
