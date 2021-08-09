@@ -1,13 +1,13 @@
 ---
-title: "ROOC R package"
+#title: "ROOC R package"
 # author:
 # - name: R. Monajemi
 #   affiliation: Biomedical Data Sciences | LUMC
 # date: "27 februari 2020"
-output: 
-  html_document:
-    keep_md : true
-    theme: cerulean
+#output: 
+#  html_document:
+#    keep_md : true
+#    theme: cerulean
 ---
 
 
