@@ -90,11 +90,14 @@ Course <- R6Class("Course",
       }
     ),
     public = list(
+      #' @param path_ course directory path.
+      path_ = NULL,
+      course_ = NULL,
       #' @param site name of the course, create it if it does not exist, otherwise instantiate it.
       #' @param ... arguments to rmarkdown::render_site
       #' @description Instantiates a 'Course' object. It will load _schedule.yml 
       #' and renders the site for the default course (see current tag in _schedule.yml)..
-      initialize = function(site="site", ...) {
+      initialize_off = function(site="site", ...) {
         options(knitr.duplicate.label = "allow")  # RESOLVE THIS !!!
         options(width=120)
         private$sources_ <- site
@@ -113,6 +116,41 @@ Course <- R6Class("Course",
         self$clear_nocode_html()
         private$site_ <- file.path(self$src(),"_site")
         private$url_ <- file.path(self$site(),"index.html")
+      },
+      #' @description Builds a TheCourse instance based on the 'config.yml' file in the path 'dir'
+      #' @param config config-file name.
+      initialize = function(path, config = "config.yml") {
+        self$path_ <- path
+        # Course config file (YAML)
+        config <- yaml.load_file(file.path(path,config))
+        # global course info
+        startDate <- as.Date( config[["startDate"]] )
+        # TheCourse object
+        course <- TheCourse$new( id = config[["course_id"]], dir = path, label =  config[["course_label"]]  )
+        slots <- config[["slots"]]
+        for( i in seq_len( length( slots ) ) ) {
+          slot_id <- names(slots)[[i]]
+          slot <- slots[[i]]
+          session_ <- Session$new(
+            id = slot_id, label = slot[["slot_label"]],
+            date = startDate + slot[["slot_date"]],
+            timeRange = slot[["slot_time"]],
+            breaksPattern = slot[["slot_plan"]]
+          )
+          for( lecture in slot[["lectures"]] ) {
+            lecture_ <- strsplit(lecture,":")[[1]] # [id,label,hasTasks,min]
+            session_$add(Lecture$new(id=lecture_[1], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=as.numeric(lecture_[4])))
+          }
+          course$add(session_)
+        }
+        # Materials
+        materials <- lapply(config[["materials"]], function(m) {
+          m_ <- strsplit(m,":")[[1]] # id:label:path:out_path
+          material_  <- Material$new(id=m_[1],label=m_[2],path=m_[3],outPath=m_[4])
+          course$add(material_)
+        })
+        
+        self$course_ <- course
       },
       #' @description Path to site's directory containing all Rmd files. 
       src = function() {
@@ -134,7 +172,7 @@ Course <- R6Class("Course",
       #' @param clean If true the clean the site first.
       #' @param ... arguments to rmarkdown::render_site
       #' @description Render the site only for modified Rmd's. 
-      render = function(clean=FALSE,...){
+      render_off = function(clean=FALSE,...){
         e <- new.env() # currently to hold .next and .prev values for slots
         if (clean)
           self$clean()
@@ -151,7 +189,12 @@ Course <- R6Class("Course",
         })
         self$clear_nocode_html()
       },
-      #' @description Return the path to site's directory.    
+      #' @description Render the site ( todo: only for modified Rmd's).
+      #' @param clean ...    
+      render = function(clean=FALSE,...){
+        renderer <- Renderer$new( outDir = paste0( self$path_, ".site" ) )
+        renderer$makeAll( course = self$course_ )        
+      }, 
       site = function() {
         private$site_
       },
