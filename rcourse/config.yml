@@ -4,7 +4,7 @@
 startDate : "2021-09-27"
 course_id : "CRiP_202109"
 course_label : "CRiP, Sep2021: Using R for data analysis"
-
+index_file : "S01L01l_index.html"
 #
 # slots   : slot+
 # slot    : lecture+

@@ -62,9 +62,11 @@ rcourse$view()
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
+\item \href{#method-initialize_off}{\code{Course$initialize_off()}}
 \item \href{#method-new}{\code{Course$new()}}
 \item \href{#method-src}{\code{Course$src()}}
 \item \href{#method-clear_nocode_html}{\code{Course$clear_nocode_html()}}
+\item \href{#method-render_off}{\code{Course$render_off()}}
 \item \href{#method-render}{\code{Course$render()}}
 \item \href{#method-site}{\code{Course$site()}}
 \item \href{#method-url}{\code{Course$url()}}
@@ -84,13 +86,13 @@ rcourse$view()
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
-\subsection{Method \code{new()}}{
+\if{html}{\out{<a id="method-initialize_off"></a>}}
+\if{latex}{\out{\hypertarget{method-initialize_off}{}}}
+\subsection{Method \code{initialize_off()}}{
 Instantiates a 'Course' object. It will load _schedule.yml 
 and renders the site for the default course (see current tag in _schedule.yml)..
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$new(site = "site", ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$initialize_off(site = "site", ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -99,6 +101,25 @@ and renders the site for the default course (see current tag in _schedule.yml)..
 \item{\code{site}}{name of the course, create it if it does not exist, otherwise instantiate it.}
 
 \item{\code{...}}{arguments to rmarkdown::render_site}
+
+\item{\code{path_}}{course directory path.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Builds a TheCourse instance based on the 'config.yml' file in the path 'dir'
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$new(path, config = "config.yml", site = "docs")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{config}}{config-file name.}
 }
 \if{html}{\out{</div>}}
 }
@@ -124,12 +145,12 @@ clear generated nocode html file
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-render"></a>}}
-\if{latex}{\out{\hypertarget{method-render}{}}}
-\subsection{Method \code{render()}}{
+\if{html}{\out{<a id="method-render_off"></a>}}
+\if{latex}{\out{\hypertarget{method-render_off}{}}}
+\subsection{Method \code{render_off()}}{
 Render the site only for modified Rmd's.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$render(clean = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$render_off(clean = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -143,10 +164,26 @@ Render the site only for modified Rmd's.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-render"></a>}}
+\if{latex}{\out{\hypertarget{method-render}{}}}
+\subsection{Method \code{render()}}{
+Render the site ( todo: only for modified Rmd's).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Course$render(clean = FALSE, ...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{clean}}{...}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-site"></a>}}
 \if{latex}{\out{\hypertarget{method-site}{}}}
 \subsection{Method \code{site()}}{
-Return the path to site's directory.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Course$site()}\if{html}{\out{</div>}}
 }
