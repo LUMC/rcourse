@@ -176,20 +176,20 @@ pre code {
 <p>Let’s define some vectors which can be used for demonstrations:</p>
 <pre class="r"><code>manyNumbers &lt;- sample( 1:1000, 20 )
 manyNumbers</code></pre>
-<pre><code> [1] 359 883 151 971  48 188 898 782 528  63 553 214 565 241 334 383 483 991 465 293</code></pre>
+<pre><code> [1] 517 237 201 259  52  61 474 901 580 629 919 949 727 783 999 402 855 430 900 353</code></pre>
 <pre class="r"><code>manyNumbersWithNA &lt;- sample( c( NA, NA, NA, manyNumbers ) )
 manyNumbersWithNA</code></pre>
-<pre><code> [1] 214 359 151 898 334 241  NA 483 971 553 528 465 782 383  NA 883 293 991 188  NA  48 565  63</code></pre>
+<pre><code> [1] 855 629 783  61 353  NA  NA 580  52 517 259 999 727  NA 201 901 900 949 402 919 237 430 474</code></pre>
 <pre class="r"><code>duplicatedNumbers &lt;- sample( 1:5, 10, replace = TRUE )
 duplicatedNumbers</code></pre>
-<pre><code> [1] 4 2 3 1 3 3 3 3 4 4</code></pre>
+<pre><code> [1] 4 4 4 5 3 1 1 1 4 2</code></pre>
 <pre class="r"><code>letters</code></pre>
 <pre><code> [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
 <pre class="r"><code>LETTERS</code></pre>
 <pre><code> [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
 <pre class="r"><code>mixedLetters &lt;- c( sample( letters, 5 ), sample( LETTERS, 5 ) )
 mixedLetters</code></pre>
-<pre><code> [1] &quot;f&quot; &quot;s&quot; &quot;t&quot; &quot;k&quot; &quot;l&quot; &quot;N&quot; &quot;B&quot; &quot;W&quot; &quot;I&quot; &quot;A&quot;</code></pre>
+<pre><code> [1] &quot;q&quot; &quot;w&quot; &quot;p&quot; &quot;t&quot; &quot;i&quot; &quot;L&quot; &quot;T&quot; &quot;X&quot; &quot;U&quot; &quot;Z&quot;</code></pre>
 </div>
 <div id="are-allany-elements-true" class="section level2">
 <h2>Are all/any elements TRUE</h2>
@@ -215,11 +215,11 @@ mixedLetters</code></pre>
 <h2>Which elements are TRUE</h2>
 <p><em>Input:</em> logical vector <em>Output:</em> vector of numbers (positions)</p>
 <pre class="r"><code>which( manyNumbers &gt; 900 )</code></pre>
-<pre><code>[1]  4 18</code></pre>
+<pre><code>[1]  8 11 12 15</code></pre>
 <pre class="r"><code>which( manyNumbersWithNA &gt; 900 )</code></pre>
-<pre><code>[1]  9 18</code></pre>
+<pre><code>[1] 12 16 18 20</code></pre>
 <pre class="r"><code>which( is.na( manyNumbersWithNA ) )</code></pre>
-<pre><code>[1]  7 15 20</code></pre>
+<pre><code>[1]  6  7 14</code></pre>
 </div>
 <div id="filtering-vector-elements" class="section level2">
 <h2>Filtering vector elements</h2>
@@ -229,12 +229,12 @@ mixedLetters</code></pre>
 <li><em>Note:</em> several ways to get the same effect</li>
 </ul>
 <pre class="r"><code>manyNumbers[ manyNumbers &gt; 900 ] # indexing by logical vector</code></pre>
-<pre><code>[1] 971 991</code></pre>
+<pre><code>[1] 901 919 949 999</code></pre>
 <pre class="r"><code>manyNumbers[ which( manyNumbers &gt; 900 ) ] # indexing by positions</code></pre>
-<pre><code>[1] 971 991</code></pre>
+<pre><code>[1] 901 919 949 999</code></pre>
 <pre class="r"><code>somePositions &lt;- which( manyNumbers &gt; 900 )
 manyNumbers[ somePositions ]</code></pre>
-<pre><code>[1] 971 991</code></pre>
+<pre><code>[1] 901 919 949 999</code></pre>
 </div>
 <div id="are-some-elements-among-other-elements" class="section level2">
 <h2>Are some elements among other elements</h2>
@@ -253,15 +253,15 @@ manyNumbers[ somePositions ]</code></pre>
 <pre class="r"><code>any( mixedLetters %in% LETTERS )</code></pre>
 <pre><code>[1] TRUE</code></pre>
 <pre class="r"><code>mixedLetters[ mixedLetters %in% LETTERS ]</code></pre>
-<pre><code>[1] &quot;N&quot; &quot;B&quot; &quot;W&quot; &quot;I&quot; &quot;A&quot;</code></pre>
+<pre><code>[1] &quot;L&quot; &quot;T&quot; &quot;X&quot; &quot;U&quot; &quot;Z&quot;</code></pre>
 <pre class="r"><code>mixedLetters[ !( mixedLetters %in% LETTERS ) ]</code></pre>
-<pre><code>[1] &quot;f&quot; &quot;s&quot; &quot;t&quot; &quot;k&quot; &quot;l&quot;</code></pre>
+<pre><code>[1] &quot;q&quot; &quot;w&quot; &quot;p&quot; &quot;t&quot; &quot;i&quot;</code></pre>
 <pre class="r"><code>manyNumbers %in% 300:600</code></pre>
-<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
+<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
 <pre class="r"><code>which( manyNumbers %in% 300:600 )</code></pre>
-<pre><code>[1]  1  9 11 13 15 16 17 19</code></pre>
+<pre><code>[1]  1  7  9 16 18 20</code></pre>
 <pre class="r"><code>sum( manyNumbers %in% 300:600 )</code></pre>
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 <div id="pick-one-of-two-three-depending-on-condition" class="section level2">
 <h2>Pick one of two (three) depending on condition</h2>
@@ -271,14 +271,14 @@ manyNumbers[ somePositions ]</code></pre>
 <li><em>Note:</em> it can take care of <code>NA</code>s</li>
 </ul>
 <pre class="r"><code>if_else( manyNumbersWithNA &gt;= 500, &quot;large&quot;, &quot;small&quot; )</code></pre>
-<pre><code> [1] &quot;small&quot; &quot;small&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot; &quot;small&quot; NA      &quot;small&quot; &quot;large&quot; &quot;large&quot; &quot;large&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot; NA      &quot;large&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot; NA      &quot;small&quot; &quot;large&quot; &quot;small&quot;</code></pre>
+<pre><code> [1] &quot;large&quot; &quot;large&quot; &quot;large&quot; &quot;small&quot; &quot;small&quot; NA      NA      &quot;large&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot; &quot;large&quot; &quot;large&quot; NA      &quot;small&quot; &quot;large&quot; &quot;large&quot; &quot;large&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot; &quot;small&quot; &quot;small&quot;</code></pre>
 <pre class="r"><code>if_else( manyNumbersWithNA &gt;= 500, &quot;large&quot;, &quot;small&quot;, &quot;UNKNOWN&quot; )</code></pre>
-<pre><code> [1] &quot;small&quot;   &quot;small&quot;   &quot;small&quot;   &quot;large&quot;   &quot;small&quot;   &quot;small&quot;   &quot;UNKNOWN&quot; &quot;small&quot;   &quot;large&quot;   &quot;large&quot;   &quot;large&quot;   &quot;small&quot;   &quot;large&quot;   &quot;small&quot;   &quot;UNKNOWN&quot; &quot;large&quot;   &quot;small&quot;   &quot;large&quot;   &quot;small&quot;  
-[20] &quot;UNKNOWN&quot; &quot;small&quot;   &quot;large&quot;   &quot;small&quot;  </code></pre>
+<pre><code> [1] &quot;large&quot;   &quot;large&quot;   &quot;large&quot;   &quot;small&quot;   &quot;small&quot;   &quot;UNKNOWN&quot; &quot;UNKNOWN&quot; &quot;large&quot;   &quot;small&quot;   &quot;large&quot;   &quot;small&quot;   &quot;large&quot;   &quot;large&quot;   &quot;UNKNOWN&quot; &quot;small&quot;   &quot;large&quot;   &quot;large&quot;   &quot;large&quot;   &quot;small&quot;  
+[20] &quot;large&quot;   &quot;small&quot;   &quot;small&quot;   &quot;small&quot;  </code></pre>
 <pre class="r"><code># here integer 0L is needed instead of real 0.0 
 # manyNumbersWithNA contains integer numbers and the method complains
 if_else( manyNumbersWithNA &gt;= 500, manyNumbersWithNA, 0L ) </code></pre>
-<pre><code> [1]   0   0   0 898   0   0  NA   0 971 553 528   0 782   0  NA 883   0 991   0  NA   0 565   0</code></pre>
+<pre><code> [1] 855 629 783   0   0  NA  NA 580   0 517   0 999 727  NA   0 901 900 949   0 919   0   0   0</code></pre>
 </div>
 <div id="duplicates-and-unique-elements" class="section level2">
 <h2>Duplicates and unique elements</h2>
@@ -286,69 +286,69 @@ if_else( manyNumbersWithNA &gt;= 500, manyNumbersWithNA, 0L ) </code></pre>
 <li><em>Input:</em> a vector</li>
 </ul>
 <pre class="r"><code>unique( duplicatedNumbers )</code></pre>
-<pre><code>[1] 4 2 3 1</code></pre>
+<pre><code>[1] 4 5 3 1 2</code></pre>
 <pre class="r"><code>unique( c( NA, duplicatedNumbers, NA ) )</code></pre>
-<pre><code>[1] NA  4  2  3  1</code></pre>
+<pre><code>[1] NA  4  5  3  1  2</code></pre>
 <pre class="r"><code>duplicated( duplicatedNumbers )</code></pre>
-<pre><code> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<pre><code> [1] FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
 <div id="positions-of-maxmin-elements" class="section level2">
 <h2>Positions of max/min elements</h2>
 <pre class="r"><code>which.max( manyNumbersWithNA )</code></pre>
-<pre><code>[1] 18</code></pre>
+<pre><code>[1] 12</code></pre>
 <pre class="r"><code>manyNumbersWithNA[ which.max( manyNumbersWithNA ) ]</code></pre>
-<pre><code>[1] 991</code></pre>
+<pre><code>[1] 999</code></pre>
 <pre class="r"><code>which.min( manyNumbersWithNA )</code></pre>
-<pre><code>[1] 21</code></pre>
+<pre><code>[1] 9</code></pre>
 <pre class="r"><code>manyNumbersWithNA[ which.min( manyNumbersWithNA ) ]</code></pre>
-<pre><code>[1] 48</code></pre>
+<pre><code>[1] 52</code></pre>
 <pre class="r"><code>range( manyNumbersWithNA, na.rm = TRUE )</code></pre>
-<pre><code>[1]  48 991</code></pre>
+<pre><code>[1]  52 999</code></pre>
 </div>
 <div id="sortingordering-of-vectors" class="section level2">
 <h2>Sorting/ordering of vectors</h2>
 <pre class="r"><code>manyNumbersWithNA</code></pre>
-<pre><code> [1] 214 359 151 898 334 241  NA 483 971 553 528 465 782 383  NA 883 293 991 188  NA  48 565  63</code></pre>
+<pre><code> [1] 855 629 783  61 353  NA  NA 580  52 517 259 999 727  NA 201 901 900 949 402 919 237 430 474</code></pre>
 <pre class="r"><code>sort( manyNumbersWithNA )</code></pre>
-<pre><code> [1]  48  63 151 188 214 241 293 334 359 383 465 483 528 553 565 782 883 898 971 991</code></pre>
+<pre><code> [1]  52  61 201 237 259 353 402 430 474 517 580 629 727 783 855 900 901 919 949 999</code></pre>
 <pre class="r"><code>sort( manyNumbersWithNA, na.last = TRUE )</code></pre>
-<pre><code> [1]  48  63 151 188 214 241 293 334 359 383 465 483 528 553 565 782 883 898 971 991  NA  NA  NA</code></pre>
+<pre><code> [1]  52  61 201 237 259 353 402 430 474 517 580 629 727 783 855 900 901 919 949 999  NA  NA  NA</code></pre>
 <pre class="r"><code>sort( manyNumbersWithNA, na.last = TRUE, decreasing = TRUE )</code></pre>
-<pre><code> [1] 991 971 898 883 782 565 553 528 483 465 383 359 334 293 241 214 188 151  63  48  NA  NA  NA</code></pre>
+<pre><code> [1] 999 949 919 901 900 855 783 727 629 580 517 474 430 402 353 259 237 201  61  52  NA  NA  NA</code></pre>
 <pre class="r"><code>manyNumbersWithNA[1:5]</code></pre>
-<pre><code>[1] 214 359 151 898 334</code></pre>
+<pre><code>[1] 855 629 783  61 353</code></pre>
 <pre class="r"><code>order( manyNumbersWithNA[1:5] )</code></pre>
-<pre><code>[1] 3 1 5 2 4</code></pre>
+<pre><code>[1] 4 5 2 3 1</code></pre>
 <pre class="r"><code>rank( manyNumbersWithNA[1:5] )</code></pre>
-<pre><code>[1] 2 4 1 5 3</code></pre>
+<pre><code>[1] 5 3 4 1 2</code></pre>
 <pre class="r"><code>sort( mixedLetters )</code></pre>
-<pre><code> [1] &quot;A&quot; &quot;B&quot; &quot;f&quot; &quot;I&quot; &quot;k&quot; &quot;l&quot; &quot;N&quot; &quot;s&quot; &quot;t&quot; &quot;W&quot;</code></pre>
+<pre><code> [1] &quot;i&quot; &quot;L&quot; &quot;p&quot; &quot;q&quot; &quot;t&quot; &quot;T&quot; &quot;U&quot; &quot;w&quot; &quot;X&quot; &quot;Z&quot;</code></pre>
 </div>
 <div id="ranking-of-vectors" class="section level2">
 <h2>Ranking of vectors</h2>
 <pre class="r"><code>manyDuplicates &lt;- sample( 10:15, 10, replace = TRUE )
 rank( manyDuplicates )</code></pre>
-<pre><code> [1]  8.5  1.0  3.5  3.5  3.5  6.5  3.5 10.0  6.5  8.5</code></pre>
+<pre><code> [1]  5.0  8.0  8.0 10.0  2.5  6.0  2.5  2.5  8.0  2.5</code></pre>
 <pre class="r"><code>rank( manyDuplicates, ties.method = &quot;min&quot; )</code></pre>
-<pre><code> [1]  8  1  2  2  2  6  2 10  6  8</code></pre>
+<pre><code> [1]  5  7  7 10  1  6  1  1  7  1</code></pre>
 <pre class="r"><code>rank( manyDuplicates, ties.method = &quot;random&quot; )</code></pre>
-<pre><code> [1]  8  1  4  2  5  7  3 10  6  9</code></pre>
+<pre><code> [1]  5  8  9 10  2  6  1  3  7  4</code></pre>
 </div>
 <div id="rounding-numbers" class="section level2">
 <h2>Rounding numbers</h2>
 <pre class="r"><code>v &lt;- c( -1, -0.5, 0, 0.5, 1, rnorm( 10 ) )
 v</code></pre>
-<pre><code> [1] -1.0000000 -0.5000000  0.0000000  0.5000000  1.0000000 -0.4754721  0.7563959 -0.2928394  1.2437192 -0.6858921  2.0651844 -0.8234023  0.0321809 -0.7677886 -0.9115262</code></pre>
+<pre><code> [1] -1.0000000 -0.5000000  0.0000000  0.5000000  1.0000000  0.7201162  0.3105298 -1.1462636 -0.5112160 -0.1135313 -0.6163405  0.3891800 -0.8626043 -0.4194935  0.2153312</code></pre>
 <pre class="r"><code>round( v, 0 )</code></pre>
-<pre><code> [1] -1  0  0  0  1  0  1  0  1 -1  2 -1  0 -1 -1</code></pre>
+<pre><code> [1] -1  0  0  0  1  1  0 -1 -1  0 -1  0 -1  0  0</code></pre>
 <pre class="r"><code>round( v, 1 )</code></pre>
-<pre><code> [1] -1.0 -0.5  0.0  0.5  1.0 -0.5  0.8 -0.3  1.2 -0.7  2.1 -0.8  0.0 -0.8 -0.9</code></pre>
+<pre><code> [1] -1.0 -0.5  0.0  0.5  1.0  0.7  0.3 -1.1 -0.5 -0.1 -0.6  0.4 -0.9 -0.4  0.2</code></pre>
 <pre class="r"><code>round( v, 2 )</code></pre>
-<pre><code> [1] -1.00 -0.50  0.00  0.50  1.00 -0.48  0.76 -0.29  1.24 -0.69  2.07 -0.82  0.03 -0.77 -0.91</code></pre>
+<pre><code> [1] -1.00 -0.50  0.00  0.50  1.00  0.72  0.31 -1.15 -0.51 -0.11 -0.62  0.39 -0.86 -0.42  0.22</code></pre>
 <pre class="r"><code>floor( v )</code></pre>
-<pre><code> [1] -1 -1  0  0  1 -1  0 -1  1 -1  2 -1  0 -1 -1</code></pre>
+<pre><code> [1] -1 -1  0  0  1  0  0 -2 -1 -1 -1  0 -1 -1  0</code></pre>
 <pre class="r"><code>ceiling( v )</code></pre>
-<pre><code> [1] -1  0  0  1  1  0  1  0  2  0  3  0  1  0  0</code></pre>
+<pre><code> [1] -1  0  0  1  1  1  1 -1  0  0  0  1  0  0  1</code></pre>
 </div>
 <div id="naming-vector-elements" class="section level2">
 <h2>Naming vector elements</h2>

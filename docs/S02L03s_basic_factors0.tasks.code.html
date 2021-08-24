@@ -218,34 +218,34 @@ Ensure, that levels are in order provided in the variable <code>lvl</code>.</li>
 </ol>
 <pre class="r"><code>lvs &lt;- c( &quot;none&quot;, &quot;oncePerWeek&quot;, &quot;severalPerWeek&quot;, &quot;daily&quot; )
 sample( lvs, 3 )</code></pre>
-<pre><code>[1] &quot;none&quot;           &quot;severalPerWeek&quot; &quot;daily&quot;         </code></pre>
+<pre><code>[1] &quot;severalPerWeek&quot; &quot;daily&quot;          &quot;none&quot;          </code></pre>
 <pre class="r"><code>sample( lvs, 3 )</code></pre>
-<pre><code>[1] &quot;daily&quot;       &quot;none&quot;        &quot;oncePerWeek&quot;</code></pre>
+<pre><code>[1] &quot;severalPerWeek&quot; &quot;daily&quot;          &quot;none&quot;          </code></pre>
 <pre class="r"><code>sample( lvs, 3 )</code></pre>
-<pre><code>[1] &quot;none&quot;           &quot;severalPerWeek&quot; &quot;daily&quot;         </code></pre>
+<pre><code>[1] &quot;oncePerWeek&quot;    &quot;severalPerWeek&quot; &quot;daily&quot;         </code></pre>
 <pre class="r"><code>sample( lvs, 100 )</code></pre>
 <pre><code>Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when &#39;replace = FALSE&#39;</code></pre>
 <pre class="r"><code>v &lt;- sample( lvs, 100, replace = TRUE )
 w &lt;- factor( v, levels = lvs )
 w</code></pre>
-<pre><code>  [1] severalPerWeek severalPerWeek severalPerWeek oncePerWeek    none           severalPerWeek daily          oncePerWeek    severalPerWeek severalPerWeek daily          oncePerWeek   
- [13] oncePerWeek    oncePerWeek    daily          none           daily          oncePerWeek    oncePerWeek    oncePerWeek    none           severalPerWeek daily          severalPerWeek
- [25] daily          daily          severalPerWeek severalPerWeek severalPerWeek oncePerWeek    none           none           daily          severalPerWeek daily          severalPerWeek
- [37] none           daily          severalPerWeek oncePerWeek    oncePerWeek    none           none           daily          none           oncePerWeek    none           daily         
- [49] daily          severalPerWeek oncePerWeek    daily          severalPerWeek daily          severalPerWeek none           severalPerWeek daily          oncePerWeek    severalPerWeek
- [61] none           daily          daily          none           none           none           none           oncePerWeek    severalPerWeek daily          severalPerWeek oncePerWeek   
- [73] severalPerWeek none           severalPerWeek none           oncePerWeek    oncePerWeek    none           severalPerWeek none           oncePerWeek    none           daily         
- [85] none           oncePerWeek    daily          none           daily          daily          oncePerWeek    oncePerWeek    oncePerWeek    oncePerWeek    none           none          
- [97] severalPerWeek none           oncePerWeek    oncePerWeek   
+<pre><code>  [1] daily          oncePerWeek    daily          oncePerWeek    severalPerWeek severalPerWeek oncePerWeek    severalPerWeek daily          severalPerWeek oncePerWeek    oncePerWeek   
+ [13] daily          severalPerWeek severalPerWeek oncePerWeek    severalPerWeek none           oncePerWeek    oncePerWeek    oncePerWeek    oncePerWeek    oncePerWeek    none          
+ [25] daily          oncePerWeek    severalPerWeek severalPerWeek severalPerWeek severalPerWeek none           oncePerWeek    severalPerWeek none           severalPerWeek none          
+ [37] oncePerWeek    severalPerWeek none           daily          daily          oncePerWeek    oncePerWeek    severalPerWeek severalPerWeek oncePerWeek    oncePerWeek    none          
+ [49] oncePerWeek    oncePerWeek    oncePerWeek    daily          none           none           severalPerWeek severalPerWeek severalPerWeek none           oncePerWeek    oncePerWeek   
+ [61] severalPerWeek severalPerWeek none           severalPerWeek oncePerWeek    none           daily          oncePerWeek    oncePerWeek    daily          none           oncePerWeek   
+ [73] severalPerWeek none           severalPerWeek severalPerWeek daily          none           none           severalPerWeek oncePerWeek    severalPerWeek none           severalPerWeek
+ [85] daily          daily          daily          daily          none           oncePerWeek    none           none           oncePerWeek    none           daily          oncePerWeek   
+ [97] daily          severalPerWeek daily          oncePerWeek   
 Levels: none oncePerWeek severalPerWeek daily</code></pre>
 <pre class="r"><code>fct_count( w )</code></pre>
 <pre><code># A tibble: 4 x 2
   f                  n
   &lt;fct&gt;          &lt;int&gt;
-1 none              26
-2 oncePerWeek       26
-3 severalPerWeek    25
-4 daily             23</code></pre>
+1 none              21
+2 oncePerWeek       32
+3 severalPerWeek    29
+4 daily             18</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><em>Reordering factor levels.</em><br />
 When a factor is shown on an axis of a plot, the order is given by its levels.<br />
@@ -262,10 +262,10 @@ levels( w2 )</code></pre>
 <pre><code># A tibble: 4 x 2
   f                  n
   &lt;fct&gt;          &lt;int&gt;
-1 daily             23
-2 severalPerWeek    25
-3 oncePerWeek       26
-4 none              26</code></pre>
+1 daily             18
+2 severalPerWeek    29
+3 oncePerWeek       32
+4 none              21</code></pre>
 </div>
 <div id="extra-exercises" class="section level2">
 <h2>Extra exercises</h2>

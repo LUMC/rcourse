@@ -260,32 +260,32 @@ Calculate the <code>mean</code>, <code>median</code> and the standard deviation 
 </ol>
 <pre class="r"><code>v &lt;- rnorm( 10 ) # a vector of random numbers
 v</code></pre>
-<pre><code> [1] -0.2079354 -0.6564956  2.2194761 -1.3970436 -0.6583580 -2.4844799 -0.6035884 -0.1841522  0.3697489 -2.9880869</code></pre>
+<pre><code> [1]  0.738985909 -0.255404522 -1.041421634 -1.027808492 -0.331814112  0.467031982 -0.946389077  1.689197312  1.115092101  0.009839453</code></pre>
 <pre class="r"><code>v &lt;- rnorm( 10 ) # another vector of random numbers
 v</code></pre>
-<pre><code> [1] -0.53294731 -0.25751405  1.53474449  0.06977336 -1.13015460  0.36175431 -0.57077356  0.08522181  0.21577347 -0.07556199</code></pre>
+<pre><code> [1] -0.34018995  0.59771929  1.06691748  0.26779035  1.72495254 -1.16013244  1.55941752 -2.11637269 -0.02784921  1.52764694</code></pre>
 <pre class="r"><code>min( v )</code></pre>
-<pre><code>[1] -1.130155</code></pre>
+<pre><code>[1] -2.116373</code></pre>
 <pre class="r"><code>max( v )</code></pre>
-<pre><code>[1] 1.534744</code></pre>
+<pre><code>[1] 1.724953</code></pre>
 <pre class="r"><code>mean( v )</code></pre>
-<pre><code>[1] -0.02996841</code></pre>
+<pre><code>[1] 0.30999</code></pre>
 <pre class="r"><code>median( v )</code></pre>
-<pre><code>[1] -0.002894319</code></pre>
+<pre><code>[1] 0.4327548</code></pre>
 <pre class="r"><code>sd( v )</code></pre>
-<pre><code>[1] 0.7067219</code></pre>
+<pre><code>[1] 1.260015</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li><em>Selecting and counting elements by a condition</em>. Type <code>v &lt; 0</code> and understand the result.<br />
 How to interpret the number produced by <code>sum( v &lt; 0 )</code>? How to interpret the number produced by <code>sum( !( v &lt; 0 ) )</code>?</li>
 </ol>
 <pre class="r"><code>v &lt; 0             # TRUE corresponds to elements of vector v smaller than 0</code></pre>
-<pre><code> [1]  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
 <pre class="r"><code>sum( v &lt; 0 )      # calculates the number of negative elements in vector v</code></pre>
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 4</code></pre>
 <pre class="r"><code>sum( !( v &lt; 0 ) ) # calculates the number of non-negative (so, positive OR ZERO) elements in vector v </code></pre>
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 6</code></pre>
 <pre class="r"><code>sum( v &gt;= 0 )     # same as above</code></pre>
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 6</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li><em>Head and tail</em>.<br />
 Often there is a need to quickly look at the beginning (<code>head</code>) or at the end (<code>tail</code>) of a vector.<br />
@@ -293,12 +293,12 @@ Try these functions to show the first 5 and the last 7 elements of a randomly ge
 </ol>
 <pre class="r"><code>v &lt;- rnorm( 20 )
 v</code></pre>
-<pre><code> [1] -0.07660893 -2.45227937 -1.12261805 -0.62305282  0.73484208 -1.66766051 -0.93285594  0.67176389  1.59028322  0.96009016 -0.46368712  0.73235879 -1.32830944 -1.06987146  0.43307398  0.12876160
-[17]  0.29933286  0.08579898  0.61576262  0.30430783</code></pre>
+<pre><code> [1]  0.18824835 -1.20351205 -0.32471374 -1.16143229  0.69603358  0.59609179  1.56393747 -1.94487936  2.72698340 -0.68015756 -0.37634427 -0.47174309 -0.45837616 -0.42452993 -0.03559992  0.83106554
+[17]  0.04285367  0.22849826  0.23903599 -4.19320797</code></pre>
 <pre class="r"><code>head( v, 5 )</code></pre>
-<pre><code>[1] -0.07660893 -2.45227937 -1.12261805 -0.62305282  0.73484208</code></pre>
+<pre><code>[1]  0.1882484 -1.2035120 -0.3247137 -1.1614323  0.6960336</code></pre>
 <pre class="r"><code>tail( v, 7 )</code></pre>
-<pre><code>[1] -1.06987146  0.43307398  0.12876160  0.29933286  0.08579898  0.61576262  0.30430783</code></pre>
+<pre><code>[1] -0.42452993 -0.03559992  0.83106554  0.04285367  0.22849826  0.23903599 -4.19320797</code></pre>
 </div>
 <div id="extra-exercises" class="section level2">
 <h2>Extra exercises</h2>
@@ -402,18 +402,18 @@ What conversions of <code>w</code> would be needed to make <code>identical</code
 <pre class="r"><code>fileName &lt;- &quot;test.txt&quot;
 v &lt;- sample( 1:100, 10 )
 v</code></pre>
-<pre><code> [1] 16 87 69 90 60 27 83 31 43 41</code></pre>
+<pre><code> [1] 78 94 61 93 11 39 67 44 46 97</code></pre>
 <pre class="r"><code>writeLines( as.character( v ) )                 # conversion to character needed</code></pre>
-<pre><code>16
-87
-69
-90
-60
-27
-83
-31
-43
-41</code></pre>
+<pre><code>78
+94
+61
+93
+11
+39
+67
+44
+46
+97</code></pre>
 <pre class="r"><code>writeLines( as.character( v ), con = fileName )
 w &lt;- readLines( con = fileName )
 identical( v, w )     # numbers are not the same as their text representation</code></pre>
