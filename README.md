@@ -11,3 +11,8 @@ crip <- Course$new(path="rcourse") # instantiate course 'rcourse' (see below for
 crip$render()                      # render R Markdown files into 'docs' folder (conform github pages) and docs.zip    
 crip$view()                        # view the course in a browser
 ```
+
+
+**Visit live pages:**
+
+[ https://rmonajemi.github.io/rcourse/]( https://rmonajemi.github.io/rcourse/)
