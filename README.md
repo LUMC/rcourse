@@ -17,4 +17,4 @@ crip$view()                        # view the course in a browser
 
 **Visit live pages:**
 
-[ https://rmonajemi.github.io/rcourse/]( https://rmonajemi.github.io/rcourse/)
+<!-- [ https://rmonajemi.github.io/rcourse/]( https://rmonajemi.github.io/rcourse/) -->
