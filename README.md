@@ -7,8 +7,10 @@ R Open Online Course (ROOC) is an R package to develop a course material in modu
 
 ```r
 library(rooc)                      # load ROOC library
-crip <- Course$new(path="rcourse") # instantiate course 'rcourse' (see below for details of `path`)
-crip$render()                      # render R Markdown files into 'docs' folder (conform github pages) and docs.zip    
+crip <- Course$new(path="rcourse") # instantiate course 'rcourse' (see below for details
+                                   # of `path`)
+crip$render()                      # render R Markdown files into 'docs' folder (conform 
+                                   # github pages) and docs.zip    
 crip$view()                        # view the course in a browser
 ```
 
