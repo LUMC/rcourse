@@ -1,5 +1,5 @@
 ---
-title: 'Mutate'
+title: 'Mutate (variables)'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}

@@ -5,7 +5,7 @@ title: 'tibble vs data.frame*'
 ```{r, echo=FALSE, message=FALSE}
 library(rooc)
 source("../R/Doc.R")
-source("../R/setup.R")
+source("../R/Globals.R")
 ```
 
 A **tibble** is the upgraded version of base R **data.frame** data type with some convenient additional features, moreover, it is the standard data structure in [tidyverse](https://www.tidyverse.org/). In the following I'll layout the main features and differences in comparison with data.frame. Let's create a data.frame and a tibble manually with the same content.

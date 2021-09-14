@@ -1,5 +1,5 @@
 ---
-title: 'Select'
+title: 'Select (variables)'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
