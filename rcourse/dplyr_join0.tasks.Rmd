@@ -141,3 +141,17 @@ freq_non_uniq_names
 sum(freq_non_uniq_names*freq_non_uniq_names - freq_non_uniq_names) 
 ```
 
+3. Recall `Data manipulation 1/3, Tibble exercise 4.2`, where you were asked to add a new variable `height`. Repeat the exercise by using a `join` functions.
+
+
+```{r}
+favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+
+heights <- tibble(name=c("Lotte","Lucas"), height=c(175,183))
+
+left_join(favourite_colour1, heights,"name")
+```
+
+

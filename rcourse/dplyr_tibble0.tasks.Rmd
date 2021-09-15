@@ -154,7 +154,7 @@ favourite_colour1
 bind_rows(favourite_colour1, tibble(name="Isaac",age=23 ))
 ```
 
-4.2 Include heights `175` and `183` for `Lotte` and `Lucas` respectively.
+4.2 Include heights `175cm` and `183cm` for `Lotte` and `Lucas` respectively.
 
 ```{r}
 # Exhaustive solution, doable with few observations. Better solutions exist 
