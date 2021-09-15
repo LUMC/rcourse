@@ -39,7 +39,7 @@ You now have access to an extensive set of functions for **data manipulation and
 
 ## Outline
 
-- `dplyr`: Data transformation ([cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf){target="_blank"})
+- `dplyr`: Data transformation ([cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf){target="_blank"})
   - tibble : a two-dimensional data structure with rows and columns
   - functions to manipulate tibble:
     - select : extract columns
@@ -50,8 +50,11 @@ You now have access to an extensive set of functions for **data manipulation and
   - grouping
   - queries 
   - join : combining tables
-- `reshape`: Change the table layout ([cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf){target="_blank"})  
-- `forcats`: Manipulation on factors and their levels
+- `tidyr`: Change the table layout ([cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/tidyr.pdf){target="_blank"})  
+  - pivot_longer : wide to long format
+  - pivot_wider : long to wide format
+- `forcats`: Manipulation on factors and their levels. ([cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/factors.pdf){target="_blank"})  
+  - fct_* functions  
 
 
 ## Links

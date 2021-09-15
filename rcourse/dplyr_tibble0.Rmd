@@ -3,17 +3,17 @@ title: 'Tibble'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-pulse <- read_pulse()
-survey <- read_survey()
 # library(rooc)
 # source("../R/Doc.R")
-# source("../R/setup.R")
+# source("../R/Globals.R")
+pulse <- read_pulse()
+survey <- read_survey()
 
 ```
 
 > A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
 
-I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. Datasets `pulse` and `survey` are of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. As you may recall the datasets `pulse` and `survey` were of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
 
 ## Create a tibble
 
@@ -165,8 +165,10 @@ favourite_colour_csv
 
 Often we have different data sets with i) the same set of variables or ii) same set of observations but different variables which we would like to combine: 
 
-- **bind_rows(...)**  function creates a new tibble from a set of tibbles with common variables. 
+- **bind_rows(...)**  function creates a new tibble from a set of tibbles with _not necessarily_ common variables. 
 - **bind_cols(...)**  function creates a new tibble from a set of tibbles with common observations. 
+
+> bind_rows
 
 Take for example the following two data sets with common variables name,year and colour:
 
@@ -188,6 +190,47 @@ favourite_colour1_2 <- bind_rows(favourite_colour1, favourite_colour2)
 favourite_colour1_2
 ```
 
+
+The function `bind_rows` treats tibbles as a collection of _unordered variables_. Let's take the same data as in `favourite_colour2` but change the order of variables year and colour
+
+
+```{r}
+favourite_colour3  <- tibble(name=c("Raul", "Isaac"), 
+                           colour=c("Red", "Green"), 
+                           year=c(1998,1998))
+favourite_colour3
+```
+
+then combining `favourite_colour1` and `favourite_colour3` will yield the same results:
+
+```{r}
+favourite_colour1_3 <- bind_rows(favourite_colour1, favourite_colour3)
+favourite_colour1_3
+```
+
+> What about `bind_rows(favourite_colour3, favourite_colour1)`?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "The same dataset except the order of variables are taken from `favourite_colour3`, the first argument to bind_rows."
+qa(msg)
+``` 
+
+Another consequence of treating tibbles as a collection of _unordered variables_ is that there is no restriction on the given variables in the tibbles, with other words they might be identical sets of variables as was shown in the examples above but not necessarily:
+
+```{r}
+favourite_colour4  <- tibble(name=c("Raul", "Isaac"), 
+                           colour=c("Red", "Green"), 
+                           year=c(1998,1998), 
+                           height= c(173, 179))
+favourite_colour4
+favourite_colour1_4 <- bind_rows(favourite_colour1, favourite_colour4)
+favourite_colour1_4
+```
+
+
+
+> bind_cols
+
 Let us now combine another tibble with variable 'height' for the same set of observations in `favourite_colour1_2`:
 
 
@@ -198,7 +241,7 @@ heights
 bind_cols(favourite_colour1_2,heights)
 ```
 
-`r info_block("Only tibbles with identical set of variables or observations may be bound.")`
+`r info_block("bind_cols expects the same number of obsersavations in each tibble, it is an error otherwise, and you as the user are responsible for the order of observations in each tibble.")`
 
 
 

@@ -112,7 +112,7 @@ In survey data:
 
 ```{r}
 survey_last_30 <- tail(survey,30)
-mean(survey_last_30$height, na.rm = TRUE)
+mean(survey_last_30$height, na.rm = TRUE) # <=> mean(survey_last_30[["height"]], na.rm = TRUE)
 ```
 
 2. What is the mean height of the joint first 15 and last 30 observations?
@@ -140,5 +140,26 @@ survey[c(1,ncol(survey),2:(ncol(survey)-1))]
 #    in the next section. 
 ```
 
+4. Given `favourite_colour1`:
 
+```{r, eval=TRUE, echo=TRUE}
+favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+                           year=c(1995,1995,1995,1994), 
+                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour1
+```
+
+4.1 Add `Isaac` with age `23`. 
+```{r}
+bind_rows(favourite_colour1, tibble(name="Isaac",age=23 ))
+```
+
+4.2 Include heights `175` and `183` for `Lotte` and `Lucas` respectively.
+
+```{r}
+# Exhaustive solution, doable with few observations. Better solutions exist 
+# using 'join' functions in tidyverse, part of the last lecture.
+
+bind_cols(favourite_colour1, tibble(height=c(183,175, NA, NA)))
+```
 
