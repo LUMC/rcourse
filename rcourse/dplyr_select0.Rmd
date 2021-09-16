@@ -73,10 +73,44 @@ qa(msg)
 
 ## Reshuffle variables 
 
-With `select` we can reshuffle the variables. Sometimes tibbles may have large number of variables, you can bring the more 'important' variables in front with `select` and a convenience function `evertything`:   
+With `select` we can reshuffle the variables in their position in the tibble. When a data set contains  large number of variables, you may want to bring the more 'important' variables in front for inspection. You can do this with `select` in combination with a helper function `evertything()`:   
 
 ```{r}
 select(pulse, name, age, everything()) 
 ```
 
 `everything` function lists all other variable other than `name` and `age` and `select` function places them after `name` and `age`.
+
+## Selection by pattern matching
+
+In data sets with large number of variables, finding variables will become tedious. Several helper functions are available to speed up the variable name search.
+
+> starts_with(), ends_with() and contains()
+
+The functions help to find _fixed patterns_ in variable names:
+
+```{r}
+# select variables starting with character 'a'
+select(pulse, starts_with("a"))
+# select variables ending with 'e'
+select(pulse, ends_with("e"))
+# select variables containing character 'i' 
+select(pulse, contains("i"))
+```
+
+The helper functions can be used with _logical operators_ {!,|,&} which will be explained later. You have already encountered one in the lecture on Useful R functions, `!`, the _negation_ operator. In short it complements the results. For example, above we could select variables which started with character 'a' with `select(pulse, starts_with("a"))` which resulted into a tibble with the two variables `age` and `alcohol`. Using `!` in front of the helper function in the expression will produce the complement of the previous result, namely all variables that do not start with `a`:
+
+```{r}
+select(pulse, ! starts_with("a"))
+```
+
+Note that `age` and `alcohol` do not occur in the result.
+
+There are several other helper functions which fall beyond the scope of this lecture, visit [here](https://dplyr.tidyverse.org/reference/select.html) for more details.
+
+
+
+
+
+
+

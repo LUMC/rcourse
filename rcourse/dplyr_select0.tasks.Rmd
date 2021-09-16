@@ -3,6 +3,9 @@ title: "Select (practice)"
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
@@ -11,32 +14,32 @@ survey <- read_survey()
 
 Apply the following to survey data: 
 
-1) Select *personal information* {name, age, gender, height} into a new tibble `survey_personal_info`.
+1. Select *personal information* {name, age, gender, height} into a new tibble `survey_personal_info`.
 
 ```{r}
 survey_personal_info <- select(survey, name, age, gender, height)
 ```
 
-2) Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with variable names initials in uppercase, e.g. `Name`, `Age` etc. 
+2. Select *personal information* as previous exercise into a new tibble `survey_personal_info` but with variable names initials in uppercase, e.g. `Name`, `Age` etc. 
 
 ```{r}
 survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
 ```
 
-3) Reorder the variables as such that name,age and gender appear as first, second and the third column followed by the remaining
+3. Reorder the variables as such that name,age and gender appear as first, second and the third column followed by the remaining
 variables. 
 
 ```{r}
 select(survey, name,age,gender,everything())
 ```
 
-4) Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description of the [survey data](S01L05l_course_data0.html)
+4. Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description [survey](S01L06l_course_data0.html) data.
 
 ```{r}
 select(survey, -span1,-span2,-hand,-fold,-clap)
 ```
 
-5) Select the top 20 names along with gender.
+5. Select the top 20 names along with gender.
 
 ```{r}
 survey_sub <- select(survey, name,gender)
@@ -46,41 +49,67 @@ head( survey_sub , 20)
 ```
 
 
-6) Reproduce the following tibbles (note that variables are renamed and reshuffled):
+6. Reproduce the following tibbles (note that variables are renamed and reshuffled):
+    
+    
+    6.1 First 5 observations.
+    
 
-  6.1) First 5 observations.
+    ```{r, eval=TRUE}
+    # Remark: by enclosing select(...) as the first argument of 'head' function you 
+    # can avoid creating intermediate variables.
+    
+    head( select(survey, SPAN1=span1, SPAN2=span2, everything()), 5)
+    ```
 
-```{r, eval=TRUE}
-head( select(survey, SPAN1=span1, SPAN2=span2, everything()), 5)
-```
+    6.1 Last 3 observations.
 
-  6.2) Last 3 observations.
+    ```{r, eval=TRUE}
+    tail( select(survey, hand,fold,clap, everything()), 3)
+    ```
 
-```{r, eval=TRUE}
-tail( select(survey, hand,fold,clap, everything()), 3)
-```
+7. Select variables, from survey data, by pattern matching. 
 
+    7.1 Select variables that end with 'e'.
+    
+    ```{r}
+    select(survey, ends_with('e'))
+    ```
 
+    7.2 Select variables that start with 's'.
+    
+    ```{r}
+    select(survey, starts_with('s'))
+    ```
 
+    7.3 Select hand span variables using a helper function.
+    
+    ```{r}
+    # 1)
+    select(survey, contains('span'))
+    # 2) 
+    # select(survey, starts_with('span'))
+    ```
+    
 ## Extra exercises
 
-1) Rename the `m.i` variable to `system`.
+1. Rename the `m.i` variable to `system`.
   
 ```{r}
-# Option 1: very tedious, you need to type all the variable names and 
+# 1) Very tedious, you need to type all the variable names and 
 # only rename the 'm.i' variable to 'system'
 #
 select(survey , name, gender, span1, span2, hand, fold, pulse, clap, 
        exercise, smokes, height, system=m.i, age)
-# Option 2: shorter, but side-effect is that m.i (now system) comes at 
+# 2) Shorter but side-effect is that m.i (now system) comes at 
 # the front.
 select(survey, system=m.i, everything()) 
-# Option 3: use rename function (see ?rename). 
+# 3) Use rename function (see ?dplyr::rename). 
 rename(survey,system=m.i)
 ```
 
 
-2) Select `name` along with all categorical variables into a new tibble `survey_cats`.
+2. Select `name` along with all categorical variables into a new tibble `survey_cats`.
 
 ```{r}
 # Categrical data: variables which take on categories as values, e.g. 
@@ -99,10 +128,34 @@ survey_cats
 ```
 
 
-3) Create a new tibble `survey_nums` with `name` and all numerical variables.
+3. Create a new tibble `survey_nums` with `name` and all numerical variables.
 
 ```{r}
-survey_nums <- select(survey, name, span1, span2, pulse, height)
+survey_nums <- select(survey, name, span1, span2, pulse, height, age)
 survey_nums
 ```
+
+
+4. For this exercise you'll need an additional helper function `where` explained  
+  [here](https://dplyr.tidyverse.org/reference/select.html). 
+
+    4.1 Reproduce the result from the previous exercise (3) without dictating all numerical 
+    variable names. Hint: you'll also need `is.numeric` function (see ?is.numeric for help).
+    
+    ```{r}
+    bind_cols(survey['name'], select(survey, where(is.numeric)))
+    ```
+  
+    4.2 Select all non-numerical variables. 
+    
+    ```{r}
+    # 1) 
+    select(survey,! where(is.numeric))
+    ```
+    
+    ```{r}
+    # 2) Tricky but correct since we know there no other non-numerical types 
+    #    in survey data than character.
+    select(survey, where(is.character))
+    ```
 
