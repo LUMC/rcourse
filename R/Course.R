@@ -189,12 +189,20 @@ Course <- R6Class("Course",
       },
       #' @description Render the site ( todo: only for modified Rmd's).
       #' @param clean ...
-      render = function(clean=FALSE,out_dir= "docs", ...){
+      render = function(publish=FALSE,clean=FALSE,out_dir= NULL, ...){
+        if( is.null( out_dir ) ) {
+          if( publish ) {
+            out_dir = "docs"
+          } else {
+            out_dir = "tmp_docs"
+          }
+        }
         if (clean)
           unlink(out_dir, recursive = TRUE)
         renderer <- Renderer$new( outDir = out_dir )  # paste0( self$path_, ".site" )
         renderer$makeAll( course = self$course_ )
         file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
+        message( "Content has been rendered to '", out_dir, "' directory." )
       },
       site = function() {
         private$site_
