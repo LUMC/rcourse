@@ -3,7 +3,7 @@ library( tidyverse )
 
 
 #' Doc
-#' 
+#'
 #' @description ...
 #' @export
 Doc <- R6Class(
@@ -27,7 +27,7 @@ Doc <- R6Class(
 
 
 #' CopiedDoc
-#' 
+#'
 #' @description ...
 #' @export
 CopiedDoc <- R6Class(
@@ -53,7 +53,7 @@ CopiedDoc <- R6Class(
 
 
 #' RenderedDoc
-#' 
+#'
 #' @description ...
 #' @export
 RenderedDoc <- R6Class(
@@ -118,7 +118,7 @@ RenderedDoc <- R6Class(
 
 
 #' Lecture
-#' 
+#'
 #' @description ...
 #' @export
 Lecture <- R6Class(
@@ -161,7 +161,7 @@ Lecture <- R6Class(
 
 
 #' Session
-#' 
+#'
 #' @description ...
 #' @export
 Session <- R6Class(
@@ -202,7 +202,7 @@ Session <- R6Class(
 
 
 #' Material
-#' 
+#'
 #' @description ...
 #' @export
 Material <- R6Class(
@@ -238,7 +238,7 @@ Material <- R6Class(
 )
 
 #' TheCourse
-#' 
+#'
 #' @description ...
 #' @export
 TheCourse <- R6Class(
@@ -439,7 +439,7 @@ TheCourse <- R6Class(
 
 
 #' BaseRenderer
-#' 
+#'
 #' @description ...
 #' @export
 BaseRenderer <- R6Class(
@@ -761,7 +761,7 @@ BaseRenderer <- R6Class(
 )
 
 #' Renderer
-#' 
+#'
 #' @description ...
 #' @export
 Renderer <- R6Class(
@@ -784,8 +784,8 @@ Renderer <- R6Class(
     },
     lectureNavigationBarHtml = function( course, doc ) {
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
-        private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) )
+        #private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
+        #private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) )
       )
 
       naviIds <- doc$naviIds()
@@ -810,8 +810,8 @@ Renderer <- R6Class(
       lectureId <- doc$naviIds()$lecture
 
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
-        private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) ),
+        #private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) ),
+        #private$intRefHtml( "&#x1F4C1;&nbsp;Materials", url = self$docUrl( course$materialsDoc() ) ),
         private$intRefHtml( '&uarr;&nbsp;Lecture', url = self$docUrl( course$lectureDoc( lectureId = lectureId ) ) ),
         private$intRefHtml( '&#x21c4;&nbsp;', label, url = self$docUrl( course$taskDoc( lectureId = lectureId, enableCode = enableCode ) ) )
       )
@@ -825,7 +825,7 @@ Renderer <- R6Class(
     },
     materialsNavigationBarHtml = function( course ) {
       elems <- c(
-        private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) )
+        #private$intRefHtml( "&#x2302;&nbsp;Contents", url = self$docUrl( course$tocDoc() ) )
       )
       self$specialBlockHtml( paste0( elems, collapse = "&nbsp;" ) )
     },
@@ -931,7 +931,7 @@ Renderer <- R6Class(
 )
 
 #' BrightspaceRenderer
-#' 
+#'
 #' @description ...
 #' @export
 BrightspaceRenderer <- R6Class(
