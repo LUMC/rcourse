@@ -30,17 +30,18 @@ read_pulse <- function() {
 read_survey <- function() {
   read_csv("data/survey.csv", col_types = cols(
     name = col_character(),
-    height = col_double(),
-    weight = col_double(),
-    age = col_double(),
     gender = col_character(),
-    smokes = col_character(),
-    alcohol = col_character(),
+    span1 = col_double(),
+    span2 = col_double(),
+    hand = col_character(),
+    fold = col_character(),
+    pulse = col_double(),
+    clap = col_character(),
     exercise = col_character(),
-    ran = col_character(),
-    pulse1 = col_double(),
-    pulse2 = col_double(),
-    year = col_double()
+    smokes = col_character(),
+    height = col_double(),
+    m.i = col_character(),
+    age = col_double()    
   ) )
 }
 
