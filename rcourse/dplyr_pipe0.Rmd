@@ -1,5 +1,5 @@
 ---
-title: '%>% : Pipe operator'
+title: 'Pipe operator %>%'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
@@ -27,6 +27,8 @@ nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male") )
 ```
 
 Here, **first** function `filter` is run on the tibble `survey` with some conditions resulting into a tibble with rows fulfilling those conditions, **second** the function `nrow` is called on the resulting tibble, hence our answer `r nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male") )`. 
+
+`r info_block("Use ctrl-M to get $\\pipe$ symbol.")`
 
 Here is the same result using the $\pipe$ operator:
 
@@ -83,6 +85,6 @@ pulse %>%  filter(gender=="female")  %>%               # tibble females
            pull(name)                                  # vector of names
 ```
 
-`r show_warning(" When in R Markdown file Each line in a sequence of commands with pipe must always end with the $\\pipe$ symbol except the last line, otherwise it is an error. See above example. Note also that each line may contain multiple $\\pipe$ symbols, e.g. first line in the example above, as long as it ends with a $\\pipe$ before the command on the next line. This way R know that there will be more commands on the next line.")`
+`r show_warning(" When in R Markdown file, each line in a sequence of commands with pipe must always end with the $\\pipe$ symbol except the last line, otherwise it is an error. See above example. Note also that each line may contain multiple $\\pipe$ symbols, e.g. first line in the example above, as long as it ends with a $\\pipe$ before the command on the next line. This way R know that there will be more commands on the next line.")`
 
-`r info_block("Use ctrl-M to get $\\pipe$ symbol.")`
+

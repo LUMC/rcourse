@@ -1,13 +1,18 @@
 ---
-title: 'Mutate (variables)'
+title: 'Mutate'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
 
 > Use `mutate` to add new variables or modify the existing ones. 
+
+## Add new variables
 
 For example, the pulse dataset has two pulse measurements, let's say we are interested in *average pulse* and we want this information to be available as a separate variable, e.g. `averagePulse`, in the pulse tibble. Then we can do this with:    
 
@@ -52,6 +57,7 @@ pulse_bmi <- mutate(pulse, BMI=weight/((height/100)^2))
 pulse_bmi
 ```
 
+## Update variables
 
 In the examples above we added a new variable to our dataset, but you can also update an existing variable. For example, let's say we want to have the age expressed (roughly) in days instead of years: 
 
@@ -59,4 +65,46 @@ In the examples above we added a new variable to our dataset, but you can also u
 mutate(pulse, age=age*365)
 ```
 
-here we keep the variable `age` but change its unit from year to days.
+here we keep the variable `age` but change its unit from year to days. 
+
+Another example would be to convert the `height` and `weight` from metric to imperial units with (1 kg = 2.2 lbs) and (1 inch = 2.54 cm) : 
+
+```{r}
+mutate(pulse, height=height/2.54, weight=weight/2.2)
+```
+
+## if_else(condition, true, false, ...)
+
+In the previous examples we were updating or adding variables with simple arithmetic using mutate and all values were considered under the same calculation. However, there are situation where we would like to treat values conditionally, this is possible the helper function `if_else`. 
+
+**Examples:**
+
+Add a new variable `max_pulse` reporting the higher pulse rate of the two measurements `pulse1` and `pulse2` for each observation: 
+
+```{r}
+mutate(pulse, max_pulse=if_else(pulse1 < pulse2, pulse2, pulse1))
+```
+
+Add a logical variable `adult` which is true if age>=18 and false otherwise:
+
+```{r}
+mutate(pulse, adult=if_else(age >= 18 , TRUE, FALSE))
+```
+
+
+Convert `gender` values,  `female` to `f` and `male` to `m`:
+
+```{r}
+mutate(pulse, adult=if_else(gender=='female' , 'f', 'm'))
+
+```
+
+
+
+
+
+
+
+
+
+

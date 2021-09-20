@@ -42,16 +42,16 @@ slots:
     lectures:
       - "tidyverse0:Tidyverse library:FALSE:15"
       - "dplyr_tibble0:Tibble:TRUE:45"
-      - "dplyr_select0:Select (variables):TRUE:45"
-      - "dplyr_filter0:Filter (observations):TRUE:45"
-      - "dplyr_mutate0:Mutate (variables):TRUE:45"
+      - "dplyr_select0:Select:TRUE:45"
+      - "dplyr_filter0:Filter:TRUE:45"
+      - "dplyr_mutate0:Mutate:TRUE:45"
   slot4:
     slot_label : "Data manipulation 2/3"
     slot_date : 2
     slot_time : "09:00-12:00"
     slot_plan: "l45:l45:b15:l45"
     lectures:
-      - "dplyr_pipe0:Pipe operator:TRUE:45"
+      - "dplyr_pipe0:Pipe operator %>%:TRUE:45"
       - "dplyr_summarise0:Summarise:TRUE:45"
       - "dplyr_group0:Groups:TRUE:45"
   slot5:

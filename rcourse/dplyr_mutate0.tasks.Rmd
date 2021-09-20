@@ -69,3 +69,29 @@ filter(
 filter(mutate(filter(survey, height> 190),feet=height/30.48),height<=190 )
 ```
 
+
+3. The following table is one of many BMI classifications:
+
+<center>
+```{r, eval=TRUE, echo=FALSE}
+library("htmlTable")
+htmlTable( data.frame(classification=c("underweight","normal","overweight","obese"),
+           bmi=c("<18.5","18.5-24.9","25-29.9","\\>30"), stringsAsFactors = F),  col.rgroup =
+c("none", "#F7F7F7") )
+```
+</center>
+
+[...]
+
+4. Age classification:
+
+<center>
+```{r, eval=TRUE, echo=FALSE}
+library("htmlTable")
+htmlTable( data.frame(classification=c("adult","adolescent","child","infant"),
+           age=c("\\>19","\\>=10 and <=19","\\>=1  and <=9","<1"),
+           notation=c("(19,&infin;)","[10,19]","[1,9]","(-&infin;,1)"), stringsAsFactors = F),  col.rgroup = c("none", "#F7F7F7") )
+```
+</center>
+
+[...]

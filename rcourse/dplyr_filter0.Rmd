@@ -1,5 +1,5 @@
 ---
-title: 'Filter (observations)'
+title: 'Filter'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
@@ -8,11 +8,13 @@ pulse <- read_pulse()
 
 > Use `filter` to select observations (rows) from a tibble. 
 
-In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are interested in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a **logical condition** describing the values to be filtered on. 
+## Logical conditions 
 
-## Logical conditions
+In the previous section we learned  how to select variables (columns) with all its values using the `select` function. In this section we are interested in a collection of observations (rows). For this we have the function `filter` which takes as its first argument the tibble followed by a _logical condition_ describing the variable values constraints. 
 
-A *logical condition* is a way to express whether some statement is true or false. For example, let's say we want to know *which individuals in our pulse dataset are taller than 190 cm?* You can achieve this with `filter` :
+In the context of `filter` function a logical condition is a way to express whether some statement about an observation is true or false, if true then that observation is returned otherwise it is ignored. Note that the condition is applied to all observation in the tibble. 
+
+For example, let's say we want to know *which individuals in our pulse dataset are taller than 190 cm?* You can achieve this with `filter` as follows:
 
 ```{r}
 filter(pulse, height>190) # filter all observations with height greater than 190 cm 
@@ -24,13 +26,13 @@ or another example would be, *who's weight is exactly 55 kg?*
 filter(pulse, weight==55) # filter all observations with weight equal to 55 kg 
 ```
 
-`filter` uses logical vectors to achieve this results. You've already seen an example of a `logical vector` in the section on [Vectors](S02L01l_basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical.
+
+
+`filter` uses _logical vectors_ in the background to achieve the result. You've already seen an example of a `logical vector` in the section on [Vectors](S02L01l_basic_vectors0.html). The result of a comparison with relational operators {`==`, `!=`, `<`, `<=`, `>`, `>=`} is a logical vector.
 
 `r info_block("'==' stands for 'equal to' and '!=' is 'not equal to'")` 
 
-In the examples above the comparisons `height>190` and `weight==55` are in fact logical vectors with the same length as variables `height` and `weight` in the pulse dataset. 
-
-> The function `filter` takes the logical vector and returns only the rows in positions for which the value is TRUE.
+In the examples above the comparisons `height>190` and `weight==55` are in fact logical vectors with the same length as the number of observations (rows) in the pulse dataset. The function `filter` takes the logical vector and returns only the rows in positions for which the value is TRUE.
 
 
 ## Multiple conditions : and ('&'), or ('|')
@@ -84,6 +86,65 @@ Here we have the same variable `year` in our `|` construct.
 > What is wrong with this command:  filter(pulse, year==1995 & year==1997) ?
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "An observation in a variable can not take two values at the same time. Here we have conditions on both sides of '&' on the same varible, in this case <b>year</b>, and since year can not be 1995 and 1997 at the same time for an observation the result of this query is empty."
+msg <- "An observation in a variable can not take two values at the same time."
 qa(msg)
 ``` 
+
+
+## Helper functions
+
+
+> is.na()
+
+You have already seen `is.na` in action with [vectors](S02L01l_basic_vectors0.html). It can be used in the context of filter as a logical condition to test for missing value: `NA`.
+
+Take for example the pulse data, it has missing values in `pulse1` and `pulse2`. We can find the row(s) with missing value for `pulse1` with: 
+
+
+```{r}
+filter(pulse, is.na(pulse1))
+```
+
+We can see there is a single row with missing value `pulse1`. What about `pulse2`?
+
+```{r}
+filter(pulse, is.na(pulse2))
+```
+
+Also a single row and it looks like to be the same row as the one with missing value for `pulse1`
+
+
+> Can you think of a logical condition that guarantees that the missing `pulse1` and `pulse2` values are actually in the same observation?
+
+```{r, echo=FALSE, results='asis'}
+msg <- "filter(pulse, is.na(pulse1) | is.na(pulse2)) results in a single row."
+qa(msg)
+``` 
+
+
+> Ngation operator: ! 
+
+If you are interested only in observation that _do not_ contain missing values, in this case in `pulse1` and `pulse2`: 
+
+```{r}
+filter(pulse, ! is.na(pulse1)) # <=> filter(pulse, ! is.na(pulse2))
+```
+
+
+> between(x, left, right)
+
+With `between` function it is possible to filter rows based on variable intervals: 
+
+```{r}
+# filter rows with height >=165 and height <= 166
+filter(pulse, between(height, 165, 166))
+```
+
+Note that example above can be explicitly written down with `&` : 
+
+```{r}
+filter(pulse, height >=  165 &  height <= 166 )
+```
+
+Both are valid solutions.
+

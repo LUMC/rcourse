@@ -1,5 +1,5 @@
 ---
-title: "%>% : Pipe operator (practice)"
+title: "Pipe operator %>% (practice)"
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
