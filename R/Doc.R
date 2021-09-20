@@ -836,10 +836,10 @@ Renderer <- R6Class(
         text <- private$taskNavigationBarHtml( course, doc, TRUE, "Solutions" )
       } else if( doc$type( long = TRUE ) == "solutions" ) {
         text <- private$taskNavigationBarHtml( course, doc, FALSE, "Practice" )
-      } else if( doc$type( long = TRUE ) == "toc" ) {
-        text <- private$tocNavigationBarHtml( course )
-      } else if( doc$type( long = TRUE ) == "materials" ) {
-        text <- private$materialsNavigationBarHtml( course )
+#      } else if( doc$type( long = TRUE ) == "toc" ) {
+#        text <- private$tocNavigationBarHtml( course )
+#      } else if( doc$type( long = TRUE ) == "materials" ) {
+#        text <- private$materialsNavigationBarHtml( course )
       } else {
         text <- ""
       }

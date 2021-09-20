@@ -189,15 +189,31 @@ Course <- R6Class("Course",
         self$clear_nocode_html()
       },
       #' @description Render the site ( todo: only for modified Rmd's).
+      #' @param publish ...
       #' @param clean ...
-      render = function(clean=FALSE, publish=FALSE, out_dir = ".copy"){
-        if (clean)
-          unlink(out_dir, recursive = TRUE)
-        renderer <- Renderer$new( outDir = out_dir )  # paste0( self$path_, ".site" )
-        renderer$makeAll( course = self$course_ )
-        file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
-        if (publish)
-          file.copy(from = out_dir, to = basename(self$site()), overwrite = TRUE, recursive = TRUE)
+      render = function(publish=FALSE, clean=FALSE, out_dir = ".docs"){
+        
+        do_render <- function() {
+          renderer <- Renderer$new( outDir = out_dir )
+          renderer$makeAll( course = self$course_ )
+          file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
+        }
+        
+        
+        if (!publish) {
+           do_render()
+        } else   
+          if (clean | !file.exists(out_dir))
+            do_render()
+          pub_dir <- basename(self$site())
+          zip_file <- paste(out_dir, "zip", sep=".")
+          # mv .docs docs
+          unlink(pub_dir, recursive = TRUE)
+          file.rename(out_dir, pub_dir)
+          # rm docs.zip ; mv .docs.zip docs.zip 
+          unlink(zip_file)
+          file.rename(zip_file, paste(pub_dir, "zip", sep="."))
+          message( "Content rendered into '", pub_dir, "' directory." )
       },
       site = function() {
         private$site_
@@ -207,9 +223,10 @@ Course <- R6Class("Course",
         private$url_
       },
       #' @description View the site in the browser.
-      #' @param local If TRUE then show the latest build (.docs) otherwisethe published version (docs).
-      view = function(local=TRUE) {
-        browseURL(ifelse(local,sub("docs", ".docs", rc$url()), subself$url()))
+      #' @param publish If TRUE then show the published build (docs) otherwise the development version (.docs).
+      view = function(publish=FALSE) {
+        url_<- ifelse(publish,self$url(), sub("docs", ".docs", self$url()))
+        browseURL(url_)
       },
       #' @description Course schedule from schedule.yml.
       schedule = function() {

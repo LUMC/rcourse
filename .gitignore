@@ -4,7 +4,7 @@
 .Ruserdata
 .Rbuildignore
 .DS_Store
-rooc.Rproj
+*.Rproj
 site
 workshop-may-2020
 CRiP-sept-2020/_site
@@ -15,3 +15,5 @@ site/_site
 trash
 docs.zip
 rcourse/favourite_colour.csv
+tmp_docs
+tmp_docs.zip
