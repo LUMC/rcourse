@@ -75,7 +75,7 @@ mutate(pulse, height=height/2.54, weight=weight/2.2)
 
 ## if_else(condition, true, false, ...)
 
-In the previous examples we were updating or adding variables with simple arithmetic using mutate and all values were considered under the same calculation. However, there are situation where we would like to treat values conditionally, this is possible the helper function `if_else`. 
+In the previous examples we were updating or adding variables with simple arithmetic using mutate and all values were considered under the same calculation. However, there are situation where we would like to treat values conditionally, this is possible with the helper function `if_else`. 
 
 **Examples:**
 
