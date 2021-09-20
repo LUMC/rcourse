@@ -225,7 +225,16 @@ Course <- R6Class("Course",
       #' @description View the site in the browser.
       #' @param publish If TRUE then show the published build (docs) otherwise the development version (.docs).
       view = function(publish=FALSE) {
-        url_<- ifelse(publish,self$url(), sub("docs", ".docs", self$url()))
+        pub <- self$url()
+        dev <- sub("docs", ".docs", self$url())
+        
+        url_<- ifelse(publish, pub, dev)
+        
+        if (!publish & !file.exists(dev)) {
+          warning('Missing .docs reverting to docs! Try render(publish=FALSE)')
+          url_ <- pub
+        }
+          
         browseURL(url_)
       },
       #' @description Course schedule from schedule.yml.
