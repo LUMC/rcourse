@@ -4,7 +4,7 @@
 .Ruserdata
 .Rbuildignore
 .DS_Store
-rooc.Rproj
+*.Rproj
 site
 workshop-may-2020
 CRiP-sept-2020/_site
