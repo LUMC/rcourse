@@ -22,10 +22,10 @@ mutate(survey, feet=height/30.48)
 mutate(survey, diffWritingHandSpan=span1-span2)
 ```
 
-3. In the pulse dataset add new weight variables `pounds` and `stones` (1 kg  = 2.20462 pound = 0.157473 stone).
+3. In the pulse dataset add new weight variables `pound` and `stone` (1 kg  = 2.20462 pound = 0.157473 stone).
 
 ```{r}
-mutate(pulse, pounds = weight * 2.20462, stones = weight * 0.157473 )
+mutate(pulse, pound = weight * 2.20462, stone = weight * 0.157473 )
 
 ```
 
@@ -73,12 +73,24 @@ filter(mutate(filter(survey, height> 190),feet=height/30.48),height<=190 )
 ```{r, eval=TRUE, echo=FALSE}
 library("htmlTable")
 htmlTable( data.frame(classification=c("underweight","normal","overweight","obese"),
-           bmi=c("<18.5","18.5-24.9","25-29.9","\\>30"), stringsAsFactors = F),  col.rgroup =
+           bmi=c("<18.5","18.5-24.9","25-29.9","\\>=30"), stringsAsFactors = F),  col.rgroup =
 c("none", "#F7F7F7") )
 ```
 </center>
 
-[...]
+Add the variable `BMI_class` to the pulse data set. Note that you will need to `round` (see ?round an additional argument `digits`) the BMI calculation to one decimal digit to fit into classification values in the table given above. Use the helper function [case_when](https://dplyr.tidyverse.org/reference/case_when.html). 
+
+```{r}
+pulse_bmi <- mutate(pulse, BMI=round( weight/((height/100)^2), digits = 1)  ) 
+mutate(pulse_bmi, BMI_class = case_when(
+                BMI < 18.5 ~ "underweight",
+                BMI >= 18.5 & BMI <= 24.9 ~ "normal",
+                BMI >= 25   & BMI <= 29.9 ~ "overweight",
+                BMI >= 30 ~ "obese"
+              )                     
+      )
+```
+
 
 6. Age classification:
 
@@ -91,4 +103,15 @@ htmlTable( data.frame(classification=c("adult","adolescent","child","infant"),
 ```
 </center>
 
-[...]
+Add the variable `age_group` to the survey dataset. 
+
+```{r}
+mutate(survey, age_group = case_when(
+                age > 19 ~ "adult",
+                age >= 10 & age <= 19 ~ "adolescent",
+                age > 1   & age <= 9 ~ "child",
+                age <= 1 ~ "infant"
+              )                     
+      )
+```
+
