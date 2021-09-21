@@ -87,7 +87,7 @@ RenderedDoc <- R6Class(
         ( c(
           "?" = "unknown", "l" = "lecture",
           "s" = "solutions", "p" = "practice",
-          "c" = "toc", "M" = "materials", "m" = "material"
+          "c" = "toc", "n" = "materials", "m" = "material"
         ) )[[ private$type_ ]]
       }
     },
