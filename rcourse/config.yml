@@ -57,14 +57,14 @@ slots:
   slot5:
     slot_label : "Data structures 2/2, flow control"
     slot_date : 2
-    slot_time : "13:15-17:00"
-    slot_plan: "l45:b15:l45:b15:l45:b15:l45"
+    slot_time : "13:15-15:00"
+    slot_plan: "l45:b15:l45"
     lectures:
       - "basic_lists0:Lists:TRUE:45"
       - "basic_formulas0:Formulas:TRUE:45"
-      - "advanced_user_functions0:User-defined functions:TRUE:45"
-      - "flow_control:Flow control (if/else, for):FALSE:30"
-      - "basic_matrices0:Matrices:TRUE:15"
+      # - "advanced_user_functions0:User-defined functions:TRUE:45"
+      # - "flow_control:Flow control (if/else, for):FALSE:30"
+      # - "basic_matrices0:Matrices:TRUE:15"
   slot6:
     slot_label : "Graphics"
     slot_date : 3
@@ -85,6 +85,16 @@ slots:
       - "tidyr_reshape0:Reshaping tables:TRUE:45"
       - "SSA:Self-study assignment:FALSE:90"
       - "QA:Q/A:FALSE:25"
+  slot8:
+    slot_label : "Elective"
+    slot_date : 
+    slot_time : ""
+    slot_plan: ""
+    lectures:
+      - "advanced_user_functions0:User-defined functions:TRUE:0"
+      - "flow_control:Flow control (if/else, for):FALSE:0"
+      - "basic_matrices0:Matrices:TRUE:0"
+      
 
 #
 # materials : material+
