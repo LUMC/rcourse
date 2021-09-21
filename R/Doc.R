@@ -1,6 +1,7 @@
 library( R6 )
 library( tidyverse )
 
+# Doc -----
 
 #' Doc
 #'
@@ -25,6 +26,7 @@ Doc <- R6Class(
   )
 )
 
+# CopiedDoc -----
 
 #' CopiedDoc
 #'
@@ -51,6 +53,7 @@ CopiedDoc <- R6Class(
   )
 )
 
+# RenderedDoc -----
 
 #' RenderedDoc
 #'
@@ -110,12 +113,13 @@ RenderedDoc <- R6Class(
       ( c(
         "?" = NA, "l" = NA,
         "s" = TRUE, "p" = NA,
-        "c" = NA, "M" = NA, "m" = NA
+        "c" = NA, "n" = NA, "m" = NA
       ) )[[ private$type_ ]]
     }
   )
 )
 
+# Lecture -----
 
 #' Lecture
 #'
@@ -159,6 +163,7 @@ Lecture <- R6Class(
   )
 )
 
+# Session -----
 
 #' Session
 #'
@@ -200,6 +205,7 @@ Session <- R6Class(
   )
 )
 
+# Material -----
 
 #' Material
 #'
@@ -236,6 +242,8 @@ Material <- R6Class(
     }
   )
 )
+
+# TheCourse -----
 
 #' TheCourse
 #'
@@ -437,6 +445,7 @@ TheCourse <- R6Class(
   )
 )
 
+# BaseRenderer -----
 
 #' BaseRenderer
 #'
@@ -611,7 +620,7 @@ BaseRenderer <- R6Class(
     #navigationBarHtml = function( course, doc ) stop( "Not inherited." ),
     id2url = function( id ) stop( "Not inherited." ),
 
-    makeAll = function( course, ... ) {
+    makeAll = function( course, makeZip = TRUE, ... ) {
       self$clearDir()
       allFiles <- c(
         self$makeLectures( course, ... ),
@@ -621,10 +630,13 @@ BaseRenderer <- R6Class(
         self$makeMaterials( course, ... )
       ) %>% unlist() %>% as.vector()
 
-      outZipFile <- paste0( self$outDir(), ".zip" )
-      attr( outZipFile, "contentType" ) <- "application/zip"
-      file.remove( outZipFile )
-      zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
+      if( makeZip ) {
+        outZipFile <- paste0( self$outDir(), ".zip" )
+        attr( outZipFile, "contentType" ) <- "application/zip"
+        file.remove( outZipFile )
+        zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
+      }
+
       invisible( outZipFile )
     },
     makeToc = function( course, ... ) {
@@ -759,6 +771,8 @@ BaseRenderer <- R6Class(
     }
   )
 )
+
+# Renderer -----
 
 #' Renderer
 #'
@@ -929,6 +943,8 @@ Renderer <- R6Class(
   ),
   public = list()
 )
+
+# BrightspaceRenderer -----
 
 #' BrightspaceRenderer
 #'
