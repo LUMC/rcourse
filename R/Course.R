@@ -195,7 +195,7 @@ Course <- R6Class("Course",
 
         do_render <- function() {
           renderer <- Renderer$new( outDir = out_dir )
-          renderer$makeAll( course = self$course_, makeZip = publish )
+          renderer$makeAll( course = self$course_, makeZip = TRUE )
           file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
         }
 

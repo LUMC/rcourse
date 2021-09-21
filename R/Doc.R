@@ -425,7 +425,7 @@ TheCourse <- R6Class(
         label = "Materials",
         rmdFile = NULL,
         naviIds = list(),
-        type = 'M',
+        type = 'n',
         sessionIdx = 0,
         lectureIdx = 2
       )
