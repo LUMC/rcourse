@@ -637,7 +637,7 @@ BaseRenderer <- R6Class(
         zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
       }
 
-      invisible( outZipFile )
+      invisible( TRUE )
     },
     makeToc = function( course, ... ) {
       doc <- course$tocDoc()
