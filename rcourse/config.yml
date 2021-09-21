@@ -19,8 +19,8 @@ slots:
     lectures:
       - "index:Course Introduction:FALSE:5"
       - "introduction0:R Introduction:FALSE:10"
-      - "basic_calculator0:Calculator:TRUE:15"
-      - "packages0:Install/use packages:FALSE:15"
+      - "basic_calculator0:Calculator:TRUE:20"
+      - "packages0:Install/use packages:FALSE:10"
       - "basic_variables0:Variables:TRUE:30"
       - "course_data0:Example data (pulse, survey):FALSE:15"
       - "basic_projects0:Projects:FALSE:30"
