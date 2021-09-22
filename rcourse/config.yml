@@ -85,13 +85,13 @@ slots:
   slot8:
     slot_label : "Elective"
     slot_date : 4
-    slot_time : 
-    slot_plan: "l0:b0:l0:b0:l0"
+    slot_time :
+    slot_plan: "l0:l0:l0"
     lectures:
       - "advanced_user_functions0:User-defined functions:TRUE:0"
       - "flow_control:Flow control (if/else, for):FALSE:0"
       - "basic_matrices0:Matrices:TRUE:0"
-      
+
 
 #
 # materials : material+
