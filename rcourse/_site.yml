@@ -12,7 +12,7 @@ navbar:
       href: S00L01c_toc.html # schedule.html
     - text: "Data"
       icon: fa-table
-      href: S00L02M_materials.html # data.html
+      href: S00L02n_materials.html # data.html
     # - text: "More"
     #   icon: fa-gear
     #   menu:
