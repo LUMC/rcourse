@@ -126,6 +126,8 @@ Course <- R6Class("Course",
         startDate <- as.Date(self$config("startDate"))
         # TheCourse object
         course <- TheCourse$new( id = self$config("course_id"), dir = path, label =  self$config("course_label") )
+        # Slots :  slot => Session
+        # 
         slots <- self$config("slots")
         for( i in seq_len( length( slots ) ) ) {
           slot_id <- names(slots)[[i]]
