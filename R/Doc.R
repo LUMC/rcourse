@@ -292,6 +292,9 @@ TheCourse <- R6Class(
             while( nrow( bs ) > 0L || nrow( ls ) > 0L ) {
               if( nrow( bs ) == 0L && nrow( ls ) > 0L ) {
                 stop( "Session '", sess$session.id, "' too long." )
+              #} else if( nrow( bs ) == 1L && bs$min[[1]] == 0 && nrow( ls ) == 0L ) {
+                # Special treatment of 0-minute lectures intended for elective/extra slots
+               # break
               } else if( nrow( bs ) > 0L && nrow( ls ) == 0L ) {
                 warning( "Session '", sess$session.id, "' too short." )
                 break
