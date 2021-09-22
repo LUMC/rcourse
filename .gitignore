@@ -15,5 +15,5 @@ site/_site
 trash
 docs.zip
 rcourse/favourite_colour.csv
-tmp_docs
-tmp_docs.zip
+.docs
+.docs.zip
