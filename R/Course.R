@@ -200,10 +200,11 @@ Course <- R6Class("Course",
         if (publish) {
           # mv .docs to docs and .docs.zip to docs.zip
           pub_dir <- basename(self$site())  # docs
-          file.rename(out_dir, pub_dir)
+          unlink(pub_dir) ; file.rename(out_dir, pub_dir)
           zip_file <- paste(out_dir, "zip", sep=".")  
           pub_zip_file <- paste(pub_dir, "zip", sep=".")  
-          file.rename(zip_file, pub_zip_file)
+          if (file.exists(zip_file))
+            file.rename(zip_file, pub_zip_file)
           message( "Content rendered into '", pub_dir, "' directory." )
         } else {
           message( "Content rendered into '", out_dir, "' directory." )

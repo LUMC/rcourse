@@ -296,8 +296,8 @@ TheCourse <- R6Class(
                 warning( "Session '", sess$session.id, "' too short." )
                 break
               } else if( bs$isBreak[[1]] ) {
-                ret <- bind_rows( ret, sess %>% mutate( slot.min = bs$min[[1]] ) ) # emit break
-                bs <- bs[-1,]
+                  ret <- bind_rows( ret, sess %>% mutate( slot.min = bs$min[[1]] ) ) # emit break
+                  bs <- bs[-1,]
               } else {
                 if( ls$lecture.min[[1]] <= bs$min[[1]] ) {
                   bs$min[[1]] <- bs$min[[1]] - ls$lecture.min[[1]]
@@ -455,7 +455,6 @@ BaseRenderer <- R6Class(
   "BaseRenderer",
   private = list(
     outDir_ = NULL,
-
     normalizeRmdFile = function( from, to, overwrite, course, doc ) {
       if( file.exists( to ) && !overwrite ) {
         stop( "Can't overwrite '", to, "'." )
@@ -481,7 +480,6 @@ BaseRenderer <- R6Class(
       private$writeRmdFootNavi( outCon, course, doc )
       close( outCon )
     },
-
     splitRmdBlocks = function( lines ) {
       curDoc <- list()
       curMode <- "text"; curLines <- c()
@@ -544,7 +542,6 @@ BaseRenderer <- R6Class(
         }
       }
     },
-
     writeRmdHeader = function( outCon, course, doc ) {
       h <- list(
         output = list(
@@ -619,7 +616,6 @@ BaseRenderer <- R6Class(
     intRefHtml = function( ..., url ) stop( "Not inherited." ),
     #navigationBarHtml = function( course, doc ) stop( "Not inherited." ),
     id2url = function( id ) stop( "Not inherited." ),
-
     makeAll = function( course, makeZip = TRUE, ... ) {
       self$clearDir()
       allFiles <- c(
@@ -667,7 +663,6 @@ BaseRenderer <- R6Class(
         self$makeDoc( course = course, doc = doc, ... )
       } )
     },
-
     # returns local url to the document (based at the course root reference)
     docUrl = function( doc ) {
       if( inherits( doc, "RenderedDoc" ) ) {
@@ -679,7 +674,6 @@ BaseRenderer <- R6Class(
         doc$url()
       }
     },
-
     mapTmpRmdFile = function( doc ) {
       rmdFile <- doc$rmdFile()
       if( !is.null( rmdFile ) ) {
@@ -708,7 +702,6 @@ BaseRenderer <- R6Class(
         message( "Cleaned output directory '", outDir, "'" )
       }
     },
-
     makeDoc = function( course, doc ) {
       message()
       message( "----- Processing document '", doc$id(), "' -----" )

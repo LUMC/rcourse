@@ -35,36 +35,33 @@ slots:
       - "useful_functions0:Useful R functions:FALSE:15"
       - "basic_factors0:Factors:TRUE:60"
   slot3:
-    slot_label : "Data manipulation 1/3"
-    slot_date : 1
-    slot_time : "13:15-17:00"
-    slot_plan: "l15:l45:b15:l45:l45:b15:l45"
-    lectures:
-      - "tidyverse0:Tidyverse library:FALSE:15"
-      - "dplyr_tibble0:Tibble:TRUE:45"
-      - "dplyr_select0:Select:TRUE:45"
-      - "dplyr_filter0:Filter:TRUE:45"
-      - "dplyr_mutate0:Mutate:TRUE:45"
-  slot4:
-    slot_label : "Data manipulation 2/3"
-    slot_date : 2
-    slot_time : "09:00-12:00"
-    slot_plan: "l45:l45:b15:l45"
-    lectures:
-      - "dplyr_pipe0:Pipe operator %>%:TRUE:45"
-      - "dplyr_summarise0:Summarise:TRUE:45"
-      - "dplyr_group0:Groups:TRUE:45"
-  slot5:
-    slot_label : "Data structures 2/2, flow control"
-    slot_date : 2
-    slot_time : "13:15-15:00"
+    slot_label : "Data structures 2/2"
+    slot_date: 1
+    slot_time: "13:00-14:45"
     slot_plan: "l45:b15:l45"
     lectures:
       - "basic_lists0:Lists:TRUE:45"
       - "basic_formulas0:Formulas:TRUE:45"
-      # - "advanced_user_functions0:User-defined functions:TRUE:45"
-      # - "flow_control:Flow control (if/else, for):FALSE:30"
-      # - "basic_matrices0:Matrices:TRUE:15"
+  slot4:
+    slot_label : "Data manipulation 1/3"
+    slot_date : 2
+    slot_time : "09:00-12:00"
+    slot_plan: "l15:l45:l45:b15:l60"
+    lectures:
+      - "tidyverse0:Tidyverse library:FALSE:15"
+      - "dplyr_tibble0:Tibble:TRUE:45"
+      - "dplyr_select0:Select:TRUE:45"
+      - "dplyr_filter0:Filter:TRUE:60"
+  slot5:
+    slot_label : "Data manipulation 2/3"
+    slot_date : 2
+    slot_time : "13:15-17:00"
+    slot_plan: "l45:l45:b15:l45:l75"
+    lectures:
+      - "dplyr_mutate0:Mutate:TRUE:45"
+      - "dplyr_pipe0:Pipe operator %>%:TRUE:45"
+      - "dplyr_summarise0:Summarise:TRUE:45"
+      - "dplyr_group0:Groups:TRUE:75"
   slot6:
     slot_label : "Graphics"
     slot_date : 3
@@ -87,9 +84,9 @@ slots:
       - "QA:Q/A:FALSE:25"
   slot8:
     slot_label : "Elective"
-    slot_date : 
-    slot_time : ""
-    slot_plan: ""
+    slot_date : 4
+    slot_time : 
+    slot_plan: "l0:b0:l0:b0:l0"
     lectures:
       - "advanced_user_functions0:User-defined functions:TRUE:0"
       - "flow_control:Flow control (if/else, for):FALSE:0"
