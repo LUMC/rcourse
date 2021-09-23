@@ -3,6 +3,9 @@ title: 'Group'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+library(rooc)
+source("../R/Doc.R")
+source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
@@ -51,6 +54,7 @@ pulse %>% group_by(age,gender) %>%
           summarise(size=n(),meanHeight=mean(height), meanWeight=mean(weight))
 ```
 
+
 <!-- ======================================================= -->
 
 ## Queries
@@ -85,9 +89,19 @@ pulse %>% filter(ran == "sat") %>%
 pulse %>%  count(ran) 
 ```
 
+## `ungroup` : remove grouping
 
-```{r, eval=FALSE, echo=FALSE}
-# Use `ungroup` to remove grouping:
-pulse  %>% group_by( gender ) %>% ungroup()
+To remove the grouping use we have `ungroup` function:
+
+```{r}
+pulse %>% group_by(age,gender) %>% ungroup() # results in the original pulse tibble
 ```
+
+## Useful functions
+
+```{r}
+pulse %>% group_by(age,weight) %>% group_size()  # group sizes (vector)
+pulse %>% group_by(age,weight) %>% n_groups()    # number of groups 
+```
+
 
