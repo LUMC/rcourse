@@ -202,7 +202,7 @@ Course <- R6Class("Course",
         if (publish) {
           # mv .docs to docs and .docs.zip to docs.zip
           pub_dir <- basename(self$site())  # docs
-          unlink(pub_dir) ; file.rename(out_dir, pub_dir)
+          unlink(pub_dir, recursive = TRUE) ; file.rename(out_dir, pub_dir)
           zip_file <- paste(out_dir, "zip", sep=".")  
           pub_zip_file <- paste(pub_dir, "zip", sep=".")  
           if (file.exists(zip_file))

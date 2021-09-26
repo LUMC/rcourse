@@ -3,9 +3,9 @@ title: 'Group'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-library(rooc)
-source("../R/Doc.R")
-source("../R/Globals.R")
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
