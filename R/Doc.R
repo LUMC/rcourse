@@ -632,7 +632,8 @@ BaseRenderer <- R6Class(
       if( makeZip ) {
         outZipFile <- paste0( self$outDir(), ".zip" )
         attr( outZipFile, "contentType" ) <- "application/zip"
-        file.remove( outZipFile )
+        if (file.exists(outZipFile))
+          file.remove( outZipFile )
         zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
       }
 
