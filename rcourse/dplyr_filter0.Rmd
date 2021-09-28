@@ -122,7 +122,7 @@ qa(msg)
 ``` 
 
 
-> Ngation operator: ! 
+> Negation operator: ! 
 
 If you are interested only in observation that _do not_ contain missing values, in this case in `pulse1` and `pulse2`: 
 
