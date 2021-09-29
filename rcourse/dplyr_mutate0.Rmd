@@ -70,7 +70,7 @@ here we keep the variable `age` but change its unit from year to days.
 Another example would be to convert the `height` and `weight` from metric to imperial units with (1 kg = 2.2 lbs) and (1 inch = 2.54 cm) : 
 
 ```{r}
-mutate(pulse, height=height/2.54, weight=weight/2.2)
+mutate(pulse, height=height/2.54, weight=weight*2.2)
 ```
 
 ## if_else(condition, true, false, ...)

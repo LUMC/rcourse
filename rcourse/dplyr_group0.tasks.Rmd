@@ -34,7 +34,7 @@ survey %>% group_by(gender, exercise) %>%
            summarise(size=n(), meanPulse=mean(pulse, na.rm=TRUE), .groups='drop')
 
 # gender,smokes group
-survey %>% group_by(gender, exercise) %>% 
+survey %>% group_by(gender, smokes) %>% 
            summarise(size=n(), meanPulse=mean(pulse, na.rm=TRUE), .groups='drop')
 
 ```
