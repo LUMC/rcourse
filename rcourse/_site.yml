@@ -6,7 +6,7 @@ navbar:
   left:
     - text: "Home"
       icon: fa-home
-      href: index.html
+      href: S01L01l_index.html
     - text: "Schedule"
       icon: fa-calendar
       href: S00L01c_toc.html # schedule.html
