@@ -1,0 +1,13 @@
+---
+title: "Using R for data analysis"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: spacelab
+---
+
+>  Courses
+
+ - [Clinical Research in Practice (CRiP) September 2021](CRIP_202109)
+ - [Boerhaave Nascholing (II) October 2021](Boerhaave_202110)
+ 
+

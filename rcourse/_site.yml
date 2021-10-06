@@ -32,11 +32,12 @@ output:
   html_document:
     theme:     spacelab  # (e.g.: spacelab, lumen, readable,yeti) see https://www.datadreaming.org/post/r-markdown-theme-gallery/
     highlight: textmate # tango
-    toc: true
-    toc_depth: 2
-    toc_float: true  
+    # toc: true
+    # toc_depth: 2
+    # toc_float: true  
+    # toc_collapsed: true
     include:
-      after_body: ../rcourse/footer.html
-      in_header: ../rcourse/fold.html
-    css: ../rcourse/styles.css
+      after_body: ../../rcourse/footer.html
+      in_header: ../../rcourse/fold.html
+    css: ../../rcourse/styles.css
     df_print: paged

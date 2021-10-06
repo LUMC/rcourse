@@ -699,7 +699,7 @@ BaseRenderer <- R6Class(
     clearDir = function() {
       outDir <- normalizePath( file.path( self$outDir() ), mustWork = FALSE )
       if( !dir.exists( outDir ) ) {
-        dir.create( path = outDir )
+        dir.create( path = outDir, recursive = TRUE)
         message( "Created output directory '", outDir, "'" )
       } else {
         unlink( x = file.path( outDir, "*.html" ), recursive = FALSE, force = TRUE )
