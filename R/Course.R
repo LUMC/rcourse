@@ -127,7 +127,7 @@ Course <- R6Class("Course",
         # TheCourse object
         course <- TheCourse$new( id = self$config("course_id"), dir = path, label =  self$config("course_label") )
         # Slots :  slot => Session
-        # 
+        #
         slots <- self$config("slots")
         for( i in seq_len( length( slots ) ) ) {
           slot_id <- names(slots)[[i]]
@@ -140,7 +140,15 @@ Course <- R6Class("Course",
           )
           for( lecture in slot[["lectures"]] ) {
             lecture_ <- strsplit(lecture,":")[[1]] # [id,label,hasTasks,min]
-            session_$add(Lecture$new(id=lecture_[1], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=as.numeric(lecture_[4])))
+            idFile <- strsplit( lecture_[1], "[|]" )[[1]] # [id|rmdFile]
+            if( length( idFile ) <= 1 ) {
+              session_$add(Lecture$new(id=lecture_[1], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=as.numeric(lecture_[4])))
+            } else {
+              session_$add(Lecture$new(
+                id=idFile[[1]], label=lecture_[2],hasTasks=as.logical(lecture_[3]),min=as.numeric(lecture_[4]),
+                rmdFile=idFile[[2]]
+              ))
+            }
           }
           course$add(session_)
         }
@@ -193,18 +201,18 @@ Course <- R6Class("Course",
       #' @description Render the site ( todo: only for modified Rmd's).
       #' @param publish ...
       render = function(publish=FALSE, out_dir = ".docs"){
-        
+
         # always render
         renderer <- Renderer$new( outDir = out_dir)
         renderer$makeAll( course = self$course_ )
         file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
-        
+
         if (publish) {
           # mv .docs to docs and .docs.zip to docs.zip
           pub_dir <- basename(self$site())  # docs
           unlink(pub_dir, recursive = TRUE) ; file.rename(out_dir, pub_dir)
-          zip_file <- paste(out_dir, "zip", sep=".")  
-          pub_zip_file <- paste(pub_dir, "zip", sep=".")  
+          zip_file <- paste(out_dir, "zip", sep=".")
+          pub_zip_file <- paste(pub_dir, "zip", sep=".")
           if (file.exists(zip_file))
             file.rename(zip_file, pub_zip_file)
           message( "Content rendered into '", pub_dir, "' directory." )

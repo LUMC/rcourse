@@ -147,7 +147,9 @@ Lecture <- R6Class(
     label = function() { validOr( private$label_, private$id_ ) },
     rmdFile = function() {
       rmdFile <- private$rmdFile_
-      if( is.null( rmdFile ) ) rmdFile <- paste0( private$id_, ".Rmd" )
+      if( is.null( rmdFile ) ) {
+        rmdFile <- paste0( private$id_, ".Rmd" )
+      }
       rmdFile
     },
     hasTasks = function() { private$hasTasks_ },
@@ -187,7 +189,9 @@ Session <- R6Class(
     lectureIds = function() { sapply( private$lectures_, function( l ) l$id() ) },
     add = function( x ) {
       stopifnot( inherits( x, "Lecture" ) )
-      stopifnot( !( x$id() %in% self$lectureIds() ) )
+      if( x$id() %in% self$lectureIds() ) {
+        stop( "Can't have two lectures with the same id '", x$id(), "'." )
+      }
       private$lectures_ <- c( private$lectures_, x )
       invisible( self )
     },
