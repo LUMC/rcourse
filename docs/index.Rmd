@@ -7,7 +7,7 @@ output:
 
 >  Courses
 
- - [Clinical Research in Practice (CRiP) September 2021](CRIP_202109)
- - [Boerhaave Nascholing (II) October 2021](Boerhaave_202110)
+ - [Clinical Research in Practice (CRiP) September 2021](CRIP_202109/index.html)
+ - [Boerhaave Nascholing (II) October 2021](Boerhaave_202110/index.html)
  
 
