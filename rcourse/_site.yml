@@ -37,7 +37,7 @@ output:
     # toc_float: true  
     # toc_collapsed: true
     include:
-      after_body: ../../rcourse/footer.html
-      in_header: ../../rcourse/fold.html
-    css: ../../rcourse/styles.css
+      after_body: footer.html
+      in_header: fold.html
+    css: styles.css
     df_print: paged

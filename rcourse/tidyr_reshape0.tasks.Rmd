@@ -1,5 +1,5 @@
 ---
-title: "Reshape (practice)"
+title: "Reshaping tables (practice)"
 #author: "R. Monajemi"
 ---
 

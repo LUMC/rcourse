@@ -625,6 +625,12 @@ BaseRenderer <- R6Class(
     id2url = function( id ) stop( "Not inherited." ),
     makeAll = function( course, makeZip = TRUE, ... ) {
       self$clearDir()
+      # Copy rcourse/{footer.html,fold.html,styles.css} to self$outDir(). This to
+      # avoid relative path issue in _site.yml whene render is called on default 
+      # .doc or docs/<course-name>.
+      # make a list of files to be copied in the config.yml
+      file.copy(file.path(course$dir(), c("footer.html","fold.html","styles.css")), self$outDir())
+      # 
       allFiles <- c(
         self$makeLectures( course, ... ),
         self$makeTasks( course, enableCode = FALSE, ... ),

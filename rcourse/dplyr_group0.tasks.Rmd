@@ -80,7 +80,7 @@ survey %>%  filter(gender=="female") %>% group_by(gender,fold) %>% summarise(n=n
 # survey %>%   group_by(gender,fold)  %>% summarise(n=n(), .groups = "drop") %>% filter(gender=="female")
 ```
 
-1.c most popular name initials in descending order of popularity.  
+1.c most popular name initials in descending order of popularity. See `?stringr::str_sub` for extracting initials from a character vector.   
 
 ```{r eval=TRUE}
 survey %>% mutate(initial=str_sub(name, 1,1)) %>% group_by(initial) %>% summarise(n=n()) %>% arrange(desc(n))

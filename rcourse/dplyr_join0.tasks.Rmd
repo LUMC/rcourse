@@ -128,6 +128,17 @@ name_key_row_count
 name_key_row_count - name_age_key_row_count # number of additional rows due to non-unique key 'name'
 ```
 
+3. In the previous exercise, using only `name` as the key, we obtained 78 'excess' observations due to non-unique key `name`. Calculate this number without applying the join.    
+
+```{r}
+survey %>%  
+  count(name) %>%               # count occurrences of 'name' (n)
+  filter(n>1) %>%               # filter non-unique 'name' (n>1)
+  mutate(excess=(n*n)-n) %>%    # excess per observation : product minus exact match
+  summarise(excess=sum(excess)) # total excess
+```
+
+
 ```{r, eval=FALSE, echo=FALSE}
 # Maybe another time 
 #
@@ -141,7 +152,7 @@ freq_non_uniq_names
 sum(freq_non_uniq_names*freq_non_uniq_names - freq_non_uniq_names) 
 ```
 
-3. Recall `Data manipulation 1/3, Tibble exercise 4.2`, where you were asked to add a new variable `height`. Repeat the exercise by using a `join` functions.
+4. Recall `Data manipulation 1/3, Tibble exercise 4.2`, where you were asked to add a new variable `height`. Repeat the exercise by using a `join` functions.
 
 
 ```{r}

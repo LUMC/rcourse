@@ -1,16 +1,25 @@
 ---
-title: 'Reshape'
+title: 'Reshaping tables'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
+
 pulse <- read_pulse() 
 ```
 
 > Change layout of values in a table 
  
-![](images/tidyr-reshape.png)
+<!-- building the course can not find images/tidyr_reshape.png !!!
+<center> 
+![](images/tidyr_reshape.png)
+</center> 
+-->
 
-*Source:* [data import cheat sheet : tidyr](https://www.rstudio.com/resources/cheatsheets/)
+*Source:* [data import cheat sheet : tidyr](https://github.com/rstudio/cheatsheets/raw/master/tidyr.pdf)
+
 
 Two main functions to manipulate the layout of the table, `pivot_longer` transforms the table from wide to long format and `pivot_wider`, which does the opposite, converts the table from long to wide format.
 
@@ -54,6 +63,7 @@ Let's reshape the pulse dataset with variables `drug` = {smokes,alcohol} and `us
 pulse %>%  pivot_longer(c(smokes,alcohol), names_to = "drug", values_to = "use")
 ```
 
+
 ## `pivot_wider` : long to wide format
 
 ```{r}
@@ -76,4 +86,31 @@ msg <- "pulses and pulses2 are identical"
 qa(msg)
 ```
 
+
+## ggplot and reshaping
+
+Often you will need to reshape your data for ggplot visualisations. For example we would like to compare `pulse1` and  `pulse2` variables with a `boxplot`. You may plot pulse1 and pulse2 in separate plots one after the other:
+
+```{r, message=FALSE, warning=FALSE}
+require(gridExtra)
+
+bp1 <- ggplot(pulse %>% drop_na()) +  # remove missing
+  aes(y=pulse1) +
+  geom_boxplot()
+bp2 <- ggplot(pulse %>% drop_na()) +  # remove missing
+  aes(y=pulse2) +
+  geom_boxplot()
+grid.arrange(bp1, bp2, ncol=2)
+```
+
+As you can see the y-scale of each plot is set dynamically and can be misleading. To resolve this, we would need a single plot with aesthetic mapping of `x` being  the categorical variable `pulse` and `y` the pulse values as was shown above.  
+
+```{r}
+ggplot(pulse %>% 
+         drop_na() %>%  # remove missing 
+         pivot_longer( c(pulse1,pulse2), names_to = "pulse", values_to = "level")
+       ) +  
+  aes(x=pulse, y=level) +
+  geom_boxplot()
+```
 

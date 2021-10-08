@@ -3,12 +3,21 @@ title: 'Join'
 ---
 
 ```{r setup, include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 ```
 
 > Combine tibbles 
 
-`*_join(...)` is a family of functions for combining two tibbles on common `variable(s)` called `key`. For example, take a group of people (n=7) for which we have collected age and height data:
+`*_join(...)` is a family of functions for combining two tibbles on common `variable(s)` called `key`. 
+
+<center>
+![](images/joins.png)
+</center>
+
+For example, take a group of people (n=7) for which we have collected age and height data:
 
 ```{r}
 # height 

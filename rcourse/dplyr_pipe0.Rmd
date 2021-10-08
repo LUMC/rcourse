@@ -3,9 +3,6 @@ title: 'Pipe operator %>%'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-# library(rooc)
-# source("../R/Doc.R")
-# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
