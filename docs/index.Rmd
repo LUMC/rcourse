@@ -5,9 +5,19 @@ output:
     theme: spacelab
 ---
 
->  Courses
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
- - [Clinical Research in Practice (CRiP) September 2021](CRIP_202109/index.html)
- - [Boerhaave Nascholing (II) October 2021](Boerhaave_202110/index.html)
- 
 
+`Using R for data analysis` is a four-day online course for bachelor/master Biomedical Sciences Leiden university. It is also offered as a PhD course organised by [Boerhaave Nascholing](https://www.boerhaavenascholing.nl/).  
+
+`Lecture material:`
+
+ - [Clinical Research in Practice (CRiP),  September 2021](CRIP_202109)
+ - [Boerhaave Nascholing (II),  October 2021](Boerhaave_202110)
+
+
+<br/>
+<hr>
+<p style="blockquote">Copyright &copy; 2021 Biomedical Data Sciences (BDS) | LUMC</p>
