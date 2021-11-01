@@ -14,8 +14,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 `Lecture material:`
 
- - [Clinical Research in Practice (CRiP),  September 2021](CRIP_202109)
+ - [B3DS,  November 2021](B3DS_202111)
  - [Boerhaave Nascholing (II),  October 2021](Boerhaave_202110)
+ - [Clinical Research in Practice (CRiP),  September 2021](CRIP_202109)
 
 
 <br/>
