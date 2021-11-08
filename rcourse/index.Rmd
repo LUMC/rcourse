@@ -23,9 +23,9 @@ in the R language. Elementary statistics knowledge is necessary to understand ex
 
 After the course you will:
 
-- understand and write (`tidyverse`-based) R code;
-- know where to look for R methods to perform statistical analyses of your own data;
-- generate reproducible reports from your own data in HTML, PDF or DOC formats.
+- Understand and write (`tidyverse`-based) R code.
+- Know where to look for R methods to perform statistical analyses of your own data.
+- Generate reproducible reports from your own data in HTML, PDF or DOC formats.
 
 We will cover the following topics:
 
@@ -38,34 +38,34 @@ We will cover the following topics:
 
 ## Course structure
 
-The course is divided in 7 half-day sessions.  
+The course is divided in half-day sessions.  
 The teachers are available for chatting online during all teaching slots.  
 At the beginning of the week before the course the teachers might be contacted to help with R and RStudio installation problems (see below).
 
-### The sessions #1-#6: practicing
+### All sessions: practicing
 
-The course is given online in a **plenary room**. Each session is split into a
-few small topics, each introduced as follows:
+The course is given in an **online plenary room**. Each session is split into a
+few small topics and each topic is introduced as follows:
 
-- a short online (live video) lecture for introduction/demonstration,
-- a self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions,
-- (when needed) a short chat question and live video answers session.
+- A short online (live video) lecture for introduction/demonstration.
+- A self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions.
+- (Only when needed) A short chat question and live video answers session.
 
-The students are asked to **type the commands** being presented and observe 
+The students are asked to **type on their keyboards the commands** being presented and observe 
 effects (**avoid copy-paste**; own typing is important in order to learn 
 how to respond to mistakes/errors).   
 
-### The session #7: practicing followed by self study assignment
+### The last session: practicing followed by self study assignment
 
 A **self study assignment** (SSA) will be offered during the last session. 
-A set of tasks will be provided to be solved within 90 minutes. 
+A set of tasks will be provided to be solved individually without and help of the teachers or other persons. 
 At the end there will be a general discussion with **chat questions** and **live video answers**.
 
-The overall SSA goal will be to prepare an R Markdown document reporting an 
-analysis of a dataset. You will carry out the following steps:
+The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
+You will be asked to carry out the following steps:
 
-- Create a RStudio project, knit a R Markdown document.
-- Read a table which will be provided.
+- Create an RStudio project, knit an R Markdown document.
+- Read a provided table.
 - Show some filtered/summarized content of the table.
 - Produce some plots of the data.
 

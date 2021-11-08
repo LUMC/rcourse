@@ -7,4 +7,4 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The self-study assignment will be published on `Friday, Sep 30, 14:30-16:30`. The solutions will be made available in the same location afterwards. 
+The self-study assignment will be published under the links [Materials](S00L02n_materials.html). The solutions will be made available in the same location afterwards. 
