@@ -9,14 +9,18 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+> **The course**
 
-`Using R for data analysis` is a four-day online course for bachelor/master Biomedical Sciences Leiden university. It is also offered as a PhD course organised by [Boerhaave Nascholing](https://www.boerhaavenascholing.nl/).  
+**Using R for data analysis** is an online course for bachelor/master students of Biomedical Sciences Leiden University.  
+It is also offered as a general course organised by [Boerhaave Nascholing](https://www.boerhaavenascholing.nl/).  
 
-`Lecture material:`
+> **Lecture materials**
 
- - [B3DS,  November 2021](B3DS_202111)
- - [Boerhaave Nascholing (II),  October 2021](Boerhaave_202110)
- - [Clinical Research in Practice (CRiP),  September 2021](CRIP_202109)
+The materials are adjusted depending on schedules. Please select your group:
+
+- [B3DS,  November 2021](B3DS_202111)
+- [Boerhaave Nascholing (II),  October 2021](Boerhaave_202110)
+- [Clinical Research in Practice (CRiP),  September 2021](CRIP_202109)
 
 
 <br/>
