@@ -90,7 +90,7 @@ slots:
     slot_time: "09:15-10:00"
     slot_plan: "l45"
     lectures:
-      - "ed0:Q&A:FALSE:0"
+      - "ed0:Q&A:FALSE:45"
 
   slot9:
     slot_label: "Exam"
