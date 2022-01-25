@@ -20,3 +20,4 @@ rc$view()                        # view the course in a browser
 **Visit live pages:**
 
 > [https://lumc.github.io/rcourse/](https://lumc.github.io/rcourse/)
+
