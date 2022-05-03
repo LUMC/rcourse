@@ -84,14 +84,6 @@ nrow(pulse) == nrow( pulse %>% distinct(name)) # is 'name' unique for all observ
 ```
 
 
-## `glimpse`
-
-With `glimpse` function you can quickly inspect the top part of all variables in one page with some additional meta information such as number of rows and columns and variable types: 
-
-```{r}
-pulse %>% glimpse()
-```
-
 ## `arrange`
 
 You may sort rows according to one or more variables with the function `arrange`.  
