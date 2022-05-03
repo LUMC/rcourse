@@ -115,17 +115,8 @@ survey_last_30 <- tail(survey,30)
 mean(survey_last_30$height, na.rm = TRUE) # <=> mean(survey_last_30[["height"]], na.rm = TRUE)
 ```
 
-2. What is the mean height of the joint first 15 and last 30 observations?
 
-```{r}
-# The function 'bind_rows' is used here to concatenate the two tibbles from the results of 
-# 'head' and 'tail' functions. The resulting tibble 'survey_first15_last30' has 45 observations.
-#
-survey_first15_last30 <- bind_rows(head(survey,15), tail(survey,30)) # combined observations
-mean(survey_first15_last30$height, na.rm = TRUE)  # mean of the combined observations
-```
-
-3. Make a tibble where the variable `age` comes directly after `name`.
+2. Make a tibble where the variable `age` comes directly after `name`.
 
 ```{r}
 # Some solutions
@@ -140,26 +131,4 @@ survey[c(1,ncol(survey),2:(ncol(survey)-1))]
 #    in the next section. 
 ```
 
-4. Given `favourite_colour1`:
-
-```{r, eval=TRUE, echo=TRUE}
-favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
-                           year=c(1995,1995,1995,1994), 
-                           colour=c("Blue","Green","Yellow","Purple"))
-favourite_colour1
-```
-
-4.1 Add `Isaac` with age `23`. 
-```{r}
-bind_rows(favourite_colour1, tibble(name="Isaac",age=23 ))
-```
-
-4.2 Include heights `175cm` and `183cm` for `Lotte` and `Lucas` respectively.
-
-```{r}
-# Exhaustive solution, doable with few observations. Better solutions exist 
-# using 'join' functions in tidyverse, part of the last lecture.
-
-bind_cols(favourite_colour1, tibble(height=c(183,175, NA, NA)))
-```
 

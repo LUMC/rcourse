@@ -3,9 +3,9 @@ title: 'Tibble'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-# library(rooc)
-# source("../R/Doc.R")
-# source("../R/Globals.R")
+#library(rooc)
+#source("../R/Doc.R")
+#source("../R/Globals.R")
 pulse <- read_pulse()
 survey <- read_survey()
 
@@ -77,6 +77,15 @@ tail(favourite_colour, 3)  # last 3 observations (rows)
 With the second argument to `head` and `tail` functions you can control the number of rows.
 
 `r info_block("By default head and tail show 6 rows, i.e. when the second argument is omitted : head(favourite_colour) or tail(favourite_colour).")`
+
+
+## `glimpse`
+
+With `glimpse` function you can quickly inspect the top part of all variables in a tibble with some additional meta information such as number of rows and variables and their types: 
+
+```{r}
+pulse %>% glimpse()
+```
 
 ## Select variables: [
 
@@ -153,96 +162,15 @@ environment variable, e.g. `favourite_colour_csv` :
 
 ```{r}
 favourite_colour_csv <- read_csv(file = "favourite_colour.csv")
-```
-
-`read_csv` gives a summary of the variables and their inferred types.
-
-```{r}
 favourite_colour_csv
 ```
 
-## Bind tibbles by rows and columns
-
-Often we have different data sets with i) the same set of variables or ii) same set of observations but different variables which we would like to combine: 
-
-- **bind_rows(...)**  function creates a new tibble from a set of tibbles with _not necessarily_ common variables. 
-- **bind_cols(...)**  function creates a new tibble from a set of tibbles with common observations. 
-
-> bind_rows
-
-Take for example the following two data sets with common variables name,year and colour:
+The message from `read_csv` gives a summary of the variables and their inferred types, it also suggest to use argument `show_col_types = FALSE` if you'd prefere asilent read:
 
 ```{r}
-favourite_colour1  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
-                           year=c(1995,1995,1995,1994), 
-                           colour=c("Blue","Green","Yellow","Purple"))
-favourite_colour1
-favourite_colour2  <- tibble(name=c("Raul", "Isaac"), 
-                           year=c(1998,1998), 
-                           colour=c("Red", "Green"))
-favourite_colour2
+favourite_colour_csv <- read_csv(file = "favourite_colour.csv", show_col_types = FALSE)
+favourite_colour_csv
 ```
-
-then the following gives the combined tibble:
-
-```{r}
-favourite_colour1_2 <- bind_rows(favourite_colour1, favourite_colour2)
-favourite_colour1_2
-```
-
-
-The function `bind_rows` treats tibbles as a collection of _unordered variables_. Let's take the same data as in `favourite_colour2` but change the order of variables year and colour
-
-
-```{r}
-favourite_colour3  <- tibble(name=c("Raul", "Isaac"), 
-                           colour=c("Red", "Green"), 
-                           year=c(1998,1998))
-favourite_colour3
-```
-
-then combining `favourite_colour1` and `favourite_colour3` will yield the same results:
-
-```{r}
-favourite_colour1_3 <- bind_rows(favourite_colour1, favourite_colour3)
-favourite_colour1_3
-```
-
-> What about `bind_rows(favourite_colour3, favourite_colour1)`?
-
-```{r, echo=FALSE, results='asis'}
-msg <- "The same dataset except the order of variables are taken from `favourite_colour3`, the first argument to bind_rows."
-qa(msg)
-``` 
-
-Another consequence of treating tibbles as a collection of _unordered variables_ is that there is no restriction on the given variables in the tibbles, with other words they might be identical sets of variables as was shown in the examples above but not necessarily:
-
-```{r}
-favourite_colour4  <- tibble(name=c("Raul", "Isaac"), 
-                           colour=c("Red", "Green"), 
-                           year=c(1998,1998), 
-                           height= c(173, 179))
-favourite_colour4
-favourite_colour1_4 <- bind_rows(favourite_colour1, favourite_colour4)
-favourite_colour1_4
-```
-
-
-
-> bind_cols
-
-Let us now combine another tibble with variable 'height' for the same set of observations in `favourite_colour1_2`:
-
-
-```{r}
-
-heights <- tibble(height=c(173, 179, 167, 181 , 173, 184))
-heights
-bind_cols(favourite_colour1_2,heights)
-```
-
-`r info_block("bind_cols expects the same number of obsersavations in each tibble, it is an error otherwise, and you as the user are responsible for the order of observations in each tibble.")`
-
 
 
 ## Type of a tibble
