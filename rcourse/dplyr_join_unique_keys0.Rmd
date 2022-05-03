@@ -1,0 +1,160 @@
+
+---
+title: 'Join: unique keys'
+---
+
+```{r setup, include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
+pulse <- read_pulse() 
+```
+
+## Non-unique keys
+
+If the keys are not unique in either of the tibbles then the result will be ambiguous. Take for example `df1` defined above, we now add another observation with name `Yara` and height `168`:
+
+```{r}
+df1 <- tibble(name = c("Isa","Jaylinn","Mila","Milas","Yara", "Yara"),
+           height = c(160, 172, 182, 157, 162, 168))
+df1
+```
+
+This will make the key, variable `name`, non-unique. Notice the result of a  full join:
+
+```{r}
+full_join(df1, df2, "name")
+```
+
+As you can see the join found two matches for *Yara* in `df1`, so both are taken and the age for *Yara* in `df2` is replicated.  
+
+`r info_block("Use only unique key in joins to avoid ambiguous results.")`
+
+
+What if we update df2 also with name `Yara` with age `19` and apply a join? 
+
+```{r}
+df2 <- tibble(name = c("Fiene","Jaylinn","Mila","Noah","Yara", "Yara"),
+           age = c(20,24,17,23,17,19)) 
+df2
+```
+
+```{r}
+full_join(df1,df2,"name")
+
+```
+
+As you can see we have now 4 ambiguous observations for Yara 
+
+## Variable name conflicts
+
+Take `df1` as defined above and `df3`: 
+
+```{r}
+# height (cm)
+df1 <- tibble(name = c("Isa","Jaylinn","Mila","Milas","Yara"),
+           height = c(160, 172, 182, 157, 162))
+
+# height (feet)
+df3 <-   df1 %>% mutate(height=height/30.48)
+df3
+```
+
+both of these tibbles have the variable height, after joining by `name` :
+
+```{r}
+left_join(df1,df3,by="name")
+```
+
+we see that `left_join` distinguishes `height` from `df1` and the `height` from `df3` with suffixes `.x` and `.y` respectively. 
+
+
+There are several more join functions not covered here such as right_join (opposite of left_join), semi_join and anti_join (see [dplyr cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)).
+
+
+<!--
+
+#### right_join
+
+Return all rows from `df2` and all columns in both `df1` and `df2`, `NA` for missing values in `df1`
+
+```{r}
+right_join(df1,df2,"name")
+```
+
+#### semi_join
+
+Identical to `inner_join` keeping only columns in `df1`  # (exception: no duplicated rows in df1.)
+
+```{r}
+semi_join(df1,df2,"name")
+```
+
+#### anti_join
+
+Complement of `semi_join`, return rows from `df1` with no match in `df2`. 
+
+```{r}
+anti_join(df1,df2,"name")
+```
+
+-->
+
+## Unique keys
+
+### base::duplicated(...) function
+
+The base function `duplicated` can be used to find duplicates in a vector or a tibble. 
+
+```{r}
+v <- c("Isa","Jaylinn","Mila","Bonnie", "Yara", "Mila", "Isa", "Mila")
+v
+```
+
+Here `Isa` and `Mila` occur two and three times respectively. The function `duplicated` returns a logical with TRUE at corresponding positions whenever it matches a value that it had already seen from position 1 to n, n being the length of the vector in this case.    
+
+```{r}
+duplicated(v)
+```
+
+
+`r info_block("duplicated(...) function does not mark the first occurence of the duplicated values with TRUE.")`
+
+
+On tibbles the function `duplicated` can handle multiple variables(columns):
+
+```{r}
+# the two observations on Yara are identical
+df1 <- tibble(name = c("Isa","Jaylinn","Mila","Milas","Yara", "Yara"),
+           height = c(160, 172, 182, 157, 162, 162))
+df1
+duplicated(df1)
+```
+
+We can use this logical vector to filter observations from `df1`:
+
+```{r}
+df1 %>%  filter(duplicated(df1))
+```
+
+Note that we only get 1 row as the result and not 2 because of the behaviour of duplicated function which does not mark the first match.
+
+### Test uniqueness of a key set
+
+We can now test whether certain combinations of variables can uniquely identify each observation in the dataset. Let us take the variables {name,age} in the pulse dataset:
+
+```{r}
+key1 <- pulse %>%  select(name,age)
+key1
+
+```
+
+
+If the `duplicated` function returns FALSE for all positions in `key1` tibble then it means it did not find any duplicates.
+
+```{r}
+# sum over a logical vector counts the number of TRUE values
+sum(duplicated(key1)) 
+```
+
+the sum here is non-zero therefore there are duplicated values, i.e. the key set `key1` is not unique.
