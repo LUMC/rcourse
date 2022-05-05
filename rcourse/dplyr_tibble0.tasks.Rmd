@@ -3,6 +3,9 @@ title: "Tibble (practice)"
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
@@ -33,16 +36,16 @@ exercise_group_sub
 
 ### Extract variables as vectors
 
-1. Given the tibble `favourite_colour`, how old were the subjects by the end of 2019?
+1. Given the tibble `favourite_colour`, how old were the subjects by the end of 2021?
 
 ```{r, echo=FALSE}
-favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
-                           year=c(1995,1995,1995,1994), 
-                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim","Marc","Lucy","Pedro"), 
+                           year=c(1995,1995,1995,1994,1990,1993,1992), 
+                           colour=c("Blue","Green","Yellow","Purple","Green","red","Blue"))
 ```
 
 ```{r}
-2019 - favourite_colour[["year"]] # alternatively:  2019 - favourite_color$year
+2021 - favourite_colour[["year"]] # alternatively:  2021 - favourite_color$year
 ```
 
 2. What is the mean height in `exercise_group`? Use *mean* function (see ?mean).
@@ -106,9 +109,9 @@ mean(survey$height, na.rm = TRUE)
 
 ## Extra exercises
 
-In survey data:
+1. In survey data:
 
-1. What is the mean height of the last 30 observations?
+  a) What is the mean height of the last 30 observations?
 
 ```{r}
 survey_last_30 <- tail(survey,30)
@@ -116,8 +119,8 @@ mean(survey_last_30$height, na.rm = TRUE) # <=> mean(survey_last_30[["height"]],
 ```
 
 
-2. Make a tibble where the variable `age` comes directly after `name`.
-
+  b) Make a tibble where the variable `age` comes directly after `name`.
+  
 ```{r}
 # Some solutions
 #
@@ -130,5 +133,14 @@ survey[c(1,ncol(survey),2:(ncol(survey)-1))]
 # 3) The select(...) function is a more concise solution which will be discussed 
 #    in the next section. 
 ```
+  
 
+2. Create the favourite_colour tibble from the lecture but now with `colour` variable as a `factor`. Print the counts for each level.
+
+```{r}
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim","Marc","Lucy","Pedro"), 
+                           year=c(1995,1995,1995,1994,1990,1993,1992), 
+                           colour=factor(c("Blue","Green","Yellow","Purple","Green","red","Blue")))
+fct_count(favourite_colour[['colour']])
+```
 

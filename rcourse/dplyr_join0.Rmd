@@ -82,8 +82,7 @@ p2
 > Is the combination `{name,height}` a valid choice as the unique key to join two tibbles p1 and p2? 
 
 ```{r, echo=FALSE, results='asis'}
-msg <- "Yes. This because the combination is unique in the table. You can check the uniqueness of {name,height} with the command duplicated, see also ?base::duplicated.  The statement
-sum(duplicated(pulse %>% select(name,height)))==0 tests whether the number of duplicates is equal to 0."
+msg <- "Yes. This because the combination is unique in the table. You can check the uniqueness of {name,height} with the command duplicated, see also ?base::duplicated.  The statement sum(duplicated(pulse %>% select(name,height)))==0 tests whether there are duplicates in the combination {name,height}"
 qa(msg)
 ```
 

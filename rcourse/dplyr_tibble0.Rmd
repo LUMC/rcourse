@@ -3,9 +3,9 @@ title: 'Tibble'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
-#library(rooc)
-#source("../R/Doc.R")
-#source("../R/Globals.R")
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse()
 survey <- read_survey()
 
@@ -33,10 +33,18 @@ Creating a __tibble__ is done using the keyword _tibble_ taking a sequence of `n
 
 Take for example the variables `name`, `year` and `colour` to represent a person's name, birth year and favourite colour:   
 
+```{r, echo=FALSE}
+# favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
+#                            year=c(1995,1995,1995,1994), 
+#                            colour=c("Blue","Green","Yellow","Purple"))
+```
+
+
 ```{r, echo=TRUE}
-favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim"), 
-                           year=c(1995,1995,1995,1994), 
-                           colour=c("Blue","Green","Yellow","Purple"))
+favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim","Marc","Lucy","Pedro"), 
+                           year=c(1995,1995,1995,1994,1990,1993,1992), 
+                           colour=c("Blue","Green","Yellow","Purple","Green","red","Blue"))
+
 ```
 
 `r info_block("When creating a tibble the column vectors must be of the same length.")`
@@ -83,8 +91,17 @@ With the second argument to `head` and `tail` functions you can control the numb
 
 With `glimpse` function you can quickly inspect the top part of all variables in a tibble with some additional meta information such as number of rows and variables and their types: 
 
+```{r, echo=FALSE}
+options_width <- options()$width
+options(width=80)
+```
+
 ```{r}
 pulse %>% glimpse()
+```
+
+```{r, echo=FALSE}
+options(width=options_width)
 ```
 
 ## Select variables: [
@@ -172,7 +189,6 @@ favourite_colour_csv <- read_csv(file = "favourite_colour.csv", show_col_types =
 favourite_colour_csv
 ```
 
-
 ## Type of a tibble
 
 Now inspect the type of the tibble we just created:
@@ -181,9 +197,10 @@ Now inspect the type of the tibble we just created:
 class(favourite_colour)
 ```
 
+
 A tibble is in its core a 'data.frame', a base R data structure. 
 
-
-
-
 `r info_block("'The types tbl_df' and 'tbl' enforce additional convinient behaviours specific to tibble.")`
+
+
+
