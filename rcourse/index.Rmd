@@ -58,7 +58,7 @@ how to respond to mistakes/errors).
 ### The last session: practicing followed by self study assignment
 
 A **self study assignment** (SSA) will be offered during the last session. 
-A set of tasks will be provided to be solved individually without and help of the teachers or other persons. 
+A set of tasks will be provided to be solved individually without help of the teachers or other persons. 
 At the end there will be a general discussion with **chat questions** and **live video answers**.
 
 The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
