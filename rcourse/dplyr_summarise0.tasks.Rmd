@@ -40,7 +40,7 @@ survey %>% summarise(meanAge=mean(age), medianHeight=median(height, na.rm=TRUE))
 survey %>% count(gender)
 ```
 
-5. Produce the cross table on `gender` and `fold`. Do the same including `clap`. 
+5. Produce the frequency table on `gender` and `fold`. Do the same including `clap`. 
 
 ```{r}
 survey %>% count(gender, fold)       # (1)
@@ -49,13 +49,13 @@ survey %>% count(gender, fold, clap) # (2)
 
 ## Extra exercises
 
-1. Produce the cross table on `gender` and `smokes`,  only females. 
+1. Produce the frequency table on `gender` and `smokes`,  only females. 
 
 ```{r}
 survey %>% filter(gender=="female") %>% count(gender,smokes)
 ```
 
-2. Produce the cross table on `gender`, `exercise` and `smokes` but only for male smokers.
+2. Produce the frequency table on `gender`, `exercise` and `smokes` but only for male smokers.
 
 ```{r}
 # smoker is someone that smokes 'occas', 'regul' or 'heavy', i.e. smokes !='never'

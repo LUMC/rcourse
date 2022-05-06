@@ -92,7 +92,7 @@ qa(msg)
 Often you will need to reshape your data for ggplot visualisations. For example we would like to compare `pulse1` and  `pulse2` variables with a `boxplot`. You may plot pulse1 and pulse2 in separate plots one after the other:
 
 ```{r, message=FALSE, warning=FALSE}
-require(gridExtra)
+require(gridExtra)  # Make sure gridExtra is installed with install.packages("gridExtra").
 
 bp1 <- ggplot(pulse %>% drop_na()) +  # remove missing
   aes(y=pulse1) +
@@ -114,3 +114,7 @@ ggplot(pulse %>%
   geom_boxplot()
 ```
 
+
+## Cross tables
+
+[...]
