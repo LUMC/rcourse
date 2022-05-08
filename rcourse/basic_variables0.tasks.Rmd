@@ -28,7 +28,7 @@ heightInCentimeters
 3. *Change a value of a variable*.  
 Increase the height stored in `heightInMeters` by 0.1m.  
 Check whether the value of the variable indeed changed.  
-Has also the value of `heightInCentimeters` changed? Why?
+Has the value of `heightInCentimeters` also changed? Why?
 
 ```{r error=TRUE}
 heightInMeters <- heightInMeters + 0.1
@@ -37,7 +37,7 @@ heightInCentimeters      # not changed, for change assignment is needed
 ```
 
 4. *Typo in variable name*.  
-Observe the error shown when you try to print the variable but you make a typo.
+Observe the error shown when you try to print a variable but you make a typo in the variable name.
 
 ```{r error=TRUE}
 height.in.meters      # Error: object 'height.in.meters' not found

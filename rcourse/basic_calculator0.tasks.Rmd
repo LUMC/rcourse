@@ -33,7 +33,7 @@ In the console type an error expression `(1+2)*(3+4))`. Understand the error mes
 # (1+2)*(3+4))     -> forgotten (
 # 0,25             -> use dot as decimal point: 0.25
 # sin()            -> sin needs an argument
-# xyz              -> xyz is not known
+# xyz              -> xyz is a name not known to R
 ```
 
 5. *Getting help.*  
@@ -57,22 +57,23 @@ A save button allows to save typed commands but this is not a practical way to s
 
 2. *Logarithms and exponentials.*  
 Check the manual to understand the difference between `log10( 100 )`, `log2( 100 )` and `log( 100 )`.  
-Find what would be the result of `exp( 1 )`.
+Find what would be the result of `exp( 1 )` and `log( exp( 1 ) )`.
 
 ```{r}
-log10( 100 )   # logarithm base 10 of 100, 10^2 = 100
-log2( 100 )    # logarithm base 2 of 100
-log( 100 )     # natural logarithm of 100
-exp( 1 )       # base of natural logarithm, e^1
+log10( 100 )    # logarithm base 10 of 100, 10^2 = 100
+log2( 100 )     # logarithm base 2 of 100
+log( 100 )      # natural logarithm of 100
+exp( 1 )        # base of natural logarithm, e^1
+log( exp( 1 ) ) # log is inverse function of exp
 ```
 
 3. *Trigonometry.*  
 Calculate $cos(90^{\circ})$.  
-Remember that in R the trigonometric functions require angles specified in [radians](https://en.wikipedia.org/wiki/Radian).
+Remember that in R the trigonometric functions require angles specified in [radians](https://en.wikipedia.org/wiki/Radian) (you may use the `pi` variable).
 
 ```{r}
 cos( 90 / 180 * pi ) # conversion from degrees to radians
                      # the result is very close to zero, but not exact zero
-                     # the numeric calculation is approximate
+                     # the numeric calculations are always approximate
 ```
 

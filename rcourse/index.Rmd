@@ -77,12 +77,13 @@ therefore please follow the steps below a week before the start of the course.
 In case of failure, please inform the teachers. In some situations intervention
 of the administrator of your computer might be necessary.
 
-- **Install R**: go to *the R Project for Statistical Computing* (https://www.r-project.org/) and follow the download and installation instructions.
-- **Install RStudio**: go to *the RStudio download page* (https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio.
+- **Install R**: Go to *the R Project for Statistical Computing* (https://www.r-project.org/) and follow the download and installation instructions.
+- **Install RStudio**: Go to *the RStudio download page* (https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio.
 
 Some additional packages are needed for the course.
 During the course the participants will learn how to install packages but this process occasionally fails (because e.g.: additional steps are needed in a particular operating system, or there is lack of permissions to access some system directories, or other software is too old, ...).
 
+- **Install Rtools** (Windows only!): During installation of some packages you may encounter the following error `Rtools is required to build R packages but is not currently installed`. If that is the case, follow *the Rtools installation* (https://cran.rstudio.com/bin/windows/Rtools/).
 - **Install tidyverse package**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
 - **Install packages needed for R Markdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing R Markdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
 
