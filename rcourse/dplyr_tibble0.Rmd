@@ -13,7 +13,7 @@ survey <- read_survey()
 
 > A **tibble** is a table -- a two dimensional data structure with rows (**observations**) and columns (**variables**). 
 
-I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. As you may recall the datasets `pulse` and `survey` were of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `double` etc. Let's start by creating a tibble manually.
+I'll use the terms *observations* and *rows* interchangeably depending on the context. The same goes for the terms *variables* and *columns*. As you may recall the datasets `pulse` and `survey` were in fact of type tibble. Each variable in a tibble has a fixed [type](S02L01l_basic_vectors0.html) such as `character`, `numeric` etc. Let's start by creating a tibble manually.
 
 ## Create a tibble
 
@@ -59,7 +59,7 @@ favourite_colour
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "1) '# A tibble: 4 x 3', which says that this is a tibble with dimensions 4x3 (4 observations 
-and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double, \n\n 3) the row numbers"
+and 3 variables), \n\n 2) the atomic type of each variable, in this case character and double (numeric), \n\n 3) the row numbers"
 qa(msg)
 ``` 
 
@@ -70,7 +70,7 @@ Type the following to find out the dimensions of the tibble:
 ```{r}
 ncol(favourite_colour)  # number of variables (columns)
 nrow(favourite_colour)  # number of observations (rows)
-dim(favourite_colour)   # dimensions : 4 rows and 3 columns 
+dim(favourite_colour)   # dimensions : 7 rows and 3 columns 
 ```
 
 ## Head and tail
@@ -97,7 +97,7 @@ options(width=80)
 ```
 
 ```{r}
-pulse %>% glimpse()
+favourite_colour %>% glimpse()
 ```
 
 ```{r, echo=FALSE}

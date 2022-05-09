@@ -33,11 +33,11 @@ msg <- "Yes, 'select' returns the selection as a tibble and does not modify the 
 qa(msg)
 ``` 
 
-If you want to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `pulse_name_age_only`:
+If you want to keep your selection as a separate tibble you'll need to assign the result into a new environment variable, e.g. `pulse_name_age`:
 
 ```{r}
-pulse_name_age_only <- select(pulse, name, age)
-pulse_name_age_only
+pulse_name_age <- select(pulse, name, age)
+pulse_name_age
 ```
 
 ##  Variable order
@@ -73,7 +73,7 @@ qa(msg)
 
 ## Reshuffle variables 
 
-With `select` we can reshuffle the variables in their position in the tibble. When a data set contains  large number of variables, you may want to bring the more 'important' variables in front for inspection. You can do this with `select` in combination with a helper function `evertything()`:   
+With `select` we can reshuffle the variables in their positions in the tibble. When a data set contains  large number of variables, you may want to bring the more 'important' variables in front for inspection. You can do this with `select` in combination with a helper function `evertything()`:   
 
 ```{r}
 select(pulse, name, age, everything()) 

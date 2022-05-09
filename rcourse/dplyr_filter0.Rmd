@@ -114,7 +114,7 @@ filter(pulse, is.na(pulse2))
 Also a single row and it looks like to be the same row as the one with missing value for `pulse1`
 
 
-> Can you think of a logical condition that guarantees that the missing `pulse1` and `pulse2` values are actually in the same observation?
+> Can you think of a logical condition that confirms that the missing `pulse1` and `pulse2` values are actually in the same observation?
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "filter(pulse, is.na(pulse1) | is.na(pulse2)) results in a single row."
@@ -122,12 +122,14 @@ qa(msg)
 ``` 
 
 
+`r info_block("Equality test with NA, i.e <variable> == NA, always results in NA. Therefore the convinient function is.na().")` 
+
 > Negation operator: ! 
 
 If you are interested only in observation that _do not_ contain missing values, in this case in `pulse1` and `pulse2`: 
 
 ```{r}
-filter(pulse, ! is.na(pulse1)) # <=> filter(pulse, ! is.na(pulse2))
+filter(pulse, ! is.na(pulse1))
 ```
 
 

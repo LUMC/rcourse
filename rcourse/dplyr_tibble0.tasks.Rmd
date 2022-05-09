@@ -27,7 +27,7 @@ exercise_group
 
 ### tibble subset
 
-1. Take the tibble `exercise_group` from the previous exercise and create a new tibble without the `height` and `weight` variables.
+1. Take the tibble `exercise_group` from the previous exercise and create a new tibble `exercise_group_sub` without the `height` and `weight` variables by selection `[`.
 
 ```{r}
 exercise_group_sub <- exercise_group[c("name","exercise")]
@@ -119,7 +119,7 @@ mean(survey_last_30$height, na.rm = TRUE) # <=> mean(survey_last_30[["height"]],
 ```
 
 
-  b) Make a tibble where the variable `age` comes directly after `name`.
+  b) The variable `age` is the last column in the survey data. Make a tibble where the variable `age` comes directly after `name`.
   
 ```{r}
 # Some solutions

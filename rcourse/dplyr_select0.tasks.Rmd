@@ -23,14 +23,14 @@ survey_personal_info <- select(survey, name, age, gender, height)
 survey_personal_info <- select(survey, Name=name, Age=age, Gender=gender, Height=height)
 ```
 
-3. Reorder the variables as such that name,age and gender appear as first, second and the third column followed by the remaining
+3. Reorder the variables in survey dataset as such that name,age and gender appear as first, second and the third column followed by the remaining
 variables. 
 
 ```{r}
 select(survey, name,age,gender,everything())
 ```
 
-4. Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description [survey](S01L06l_course_data0.html) data.
+4. Deselect variables that relate to hand and/or arm (e.g. span1, span2, hand, etc.). See also description [survey](S01L05l_course_data0.html) data.
 
 ```{r}
 select(survey, -span1,-span2,-hand,-fold,-clap)
@@ -39,10 +39,15 @@ select(survey, -span1,-span2,-hand,-fold,-clap)
 5. Select the top 20 names along with gender.
 
 ```{r}
+# 1)
 survey_sub <- select(survey, name,gender)
 head( survey_sub , 20)
-# shorter solution without intermediate variable 'survey_sub' :
-# head(select(survey,name),20)
+```
+
+
+```{r}
+# 2) shorter solution without intermediate variable 'survey_sub' :
+head(select(survey,name),20)
 ```
 
 
@@ -62,7 +67,7 @@ head( survey_sub , 20)
     6.1 Last 3 observations.
 
     ```{r, eval=TRUE}
-    tail( select(survey, hand,fold,clap, everything()), 3)
+    tail( select(survey, Hand=hand,Fold=fold,Clap=clap, everything()), 3)
     ```
 
 7. Select variables, from survey data, by pattern matching. 
@@ -151,8 +156,7 @@ survey_nums
     ```
     
     ```{r}
-    # 2) Tricky but correct since we know there no other non-numerical types 
-    #    in survey data than character.
+    # 2) Since there are no other non-numerical types the following is also a correct solution.
     select(survey, where(is.character))
     ```
 
