@@ -29,6 +29,11 @@ mutate(pulse, pound = weight * 2.20462, stone = weight * 0.157473 )
 
 ```
 
+4. In the survey dataset convert the variables `smokes` from character to factor with levels {"never","occas","regul", "heavy"}, in that order.
+
+```{r}
+mutate(survey, smokes = fct_relevel(factor(smokes), "never","occas","regul", "heavy")) 
+```
 
 ## Extra exercises
 

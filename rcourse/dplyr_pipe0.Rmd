@@ -38,7 +38,7 @@ survey %>% filter(smokes!="never" & exercise=="none" & gender=="male") %>% nrow(
 
 The solution now reads from left to right $survey \pipe filter(...) \pipe nrow$ instead of $nrow(filter(survey,...))$.  
 
-**Observation** In the $\pipe$ example above, note that `filter` does not have the `survey` as its first argument, the same is true for `nrow`. The is basically what the $\pipe$ operator does, take the result of the left hand side and place it as the first argument of the function at its right hand side.  
+**Observation** In the $\pipe$ example above, note that `filter` does not have the `survey` as its first argument, the same is true for `nrow`. This is basically what the $\pipe$ operator does, take the result of the left hand side and place it as the first argument of the function at its right hand side.  
 
 `r info_block("The main advantage of $\\pipe$ syntax is that it enables you to concentrate on the steps in the order they happen rather than the mathematical notation, e.g. $f(g(h(i(...))))$")` 
 

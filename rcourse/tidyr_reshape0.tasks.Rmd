@@ -28,11 +28,11 @@ ggplot(survey %>% pivot_longer(c(span1,span2), names_to = "span", values_to = "s
 
 ## Extra exercises
 
-1. Produce the following summary per gender from variables hand, fold and clap.
+1. Produce the following count summary per gender from variables fold and clap.
 
 ```{r, eval=TRUE}
 survey %>% 
-  select(gender,hand,fold,clap) %>% 
+  select(gender,fold,clap) %>% 
   pivot_longer(!gender, names_to = "action", values_to = "side") %>% 
   group_by(gender,side) %>% 
   summarise(count=n(), .groups='drop') %>% 

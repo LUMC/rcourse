@@ -114,7 +114,3 @@ ggplot(pulse %>%
   geom_boxplot()
 ```
 
-
-## Cross tables
-
-[...]

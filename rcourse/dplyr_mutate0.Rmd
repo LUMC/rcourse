@@ -95,8 +95,7 @@ mutate(pulse, adult=if_else(age >= 18 , TRUE, FALSE))
 Convert `gender` values,  `female` to `f` and `male` to `m`:
 
 ```{r}
-mutate(pulse, adult=if_else(gender=='female' , 'f', 'm'))
-
+mutate(pulse, gender = if_else(gender == 'female' , 'f', 'm'))
 ```
 
 
