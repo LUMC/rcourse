@@ -106,5 +106,5 @@ materials:
   - "airports:Airports dataset (nycflights13), CSV format:data/airports.csv:data/airports.csv"
   - "flights:Flights dataset (nycflights13), CSV format:data/flights.csv:data/flights.csv"
   - "nycflights13:Flights and Airports dataset (nycflights13), zipped CSV files:materials/nycflights13_tables.zip:materials/nycflights13_tables.zip"
-#  - "ssa:SSA (pdf):materials/Boerhaave_SSA_diamonds.pdf:materials/Boerhaave_SSA_diamonds.pdf"
-#  - "ssa:SSA Solutions (pdf):materials/Boerhaave_SSA_diamonds_solutions.pdf:materials/Boerhaave_SSA_diamonds_solutions.pdf"
+  - "ssa:SSA (pdf):materials/Boerhaave_SSA_diamonds.pdf:materials/Boerhaave_SSA_diamonds.pdf"
+  - "ssa_sol:SSA Solutions (pdf):materials/Boerhaave_SSA_diamonds_solutions.pdf:materials/Boerhaave_SSA_diamonds_solutions.pdf"
