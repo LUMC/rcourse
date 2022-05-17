@@ -84,7 +84,7 @@ slots:
       - "dplyr_join0:Joining tables:TRUE:60"
       - "tidyr_reshape0:Reshaping tables:TRUE:45"
       - "advanced_user_functions0:User-defined functions:TRUE:45"
-      - "flow_control:Flow control (if/else, for):FALSE:30"
+      - "flow_control:Flow control:TRUE:30"
   slot8:
     slot_label : "Self-study assignment"
     slot_date : 5
