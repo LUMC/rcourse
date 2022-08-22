@@ -27,4 +27,4 @@ The materials are adjusted depending on schedules. Please select your group:
 
 <br/>
 <hr>
-<p style="blockquote">Copyright &copy; 2021 Biomedical Data Sciences (BDS) | LUMC</p>
+<p style="blockquote">Copyright &copy; 2022 Biomedical Data Sciences (BDS) | LUMC</p>
