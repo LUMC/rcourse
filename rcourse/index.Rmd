@@ -45,8 +45,9 @@ At the beginning of the week before the course the teachers might be contacted t
 
 ### All sessions: practicing
 
-The course is given in an **online plenary room**. Each session is split into a
-few small topics and each topic is introduced as follows:
+Apart from the first session, which will be held in **CZ-6 (Burumazaal)**, the course is given in an **online plenary room**.  
+
+Each session is split into a few small topics and each topic is introduced as follows:
 
 - A short online (live video) lecture for introduction/demonstration.
 - A self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions.
