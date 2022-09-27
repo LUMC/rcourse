@@ -26,7 +26,7 @@ Then study and try the following lines of code to understand the results.
 Next, understand why an error is generated and use `replace` argument to generate a vector with 100 samples.  
 Store this vector in a variable `v` and build a factor `w` from it.  
 Finally, count the numbers of occurrences of each level in `w`.  
-Ensure, that levels are in order provided in the variable `lvl`.
+Ensure, that levels are in order provided in the variable `lvs`.
 
 ```{r error=TRUE,echo=TRUE}
 lvs <- c( "none", "oncePerWeek", "severalPerWeek", "daily" )
