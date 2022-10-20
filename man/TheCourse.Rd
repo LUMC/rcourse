@@ -9,29 +9,29 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{TheCourse$new()}}
-\item \href{#method-id}{\code{TheCourse$id()}}
-\item \href{#method-dir}{\code{TheCourse$dir()}}
-\item \href{#method-label}{\code{TheCourse$label()}}
-\item \href{#method-sessionIds}{\code{TheCourse$sessionIds()}}
-\item \href{#method-lectureIds}{\code{TheCourse$lectureIds()}}
-\item \href{#method-lectureWithTasksIds}{\code{TheCourse$lectureWithTasksIds()}}
-\item \href{#method-materialIds}{\code{TheCourse$materialIds()}}
-\item \href{#method-id2label}{\code{TheCourse$id2label()}}
-\item \href{#method-add}{\code{TheCourse$add()}}
-\item \href{#method-materialsTibble}{\code{TheCourse$materialsTibble()}}
-\item \href{#method-lecturesTibble}{\code{TheCourse$lecturesTibble()}}
-\item \href{#method-lectureDoc}{\code{TheCourse$lectureDoc()}}
-\item \href{#method-taskDoc}{\code{TheCourse$taskDoc()}}
-\item \href{#method-tocDoc}{\code{TheCourse$tocDoc()}}
-\item \href{#method-materialsDoc}{\code{TheCourse$materialsDoc()}}
-\item \href{#method-materialDoc}{\code{TheCourse$materialDoc()}}
-\item \href{#method-clone}{\code{TheCourse$clone()}}
+\item \href{#method-TheCourse-new}{\code{TheCourse$new()}}
+\item \href{#method-TheCourse-id}{\code{TheCourse$id()}}
+\item \href{#method-TheCourse-dir}{\code{TheCourse$dir()}}
+\item \href{#method-TheCourse-label}{\code{TheCourse$label()}}
+\item \href{#method-TheCourse-sessionIds}{\code{TheCourse$sessionIds()}}
+\item \href{#method-TheCourse-lectureIds}{\code{TheCourse$lectureIds()}}
+\item \href{#method-TheCourse-lectureWithTasksIds}{\code{TheCourse$lectureWithTasksIds()}}
+\item \href{#method-TheCourse-materialIds}{\code{TheCourse$materialIds()}}
+\item \href{#method-TheCourse-id2label}{\code{TheCourse$id2label()}}
+\item \href{#method-TheCourse-add}{\code{TheCourse$add()}}
+\item \href{#method-TheCourse-materialsTibble}{\code{TheCourse$materialsTibble()}}
+\item \href{#method-TheCourse-lecturesTibble}{\code{TheCourse$lecturesTibble()}}
+\item \href{#method-TheCourse-lectureDoc}{\code{TheCourse$lectureDoc()}}
+\item \href{#method-TheCourse-taskDoc}{\code{TheCourse$taskDoc()}}
+\item \href{#method-TheCourse-tocDoc}{\code{TheCourse$tocDoc()}}
+\item \href{#method-TheCourse-materialsDoc}{\code{TheCourse$materialsDoc()}}
+\item \href{#method-TheCourse-materialDoc}{\code{TheCourse$materialDoc()}}
+\item \href{#method-TheCourse-clone}{\code{TheCourse$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-TheCourse-new"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$new(id, dir, label = id, ...)}\if{html}{\out{</div>}}
@@ -39,8 +39,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id"></a>}}
-\if{latex}{\out{\hypertarget{method-id}{}}}
+\if{html}{\out{<a id="method-TheCourse-id"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-id}{}}}
 \subsection{Method \code{id()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$id()}\if{html}{\out{</div>}}
@@ -48,8 +48,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-dir"></a>}}
-\if{latex}{\out{\hypertarget{method-dir}{}}}
+\if{html}{\out{<a id="method-TheCourse-dir"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-dir}{}}}
 \subsection{Method \code{dir()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$dir()}\if{html}{\out{</div>}}
@@ -57,8 +57,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-label"></a>}}
-\if{latex}{\out{\hypertarget{method-label}{}}}
+\if{html}{\out{<a id="method-TheCourse-label"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-label}{}}}
 \subsection{Method \code{label()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$label()}\if{html}{\out{</div>}}
@@ -66,8 +66,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-sessionIds"></a>}}
-\if{latex}{\out{\hypertarget{method-sessionIds}{}}}
+\if{html}{\out{<a id="method-TheCourse-sessionIds"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-sessionIds}{}}}
 \subsection{Method \code{sessionIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$sessionIds()}\if{html}{\out{</div>}}
@@ -75,8 +75,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lectureIds"></a>}}
-\if{latex}{\out{\hypertarget{method-lectureIds}{}}}
+\if{html}{\out{<a id="method-TheCourse-lectureIds"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-lectureIds}{}}}
 \subsection{Method \code{lectureIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$lectureIds()}\if{html}{\out{</div>}}
@@ -84,8 +84,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lectureWithTasksIds"></a>}}
-\if{latex}{\out{\hypertarget{method-lectureWithTasksIds}{}}}
+\if{html}{\out{<a id="method-TheCourse-lectureWithTasksIds"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-lectureWithTasksIds}{}}}
 \subsection{Method \code{lectureWithTasksIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$lectureWithTasksIds()}\if{html}{\out{</div>}}
@@ -93,8 +93,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-materialIds"></a>}}
-\if{latex}{\out{\hypertarget{method-materialIds}{}}}
+\if{html}{\out{<a id="method-TheCourse-materialIds"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-materialIds}{}}}
 \subsection{Method \code{materialIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$materialIds()}\if{html}{\out{</div>}}
@@ -102,8 +102,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id2label"></a>}}
-\if{latex}{\out{\hypertarget{method-id2label}{}}}
+\if{html}{\out{<a id="method-TheCourse-id2label"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-id2label}{}}}
 \subsection{Method \code{id2label()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$id2label(docId)}\if{html}{\out{</div>}}
@@ -111,8 +111,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add"></a>}}
-\if{latex}{\out{\hypertarget{method-add}{}}}
+\if{html}{\out{<a id="method-TheCourse-add"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-add}{}}}
 \subsection{Method \code{add()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$add(...)}\if{html}{\out{</div>}}
@@ -120,8 +120,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-materialsTibble"></a>}}
-\if{latex}{\out{\hypertarget{method-materialsTibble}{}}}
+\if{html}{\out{<a id="method-TheCourse-materialsTibble"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-materialsTibble}{}}}
 \subsection{Method \code{materialsTibble()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$materialsTibble()}\if{html}{\out{</div>}}
@@ -129,8 +129,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lecturesTibble"></a>}}
-\if{latex}{\out{\hypertarget{method-lecturesTibble}{}}}
+\if{html}{\out{<a id="method-TheCourse-lecturesTibble"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-lecturesTibble}{}}}
 \subsection{Method \code{lecturesTibble()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$lecturesTibble(withBreaks = FALSE)}\if{html}{\out{</div>}}
@@ -138,8 +138,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lectureDoc"></a>}}
-\if{latex}{\out{\hypertarget{method-lectureDoc}{}}}
+\if{html}{\out{<a id="method-TheCourse-lectureDoc"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-lectureDoc}{}}}
 \subsection{Method \code{lectureDoc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$lectureDoc(lectureId)}\if{html}{\out{</div>}}
@@ -147,8 +147,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-taskDoc"></a>}}
-\if{latex}{\out{\hypertarget{method-taskDoc}{}}}
+\if{html}{\out{<a id="method-TheCourse-taskDoc"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-taskDoc}{}}}
 \subsection{Method \code{taskDoc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$taskDoc(lectureId, enableCode)}\if{html}{\out{</div>}}
@@ -156,8 +156,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tocDoc"></a>}}
-\if{latex}{\out{\hypertarget{method-tocDoc}{}}}
+\if{html}{\out{<a id="method-TheCourse-tocDoc"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-tocDoc}{}}}
 \subsection{Method \code{tocDoc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$tocDoc()}\if{html}{\out{</div>}}
@@ -165,8 +165,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-materialsDoc"></a>}}
-\if{latex}{\out{\hypertarget{method-materialsDoc}{}}}
+\if{html}{\out{<a id="method-TheCourse-materialsDoc"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-materialsDoc}{}}}
 \subsection{Method \code{materialsDoc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$materialsDoc()}\if{html}{\out{</div>}}
@@ -174,8 +174,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-materialDoc"></a>}}
-\if{latex}{\out{\hypertarget{method-materialDoc}{}}}
+\if{html}{\out{<a id="method-TheCourse-materialDoc"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-materialDoc}{}}}
 \subsection{Method \code{materialDoc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TheCourse$materialDoc(materialId)}\if{html}{\out{</div>}}
@@ -183,8 +183,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-TheCourse-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-TheCourse-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

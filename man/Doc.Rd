@@ -9,16 +9,16 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Doc$new()}}
-\item \href{#method-id}{\code{Doc$id()}}
-\item \href{#method-label}{\code{Doc$label()}}
-\item \href{#method-url}{\code{Doc$url()}}
-\item \href{#method-clone}{\code{Doc$clone()}}
+\item \href{#method-Doc-new}{\code{Doc$new()}}
+\item \href{#method-Doc-id}{\code{Doc$id()}}
+\item \href{#method-Doc-label}{\code{Doc$label()}}
+\item \href{#method-Doc-url}{\code{Doc$url()}}
+\item \href{#method-Doc-clone}{\code{Doc$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Doc-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Doc-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc$new(id, label = NULL)}\if{html}{\out{</div>}}
@@ -26,8 +26,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id"></a>}}
-\if{latex}{\out{\hypertarget{method-id}{}}}
+\if{html}{\out{<a id="method-Doc-id"></a>}}
+\if{latex}{\out{\hypertarget{method-Doc-id}{}}}
 \subsection{Method \code{id()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc$id()}\if{html}{\out{</div>}}
@@ -35,8 +35,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-label"></a>}}
-\if{latex}{\out{\hypertarget{method-label}{}}}
+\if{html}{\out{<a id="method-Doc-label"></a>}}
+\if{latex}{\out{\hypertarget{method-Doc-label}{}}}
 \subsection{Method \code{label()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc$label()}\if{html}{\out{</div>}}
@@ -44,8 +44,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-url"></a>}}
-\if{latex}{\out{\hypertarget{method-url}{}}}
+\if{html}{\out{<a id="method-Doc-url"></a>}}
+\if{latex}{\out{\hypertarget{method-Doc-url}{}}}
 \subsection{Method \code{url()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc$url()}\if{html}{\out{</div>}}
@@ -53,8 +53,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Doc-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Doc-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

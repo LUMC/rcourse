@@ -12,29 +12,29 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{RenderedDoc$new()}}
-\item \href{#method-rmdFile}{\code{RenderedDoc$rmdFile()}}
-\item \href{#method-naviIds}{\code{RenderedDoc$naviIds()}}
-\item \href{#method-type}{\code{RenderedDoc$type()}}
-\item \href{#method-sessionIdx}{\code{RenderedDoc$sessionIdx()}}
-\item \href{#method-lectureIdx}{\code{RenderedDoc$lectureIdx()}}
-\item \href{#method-setupFun}{\code{RenderedDoc$setupFun()}}
-\item \href{#method-hideFoldedCode}{\code{RenderedDoc$hideFoldedCode()}}
-\item \href{#method-clone}{\code{RenderedDoc$clone()}}
+\item \href{#method-RenderedDoc-new}{\code{RenderedDoc$new()}}
+\item \href{#method-RenderedDoc-rmdFile}{\code{RenderedDoc$rmdFile()}}
+\item \href{#method-RenderedDoc-naviIds}{\code{RenderedDoc$naviIds()}}
+\item \href{#method-RenderedDoc-type}{\code{RenderedDoc$type()}}
+\item \href{#method-RenderedDoc-sessionIdx}{\code{RenderedDoc$sessionIdx()}}
+\item \href{#method-RenderedDoc-lectureIdx}{\code{RenderedDoc$lectureIdx()}}
+\item \href{#method-RenderedDoc-setupFun}{\code{RenderedDoc$setupFun()}}
+\item \href{#method-RenderedDoc-hideFoldedCode}{\code{RenderedDoc$hideFoldedCode()}}
+\item \href{#method-RenderedDoc-clone}{\code{RenderedDoc$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="id">}\href{../../rooc/html/Doc.html#method-id}{\code{rooc::Doc$id()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="label">}\href{../../rooc/html/Doc.html#method-label}{\code{rooc::Doc$label()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="url">}\href{../../rooc/html/Doc.html#method-url}{\code{rooc::Doc$url()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="id"><a href='../../rooc/html/Doc.html#method-Doc-id'><code>rooc::Doc$id()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="label"><a href='../../rooc/html/Doc.html#method-Doc-label'><code>rooc::Doc$label()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="url"><a href='../../rooc/html/Doc.html#method-Doc-url'><code>rooc::Doc$url()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-new"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$new(
@@ -49,8 +49,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rmdFile"></a>}}
-\if{latex}{\out{\hypertarget{method-rmdFile}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-rmdFile"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-rmdFile}{}}}
 \subsection{Method \code{rmdFile()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$rmdFile()}\if{html}{\out{</div>}}
@@ -58,8 +58,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-naviIds"></a>}}
-\if{latex}{\out{\hypertarget{method-naviIds}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-naviIds"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-naviIds}{}}}
 \subsection{Method \code{naviIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$naviIds()}\if{html}{\out{</div>}}
@@ -67,8 +67,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-type"></a>}}
-\if{latex}{\out{\hypertarget{method-type}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-type"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-type}{}}}
 \subsection{Method \code{type()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$type(long = FALSE)}\if{html}{\out{</div>}}
@@ -76,8 +76,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-sessionIdx"></a>}}
-\if{latex}{\out{\hypertarget{method-sessionIdx}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-sessionIdx"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-sessionIdx}{}}}
 \subsection{Method \code{sessionIdx()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$sessionIdx()}\if{html}{\out{</div>}}
@@ -85,8 +85,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lectureIdx"></a>}}
-\if{latex}{\out{\hypertarget{method-lectureIdx}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-lectureIdx"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-lectureIdx}{}}}
 \subsection{Method \code{lectureIdx()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$lectureIdx()}\if{html}{\out{</div>}}
@@ -94,8 +94,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setupFun"></a>}}
-\if{latex}{\out{\hypertarget{method-setupFun}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-setupFun"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-setupFun}{}}}
 \subsection{Method \code{setupFun()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$setupFun()}\if{html}{\out{</div>}}
@@ -103,8 +103,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hideFoldedCode"></a>}}
-\if{latex}{\out{\hypertarget{method-hideFoldedCode}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-hideFoldedCode"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-hideFoldedCode}{}}}
 \subsection{Method \code{hideFoldedCode()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RenderedDoc$hideFoldedCode()}\if{html}{\out{</div>}}
@@ -112,8 +112,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-RenderedDoc-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-RenderedDoc-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

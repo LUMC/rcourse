@@ -12,39 +12,39 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-clone}{\code{Renderer$clone()}}
+\item \href{#method-Renderer-clone}{\code{Renderer$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="clearDir">}\href{../../rooc/html/BaseRenderer.html#method-clearDir}{\code{rooc::BaseRenderer$clearDir()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="colorHtml">}\href{../../rooc/html/BaseRenderer.html#method-colorHtml}{\code{rooc::BaseRenderer$colorHtml()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="copyDoc">}\href{../../rooc/html/BaseRenderer.html#method-copyDoc}{\code{rooc::BaseRenderer$copyDoc()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="docUrl">}\href{../../rooc/html/BaseRenderer.html#method-docUrl}{\code{rooc::BaseRenderer$docUrl()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="emojiHtml">}\href{../../rooc/html/BaseRenderer.html#method-emojiHtml}{\code{rooc::BaseRenderer$emojiHtml()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="extRefHtml">}\href{../../rooc/html/BaseRenderer.html#method-extRefHtml}{\code{rooc::BaseRenderer$extRefHtml()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="id2url">}\href{../../rooc/html/BaseRenderer.html#method-id2url}{\code{rooc::BaseRenderer$id2url()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="initialize">}\href{../../rooc/html/BaseRenderer.html#method-initialize}{\code{rooc::BaseRenderer$initialize()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="intRefHtml">}\href{../../rooc/html/BaseRenderer.html#method-intRefHtml}{\code{rooc::BaseRenderer$intRefHtml()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeAll">}\href{../../rooc/html/BaseRenderer.html#method-makeAll}{\code{rooc::BaseRenderer$makeAll()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeDoc">}\href{../../rooc/html/BaseRenderer.html#method-makeDoc}{\code{rooc::BaseRenderer$makeDoc()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeLectures">}\href{../../rooc/html/BaseRenderer.html#method-makeLectures}{\code{rooc::BaseRenderer$makeLectures()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeMaterials">}\href{../../rooc/html/BaseRenderer.html#method-makeMaterials}{\code{rooc::BaseRenderer$makeMaterials()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeTasks">}\href{../../rooc/html/BaseRenderer.html#method-makeTasks}{\code{rooc::BaseRenderer$makeTasks()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeToc">}\href{../../rooc/html/BaseRenderer.html#method-makeToc}{\code{rooc::BaseRenderer$makeToc()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapOutHtmlFile">}\href{../../rooc/html/BaseRenderer.html#method-mapOutHtmlFile}{\code{rooc::BaseRenderer$mapOutHtmlFile()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapOutMaterialFile">}\href{../../rooc/html/BaseRenderer.html#method-mapOutMaterialFile}{\code{rooc::BaseRenderer$mapOutMaterialFile()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapTmpRmdFile">}\href{../../rooc/html/BaseRenderer.html#method-mapTmpRmdFile}{\code{rooc::BaseRenderer$mapTmpRmdFile()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="outDir">}\href{../../rooc/html/BaseRenderer.html#method-outDir}{\code{rooc::BaseRenderer$outDir()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="renderDoc">}\href{../../rooc/html/BaseRenderer.html#method-renderDoc}{\code{rooc::BaseRenderer$renderDoc()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="specialBlockHtml">}\href{../../rooc/html/BaseRenderer.html#method-specialBlockHtml}{\code{rooc::BaseRenderer$specialBlockHtml()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="clearDir"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-clearDir'><code>rooc::BaseRenderer$clearDir()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="colorHtml"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-colorHtml'><code>rooc::BaseRenderer$colorHtml()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="copyDoc"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-copyDoc'><code>rooc::BaseRenderer$copyDoc()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="docUrl"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-docUrl'><code>rooc::BaseRenderer$docUrl()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="emojiHtml"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-emojiHtml'><code>rooc::BaseRenderer$emojiHtml()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="extRefHtml"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-extRefHtml'><code>rooc::BaseRenderer$extRefHtml()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="id2url"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-id2url'><code>rooc::BaseRenderer$id2url()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="initialize"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-initialize'><code>rooc::BaseRenderer$initialize()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="intRefHtml"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-intRefHtml'><code>rooc::BaseRenderer$intRefHtml()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeAll"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeAll'><code>rooc::BaseRenderer$makeAll()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeDoc"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeDoc'><code>rooc::BaseRenderer$makeDoc()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeLectures"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeLectures'><code>rooc::BaseRenderer$makeLectures()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeMaterials"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeMaterials'><code>rooc::BaseRenderer$makeMaterials()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeTasks"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeTasks'><code>rooc::BaseRenderer$makeTasks()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="makeToc"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-makeToc'><code>rooc::BaseRenderer$makeToc()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapOutHtmlFile"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-mapOutHtmlFile'><code>rooc::BaseRenderer$mapOutHtmlFile()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapOutMaterialFile"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-mapOutMaterialFile'><code>rooc::BaseRenderer$mapOutMaterialFile()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="mapTmpRmdFile"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-mapTmpRmdFile'><code>rooc::BaseRenderer$mapTmpRmdFile()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="outDir"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-outDir'><code>rooc::BaseRenderer$outDir()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="renderDoc"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-renderDoc'><code>rooc::BaseRenderer$renderDoc()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="BaseRenderer" data-id="specialBlockHtml"><a href='../../rooc/html/BaseRenderer.html#method-BaseRenderer-specialBlockHtml'><code>rooc::BaseRenderer$specialBlockHtml()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Renderer-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Renderer-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

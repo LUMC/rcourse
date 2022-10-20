@@ -12,24 +12,24 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{CopiedDoc$new()}}
-\item \href{#method-path}{\code{CopiedDoc$path()}}
-\item \href{#method-outPath}{\code{CopiedDoc$outPath()}}
-\item \href{#method-url}{\code{CopiedDoc$url()}}
-\item \href{#method-clone}{\code{CopiedDoc$clone()}}
+\item \href{#method-CopiedDoc-new}{\code{CopiedDoc$new()}}
+\item \href{#method-CopiedDoc-path}{\code{CopiedDoc$path()}}
+\item \href{#method-CopiedDoc-outPath}{\code{CopiedDoc$outPath()}}
+\item \href{#method-CopiedDoc-url}{\code{CopiedDoc$url()}}
+\item \href{#method-CopiedDoc-clone}{\code{CopiedDoc$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="id">}\href{../../rooc/html/Doc.html#method-id}{\code{rooc::Doc$id()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="label">}\href{../../rooc/html/Doc.html#method-label}{\code{rooc::Doc$label()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="id"><a href='../../rooc/html/Doc.html#method-Doc-id'><code>rooc::Doc$id()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rooc" data-topic="Doc" data-id="label"><a href='../../rooc/html/Doc.html#method-Doc-label'><code>rooc::Doc$label()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-CopiedDoc-new"></a>}}
+\if{latex}{\out{\hypertarget{method-CopiedDoc-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CopiedDoc$new(path, outPath = NULL, ...)}\if{html}{\out{</div>}}
@@ -37,8 +37,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path"></a>}}
-\if{latex}{\out{\hypertarget{method-path}{}}}
+\if{html}{\out{<a id="method-CopiedDoc-path"></a>}}
+\if{latex}{\out{\hypertarget{method-CopiedDoc-path}{}}}
 \subsection{Method \code{path()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CopiedDoc$path()}\if{html}{\out{</div>}}
@@ -46,8 +46,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-outPath"></a>}}
-\if{latex}{\out{\hypertarget{method-outPath}{}}}
+\if{html}{\out{<a id="method-CopiedDoc-outPath"></a>}}
+\if{latex}{\out{\hypertarget{method-CopiedDoc-outPath}{}}}
 \subsection{Method \code{outPath()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CopiedDoc$outPath()}\if{html}{\out{</div>}}
@@ -55,8 +55,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-url"></a>}}
-\if{latex}{\out{\hypertarget{method-url}{}}}
+\if{html}{\out{<a id="method-CopiedDoc-url"></a>}}
+\if{latex}{\out{\hypertarget{method-CopiedDoc-url}{}}}
 \subsection{Method \code{url()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CopiedDoc$url()}\if{html}{\out{</div>}}
@@ -64,8 +64,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-CopiedDoc-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-CopiedDoc-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

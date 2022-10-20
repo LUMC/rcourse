@@ -15,7 +15,7 @@ Depends:
     htmlTable
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Authors@R: c(
     person(given = "Ramin", family = "Monajemi", role = c("aut","cre"),
            email = "r.monajemi@lumc.nl"),

@@ -9,17 +9,17 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Session$new()}}
-\item \href{#method-id}{\code{Session$id()}}
-\item \href{#method-lectureIds}{\code{Session$lectureIds()}}
-\item \href{#method-add}{\code{Session$add()}}
-\item \href{#method-lecturesTibble}{\code{Session$lecturesTibble()}}
-\item \href{#method-clone}{\code{Session$clone()}}
+\item \href{#method-Session-new}{\code{Session$new()}}
+\item \href{#method-Session-id}{\code{Session$id()}}
+\item \href{#method-Session-lectureIds}{\code{Session$lectureIds()}}
+\item \href{#method-Session-add}{\code{Session$add()}}
+\item \href{#method-Session-lecturesTibble}{\code{Session$lecturesTibble()}}
+\item \href{#method-Session-clone}{\code{Session$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Session-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Session$new(id, ...)}\if{html}{\out{</div>}}
@@ -27,8 +27,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id"></a>}}
-\if{latex}{\out{\hypertarget{method-id}{}}}
+\if{html}{\out{<a id="method-Session-id"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-id}{}}}
 \subsection{Method \code{id()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Session$id()}\if{html}{\out{</div>}}
@@ -36,8 +36,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lectureIds"></a>}}
-\if{latex}{\out{\hypertarget{method-lectureIds}{}}}
+\if{html}{\out{<a id="method-Session-lectureIds"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-lectureIds}{}}}
 \subsection{Method \code{lectureIds()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Session$lectureIds()}\if{html}{\out{</div>}}
@@ -45,8 +45,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add"></a>}}
-\if{latex}{\out{\hypertarget{method-add}{}}}
+\if{html}{\out{<a id="method-Session-add"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-add}{}}}
 \subsection{Method \code{add()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Session$add(x)}\if{html}{\out{</div>}}
@@ -54,8 +54,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lecturesTibble"></a>}}
-\if{latex}{\out{\hypertarget{method-lecturesTibble}{}}}
+\if{html}{\out{<a id="method-Session-lecturesTibble"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-lecturesTibble}{}}}
 \subsection{Method \code{lecturesTibble()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Session$lecturesTibble()}\if{html}{\out{</div>}}
@@ -63,8 +63,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Session-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Session-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

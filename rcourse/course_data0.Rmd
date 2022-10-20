@@ -31,7 +31,7 @@ The pulse data set is available in the data folder as comma-delimited text (exte
 
 ```{r, message=FALSE,warning=FALSE,echo=TRUE}
 # note, we keep 'pulse.csv' file in 'data' directory of the project
-pulse <- read_csv("data/pulse.csv")
+pulse <- read_csv("data/pulse.csv", show_col_types = FALSE)
 pulse 
 ```
 
@@ -61,6 +61,6 @@ The survey data set is available in the data folder as comma-delimited (`.csv`) 
 
 ```{r, message=FALSE,warning=FALSE,echo=TRUE}
 # note, we keep 'survey.csv' file in 'data' directory of the project
-survey <- read_csv("data/survey.csv")
+survey <- read_csv("data/survey.csv", show_col_types = FALSE)
 survey 
 ```

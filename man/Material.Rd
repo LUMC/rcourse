@@ -9,18 +9,18 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Material$new()}}
-\item \href{#method-id}{\code{Material$id()}}
-\item \href{#method-label}{\code{Material$label()}}
-\item \href{#method-path}{\code{Material$path()}}
-\item \href{#method-outPath}{\code{Material$outPath()}}
-\item \href{#method-asTibble}{\code{Material$asTibble()}}
-\item \href{#method-clone}{\code{Material$clone()}}
+\item \href{#method-Material-new}{\code{Material$new()}}
+\item \href{#method-Material-id}{\code{Material$id()}}
+\item \href{#method-Material-label}{\code{Material$label()}}
+\item \href{#method-Material-path}{\code{Material$path()}}
+\item \href{#method-Material-outPath}{\code{Material$outPath()}}
+\item \href{#method-Material-asTibble}{\code{Material$asTibble()}}
+\item \href{#method-Material-clone}{\code{Material$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Material-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$new(id, label, path, outPath)}\if{html}{\out{</div>}}
@@ -28,8 +28,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id"></a>}}
-\if{latex}{\out{\hypertarget{method-id}{}}}
+\if{html}{\out{<a id="method-Material-id"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-id}{}}}
 \subsection{Method \code{id()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$id()}\if{html}{\out{</div>}}
@@ -37,8 +37,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-label"></a>}}
-\if{latex}{\out{\hypertarget{method-label}{}}}
+\if{html}{\out{<a id="method-Material-label"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-label}{}}}
 \subsection{Method \code{label()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$label()}\if{html}{\out{</div>}}
@@ -46,8 +46,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path"></a>}}
-\if{latex}{\out{\hypertarget{method-path}{}}}
+\if{html}{\out{<a id="method-Material-path"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-path}{}}}
 \subsection{Method \code{path()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$path()}\if{html}{\out{</div>}}
@@ -55,8 +55,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-outPath"></a>}}
-\if{latex}{\out{\hypertarget{method-outPath}{}}}
+\if{html}{\out{<a id="method-Material-outPath"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-outPath}{}}}
 \subsection{Method \code{outPath()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$outPath()}\if{html}{\out{</div>}}
@@ -64,8 +64,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asTibble"></a>}}
-\if{latex}{\out{\hypertarget{method-asTibble}{}}}
+\if{html}{\out{<a id="method-Material-asTibble"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-asTibble}{}}}
 \subsection{Method \code{asTibble()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Material$asTibble()}\if{html}{\out{</div>}}
@@ -73,8 +73,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Material-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Material-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

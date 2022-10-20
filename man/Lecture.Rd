@@ -9,19 +9,19 @@
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Lecture$new()}}
-\item \href{#method-id}{\code{Lecture$id()}}
-\item \href{#method-label}{\code{Lecture$label()}}
-\item \href{#method-rmdFile}{\code{Lecture$rmdFile()}}
-\item \href{#method-hasTasks}{\code{Lecture$hasTasks()}}
-\item \href{#method-min}{\code{Lecture$min()}}
-\item \href{#method-asTibble}{\code{Lecture$asTibble()}}
-\item \href{#method-clone}{\code{Lecture$clone()}}
+\item \href{#method-Lecture-new}{\code{Lecture$new()}}
+\item \href{#method-Lecture-id}{\code{Lecture$id()}}
+\item \href{#method-Lecture-label}{\code{Lecture$label()}}
+\item \href{#method-Lecture-rmdFile}{\code{Lecture$rmdFile()}}
+\item \href{#method-Lecture-hasTasks}{\code{Lecture$hasTasks()}}
+\item \href{#method-Lecture-min}{\code{Lecture$min()}}
+\item \href{#method-Lecture-asTibble}{\code{Lecture$asTibble()}}
+\item \href{#method-Lecture-clone}{\code{Lecture$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Lecture-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$new(id, label = NULL, rmdFile = NULL, hasTasks = TRUE, min = NA, ...)}\if{html}{\out{</div>}}
@@ -29,8 +29,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-id"></a>}}
-\if{latex}{\out{\hypertarget{method-id}{}}}
+\if{html}{\out{<a id="method-Lecture-id"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-id}{}}}
 \subsection{Method \code{id()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$id()}\if{html}{\out{</div>}}
@@ -38,8 +38,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-label"></a>}}
-\if{latex}{\out{\hypertarget{method-label}{}}}
+\if{html}{\out{<a id="method-Lecture-label"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-label}{}}}
 \subsection{Method \code{label()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$label()}\if{html}{\out{</div>}}
@@ -47,8 +47,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rmdFile"></a>}}
-\if{latex}{\out{\hypertarget{method-rmdFile}{}}}
+\if{html}{\out{<a id="method-Lecture-rmdFile"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-rmdFile}{}}}
 \subsection{Method \code{rmdFile()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$rmdFile()}\if{html}{\out{</div>}}
@@ -56,8 +56,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hasTasks"></a>}}
-\if{latex}{\out{\hypertarget{method-hasTasks}{}}}
+\if{html}{\out{<a id="method-Lecture-hasTasks"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-hasTasks}{}}}
 \subsection{Method \code{hasTasks()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$hasTasks()}\if{html}{\out{</div>}}
@@ -65,8 +65,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-min"></a>}}
-\if{latex}{\out{\hypertarget{method-min}{}}}
+\if{html}{\out{<a id="method-Lecture-min"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-min}{}}}
 \subsection{Method \code{min()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$min()}\if{html}{\out{</div>}}
@@ -74,8 +74,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asTibble"></a>}}
-\if{latex}{\out{\hypertarget{method-asTibble}{}}}
+\if{html}{\out{<a id="method-Lecture-asTibble"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-asTibble}{}}}
 \subsection{Method \code{asTibble()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Lecture$asTibble()}\if{html}{\out{</div>}}
@@ -83,8 +83,8 @@
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Lecture-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Lecture-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
