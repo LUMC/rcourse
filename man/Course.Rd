@@ -179,7 +179,7 @@ Render the site only for modified Rmd's.
 \subsection{Method \code{render()}}{
 Render the site ( todo: only for modified Rmd's).
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Course$render(publish = FALSE, out_dir = ".docs")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Course$render(out_dir = ".docs")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

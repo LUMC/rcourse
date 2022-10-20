@@ -18,6 +18,8 @@ It is also offered as a general course organised by [Boerhaave Nascholing](https
 
 The materials are adjusted depending on schedules. Please select your group:
 
+- [B3DS,  November 2022](B3DS_202211)
+- [B1R, November 2022]()
 - [Clinical Research in Practice (CRiP),  September 2022](CRIP_202209)
 - [Boerhaave Nascholing (I),  May 2022](Boerhaave_202205)
 - [B3DS,  November 2021](B3DS_202111)

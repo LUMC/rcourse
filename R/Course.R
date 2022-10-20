@@ -200,25 +200,14 @@ Course <- R6Class("Course",
       },
       #' @description Render the site ( todo: only for modified Rmd's).
       #' @param publish ...
-      render = function(publish=FALSE, out_dir = ".docs"){
+      render = function(out_dir = ".docs"){
 
         # always render
         renderer <- Renderer$new( outDir = out_dir)
         renderer$makeAll( course = self$course_ )
         file.copy(from = file.path(out_dir, self$config("index_file")), to = file.path(out_dir, "index.html")  )
 
-        if (publish) {
-          # mv .docs to docs and .docs.zip to docs.zip
-          pub_dir <- basename(self$site())  # docs
-          unlink(pub_dir, recursive = TRUE) ; file.rename(out_dir, pub_dir)
-          zip_file <- paste(out_dir, "zip", sep=".")
-          pub_zip_file <- paste(pub_dir, "zip", sep=".")
-          if (file.exists(zip_file))
-            file.rename(zip_file, pub_zip_file)
-          message( "Content rendered into '", pub_dir, "' directory." )
-        } else {
-          message( "Content rendered into '", out_dir, "' directory." )
-        }
+
       },
       site = function() {
         private$site_

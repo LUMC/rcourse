@@ -4,20 +4,20 @@ title: "Using R for data analysis"
 
 ## Prerequisites
 
-Participants must be able to use a laptop/computer capable of running recent
+Participants must be able to use a laptop/computer capable of running recent 
 [RStudio](https://www.rstudio.com/products/rstudio/). See below for the RStudio [Installation section](#installation).
 
 ## Teachers
 
-- **Szymon M. Kiełbasa** (s.m.kielbasa@lumc.nl)
-- **Ramin Monajemi** (r.monajemi@lumc.nl)
+- **Szymon M. Kiełbasa**, (smkielbasa@lumc.nl)
+- **Ramin Monajemi**, (rmonajemi@lumc.nl)
 - **Mo Arkani** (m.arkani@lumc.nl)
 
 ## What we teach
 
-[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods.
+[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods. 
 
-The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. The course assumes no prior programming knowledge.
+The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. The course assumes no prior programming knowledge. 
 
 **NOTE: This is not a statistics course!** We do not teach statistics; we teach how to write simple programs
 in the R language. Elementary statistics knowledge is necessary to understand examples.
@@ -37,31 +37,23 @@ We will cover the following topics:
 - Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](https://ggplot2.tidyverse.org/)).
 - R packages: installation and usage.
 
-## Course structure
-
-The course is divided in half-day sessions.  
-The teachers are available for chatting online during all teaching slots.  
-At the beginning of the week before the course the teachers might be contacted to help with R and RStudio installation problems (see below).
 
 ### All sessions: practicing
 
-Apart from the first session, which will be held in **CZ-6 (Burumazaal)**, the course is given in an **online plenary room**.  
+The course is divided in half-day sessions. Each session is split into a few small topics and each topic is introduced as follows:
 
-Each session is split into a few small topics and each topic is introduced as follows:
-
-- A short online (live video) lecture for introduction/demonstration.
+- A short lecture for introduction/demonstration.
 - A self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions.
-- (Only when needed) A short chat question and live video answers session.
 
-The students are asked to **type on their keyboards the commands** being presented and observe
-effects (**avoid copy-paste**; own typing is important in order to learn
+The students are asked to **type on their keyboards the commands** being presented and observe 
+effects (**avoid copy-paste**; own typing is important in order to learn 
 how to respond to mistakes/errors).   
 
-### The last session: practicing followed by self study assignment
+### The last session: self study assignment
 
-A **self study assignment** (SSA) will be offered during the last session.
-A set of tasks will be provided to be solved individually without help of the teachers or other persons.
-At the end there will be a general discussion with **chat questions** and **live video answers**.
+A **self study assignment** (SSA) will be offered during the last session. 
+A set of tasks will be provided to be solved individually without and help from others. 
+At the end there will be a general discussion.
 
 The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
 You will be asked to carry out the following steps:

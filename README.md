@@ -12,7 +12,11 @@ rc$render()                      # render R Markdown files into 'docs' folder (c
                                  # github pages) and docs.zip    
                                    
 rc$view()                        # view the course in a browser
+
+rc$render(out_dir = "docs/<course_yyyymm>")
 ```
+
+To include the course in github pages update `docs/index.Rmd` with link to `docs/<course_yyyymm` and knit.
 
 
 **Visit live pages:**
