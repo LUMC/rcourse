@@ -3,6 +3,9 @@ title: 'Pipe operator %>%'
 ---
 
 ```{r setup,include=FALSE,eval=TRUE}
+# library(rooc)
+# source("../R/Doc.R")
+# source("../R/Globals.R")
 pulse <- read_pulse() 
 survey <- read_survey()
 ```
@@ -11,16 +14,17 @@ survey <- read_survey()
 
 > Use $\pipe$ to chain calculations. 
 
-The $\pipe$ operator allows you to run your calculations in sequence instead of *nested calls*:  
+The $\pipe$ operator allows you to run your function calls in sequence from left to right instead of *nested function calls* or using intermediate variables.
 
-$${\Large f(g(x)) \;\;\;\; \Leftrightarrow  \;\;\;\; x \pipe g \pipe f}$$
-Here $f$ and $g$ are functions and $x$ is a data object, possibly a vector but in majority of cases a tibble. The left hand side of the equivalence $f(g(x))$ is the standard in R, it calls first the $g(x)$ and then the result of $g(x)$ is taken as input to the function $f$. The right hand side, $x \pipe g \pipe f$,  will lead to the same result as $f(g(x))$.  
 
-**For example**,  recall exercise 4  in `filter` practice section on `survey` data:  
+<!-- $${\Large f(g(x)) \;\;\;\; \Leftrightarrow  \;\;\;\; x \pipe g \pipe f}$$ 
+Here $f$ and $g$ are functions and $x$ is a data object, possibly a vector but in majority of cases a tibble. The left hand side of the equivalence $f(g(x))$ is the standard in R, it calls first the $g(x)$ and then the result of $g(x)$ is taken as input to the function $f$. The right hand side, $x \pipe g \pipe f$,  will lead to the same result as $f(g(x))$.   -->
 
-*How many males do smoke and never exercise?*  
+For example recall exercise 4  in `filter` practice section on `survey` data:  
 
-The solution: 
+- *How many males do smoke and never exercise?*  
+
+**Solution:**
 
 ```{r}
 nrow( filter(survey, smokes!="never" & exercise=="none" & gender=="male") )
@@ -30,7 +34,7 @@ Here, **first** function `filter` is run on the tibble `survey` with some condit
 
 `r info_block("Use ctrl-M to get $\\pipe$ symbol.")`
 
-Here is the same result using the $\pipe$ operator:
+**Solution with %>% : **
 
 ```{r}
 survey %>% filter(smokes!="never" & exercise=="none" & gender=="male") %>% nrow()
@@ -40,7 +44,8 @@ The solution now reads from left to right $survey \pipe filter(...) \pipe nrow$ 
 
 **Observation** In the $\pipe$ example above, note that `filter` does not have the `survey` as its first argument, the same is true for `nrow`. This is basically what the $\pipe$ operator does, take the result of the left hand side and place it as the first argument of the function at its right hand side.  
 
-`r info_block("The main advantage of $\\pipe$ syntax is that it enables you to concentrate on the steps in the order they happen rather than the mathematical notation, e.g. $f(g(h(i(...))))$")` 
+<!-- 
+`r info_block("The main advantage of $\\pipe$ syntax is that it enables you to concentrate on the steps in the order they happen rather than the mathematical notation, e.g. $f(g(h(i(...))))$")`  -->
 
 **Examples:**  
 
