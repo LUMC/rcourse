@@ -17,16 +17,15 @@ slots:
     slot_label: "R and RStudio basics"
     slot_date: 0
     slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
+    slot_plan: "l90:b15:l60:b15:l75"
     lectures:
       - "index:Course Introduction:FALSE:10"
       - "introduction0:R Introduction:FALSE:10"
       - "basic_calculator0:Calculator:TRUE:20"
       - "basic_variables0:Variables:TRUE:30"
-      - "basic_projects0:Projects:FALSE:25"
-      - "basic_scripts0:Scripts:FALSE:55"
-      - "basic_vectors0:Vectors (introduction):TRUE:45"
-      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:30"
+      - "basic_projects0:Projects:FALSE:20"
+      - "basic_scripts0:Scripts:FALSE:60"
+      - "basic_vectors0:Vectors:TRUE:75"
 
   slot2:
     slot_label : "Data manipulation (1/2)"
