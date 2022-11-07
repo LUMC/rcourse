@@ -626,11 +626,11 @@ BaseRenderer <- R6Class(
     makeAll = function( course, makeZip = TRUE, ... ) {
       self$clearDir()
       # Copy rcourse/{footer.html,fold.html,styles.css} to self$outDir(). This to
-      # avoid relative path issue in _site.yml whene render is called on default 
+      # avoid relative path issue in _site.yml whene render is called on default
       # .doc or docs/<course-name>.
       # make a list of files to be copied in the config.yml
       file.copy(file.path(course$dir(), c("footer.html","fold.html","styles.css")), self$outDir())
-      # 
+      #
       allFiles <- c(
         self$makeLectures( course, ... ),
         self$makeTasks( course, enableCode = FALSE, ... ),
@@ -644,7 +644,8 @@ BaseRenderer <- R6Class(
         attr( outZipFile, "contentType" ) <- "application/zip"
         if (file.exists(outZipFile))
           file.remove( outZipFile )
-        zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
+        #zip::zip( zipfile = outZipFile, files = allFiles, flags = "-9Xp" )
+        zip::zip( zipfile = outZipFile, files = allFiles, mode = "mirror" )
       }
 
       invisible( TRUE )

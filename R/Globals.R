@@ -41,7 +41,7 @@ read_survey <- function() {
     smokes = col_character(),
     height = col_double(),
     m.i = col_character(),
-    age = col_double()    
+    age = col_double()
   ) )
 }
 
@@ -266,7 +266,7 @@ genTestCourse <- function( testOnly = FALSE ) {
     material( id = "survey", label = "Survey dataset, CSV format", path = "data/survey.csv", outPath = "data/survey.csv" ),
     material( id = "exProjDir", label = "RStudio project directory example", path = "materials/RStudio_Project_Dir_Example.zip", outPath = "materials/RStudio_Project_Dir_Example.zip" )
   )
-  
+
   renderer <- Renderer$new( outDir = "tmp" )
   #renderer <- BrightspaceRenderer$new( outDir = "tmp" )
   renderer$makeAll( course = course )

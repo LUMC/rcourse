@@ -1,0 +1,16 @@
+name: rooc
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r
+  - r-base
+  - r-tidyverse
+  - r-plotly
+  - r-visnetwork
+  - r-gridextra
+  - r-htmltable
+  - r-kableextra
+  - r-devtools
+  - r-zip
+  - zip
