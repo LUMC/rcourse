@@ -77,8 +77,8 @@ Course <- R6Class("Course",
         if (file.exists(zip_file))
           unlink(zip_file)
         file.symlink(from = private$sources_, to = prefix)
-          zip(zipfile = paste0(prefix,".zip"),
-              files = paste0(prefix,"/",self$listing(what)), flags = "-r")
+#        zip::zip(zipfile = paste0(prefix,".zip"), files = paste0(prefix,"/",self$listing(what)), flags = "-r")
+        zip::zip(zipfile = paste0(prefix,".zip"), files = paste0(prefix,"/",self$listing(what)), recurse = TRUE)
         unlink(prefix)
       },
       read_schedule = function() {
