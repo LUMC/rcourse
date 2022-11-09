@@ -5,7 +5,7 @@ R Open Online Course (ROOC) is an R package to develop a course material in modu
 Set up the environment and libraries first based on the YAML file. Then, additionally manually install some libraries not provided through conda.
 
 ```bash
-conda env install -f envs/rooc.yaml
+conda env create -f envs/rooc.yaml
 conda activate rooc
 R --vanilla -e 'devtools::install_github("hadley/emo")'
 R --vanilla -e 'devtools::install_github("mitchelloharawild/icons")'
