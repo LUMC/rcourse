@@ -14,21 +14,21 @@ index_file : "S01L01l_index.html"
 
 slots:
   slot1:
-    slot_label: "R and RStudio basics"
+    slot_label: "R and RStudio basics, vectors"
     slot_date: 0
-    slot_time: "09:00-13:15"
-    slot_plan: "l90:b15:l60:b15:l75"
+    slot_time: "10:00-13:15"
+    slot_plan: "l50:b10:l60:b10:l65"
     lectures:
       - "index:Course Introduction:FALSE:10"
       - "introduction0:R Introduction:FALSE:10"
-      - "basic_calculator0:Calculator:TRUE:20"
-      - "basic_variables0:Variables:TRUE:30"
+      - "basic_calculator0:Calculator:TRUE:15"
+      - "basic_variables0:Variables:TRUE:15"
       - "basic_projects0:Projects:FALSE:20"
-      - "basic_scripts0:Scripts:FALSE:60"
-      - "basic_vectors0:Vectors:TRUE:75"
+      - "basic_scripts0:Scripts:FALSE:40"
+      - "basic_vectors0:Vectors:TRUE:65"
 
   slot2:
-    slot_label : "Data manipulation (1/2)"
+    slot_label: "Data manipulation (1/2)"
     slot_date: 1
     slot_time: "09:00-13:15"
     slot_plan: "l75:b15:l75:b15:l75"
@@ -44,7 +44,7 @@ slots:
 
 
   slot3:
-    slot_label : "Graphics & Data manipulation (2/2)"
+    slot_label: "Graphics & Data manipulation (2/2)"
     slot_date: 2
     slot_time: "09:00-13:15"
     slot_plan: "l75:b15:l75:b15:l75"
@@ -58,15 +58,15 @@ slots:
 
 
   slot4:
-    slot_label : "Lists and Factors ; SSA"
+    slot_label: "Lists and Factors, SSA"
     slot_date: 3
     slot_time: "09:00-13:15"
-    slot_plan: "l90:b15:l150"
+    slot_plan: "l45:b15:l45:b15:l135"
     lectures:
       - "basic_lists0:Lists:TRUE:45"
       - "basic_factors0:Factors:TRUE:45"
-      - "SSA:Trial exam:FALSE:120"
-      - "ed0:Q&A:FALSE:15"
+      - "SSA:Trial exam:FALSE:105"
+      - "ed0:Q&A:FALSE:30"
 
   slot5:
     slot_label: "Exam"
