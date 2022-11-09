@@ -26,17 +26,17 @@ Elementary statistics knowledge is necessary to understand examples.
 
 After the course you will be able to:
 
-- Use R language expressions.
-- Use R to create simple data objects (vectors, lists) and change their content.
-- Apply R descriptive statistics functions to data in vectors.
-- Use R to read tables (tibbles), filter their rows, select/rename/add columns (with [`tidyverse/dplyr`](https://dplyr.tidyverse.org/) and [`tidyverse/tidyr`](https://tidyr.tidyverse.org/)).
-- Apply R descriptive statistics functions to summarize data from grouped table rows.
-- Use R to create scatter plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
-- Locate other methods for data manipulation or plotting.
-- Locate and install packages extending base R functionality (e.g. advanced statistical methods).
-- Explain R factors.
-- Use [R Markdown](http://rmarkdown.rstudio.com/) to create a reproducible data analysis leading to a report (HTML, PDF, DOC).
-- Recognize and explain simple `tidyverse`-based R code written by others.
+- <!-- EXPR --> Use R language expressions. 
+- <!-- VEC_LST --> Use R to create simple data objects (vectors, lists) and change their content.
+- <!-- STAT_VEC --> Apply R descriptive statistics functions to data in vectors. 
+- <!-- DF --> Use R to read tables (tibbles), filter their rows, select/rename/add columns (with [`tidyverse/dplyr`](https://dplyr.tidyverse.org/) and [`tidyverse/tidyr`](https://tidyr.tidyverse.org/)). 
+- <!-- STAT_DF --> Apply R descriptive statistics functions to summarize data from grouped table rows.
+- <!-- GGPLOT --> Use R to create scatter plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
+- <!-- TIDYVERSE --> Locate other methods for data manipulation or plotting.
+- <!-- PACKAGES --> Locate and install packages extending base R functionality (e.g. advanced statistical methods).
+- <!-- FAC --> Explain R factors.
+- <!-- RMD --> Use [R Markdown](http://rmarkdown.rstudio.com/) to create a reproducible data analysis leading to a report (HTML, PDF, DOC).
+- <!-- CODE --> Recognize and explain simple `tidyverse`-based R code written by others.
 
 ## Course structure
 
