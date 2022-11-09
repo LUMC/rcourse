@@ -102,6 +102,7 @@ ggplot( pulse ) +
   geom_histogram( color = "black", position = "identity", alpha = 0.6 )
 ```
 
+
 An another possible value of the `position` argument:
 ```{r}
 ggplot( pulse ) +
