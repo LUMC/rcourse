@@ -1,0 +1,105 @@
+---
+title: 'ggplot2 introduction'
+---
+
+```{r setup,include=FALSE,eval=TRUE}
+pulse <- read_pulse() 
+```
+
+The [ggplot2](https://ggplot2.tidyverse.org/) library is a part of the `tidyverse` package.\
+Citing the original description:
+
+> "`ggplot2` is a system for declaratively creating graphics, based on **The Grammar of Graphics**. You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details".
+
+*Remember to use `library( tidyverse )` at the beginning of your R Markdown document.*\
+*Load the `pulse.csv` table into the `pulse` variable.*\
+*Practice in an R Markdown document and `Knit` it regularly to see the generated report.*
+
+## A simple scatter plot
+
+When you use `ggplot2`, you compose a plot by "adding" components. Here are some examples:
+
+-   `ggplot( pulse )`: Always the first component. It starts a new plot for data from the variable `pulse` (a `tibble` or a `data.frame`).
+-   `aes( x = weight )`: aesthetics -- Sets usage of the data column `weight` for the `x` axis.
+-   `geom_point()`: Sets the scatter plot geometry (requires at least `x` and `y`).
+
+Now enter the following code and create a simple scatter plot (also `Knit` the document):
+
+```{r}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point()
+```
+
+## Aesthetics
+
+Open `Help` for the command `geom_point` and find there the section `Aesthetics`.\
+There you can find keywords to specify **aesthetics** known by `geom_point`: position, color, shape of the points, ...
+
+### Fixed: all points identical
+
+Type the following example code and generate the plot.\
+Regenerate the plot for another color (google-search to find allowed "[R color names](https://www.google.com/search?q=R+color+names)"):
+
+```{r}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point( color = "darkblue" )
+```
+
+Type the following code with different values of `size` (e.g.: 0.5, 1, 2, 5) to see the effect:
+
+```{r eval=FALSE}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point( color = "darkblue", size = 5 )
+```
+
+Now, add and modify `alpha` (range from 0.0 to 1.0) to change transparency:
+
+```{r eval=FALSE}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point( color = "darkblue", size = 5, alpha = 0.5 )
+```
+
+Next, google-search to find allowed "[R point shapes](https://www.google.com/search?q=R+point+shapes)".\
+Shapes are numbered (range: 0..25). Try:
+
+```{r eval=FALSE}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point( shape = 24, size = 3 )
+```
+
+Note, that some shapes (21..25) might be drawn with two different colors.\
+They are specified with `color` and `fill` aesthetics. Try:
+
+```{r eval=FALSE}
+ggplot( pulse ) +
+  aes( x = weight, y = height ) +
+  geom_point( shape = 24, size = 3, color = "blue", fill = "lightblue" )
+```
+
+### Variable: points diffier
+
+Variable **aesthetics** need to be specified as arguments to `aes( ... )` function.\
+For example, type the following code to make color of the points dependent on the `exercise` column of `pulse`.\
+Note, that the library recognizes that the variable is **categorical** and creates an appropriate legend.\
+Scale colors are assigned automatically (other possibilities will be discussed in the next section).
+
+```{r}
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = exercise ) +
+  geom_point()
+```
+
+
+The `pulse1` variable is **continuous** (not categorical).\
+Try the following and observe the change in the legend (as above, the scale is created automatically).
+
+```{r eval=FALSE}
+ggplot( pulse ) +
+  aes( x = weight, y = height, color = pulse1 ) +
+  geom_point()
+```
