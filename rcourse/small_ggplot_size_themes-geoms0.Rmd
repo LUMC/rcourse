@@ -66,6 +66,7 @@ p + theme_bw()
 ```
 
 
+
 **Plot Types**
 
 Generally speaking, `ggplot2` geoms specify **plot types**.  
