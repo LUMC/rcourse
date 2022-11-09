@@ -28,6 +28,7 @@ Only once the variable is printed the plot is shown.
 p
 ```
 
+
 ## Saving plots
 
 Such a plot object may also be **saved to a file** with the `ggsave` function.  
