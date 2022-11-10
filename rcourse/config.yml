@@ -47,14 +47,13 @@ slots:
     slot_label: "Graphics & Data manipulation (2/2)"
     slot_date: 2
     slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
-    lectures:
-      - "ggplot_basics0:Plots/ggplot2:TRUE:35"
-      - "ggplot_scales0:Plot axes/scales:TRUE:35"
-      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:35"
-      - "ggplot_geoms0:Plot types:FALSE:35"
-      - "dplyr_summarise0:Summarise:TRUE:45"
-      - "dplyr_group0:Groups:TRUE:40"
+    slot_plan: "l75:b10:l75:10:l75"
+    lectures: "l35:b10:l35:b10:l35:b10:l55:b10:l55"
+      - "small_ggplot_basic0:Plot/ggplot2:TRUE:35"
+      - "small_ggplot_scales0:Plot axes/scales:TRUE:35"
+      - "small_ggplot_size_themes_geoms0:Plot panels/size and Plot types:FALSE:35"
+      - "dplyr_summarise0:Summarise:TRUE:55"
+      - "dplyr_group0:Groups:TRUE:55"
 
 
   slot4:
