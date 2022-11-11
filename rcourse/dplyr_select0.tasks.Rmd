@@ -70,29 +70,7 @@ head(select(survey,name),20)
     tail( select(survey, Hand=hand,Fold=fold,Clap=clap, everything()), 3)
     ```
 
-7. Select variables, from survey data, by pattern matching. 
 
-    7.1 Select variables that end with 'e'.
-    
-    ```{r}
-    select(survey, ends_with('e'))
-    ```
-
-    7.2 Select variables that start with 's'.
-    
-    ```{r}
-    select(survey, starts_with('s'))
-    ```
-
-    7.3 Select hand span variables using a helper function.
-    
-    ```{r}
-    # 1)
-    select(survey, contains('span'))
-    # 2) 
-    # select(survey, starts_with('span'))
-    ```
-    
 ## Extra exercises
 
 1. Rename the `m.i` variable to `system`.
@@ -160,3 +138,54 @@ survey_nums
     select(survey, where(is.character))
     ```
 
+#### Selection by pattern matching
+
+In data sets with large number of variables, finding variables will become tedious. Several helper functions are available to speed up the variable name search.
+
+> starts_with(), ends_with() and contains()
+
+The functions help to find _fixed patterns_ in variable names:
+
+```{r}
+# select variables starting with character 'a'
+select(pulse, starts_with("a"))
+# select variables ending with 'e'
+select(pulse, ends_with("e"))
+# select variables containing character 'i' 
+select(pulse, contains("i"))
+```
+
+The helper functions can be used with _logical operators_ {!,|,&} which will be explained later. You have already encountered one in the lecture on Useful R functions, `!`, the _negation_ operator. In short it complements the results. For example, above we could select variables which started with character 'a' with `select(pulse, starts_with("a"))` which resulted into a tibble with the two variables `age` and `alcohol`. Using `!` in front of the helper function in the expression will produce the complement of the previous result, namely all variables that do not start with `a`:
+
+```{r}
+select(pulse, ! starts_with("a"))
+```
+
+Note that `age` and `alcohol` do not occur in the result.
+
+There are several other helper functions which fall beyond the scope of this lecture, visit [here](https://dplyr.tidyverse.org/reference/select.html) for more details.
+
+
+5. Select variables, from survey data, by pattern matching. 
+
+    5.1 Select variables that end with 'e'.
+    
+    ```{r}
+    select(survey, ends_with('e'))
+    ```
+
+    5.2 Select variables that start with 's'.
+    
+    ```{r}
+    select(survey, starts_with('s'))
+    ```
+
+    5.3 Select hand span variables using a helper function.
+    
+    ```{r}
+    # 1)
+    select(survey, contains('span'))
+    # 2) 
+    # select(survey, starts_with('span'))
+    ```
+  

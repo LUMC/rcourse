@@ -12,9 +12,9 @@ survey <- read_survey()
 
 ## Primary exercises
 
-### Create tibble  
+1. Create tibble  
   
-1. Create a tibble `exercise_group` for a group of individuals with names {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170}, weights {56.0, 87.0, 54.0, 80.0, 58.5} and frequency of exercise {high, high, low, moderate, low}.
+a. Create a tibble `exercise_group` for a group of individuals with names {Sonja, Steven, Ines, Robert, Tim} with their heights {164, 188, 164, 180, 170}, weights {56.0, 87.0, 54.0, 80.0, 58.5} and frequency of exercise {high, high, low, moderate, low}.
 
 ```{r} 
 exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
@@ -25,6 +25,52 @@ exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
 exercise_group
 ```
 
+
+b. Update the tibble `exercise_group` with `Ella` and `Oscar`, leave their respective `height`, `weight` and `exercise` values as missing (`NA`). Avoid copy/paste from (a) with inclusion of new names, instead try to reuse the columns inside `exercise_group`.
+
+
+```{r}
+exercise_group <- tibble(name=c(exercise_group$name, "Ella", "Oscar"),
+                         height=c(exercise_group$height,NA,NA),
+                         weight=c(exercise_group$weight,NA,NA),
+                         exercise=c(exercise_group$exercise,NA,NA)
+                  )
+exercise_group       
+```
+
+c. Add the `sex` variable to `exercise_group` with values `male` and `female`.
+
+```{r}
+exercise_group <- tibble(name=exercise_group$name,
+                         height=exercise_group$height,
+                         weight=exercise_group$weight,
+                         exercise=exercise_group$exercise,
+                         sex=c('female','male','female','male','male','female','male')
+                  )
+exercise_group
+```
+
+2. Create a tibble which keeps track of the smoking habits over the years of `Julio` age 21 started smoking at 17 and stopped in 2020, `Camille` age 20 started smoking in 2021 and `Travis` 19 started at age 16.     
+
+```{r echo=FALSE}
+this_year <- as.numeric(format(Sys.time(),"%Y"))
+```
+
+```{r}
+# List the information first as below, here NA (missing value) is interpreted as not 
+# stopped, i.e. still smoking to present date.
+# 
+# name     age  start          stop
+# Julio    21   2022-(21-17)   2020
+# Camille  20   2021           NA
+# Travis   19   2022-(19-16)   NA
+
+tibble(name=c("Julio", "Camille","Travis"), 
+       age=c(21,20,19), 
+       start=c(2018,2021,2019), 
+       stop=c(2020,NA,NA))
+```
+
 ### tibble subset
 
 1. Take the tibble `exercise_group` from the previous exercise and create a new tibble `exercise_group_sub` without the `height` and `weight` variables by selection `[`.
@@ -33,6 +79,14 @@ exercise_group
 exercise_group_sub <- exercise_group[c("name","exercise")]
 exercise_group_sub
 ```
+
+2. Create a tibble called `exercise_group_sub` with the 1st and 3rd column.
+
+```{r}
+exercise_group_sub <- exercise_group[c(1,3)]
+exercise_group_sub
+```
+
 
 ### Extract variables as vectors
 
@@ -142,5 +196,59 @@ favourite_colour  <- tibble(name=c("Lucas","Lotte","Noa","Wim","Marc","Lucy","Pe
                            year=c(1995,1995,1995,1994,1990,1993,1992), 
                            colour=factor(c("Blue","Green","Yellow","Purple","Green","red","Blue")))
 fct_count(favourite_colour[['colour']])
+```
+
+
+####  `[<row>, <column>]` : row and column selection based on range of indices.
+
+Using single square bracket `[` one could select range of rows, columns or a combination. For example take the `exercise_group` tibble from the primary exercises above, then:
+
+
+```{r, eval=TRUE, echo=FALSE}
+exercise_group <- tibble(name=c("Sonja" , "Steven", "Ines", "Robert", "Tim" ),
+            height=c(164, 188, 164, 180, 170),  
+            weight=c(56.0, 87.0, 54.0, 80.0, 58.5),
+            exercise=c("high", "high", "low", "moderate", "low")
+     )
+
+exercise_group <- tibble(name=c(exercise_group$name, "Ella", "Oscar"),
+                         height=c(exercise_group$height,NA,NA),
+                         weight=c(exercise_group$weight,NA,NA),
+                         exercise=c(exercise_group$exercise,NA,NA)
+                  )
+
+exercise_group <- tibble(name=exercise_group$name,
+                         height=exercise_group$height,
+                         weight=exercise_group$weight,
+                         exercise=exercise_group$exercise,
+                         sex=c('female','male','female','male','male','female','male')
+                  )
+```
+
+
+```{r, echo=TRUE, eval=TRUE}
+exercise_group[c(2,3),]  # returns rows in the range 2 to 3
+exercise_group[,c(1,3)]  # returns columns in 1 and 3
+exercise_group[c(2,3),c(1,3)]  # combination the above
+```
+
+3. Reproduce the following tibbles from `exercise_group`:
+
+a.
+
+```{r, eval=TRUE}
+exercise_group[c(1,4),]
+```
+
+b. 
+
+```{r, eval=TRUE}
+exercise_group[2:5, c(1,3,4)]
+```
+
+c.
+
+```{r, eval=TRUE}
+exercise_group[6:7,2:4]
 ```
 

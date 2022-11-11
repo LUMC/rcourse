@@ -31,7 +31,7 @@ slots:
     slot_label: "Data manipulation (1/2)"
     slot_date: 1
     slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
+    slot_plan: "l60:b15:l90:b15:l75"
     lectures:
       - "tidyverse0:Tidyverse library:FALSE:10"
       - "course_data0:Example data (pulse, survey):FALSE:5"
@@ -48,7 +48,7 @@ slots:
     slot_date: 2
     slot_time: "09:00-13:15"
     slot_plan: "l75:b10:l35:b15:l55:b10:l55"
-    lectures: 
+    lectures:
       - "ggplot_basics1:Plot/ggplot2:TRUE:40"
       - "ggplot_scales1:Plot axes/scales:TRUE:35"
       - "ggplot_size_themes_geoms1:Plot panels/size and Plot types:FALSE:35"
