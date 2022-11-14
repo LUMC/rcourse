@@ -58,6 +58,17 @@ survey %>% filter(exercise=='freq') %>%
 
 ```
 
+5. Recall primary exercise (7) section `Summarise`, do the same using `group_by`.
+
+```{r}
+# Note: that additional argument '.groups = "drop"' is added to suppress tidyverse message.
+ survey %>%  
+  group_by(gender,smokes) %>% 
+  summarise(meidan_age=median(age), .groups = "drop")  %>% 
+  filter(smokes=='heavy')
+```
+
+
 
 ## Extra exercises
 

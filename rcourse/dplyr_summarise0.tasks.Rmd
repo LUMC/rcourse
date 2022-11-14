@@ -40,22 +40,35 @@ survey %>% summarise(meanAge=mean(age), medianHeight=median(height, na.rm=TRUE))
 survey %>% count(gender)
 ```
 
-5. Produce the frequency table on `gender` and `fold`. Do the same including `clap`. 
+5. Produce the frequency tables on {`gender`, `fold`} and  {`gender`, `fold`, `clap`}.
 
 ```{r}
-survey %>% count(gender, fold)       # (1)
-survey %>% count(gender, fold, clap) # (2)
+survey %>% count(gender, fold)
+survey %>% count(gender, fold, clap)
+
 ```
+
+6. Produce the frequency table on `gender` and `smokes`,  show only females. 
+
+```{r}
+survey %>% count(gender,smokes) %>% filter(gender=="female") 
+```
+
+7. Summarise median age of male heavy smokers. Do the same for females.
+
+```{r}
+# male
+survey %>%  filter(gender=='male' & smokes=='heavy') %>%  summarise(median_age=median(age))
+# female
+survey %>%  filter(gender=='female' & smokes=='heavy') %>%  summarise(median_age=median(age))
+```
+
+
 
 ## Extra exercises
 
-1. Produce the frequency table on `gender` and `smokes`,  only females. 
 
-```{r}
-survey %>% filter(gender=="female") %>% count(gender,smokes)
-```
-
-2. Produce the frequency table on `gender`, `exercise` and `smokes` but only for male smokers.
+1. Produce the frequency table on `gender`, `exercise` and `smokes` but only for male smokers.
 
 ```{r}
 # smoker is someone that smokes 'occas', 'regul' or 'heavy', i.e. smokes !='never'
@@ -63,7 +76,7 @@ survey %>% filter(gender=="female") %>% count(gender,smokes)
 survey %>% filter(gender=="male" & smokes!="never") %>% count(gender,exercise, smokes)
 ```
 
-3. Do individuals all have different names? Put differently, is each observation uniquely identifiable with the variable `name`?
+2. Do individuals all have different names? Put differently, is each observation uniquely identifiable with the variable `name`?
 
 ```{r}
 # The answer is no, because the number of unique names is less than 
@@ -72,12 +85,32 @@ survey %>% filter(gender=="male" & smokes!="never") %>% count(gender,exercise, s
 nrow( survey %>% distinct(name)) == nrow(survey)
 ```
 
-4. Find pairs of variables which can uniquely identify each observation. Use `name` and one other variable for this purpose.
+3. Find pairs of variables which can uniquely identify each observation. Use `name` and one other variable for this purpose.
 
 ```{r}
 # We see here that name and age combination is unique in the entire table.
 nrow( survey %>% distinct(name, age)) == nrow(survey)
 nrow( survey %>% distinct(name, height)) == nrow(survey) # The same is true for name and height
+```
+
+
+4. An alternative solution for the primary exercise (6) is solution (2) below:
+
+
+```{r, echo=TRUE}
+# solution (1)
+survey %>% count(gender,smokes) %>% filter(gender=="female") 
+# solution (2)
+survey %>% filter(gender=="female") %>% count(gender,smokes)
+```
+
+where first `filter` is applied and then `count`. You may check the results and see that the outcomes are identical.
+Explain the difference between the two solutions.
+
+```{r}
+# The alternative, solution (2), is more efficient, because 'count(gender, smokes)' has 
+# less rows (only 'females') to work with, whereas  solution (1) counts both males and 
+# females upon which the males are filtered out with filter(...).
 ```
 
 
