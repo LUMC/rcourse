@@ -42,7 +42,7 @@ pulse %>% group_by( age, gender ) %>%
 
 ```{r, echo=FALSE, results='asis'}
 msg <- "'count' function: <br><br>
-puls %>% count(age,gnder)
+puls %>% count(age,gender)
 <br><br>"
 qa(msg)
 ```
