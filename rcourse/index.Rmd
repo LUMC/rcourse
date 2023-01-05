@@ -4,70 +4,71 @@ title: "Using R for data analysis"
 
 ## Prerequisites
 
-Participants must be able to use a laptop/computer capable of running recent 
-[RStudio](https://www.rstudio.com/products/rstudio/).
-See the [Installation section](#installation) below for more details.
+Participants must be able to use a laptop/computer capable of running recent
+[RStudio](https://www.rstudio.com/products/rstudio/). See below for the RStudio [Installation section](#installation).
 
 ## Teachers
 
-- **Szymon M. Kiełbasa**, (smkielbasa@lumc.nl)
-- **Ramin Monajemi**, (rmonajemi@lumc.nl)
+- **Szymon M. Kiełbasa** (s.m.kielbasa@lumc.nl)
+- **Ramin Monajemi** (r.monajemi@lumc.nl)
 - **Mo Arkani** (m.arkani@lumc.nl)
 
-## Goals
+## What we teach
 
-[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics.
-It provides a large repository of statistical analysis methods. 
+[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods.
 
-The goal of the course is to teach students how the R language, extended by [`tidyverse` package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table.
-**NOTE: This is not a statistics course!**
-The course assumes no prior programming knowledge. 
-Elementary statistics knowledge is necessary to understand examples.
+The goal of the course is to teach students how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. The course assumes no prior programming knowledge.
 
-After the course you will be able to:
+**NOTE: This is not a statistics course!** We do not teach statistics; we teach how to write simple programs
+in the R language. Elementary statistics knowledge is necessary to understand examples.
 
-- <!-- EXPR --> Use R language expressions. 
-- <!-- VEC_LST --> Use R to create simple data objects (vectors, lists) and change their content.
-- <!-- STAT_VEC --> Apply R descriptive statistics functions to data in vectors. 
-- <!-- DF --> Use R to read tables (tibbles), filter their rows, select/rename/add columns (with [`tidyverse/dplyr`](https://dplyr.tidyverse.org/) and [`tidyverse/tidyr`](https://tidyr.tidyverse.org/)). 
-- <!-- STAT_DF --> Apply R descriptive statistics functions to summarize data from grouped table rows.
-- <!-- GGPLOT --> Use R to create scatter plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
-- <!-- TIDYVERSE --> Locate other methods for data manipulation or plotting.
-- <!-- PACKAGES --> Locate and install packages extending base R functionality (e.g. advanced statistical methods).
-- <!-- FAC --> Explain R factors.
-- <!-- RMD --> Use [R Markdown](http://rmarkdown.rstudio.com/) to create a reproducible data analysis leading to a report (HTML, PDF, DOC).
-- <!-- CODE --> Recognize and explain simple `tidyverse`-based R code written by others.
+After the course you will:
+
+- Understand and write (`tidyverse`-based) R code.
+- Know where to look for R methods to perform statistical analyses of your own data.
+- Generate reproducible reports from your own data in HTML, PDF or DOC formats.
+
+We will cover the following topics:
+
+- R expressions.
+- R data objects: vectors, data frames (tibbles), lists, (matrices).
+- [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports.
+- Data manipulation: filtering, sorting, summarising of a table; joining/merging multiple tables (with [tidyverse/dplyr](https://dplyr.tidyverse.org/) and [tidyverse/tidyr](https://tidyr.tidyverse.org/)).
+- Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](https://ggplot2.tidyverse.org/)).
+- R packages: installation and usage.
 
 ## Course structure
 
-The course is divided in 4 half-day interactive lectures followed by a 2 hour exam.
+The course is divided in half-day sessions.  
+The teachers are available for chatting online during all teaching slots.  
+At the beginning of the week before the course the teachers might be contacted to help with R and RStudio installation problems (see below).
 
-### The slots
+### All sessions: practicing
 
-The topics are split in a number of small sections (a few per a half-day slot) and each section will have:
+The course is given in an **online plenary room**. Each session is split into a
+few small topics and each topic is introduced as follows:
 
-- A short **online introduction/demonstration**.
-- A **self/group-study practice** session (with primary exercises end extra exercises).
-- Questions and Answers discussed in an online (live) chat channel.
+- A short online (live video) lecture for introduction/demonstration.
+- A self-study practice session (with *primary exercises* end *extra exercises*) with chat interactions.
+- (Only when needed) A short chat question and live video answers session.
 
-The students are asked to type the commands being presented and observe their effects (avoid copy-paste; own typing is important in order to learn how R responds to mistakes).
+The students are asked to **type on their keyboards the commands** being presented and observe
+effects (**avoid copy-paste**; own typing is important in order to learn
+how to respond to mistakes/errors).   
 
-### The exam
+### The last session: practicing followed by self study assignment
 
-There will be an exam. 
-Please check the date and the location on the [LUMC Onderwijsrooster/Studenten/Biomedische Wetenschappen/B1R](https://roosters.lumc.nl/WebPlanner/webber/1718_PUBLICATIE/permalink/139c6acbcd7fd78d0574cbdbed82a5ab).
+A **self study assignment** (SSA) will be offered during the last session.
+A set of tasks will be provided to be solved individually without help of the teachers or other persons.
+At the end there will be a general discussion with **chat questions** and **live video answers**.
 
-During the exam you will need to prepare an R Markdown document reporting an analysis on a dataset.
-You will carry out the following steps:
+The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
+You will be asked to carry out the following steps:
 
-- Create an RStudio project and an R Markdown document.
-- Write R code to read a provided table.
-- Write R code to perform simple manipulations/analyses of the table or its columns.
-- Write R code to produce some plots of the table data.
-
-During the exam it is allowed to use the course (or other) materials but it is strictly forbidden to communicate with other persons.
-
-The **extra exercises** will **not** be part of the exam. They are elective and may contain more advanced topics.
+- Create an RStudio project, knit an R Markdown document.
+- Read a provided table.
+- Show some filtered/summarized content of the table.
+- Produce some plots of the data.
 
 ## Installation
 
