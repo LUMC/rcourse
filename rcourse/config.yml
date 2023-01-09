@@ -1,9 +1,9 @@
 #
 # Global
 #
-startDate : "2022-11-14"
-course_id : "B3DS_202211"
-course_label : "Introduction to R | B1R"
+startDate : "2023-01-17"
+course_id : "HLO_202301"
+course_label : "Introduction to R | HLO"
 index_file : "S01L01l_index.html"
 
 #
@@ -30,7 +30,7 @@ slots:
 
   slot2:
     slot_label : "Data manipulation (1/2)"
-    slot_date: 1
+    slot_date: 6
     slot_time: "09:00-13:15"
     slot_plan: "l75:b15:l75:b15:l75"
     lectures:
@@ -46,7 +46,7 @@ slots:
 
   slot3:
     slot_label : "Graphics & Data manipulation (2/2)"
-    slot_date: 2
+    slot_date: 7
     slot_time: "09:00-13:15"
     slot_plan: "l75:b15:l75:b15:l75"
     lectures:
@@ -60,7 +60,7 @@ slots:
 
   slot4:
     slot_label : "Lists and Factors ; SSA"
-    slot_date: 3
+    slot_date: 21
     slot_time: "09:00-13:15"
     slot_plan: "l90:b15:l150"
     lectures:
@@ -69,13 +69,13 @@ slots:
       - "SSA:Trial exam:FALSE:120"
       - "ed0:Q&A:FALSE:15"
 
-  slot5:
-    slot_label: "Exam"
-    slot_date: 4
-    slot_time: "09:00-11:00"
-    slot_plan: "l120"
-    lectures:
-      - "ed1:Exam:FALSE:120"
+  # slot5:
+  #   slot_label: "Exam"
+  #   slot_date: 4
+  #   slot_time: "09:00-11:00"
+  #   slot_plan: "l120"
+  #   lectures:
+  #     - "ed1:Exam:FALSE:120"
 
 
       # - "useful_functions0:Useful R functions (not on exam):FALSE:20"
