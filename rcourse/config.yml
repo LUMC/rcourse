@@ -16,75 +16,54 @@ slots:
   slot1:
     slot_label: "R and RStudio basics"
     slot_date: 0
-    slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
+    slot_time: "11:15-14:45"
+    slot_plan: "l40:b10:l75:b10:l65"
     lectures:
-      - "index:Course Introduction:FALSE:10"
-      - "introduction0:R Introduction:FALSE:10"
-      - "basic_calculator0:Calculator:TRUE:20"
-      - "basic_variables0:Variables:TRUE:30"
-      - "basic_projects0:Projects:FALSE:25"
-      - "basic_scripts0:Scripts:FALSE:55"
-      - "basic_vectors0:Vectors (introduction):TRUE:45"
-      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:30"
+      - "index:Course Introduction:FALSE:5"
+      - "introduction0:R Introduction:FALSE:5"
+      - "basic_calculator0:Calculator:TRUE:15"
+      - "basic_variables0:Variables:TRUE:15"
+      - "tidyverse0:Tidyverse library:FALSE:10"
+      - "course_data0:Example data (pulse, survey):FALSE:5"
+      - "basic_projects0:Projects:FALSE:20"
+      - "basic_scripts0:Scripts:FALSE:40"
+      - "basic_vectors0:Vectors (introduction):TRUE:40"
+      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:25"
 
   slot2:
     slot_label : "Data manipulation (1/2)"
     slot_date: 6
-    slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
+    slot_time: "13:30-16:30"
+    slot_plan: "l45:b10:l45:b10:l45"
     lectures:
-      - "tidyverse0:Tidyverse library:FALSE:10"
-      - "course_data0:Example data (pulse, survey):FALSE:5"
       - "dplyr_tibble0:Tibble:TRUE:45"
       - "dplyr_select0:Select variables/cols:TRUE:45"
       - "dplyr_filter0:Filter observations/rows:TRUE:45"
-      - "dplyr_mutate0:Add/modify variables:TRUE:45"
-      - "dplyr_pipe0:Pipe operator:TRUE:30"
-
-
 
   slot3:
     slot_label : "Graphics & Data manipulation (2/2)"
     slot_date: 7
-    slot_time: "09:00-13:15"
-    slot_plan: "l75:b15:l75:b15:l75"
+    slot_time: "13:30-16:30"
+    slot_plan: "l80:b10:l90"
     lectures:
-      - "ggplot_basics0:Plots/ggplot2:TRUE:35"
-      - "ggplot_scales0:Plot axes/scales:TRUE:35"
-      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:35"
-      - "ggplot_geoms0:Plot types:FALSE:35"
-      - "dplyr_summarise0:Summarise:TRUE:45"
-      - "dplyr_group0:Groups:TRUE:40"
-
+      - "dplyr_mutate0:Add/modify variables:TRUE:40"
+      - "dplyr_pipe0:Pipe operator:TRUE:40"
+      - "ggplot_basics0:Plots/ggplot2:TRUE:30"
+      - "ggplot_scales0:Plot axes/scales:TRUE:30"
+      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:30"
 
   slot4:
     slot_label : "Lists and Factors ; SSA"
     slot_date: 21
-    slot_time: "09:00-13:15"
-    slot_plan: "l90:b15:l150"
+    slot_time: "09:15-12:00"
+    slot_plan: "l100:b15:l45:b5:l60"
     lectures:
+      - "dplyr_summarise0:Summarise:TRUE:50"
+      - "dplyr_group0:Groups:TRUE:50"
       - "basic_lists0:Lists:TRUE:45"
       - "basic_factors0:Factors:TRUE:45"
-      - "SSA:Trial exam:FALSE:120"
+      # - "SSA:Trial exam:FALSE:120"
       - "ed0:Q&A:FALSE:15"
-
-  # slot5:
-  #   slot_label: "Exam"
-  #   slot_date: 4
-  #   slot_time: "09:00-11:00"
-  #   slot_plan: "l120"
-  #   lectures:
-  #     - "ed1:Exam:FALSE:120"
-
-
-      # - "useful_functions0:Useful R functions (not on exam):FALSE:20"
-      # - "packages0:Install/use packages:FALSE:15"
-      # - "dplyr_join0:Joining tables:TRUE:45"
-      # - "tidyr_reshape0:Reshaping tables:TRUE:45"
-      # - "basic_formulas0:Formulas (not on exam):TRUE:45"
-      # - "basic_matrices0:Matrices (not on exam):TRUE:30"
-
 
 #
 # materials : material+
