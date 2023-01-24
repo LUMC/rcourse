@@ -1,9 +1,9 @@
 #
 # Global
 #
-startDate : "2023-01-26"
-course_id : "Boerhaave_202301"
-course_label : "Using R for data analysis | Boerhaave Nascholing"
+startDate : "2023-01-17"
+course_id : "HLO_202301"
+course_label : "Introduction to R | HLO"
 index_file : "S01L01l_index.html"
 
 #
@@ -11,89 +11,59 @@ index_file : "S01L01l_index.html"
 # slot    : lecture+
 # lecture : "<file-basename>:<title>:<has_tasks>:<minutes>"
 #
+
 slots:
   slot1:
     slot_label: "R and RStudio basics"
     slot_date: 0
-    slot_time: "09:00-12:30"
-    slot_plan: "l70:b15:l50:b15:l60"
+    slot_time: "11:15-14:40"
+    slot_plan: "l45:b10:l75:b10:l65"
     lectures:
-      - "index:Course Introduction:FALSE:10"
+      - "index:Course Introduction:FALSE:5"
       - "introduction0:R Introduction:FALSE:10"
-      - "basic_calculator0:Calculator:TRUE:20"
-      - "basic_variables0:Variables:TRUE:30"
-      - "course_data0:Example data (pulse, survey):FALSE:10"
-      - "packages0:Install/use packages:FALSE:10"
-      - "basic_projects0:Projects:FALSE:30"
-      - "basic_scripts0:Scripts:FALSE:60"
+      - "basic_calculator0:Calculator:TRUE:15"
+      - "basic_variables0:Variables:TRUE:15"
+      - "tidyverse0:Tidyverse library:FALSE:10"
+      - "course_data0:Example data (pulse, survey):FALSE:5"
+      - "basic_projects0:Projects:FALSE:20"
+      - "basic_scripts0:Scripts:FALSE:40"
+      - "basic_vectors0:Vectors (introduction):TRUE:40"
+      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:25"
+
   slot2:
-    slot_label : "Data structures 1/2"
-    slot_date: 0
-    slot_time: "13:30-17:00"
-    slot_plan: "l60:b15:l60:b15:l60"
+    slot_label : "Data manipulation (1/2)"
+    slot_date: 6
+    slot_time: "13:30-16:00"
+    slot_plan: "l45:b10:l45:b5:l45"
     lectures:
-      - "basic_vectors0:Vectors (introduction):TRUE:60"
-      - "useful_functions0a|useful_functions0.Rmd:Useful R functions (preview):FALSE:20"
-      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:40"
-      - "basic_factors0:Factors:TRUE:60"
-  slot3:
-    slot_label : "Data manipulation 1/3"
-    slot_date : 1
-    slot_time : "09:00-12:30"
-    slot_plan: "l105:b15:l90"
-    lectures:
-      - "tidyverse0:Tidyverse library:FALSE:15"
       - "dplyr_tibble0:Tibble:TRUE:45"
       - "dplyr_select0:Select variables/cols:TRUE:45"
       - "dplyr_filter0:Filter observations/rows:TRUE:45"
-      - "dplyr_mutate0:Add/modify variables:TRUE:45"
+
+  slot3:
+    slot_label : "Graphics & Data manipulation (2/2)"
+    slot_date: 7
+    slot_time: "13:30-16:20"
+    slot_plan: "l70:b10:l90"
+    lectures:
+      - "dplyr_mutate0:Add/modify variables:TRUE:40"
+      - "dplyr_pipe0:Pipe operator:TRUE:30"
+      - "ggplot_basics0:Plots/ggplot2:TRUE:30"
+      - "ggplot_scales0:Plot axes/scales:TRUE:30"
+      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:30"
+
   slot4:
-    slot_label : "Data manipulation 2/3"
-    slot_date : 1
-    slot_time : "13:30-17:00"
-    slot_plan: "l60:b15:l60:b15:l60"
+    slot_label : "Lists and Factors ; SSA"
+    slot_date: 21
+    slot_time: "09:15-12:25"
+    slot_plan: "l100:b5:l40:b5:l45"
     lectures:
-      - "dplyr_pipe0:Pipe operator:TRUE:60"
-      - "dplyr_summarise0:Summarise:TRUE:60"
-      - "dplyr_group0:Groups:TRUE:60"
-  slot5:
-    slot_label : "Data structures 2/2"
-    slot_date : 4
-    slot_time : "09:00-12:30"
-    slot_plan: "l60:b15:l60:b15:l60"
-    lectures:
-      - "basic_lists0:Lists:TRUE:60"
-      - "basic_formulas0:Formulas:TRUE:60"
-      - "basic_matrices0:Matrices:TRUE:60"
-  slot6:
-    slot_label : "Graphics"
-    slot_date : 4
-    slot_time : "13:30-17:00"
-    slot_plan: "l45:b10:l45:b10:l45:b10:l45"
-    lectures:
-      - "ggplot_basics0:Plots/ggplot2:TRUE:45"
-      - "ggplot_scales0:Plot axes/scales:TRUE:45"
-      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:45"
-      - "ggplot_geoms0:Plot types:FALSE:45"
-  slot7:
-    slot_label : "Data manipulation 3/3 and functions"
-    slot_date : 5
-    slot_time : "09:00-12:30"
-    slot_plan: "l60:l45:b15:l45:b15:l30"
-    lectures:
-      - "dplyr_join0:Joining tables:TRUE:60"
-      - "tidyr_reshape0:Reshaping tables:TRUE:45"
-      - "advanced_user_functions0:User-defined functions:TRUE:45"
-      - "flow_control:Flow control (if/else, for):FALSE:30"
-  slot8:
-    slot_label : "Self-study assignment"
-    slot_date : 5
-    slot_time : "13:30-17:00"
-    slot_plan: "l45:b15:l120:l30"
-    lectures:
-      - "useful_functions0:Useful R functions (detailed):FALSE:45"
-      - "SSA:Self-study assignment:FALSE:120"
-      - "QA:Q/A:FALSE:30"
+      - "dplyr_summarise0:Summarise:TRUE:50"
+      - "dplyr_group0:Groups:TRUE:50"
+      - "basic_lists0:Lists:TRUE:40"
+      - "basic_factors0:Factors:TRUE:40"
+      # - "SSA:Trial exam:FALSE:120"
+      - "ed0:Q&A:FALSE:5"
 
 #
 # materials : material+

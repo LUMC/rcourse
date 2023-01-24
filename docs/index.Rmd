@@ -18,7 +18,8 @@ It is also offered as a general course organised by [Boerhaave Nascholing](https
 
 The materials are adjusted depending on schedules. Please select your group:
 
-- [Boerhaave Nascholing (I),  January 2023](Boerhaave_202301)
+- [HLO : Introduction to R, January 2023](HLO_202301)
+- [Boerhaave Nascholing (I), January 2023](Boerhaave_202301)
 - [B3DS, November 2022](B3DS_202211)
 - [B1R, November 2022](B1R_202211)
 - [Clinical Research in Practice (CRiP), September 2022](CRIP_202209)
