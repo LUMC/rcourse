@@ -73,3 +73,36 @@ p + theme_minimal()
 p + theme_dark()
 p + theme_bw()
 ```
+
+## Histograms
+
+Let's start with the histogram of the `pulse2` variable from the `pulse` data:
+```{r}
+ggplot( pulse ) +
+  aes( x = pulse2 ) +
+  geom_histogram( color = "black", fill = "gray" )
+```
+
+Note, that there were two groups of subjects: one did `run`, the other did not.  
+Try to add color to split histogram bars to make groups visible:
+```{r}
+ggplot( pulse ) +
+  aes( x = pulse2, fill = ran ) +
+  geom_histogram( color = "black" )
+```
+
+The above histogram has the **groups stacked**.  
+To visualize each group separately, try to add `position` argument as below (remember to add `alpha`; otherwise some bars might get hidden):
+```{r}
+ggplot( pulse ) +
+  aes( x = pulse2, fill = ran ) +
+  geom_histogram( color = "black", position = "identity", alpha = 0.6 )
+```
+
+
+An another possible value of the `position` argument:
+```{r}
+ggplot( pulse ) +
+  aes( x = pulse2, fill = ran ) +
+  geom_histogram( color = "black", position = "dodge" )
+```
