@@ -4,6 +4,8 @@ channels:
   - defaults
 dependencies:
   - r
+  - radian
+  - r-languageserver 
   - r-base
   - r-tidyverse
   - r-plotly
