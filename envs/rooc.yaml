@@ -16,3 +16,4 @@ dependencies:
   - r-devtools
   - r-zip
   - zip
+  - radian
