@@ -127,7 +127,38 @@ scores$Dan[[ "physics" ]]
 
 ## Multitopic exercises
 
-1. *(ADV) Split a table into list of tables by a column factor; merge back*.  
+1. *(ADV) Simulate grades. (Calling user function for each element.)*  
+Consider the `scores` list from the previous exercises.  
+Let's assume that the grades are not known yet and we need to simulate them.  
+A vector `nms` with several (e.g. 12, see below) unique names of students is provided.  
+Each student should have a random number of grades (between 5 and 14).  
+The grades should be sampled from the range `1:10`.  
+Grades `1-4,9,10` are usually rare compared to `6-8`, so the probabilities of grades should not be uniform (e.g. the ratios should be 1:1:1:1:2:10:20:20:2:1 for grades 1...10).  
+For each student, the grades should be sorted in ascending order.  
+The final list should have the same structure as `scores` (i.e. the names of the list elements should be the names of the students and the values should be the corresponding grades).  
+  \
+Hints:
+    - Use `sample` to generate a random number - how many grades a student should have.
+    - Use `sample` with the `prob` and `replace` arguments - grades with non-uniform probabilities.
+    - Put above to a function `genGrades` that generates grades for a single student.
+    - Use `lapply` to apply the function to each element of `nms`.
+    - Use `setNames` to assign names to the list elements (or better name the elements of `nms` before `lapply`).
+
+```{r echo=TRUE}
+nms <- c( "Amy", "Bob", "Carl", "Dany", "Ewa", "Frank", "Greg", "Holy", "Ian", "Jan", "Kees", "Leon" )
+```
+
+```{r}
+genGrades <- function(nm) { # nm is a single name, not used in the function
+  gradesNum <- sample( 5:14, 1 )
+  grades <- sort( sample( 1:10, size = gradesNum, prob = c(1,1,1,1,2,10,20,20,2,1), replace = TRUE ) )
+  return( grades )
+}
+lapply( setNames( nm = nms ), genGrades ) # calls genGrades for each element of nms
+                                          # if elements of nms have names, the result has the same names
+```
+
+2. *(ADV) Split a table into list of tables by a column factor; merge back*.  
 Some functions might require an input to be provided as a list of tables.  
 Let's assume that the `pulse` table should be split into a list of table parts based on the `exercise` argument.  
 Load the `pulse.csv` data to variable `pulse`.  
@@ -145,7 +176,7 @@ dim( pulse )
 dim( recreatedPulse )
 ```
 
-2. *(ADV) Split a table by a column and write each part to a different file*.  
+3. *(ADV) Split a table by a column and write each part to a different file*.  
 Continue with the setup of the previous exercise.  
 Study/type/exectute the following example.  
 Find the newly created files in your filesystem.
