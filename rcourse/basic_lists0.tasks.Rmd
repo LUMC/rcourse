@@ -127,9 +127,31 @@ scores$Dan[[ "physics" ]]
 
 ## Multitopic exercises
 
-1. *(ADV) Simulate grades. (Calling user function for each element.)*  
-Consider the `scores` list from the previous exercises.  
+1. *(ADV) Mean grades for each student. (Call a function for each element. Collect calls' results into list.)*  
+Consider the `scores` list from the first exercise (also copied below).  
+Calculate the mean grade for each student.  
+  \
+Use `lapply` to apply the `mean` function to each element of `scores`.  
+Also, replace `lapply` with `sapply` and compare the results.  
+Try to explain what `lapply`/`sapply` do.  
+Note: the names of the list elements in `scores` are preserved in the result.  
+  \
+```{r echo=TRUE}
+scores <- list(
+  Amy = c( 1,6,7,9,10 ),
+  Bob = c( 6,7,4,3,5,2,2,1,4 ),
+  Dan = c( 9,9,10 )
+)
+```
+```{r}
+lapply( scores, mean ) # the result is a list
+sapply( scores, mean ) # the result is converted to a vector
+```
+
+2. *(ADV) Simulate grades. (Define an own function and call it for each element.)*  
+Consider the `scores` list from the previous exercise.  
 Let's assume that the grades are not known yet and we need to simulate them.  
+  \
 A vector `nms` with several (e.g. 12, see below) unique names of students is provided.  
 Each student should have a random number of grades (between 5 and 14).  
 The grades should be sampled from the range `1:10`.  
@@ -140,8 +162,8 @@ The final list should have the same structure as `scores` (i.e. the names of the
 Hints:
     - Use `sample` to generate a random number - how many grades a student should have.
     - Use `sample` with the `prob` and `replace` arguments - grades with non-uniform probabilities.
-    - Put above to a function `genGrades` that generates grades for a single student.
-    - Use `lapply` to apply the function to each element of `nms`.
+    - Put above into a function `genGrades` that generates grades for a single student.
+    - Use `lapply` to apply the function to each element of `nms`. Note, that the function does not use the `nm` argument (but it still needs to be present).  
     - Use `setNames` to assign names to the list elements (or better name the elements of `nms` before `lapply`).
 
 ```{r echo=TRUE}
@@ -158,7 +180,44 @@ lapply( setNames( nm = nms ), genGrades ) # calls genGrades for each element of 
                                           # if elements of nms have names, the result has the same names
 ```
 
-2. *(ADV) Split a table into list of tables by a column factor; merge back*.  
+3. *(ADV) Plot scores given in a list. (Convert list to long tibble. Plot it.)*  
+Plotting functions usually require a table with data in a long format.  
+Convert the `scores` list from the first exercise to a long table, with two columns `name` and `score` (each grade should be a separate row).  
+Use `ggplot` to plot the grades from the long table.  
+  \
+Hints:
+    - Write a function which converts a single element of `scores` to a `tibble` with two columns `name` and `score`.
+    - Use `lapply` to apply the function to each element of `scores` (you will get a list of tibbles).
+    - Use `bind_rows` to combine the results into a single table (you will get a single, merged tibble).
+    - Use `ggplot` to plot the table. The example below uses `geom_dotplot` to plot the grades. You may use `geom_point` instead.
+
+```{r eval=TRUE}
+scores <- list(
+  Amy = c( 1,6,7,9,10 ),
+  Bob = c( 6,7,4,3,5,2,2,1,4 ),
+  Dan = c( 9,9,10 )
+)
+```
+
+```{r eval=TRUE}
+d <- names(scores) %>% 
+  lapply( function( nm ) tibble( name=nm, score=scores[[nm]] ) ) %>% 
+  bind_rows()
+```
+
+```{r eval=TRUE}
+p <- ggplot( d ) +
+  aes( x=name, y=score ) +
+  geom_dotplot( binaxis="y", stackdir="center", binwidth=0.5 ) +
+  theme_bw() +
+  scale_y_continuous( limits=c(1,10), breaks=1:10 )
+```
+
+```{r echo=FALSE,eval=TRUE}
+p
+```
+
+4. *(ADV) Split a table into list of tables by a column factor; merge back*.  
 Some functions might require an input to be provided as a list of tables.  
 Let's assume that the `pulse` table should be split into a list of table parts based on the `exercise` argument.  
 Load the `pulse.csv` data to variable `pulse`.  
@@ -176,7 +235,7 @@ dim( pulse )
 dim( recreatedPulse )
 ```
 
-3. *(ADV) Split a table by a column and write each part to a different file*.  
+5. *(ADV) Split a table by a column and write each part to a different file*.  
 Continue with the setup of the previous exercise.  
 Study/type/exectute the following example.  
 Find the newly created files in your filesystem.
