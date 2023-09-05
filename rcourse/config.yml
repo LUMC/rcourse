@@ -37,11 +37,11 @@ slots:
   slot3:
     slot_label : "Data structures 2/2"
     slot_date: 1
-    slot_time: "13:00-14:45"
-    slot_plan: "l45:b15:l45"
+    slot_time: "13:00-14:30"
+    slot_plan: "l40:b10:l40"
     lectures:
-      - "basic_lists0:Lists:TRUE:45"
-      - "basic_formulas0:Formulas:TRUE:45"
+      - "basic_lists0:Lists:TRUE:40"
+      - "basic_formulas0:Formulas:TRUE:40"
   slot4:
     slot_label : "Data manipulation 1/3"
     slot_date : 2
