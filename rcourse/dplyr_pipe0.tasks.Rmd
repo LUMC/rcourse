@@ -9,9 +9,9 @@ survey <- read_survey()
 
 \newcommand{\pipe}{{\small \;\;{\%}{>}{\%}\;\;} }
 
-## Primary exercises
-
 > Use $\pipe$ as much as possible in your solutions. 
+
+## Primary exercises
 
 In the survey dataset:
 
