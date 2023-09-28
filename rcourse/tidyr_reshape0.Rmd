@@ -18,7 +18,7 @@ pulse <- read_pulse()
 </center> 
 -->
 
-*Source:* [data import cheat sheet : tidyr](https://github.com/rstudio/cheatsheets/raw/master/tidyr.pdf)
+*Source:* [data import cheat sheet : tidyr](https://tidyr.tidyverse.org)
 
 
 Two main functions to manipulate the layout of the table, `pivot_longer` transforms the table from wide to long format and `pivot_wider`, which does the opposite, converts the table from long to wide format.
