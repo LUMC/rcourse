@@ -30,6 +30,21 @@ rc$render(out_dir = "docs/<course_yyyymm>")
 
 To include the course in github pages update `docs/index.Rmd` with link to `docs/<course_yyyymm` and knit.
 
+### Tagging course iterations
+
+The material  is tagged with each iteration of the course, with tags such as `B1R_202311`. Create the tags locally and push them to master as follows:    
+
+```
+> git tag -a <course-tag> -m "<short-description>"     # create a tag locally
+> git push origin <course-tag>                         # push to remote respo.
+```
+
+You'll need to fetch remote tags, unknown to you, using:
+
+```
+> git fetch --tags
+```
+
 
 ### Visit live pages
 
