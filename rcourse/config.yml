@@ -72,7 +72,7 @@ slots:
   slot5:
     slot_label: "Exam"
     slot_date: 4
-    slot_time: "09:00-11:00"
+    slot_time: "08:30-10:30"
     slot_plan: "l120"
     lectures:
       - "ed1:Exam:FALSE:120"

@@ -34,15 +34,23 @@ To include the course in github pages update `docs/index.Rmd` with link to `docs
 
 The material  is tagged with each iteration of the course, with tags such as `B1R_202311`. Create the tags locally and push them to master as follows:    
 
-```r
-git tag -a <course-tag> -m "<short-description>"     # create a tag locally
-git push origin <course-tag>                         # push to remote respo.
+```zsh
+git tag -a <tag-name> -m "<short-description>"     # create a local tag
+git push origin <tag-name>                         # push tag to remote
 ```
 
 You'll need to fetch remote tags, unknown to you, using:
 
-```r
+```zsh
 git fetch --tags
+```
+
+To remove a tag locally and remote:
+
+```zsh
+git tag -d <tag-name>                # local
+git push --delete origin <tag-name>  # remote
+
 ```
 
 

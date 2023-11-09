@@ -10,9 +10,9 @@ See the [Installation section](#installation) below for more details.
 
 ## Teachers
 
-- **Szymon M. Kiełbasa**, (smkielbasa@lumc.nl)
-- **Ramin Monajemi**, (rmonajemi@lumc.nl)
-- **Mo Arkani** (m.arkani@lumc.nl)
+- **Szymon M. Kiełbasa**, (smkielbasa[]()@lumc.nl)
+- **Ramin Monajemi (correspondence rmonajemi@lumc.nl)**
+- **Mo Arkani** (m.arkani[]()@lumc.nl)
 
 ## Goals
 
@@ -28,10 +28,10 @@ After the course you will be able to:
 
 - Use R language expressions.
 - Use R to create simple data objects (vectors, lists) and change their content.
-- Apply R descriptive statistics functions to data in vectors.
+- Apply R descriptive statistics functions.
 - Use R to read tables (tibbles), filter their rows, select/rename/add columns (with [`tidyverse/dplyr`](https://dplyr.tidyverse.org/) and [`tidyverse/tidyr`](https://tidyr.tidyverse.org/)).
 - Apply R descriptive statistics functions to summarize data from grouped table rows.
-- Use R to create scatter plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
+- Use R to create plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
 - Locate other methods for data manipulation or plotting.
 - Locate and install packages extending base R functionality (e.g. advanced statistical methods).
 - Explain R factors.
@@ -42,9 +42,9 @@ After the course you will be able to:
 
 The course is divided in 4 half-day interactive lectures followed by a 2 hour exam.
 
-### The slots
+### The lectures
 
-The topics are split in a number of small sections (a few per a half-day slot) and each section will have:
+The lectures are split in a number of small sections and each section will have:
 
 - A short **online introduction/demonstration**.
 - A **self/group-study practice** session (with primary exercises end extra exercises).
@@ -55,7 +55,8 @@ The students are asked to type the commands being presented and observe their ef
 ### The exam
 
 There will be an exam. 
-Please check the date and the location on the [LUMC Onderwijsrooster](https://rooster.universiteitleiden.nl/schedule).
+Please check the date and the location on the [LUMC Onderwijsrooster](https://rooster.universiteitleiden.nl/schedule) and bring **your own laptop**.
+
 
 During the exam you will need to prepare an R Markdown document reporting an analysis on a dataset.
 You will carry out the following steps:
@@ -67,7 +68,7 @@ You will carry out the following steps:
 
 During the exam it is allowed to use the course (or other) materials but it is strictly forbidden to communicate with other persons.
 
-The **extra exercises** will **not** be part of the exam. They are elective and may contain more advanced topics.
+The **extra exercises** will **not** be part of the exam. They are elective and generally contain more advanced topics.
 
 ## Installation
 
