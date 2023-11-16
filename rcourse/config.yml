@@ -1,0 +1,123 @@
+#
+# Global
+#
+startDate : "2023-11-20"
+course_id : "B3DS_202111"
+course_label : "Using R for data analysis | B3DS"
+index_file : "S01L01l_index.html"
+
+#
+# slots   : slot+
+# slot    : lecture+
+# lecture : "<file-basename>:<title>:<has_tasks>:<minutes>"
+#
+slots:
+  slot1:
+    slot_label: "R and RStudio basics"
+    slot_date: 0
+    slot_time: "09:15-12:00"
+    slot_plan: "l70:b15:l80"
+    lectures:
+      - "index:Course Introduction:FALSE:10"
+      - "introduction0:R Introduction:FALSE:10"
+      - "basic_calculator0:Calculator:TRUE:20"
+      - "basic_variables0:Variables:TRUE:30"
+      - "basic_projects0:Projects:FALSE:25"
+      - "basic_scripts0:Scripts:FALSE:55"
+  slot2:
+    slot_label : "Data structures 1/2"
+    slot_date: 0
+    slot_time: "13:15-17:00"
+    slot_plan: "l60:b15:l60:b15:l75"
+    lectures:
+      - "basic_vectors0:Vectors (introduction):TRUE:60"
+      - "useful_functions0:Useful R functions (not on exam):FALSE:20"
+      - "basic_vectors0a|basic_vectors0.Rmd:Vectors (practicing):TRUE:40"
+      - "packages0:Install/use packages:FALSE:15"
+      - "basic_factors0:Factors:TRUE:60"
+  slot3:
+    slot_label : "Data manipulation 1/3"
+    slot_date : 1
+    slot_time: "09:15-12:00"
+    slot_plan: "l105:b15:l45"
+    lectures:
+      - "tidyverse0:Tidyverse library:FALSE:10"
+      - "course_data0:Example data (pulse, survey):FALSE:5"
+      - "dplyr_tibble0:Tibble:TRUE:45"
+      - "dplyr_select0:Select variables/cols:TRUE:45"
+      - "dplyr_filter0:Filter observations/rows:TRUE:45"
+  slot4:
+    slot_label : "Data manipulation 2/3"
+    slot_date : 1
+    slot_time: "13:15-17:00"
+    slot_plan: "l105:b15:l105"
+    lectures:
+      - "dplyr_mutate0:Add/modify variables:TRUE:45"
+      - "dplyr_pipe0:Pipe operator:TRUE:60"
+      - "dplyr_summarise0:Summarise:TRUE:45"
+      - "dplyr_group0:Groups:TRUE:60"
+  slot5:
+    slot_label : "Graphics"
+    slot_date : 2
+    slot_time: "09:15-12:00"
+    slot_plan: "l35:b5:l35:b15:l35:b5:l35"
+    lectures:
+      - "ggplot_basics0:Plots/ggplot2:TRUE:35"
+      - "ggplot_scales0:Plot axes/scales:TRUE:35"
+      - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:35"
+      - "ggplot_geoms0:Plot types:FALSE:35"
+  slot6:
+    slot_label: "Data structures 2/2"
+    slot_date: 2
+    slot_time: "13:15-15:30"
+    slot_plan: "l45:b5:l45:b5:l30"
+    lectures:
+      - "basic_lists0:Lists:TRUE:45"
+      - "basic_formulas0:Formulas (not on exam):TRUE:45"
+      - "basic_matrices0:Matrices (not on exam):TRUE:30"
+  slot7:
+    slot_label : "Data manipulation 3/3 and trial exam"
+    slot_date : 3
+    slot_time : "13:15-17:00"
+    slot_plan: "l90:b15:l120"
+    lectures:
+      - "dplyr_join0:Joining tables:TRUE:45"
+      - "tidyr_reshape0:Reshaping tables:TRUE:45"
+      - "SSA:Trial exam:FALSE:120"
+  # slot8:
+  #   slot_label: "Q&A"
+  #   slot_date: 4
+  #   slot_time: "09:15-10:00"
+  #   slot_plan: "l45"
+  #   lectures:
+  #     - "ed0:Q&A:FALSE:45"
+  # 
+  slot9:
+    slot_label: "Exam"
+    slot_date: 4
+    slot_time: "13:00-17:15"
+    slot_plan: "l120:b90:l45"
+    lectures:
+      - "ed1:Exam:FALSE:120"
+      - "ed2:Q&A Exam:FALSE:45"
+
+  # slot8:
+  #   slot_label: "Additional material"
+  #   slot_date: 4
+  #   slot_time: "09:00-09:00"
+  #   slot_plan: "l0:l0"
+  #   lectures:
+  #     - "advanced_user_functions0:User-defined functions (not on exam):TRUE:0"
+  #     - "flow_control:Flow control (if/else, for) (not on exam):FALSE:0"
+
+#
+# materials : material+
+# material  : id:label:path:out_path "<id>:<label>:<>:<minutes>"
+materials:
+  - "pulse:Pulse dataset, CSV format:data/pulse.csv:data/pulse.csv"
+  - "survey:Survey dataset, CSV format:data/survey.csv:data/survey.csv"
+  - "exProjDir:RStudio project directory example:materials/RStudio_Project_Dir_Example.zip:materials/RStudio_Project_Dir_Example.zip"
+
+  - "airports:Airports dataset (nycflights13), CSV format:data/airports.csv:data/airports.csv"
+  - "flights:Flights dataset (nycflights13), CSV format:data/flights.csv:data/flights.csv"
+  - "nycflights13:Flights and Airports dataset (nycflights13), zipped CSV files:materials/nycflights13_tables.zip:materials/nycflights13_tables.zip"
