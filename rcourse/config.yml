@@ -84,14 +84,14 @@ slots:
       - "dplyr_join0:Joining tables:TRUE:45"
       - "tidyr_reshape0:Reshaping tables:TRUE:45"
       - "SSA:Trial exam:FALSE:120"
-  slot8:
-    slot_label: "Q&A"
-    slot_date: 4
-    slot_time: "09:15-10:00"
-    slot_plan: "l45"
-    lectures:
-      - "ed0:Q&A:FALSE:45"
-
+  # slot8:
+  #   slot_label: "Q&A"
+  #   slot_date: 4
+  #   slot_time: "09:15-10:00"
+  #   slot_plan: "l45"
+  #   lectures:
+  #     - "ed0:Q&A:FALSE:45"
+  # 
   slot9:
     slot_label: "Exam"
     slot_date: 4
