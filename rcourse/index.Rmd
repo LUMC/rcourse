@@ -4,89 +4,85 @@ title: "Using R for data analysis"
 
 ## Prerequisites
 
-Participants must be able to use a laptop/computer capable of running recent 
-[RStudio](https://www.rstudio.com/products/rstudio/).
-See the [Installation section](#installation) below for more details.
+Participants must be able to use a laptop/computer capable of running recent
+[RStudio](https://www.rstudio.com/products/rstudio/). See below for the RStudio [Installation section](#installation).
 
 ## Teachers
 
-- **Szymon M. Kiełbasa**, (smkielbasa[]()@lumc.nl)
-- **Ramin Monajemi (correspondence rmonajemi@lumc.nl)**
-- **Mo Arkani** (m.arkani[]()@lumc.nl)
+- **Szymon M. Kiełbasa** (s.m.kielbasa@lumc.nl)
+- **Ramin Monajemi** (r.monajemi@lumc.nl)
+- **Mo Arkani** (m.arkani@lumc.nl)
 
-## Goals
+## What we teach
 
-[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics.
-It provides a large repository of statistical analysis methods. 
+[R](https://www.r-project.org/) is an open-source, free environment/language for statistical computing and graphics. It provides a large repository of statistical analysis methods.
 
-The goal of the course is to teach students how the R language, extended by [`tidyverse` package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table.
-**NOTE: This is not a statistics course!**
-The course assumes no prior programming knowledge. 
-Elementary statistics knowledge is necessary to understand examples.
+The goal of the course is to teach you how the R language, extended by [tidyverse package](https://www.tidyverse.org), can be used to **build a report with a simple statistical analysis** of data provided in a table. The course assumes no prior programming knowledge.
 
-After the course you will be able to:
+**NOTE: This is not a statistics course!** We do not teach statistics; we teach how to write simple programs
+in the R language. Elementary statistics knowledge is necessary to understand examples.
 
-- Use R language expressions.
-- Use R to create simple data objects (vectors, lists) and change their content.
-- Apply R descriptive statistics functions.
-- Use R to read tables (tibbles), filter their rows, select/rename/add columns (with [`tidyverse/dplyr`](https://dplyr.tidyverse.org/) and [`tidyverse/tidyr`](https://tidyr.tidyverse.org/)).
-- Apply R descriptive statistics functions to summarize data from grouped table rows.
-- Use R to create plots (with [`tidyverse/ggplot2`](https://ggplot2.tidyverse.org/)).
-- Locate other methods for data manipulation or plotting.
-- Locate and install packages extending base R functionality (e.g. advanced statistical methods).
-- Explain R factors.
-- Use [R Markdown](http://rmarkdown.rstudio.com/) to create a reproducible data analysis leading to a report (HTML, PDF, DOC).
-- Recognize and explain simple `tidyverse`-based R code written by others.
+After the course you will:
+
+- Read and write (`tidyverse`-based) R code.
+- Know where to look for R methods to perform statistical analyses of your own data.
+- Generate reproducible reports from your own data in HTML, PDF or DOC formats.
+
+We will cover the following topics:
+
+- R expressions.
+- R data objects: vectors, data frames (tibbles), lists, (matrices).
+- [R Markdown](http://rmarkdown.rstudio.com/) for building reproducible reports.
+- Data manipulation: filtering, sorting, summarising of a table; joining/merging multiple tables (with [tidyverse/dplyr](https://dplyr.tidyverse.org/) and [tidyverse/tidyr](https://tidyr.tidyverse.org/)).
+- Visualisation: scatter plots, histograms, boxplots (with [tidyverse/ggplot2](https://ggplot2.tidyverse.org/)).
+- R packages: installation and usage.
 
 ## Course structure
 
-The course is divided in 4 half-day interactive lectures followed by a 2 hour exam.
+The course takes up 4 days and is divided in 8 half-day sessions. The first and the last days sessions will take place in the **lecture hall 3 (LUMC main building)** and days 2 and 3  on an **online plenary room (ZOOM)**. The interaction with teachers in the online session is possible via the ZOOM chat line.
 
-### The lectures
+### All sessions: practicing
 
-The lectures are split in a number of small sections and each section will have:
+Each session is split into a few small topics and each topic is introduced as follows:
 
-- A short **online introduction/demonstration**.
-- A **self/group-study practice** session (with primary exercises end extra exercises).
-- Questions and Answers discussed in an online (live) chat channel.
+- A short lecture for introduction/demonstration.
+- Followed by a practical (with *primary exercises* end *extra exercises*).
 
-The students are asked to type the commands being presented and observe their effects (avoid copy-paste; own typing is important in order to learn how R responds to mistakes).
+The students are asked to **type on their keyboards the commands** being presented and observe
+effects (**avoid copy-paste**; own typing is important in order to learn
+how to respond to mistakes/errors).   
 
-### The exam
+### The last session: practicing followed by self study assignment
 
-There will be an exam. 
-Please check the date and the location on the [LUMC Onderwijsrooster](https://rooster.universiteitleiden.nl/schedule) and bring **your own laptop**.
+A **self study assignment** (SSA) will be offered during the last session.
+A set of tasks will be provided to you to be solved without help of the teachers or others.
+At the end there will be a Q/A for general discussion.
 
+The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
+You will be asked to carry out the following steps:
 
-During the exam you will need to prepare an R Markdown document reporting an analysis on a dataset.
-You will carry out the following steps:
-
-- Create an RStudio project and an R Markdown document.
-- Write R code to read a provided table.
-- Write R code to perform simple manipulations/analyses of the table or its columns.
-- Write R code to produce some plots of the table data.
-
-During the exam it is allowed to use the course (or other) materials but it is strictly forbidden to communicate with other persons.
-
-The **extra exercises** will **not** be part of the exam. They are elective and generally contain more advanced topics.
+- Create an RStudio project, knit an R Markdown document.
+- Read a provided table.
+- Show some filtered/summarized content of the table.
+- Produce some plots of the data.
 
 ## Installation
 
-Before the course prepare your computer.  
-**NOTE:** Resolving installation problems during the course may be impossible,
-therefore please follow the steps below a week before the start of the course.
-In case of failure, please inform the teachers. In some situations intervention
-of the administrator of your computer might be necessary.
 
-- **Install R**: Go to *the R Project for Statistical Computing* (https://www.r-project.org/) and follow the download and installation instructions.
-- **Install RStudio**: Go to *the RStudio download page* (https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio.
+Installation of R and RStudio software, including additional packages, is required before the start of the course. Please follow the instructions below.
 
-Some additional packages are needed for the course.
-During the course the participants will learn how to install packages but this process occasionally fails (because e.g.: additional steps are needed in a particular operating system, or there is lack of permissions to access some system directories, or other software is too old, ...).
+**NOTE:** Resolving installation problems during the course may be impossible, therefore please follow the steps below a week before the start of the course. In case of failure, please inform the teachers. In some situations intervention of the administrator of your computer might be necessary.
 
-- **Install Rtools** (Windows only!): During installation of some packages you may encounter the following error `Rtools is required to build R packages but is not currently installed`. If that is the case, follow *the Rtools installation* (https://cran.rstudio.com/bin/windows/Rtools/).
-- **Install tidyverse package**: Start RStudio. Go to menu `Tools`/`Install Packages...` In the field `Packages` select `tidyverse`. Press `Install`. (Now, a lot of messages will be shown in the `Console` window - wait till it finishes). In the `Console` window type `library( tidyverse )` and press Enter. Some messages might be displayed but when there is no error the installation is completed.
-- **Install packages needed for R Markdown**: Start RStudio. Go to menu `File`/`New File`/`R markdown...`. A `New R Markdown` window is displayed. Press `OK`. Now, in case of missing R Markdown packages, you will be asked to install them. Finally, you will see an editor window with `Untitled1` header. Put the cursor in that window, then click `Knit`. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
+- **Install R**: go to the R Project for Statistical Computing (https://www.r-project.org/) and follow the download and installation instructions.
+- **Install RStudio**: go to the RStudio download page (https://www.rstudio.com/products/rstudio/download/#download), select a version of RStudio appropriate for your laptop, download it and then install. Please check whether you can start RStudio. 
+- **CAUTION LUMC Windows users**:  Installation of the R software via the LUMC Software Center is strongly recommended (instead of via the R websites above). This should avoid the following problem: Programs, such as R and RStudio may be installed on LUMC network drives instead of local drive 'C:'. In that case some functionalities may fail, in particular generation of R Markdown reports. A solution is to force the installation on your local drive such as 'C:', this however, may require administrator privileges which you may not have.  Alternatively you may consider a separate laptop which is not administered on LUMC network for the time being and try to resolve the issue later with your system administrator. 
 
-During the course applications in multiple windows will be used.
-For better experience we advice a setup with two monitors (e.g. laptop and an external monitor).
+
+Some additional packages are needed for the course. During the course the participants will learn how to install packages but this process occasionally fails (because e.g.: additional steps are needed in a particular operating system, or there is lack of permissions to access some system directories, or other software is too old, …).
+
+- **Install tidyverse package**: Start RStudio. Go to menu Tools/Install Packages... In the field Packages select tidyverse. Press Install. (Now, a lot of messages will be shown in the Console window - wait till it finishes). In the Console window type library( tidyverse ) and press Enter. Some messages might be displayed but when there is no error the installation is completed.
+- **Install packages needed for R Markdown**: Start RStudio. Go to menu File/New File/R markdown.... A New R Markdown window is displayed. Press OK. Now, in case of missing R Markdown packages, you will be asked to install them. Finally, you will see an editor window with Untitled1 header. Put the cursor in that window, then click Knit. Some messages might be displayed but when later a window with some text and a plot is shown the installation is completed.
+During the course applications in multiple windows will be used. For better experience we advice a setup with two monitors (e.g. laptop and an external monitor).
+
+
+
