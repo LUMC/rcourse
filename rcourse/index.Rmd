@@ -9,9 +9,9 @@ Participants must be able to use a laptop/computer capable of running recent
 
 ## Teachers
 
-- **Szymon M. Kiełbasa** (s.m.kielbasa@lumc.nl)
-- **Ramin Monajemi** (r.monajemi@lumc.nl)
-- **Mo Arkani** (m.arkani@lumc.nl)
+- **Szymon M. Kiełbasa** (s.m.kielbasa[]()@lumc.nl)
+- **Ramin Monajemi** (r.monajemi[]()@lumc.nl)
+- **Mo Arkani** (correspondence m.arkani@lumc.nl)
 
 ## What we teach
 
@@ -39,11 +39,7 @@ We will cover the following topics:
 
 ## Course structure
 
-The course takes up 4 days and is divided in 8 half-day sessions. The first and the last days sessions will take place in the **lecture hall 3 (LUMC main building)** and days 2 and 3  on an **online plenary room (ZOOM)**. The interaction with teachers in the online session is possible via the ZOOM chat line.
-
-### All sessions: practicing
-
-Each session is split into a few small topics and each topic is introduced as follows:
+The course takes up 4 half-day sessions, each session is split into a few small topics and each topic is introduced as follows:
 
 - A short lecture for introduction/demonstration.
 - Followed by a practical (with *primary exercises* end *extra exercises*).
@@ -52,22 +48,11 @@ The students are asked to **type on their keyboards the commands** being present
 effects (**avoid copy-paste**; own typing is important in order to learn
 how to respond to mistakes/errors).   
 
-### The last session: practicing followed by self study assignment
+### Self-study assignment
 
-A **self study assignment** (SSA) will be offered during the last session.
-A set of tasks will be provided to you to be solved without help of the teachers or others.
-At the end there will be a Q/A for general discussion.
-
-The overall SSA goal is to prepare an R Markdown document reporting an analysis of a dataset.
-You will be asked to carry out the following steps:
-
-- Create an RStudio project, knit an R Markdown document.
-- Read a provided table.
-- Show some filtered/summarized content of the table.
-- Produce some plots of the data.
+A **self-study assignment** (SSA) will be offered at the end of the last session. The goal of the SAA is to prepare you for the exam. The overall SSA procedure is to prepare an R Markdown document reporting an analysis of a dataset.  
 
 ## Installation
-
 
 Installation of R and RStudio software, including additional packages, is required before the start of the course. Please follow the instructions below.
 

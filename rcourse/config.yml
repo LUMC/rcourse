@@ -41,28 +41,26 @@ slots:
       - "dplyr_filter0:Filter observations/rows:TRUE:60"
 
   slot3:
-    slot_label : "Data manipulation (2/2) & Graphics"
+    slot_label : "Data manipulation (2/2)"
     slot_date: 20
     slot_time: "09:30-12:30"
     slot_plan: "l75:b15:l90"
     lectures:
       - "dplyr_mutate0:Add/modify variables:TRUE:45"
       - "dplyr_pipe0:Pipe operator:TRUE:30"
+      - "dplyr_summarise0:Summarise:TRUE:45"
+      - "dplyr_group0:Groups:TRUE:45"
+  slot4:
+    slot_label : "Graphics - Lists and Factors - SSA handout"
+    slot_date: 21
+    slot_time: "09:15-12:30"
+    slot_plan: "l60:b5:l30:b5:l40:b5:l50"
+    lectures:
       - "ggplot_basics0:Plots/ggplot2:TRUE:30"
       - "ggplot_scales0:Plot axes/scales:TRUE:30"
       - "ggplot_facets_themes0:Plot panels/facets/size:TRUE:30"
-
-  slot4:
-    slot_label : "Lists and Factors ; SSA"
-    slot_date: 21
-    slot_time: "09:15-12:30"
-    slot_plan: "l100:b5:l40:b5:l50"
-    lectures:
-      - "dplyr_summarise0:Summarise:TRUE:50"
-      - "dplyr_group0:Groups:TRUE:50"
       - "basic_lists0:Lists:TRUE:40"
       - "basic_factors0:Factors:TRUE:40"
-      # - "SSA:Trial exam:FALSE:120"
       - "ed0:Q&A:FALSE:10"
       
   slot5:
@@ -80,7 +78,10 @@ materials:
   - "pulse:Pulse dataset, CSV format:data/pulse.csv:data/pulse.csv"
   - "survey:Survey dataset, CSV format:data/survey.csv:data/survey.csv"
   - "exProjDir:RStudio project directory example:materials/RStudio_Project_Dir_Example.zip:materials/RStudio_Project_Dir_Example.zip"
+  - "Self-study assignment (SSA) :materials/SSA_HLO2024.zip:materials/SSA_HLO2024.zip"
+  - "Self-study assignment (SSA) solutions :materials/SSA_HLO2024_solutions.zip:materials/SSA_HLO2024_solutions.zip"
 
-  - "airports:Airports dataset (nycflights13), CSV format:data/airports.csv:data/airports.csv"
-  - "flights:Flights dataset (nycflights13), CSV format:data/flights.csv:data/flights.csv"
-  - "nycflights13:Flights and Airports dataset (nycflights13), zipped CSV files:materials/nycflights13_tables.zip:materials/nycflights13_tables.zip"
+  # - "airports:Airports dataset (nycflights13), CSV format:data/airports.csv:data/airports.csv"
+  # - "flights:Flights dataset (nycflights13), CSV format:data/flights.csv:data/flights.csv"
+  # - "nycflights13:Flights and Airports dataset (nycflights13), zipped CSV files:materials/nycflights13_tables.zip:materials/nycflights13_tables.zip"
+
