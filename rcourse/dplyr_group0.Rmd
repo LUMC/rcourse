@@ -83,7 +83,7 @@ pulse %>% filter(ran == "sat") %>%
                meanPluse1 = mean(pulse1,na.rm=TRUE), meanPulse2 = mean( pulse2 , na.rm=TRUE) )
 ```
 
-`r show_warning(" It is good practice to check your results. For example, the group sizes in the original survey table who ran and sat must match the sum of sizes in the different summaries shown above under 'size' column. For ran==\"ran\" summary we have 22+24=44 and for ran==\"sat\" summary we have 29+35=64. We can check them against totals below and we see that they do:")`
+`r show_warning(" It is good practice to check your results. For example, the group sizes in the original survey table who ran and sat must match the sum of sizes in the different summaries shown above under 'size' column. For ran==\"ran\" summary we have 22+24=46 and for ran==\"sat\" summary we have 29+35=64. We can check them against totals below and we see that they do:")`
 
 ```{r}
 pulse %>%  count(ran) 
