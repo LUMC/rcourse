@@ -1,0 +1,518 @@
+## Overview
+
+1. The `parallel` package provides a high-level interface for parallel computing in R. The package is a part of the R standard library and is available on all platforms. Nevertheless, some functions in the `parallel` package are available on Windows.
+1. Even simple parallel code is more difficult to write and debug than serial code. Development time is longer. 
+
+Let's assume that we have a function that performs a calculation. 
+We want to run this function multiple times with different parameters. 
+We can run these calculations in parallel to speed up the process.
+
+## A calculation function
+
+Let's orgnaize the function as follows:
+- All the parameters are passed as a list in a single `pars` argument.
+- For generality, the function returns a list with named elements.
+- 
+```{r}
+myCalculation <- function( pars ) {
+    res <- list()
+    v1 <- rnorm( pars$n, pars$mu1, pars$sd1 )
+    v2 <- rnorm( pars$n, pars$mu2, pars$sd2 )
+    h <- t.test( v1, v2 )
+    res$mean1 <- h$estimate[[1]]
+    res$mean2 <- h$estimate[[2]]
+    res$t <- h$statistic
+    res$p <- h$p.value
+    res
+}
+
+myCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1 ) )
+```
+
+## Table of parameters
+
+Let's assume that `myCalculation` has to be executed many times with different parameters.
+Let's organize these parameters in a table, and each row will describe one set of parameters.
+
+```{r}
+getParsTab <- function() {
+  expand.grid(
+    n = c( 10, 20, 50, 100, 200, 500, 1000 ),
+    mu1 = seq( 0, 3, 0.25 ),
+    sd1 = seq( 0.5, 1.5, 0.25 ),
+    mu2 = c( 0 ),
+    sd2 = seq( 0.5, 1.5, 0.25 )
+  )
+}
+
+parsTab <- getParsTab()
+head( parsTab )
+```
+
+The functions will work with a list of parameters, so let's convert the table to a list of lists.
+
+```{r}
+parsList <- lapply( seq_len(nrow(parsTab)), function(i) do.call(list, parsTab[i,] ) )
+rm( parsTab ) # not needed, just to avoid accidental use
+parsList[1:3]
+```
+
+## Serial execution: for loop
+
+Simple execution in a for loop, without any parallelism, and without any optimization.
+Results for each set of parameters are added to the end of a growing list `resList`.
+
+```{r}
+resList <- list()
+for( i in seq_len( length(parsList) ) ) {
+  pars <- parsList[[i]]
+  res <- myCalculation( pars )
+  resList[[i]] <- res
+}
+resList |> head()
+```
+
+We can convert the `resList` to a table for example as follows:
+
+```{r}
+resTab <- do.call( rbind, resList )
+resTab |> head()
+```
+
+We can combine the parameters and the results in a single table:
+
+```{r}
+parsResTab <- cbind( do.call( rbind, parsList ), do.call( rbind, resList ) )
+parsResTab |> head()
+```
+
+## Serial execution: lapply
+
+With `lapply` the above code can be written in a more compact way: `lapply` takes a list and a function, and applies the function to each element of the list.
+This form is more idiomatic in R, and it has a form more compatible with parallel execution.
+Note, the for-loop might change variables outside of the loop, which is not the case with `lapply`.
+
+```{r}
+resList <- lapply( parsList, function(pars) {
+  myCalculation( pars )
+} )
+resList |> head()
+```
+
+Let's see the combined parameters and results:
+
+```{r}
+parsResTab <- cbind( do.call( rbind, parsList ), do.call( rbind, resList ) )
+parsResTab |> head()
+```
+
+## A longer calculation function: addidng an artificial random delay
+
+The above would be rather too fast to need parallelization. So, let's rewrite the code to have longer calculation times.
+We add an additional parameter to the parameters table, `waitTime`, which is a random number between 0 and 1 ms.
+
+```{r}
+getSleepParsTab <- function() {
+  parsTab <- expand.grid(
+    n = c( 10, 20, 50, 100, 200, 500, 1000 ),
+    mu1 = seq( 0, 3, 0.25 ),
+    sd1 = seq( 0.5, 1.5, 0.25 ),
+    mu2 = c( 0 ),
+    sd2 = seq( 0.5, 1.5, 0.25 )
+  )
+  parsTab$waitTime <- runif( nrow(parsTab), 0, 0.001 )
+  parsTab
+}
+
+parsTab <- getSleepParsTab()
+parsTab |> head()
+parsList <- lapply( seq_len(nrow(parsTab)), function(i) do.call(list, parsTab[i,] ) )
+rm( parsTab ) # not needed, just to avoid accidental use
+```
+
+Let's introduce `mySleepCalculation`, a modifed version of the `myCalculation` function to add an artificial delay to simulate a longer calculation time.
+The delay is implemented with the `Sys.sleep` function.
+
+```{r}
+mySleepCalculation <- function( pars ) {
+    res <- list()
+    v1 <- rnorm( pars$n, pars$mu1, pars$sd1 )
+    v2 <- rnorm( pars$n, pars$mu2, pars$sd2 )
+    h <- t.test( v1, v2 )
+    res$mean1 <- h$estimate[[1]]
+    res$mean2 <- h$estimate[[2]]
+    Sys.sleep( pars$waitTime )
+    res$t <- h$statistic
+    res$p <- h$p.value
+    res
+}
+
+mySleepCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1, waitTime=5 ) )
+```
+
+## Parallel execution
+
+Let's benchmark the serial code execution with `lapply`:
+
+```{r}
+system.time( {
+  resList <- lapply( parsList, function( pars ) {
+    mySleepCalculation( pars )
+  } )
+} )
+lapplyParsResTab <- cbind( do.call( rbind, parsList ), do.call( rbind, resList ) )
+lapplyParsResTab |> head()
+```
+
+And now, let's benchmark the same code (and the same waiting times) executed on multiple cores with `mclapply`.
+This function is available on Linux and Mac, and it uses forking to create new processes.
+Forking, means that the new process is a copy of the current state of the parent process (so forking an R session means, that the new R session has the same variables, functions, and libraries loaded as the parent session).
+Note, that the `mclapply` function is not available on Windows.
+
+```{r}
+system.time( {
+  resList <- parallel::mclapply( parsList, function( pars ) {
+    mySleepCalculation( pars )
+  }, mc.cores = parallel::detectCores() )
+} )
+mcllapplyParsResTab <- cbind( do.call( rbind, parsList ), do.call( rbind, resList ) )
+mcllapplyParsResTab |> head()
+```
+
+A solution with `parLapply` is a bit more complicated, but it works on all platforms.
+It starts separate R processes, which need to be initialized with the necessary libraries, functions and variables.
+The `clusterExport` function is used to export variables to the workers.
+The `clusterEvalQ` function is used to evaluate code on the workers (for example, to load specific libraries or to source some R code).
+
+```{r}
+system.time( {
+  cl <- parallel::makeCluster( spec = parallel::detectCores(), outfile = "error.log" )
+  #parallel::clusterEvalQ( cl, library(tidyverse) )
+  #parallel::clusterExport( cl, c( "mySleepCalculation", "parsTab" ) )
+  resList <- parallel::parLapply( cl, parsList, mySleepCalculation )
+  parallel::stopCluster( cl )
+} )
+parLapplyParsResTab <- cbind( do.call( rbind, parsList ), do.call( rbind, resList ) )
+parLapplyParsResTab |> head()
+```
+
+A load-balanced version of the `parLapply` function is `parLapplyLB`, and it might be more efficient in cases when the calculation times of individual tasks differ strongly.
+
+## Observing errors
+
+Let's introduce a function that sometimes throws an error. We will select one row in the parameters table and set the `throwError` flag to `TRUE`.
+Then, the calculation function will throw an error for this row.
+
+```{r}
+getErrorSleepParsTab <- function() {
+  parsTab <- expand.grid(
+    n = c( 10, 20, 50, 100, 200, 500, 1000 ),
+    mu1 = seq( 0, 3, 0.25 ),
+    sd1 = seq( 0.5, 1.5, 0.25 ),
+    mu2 = c( 0 ),
+    sd2 = seq( 0.5, 1.5, 0.25 )
+  )
+  parsTab$waitTime <- runif( nrow(parsTab), 0, 0.001 )
+  parsTab$throwError <- FALSE
+  parsTab$throwError[ sample( nrow(parsTab), 1 ) ] <- TRUE
+  parsTab
+}
+
+parsTab <- getErrorSleepParsTab()
+parsTab[ which(parsTab$throwError), ]
+parsList <- lapply( seq_len(nrow(parsTab)), function(i) do.call(list, parsTab[i,] ) )
+rm( parsTab ) # not needed, just to avoid accidental use
+```
+
+Let's introduce `myErrorSleepCalculation`, a modifed version of the `mySleepCalculation` function which adds an artificial error.
+
+```{r}
+myErrorSleepCalculation <- function( pars ) {
+    res <- list()
+    v1 <- rnorm( pars$n, pars$mu1, pars$sd1 )
+    v2 <- rnorm( pars$n, pars$mu2, pars$sd2 )
+    h <- t.test( v1, v2 )
+    res$mean1 <- h$estimate[[1]]
+    res$mean2 <- h$estimate[[2]]
+    Sys.sleep( pars$waitTime )
+    if( pars$throwError ) {
+        stop( "An error occured" )
+    }
+    res$t <- h$statistic
+    res$p <- h$p.value
+    res
+}
+
+myErrorSleepCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1, waitTime=1, throwError=FALSE ) )
+```
+
+The function indeed throws an error:
+
+```{r error=TRUE}
+myErrorSleepCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1, waitTime=1, throwError=TRUE ) )
+```
+
+Even with non-parallel execution, the error will stop the execution and discard the results calculated so far:
+
+```{r error=TRUE}
+rm( resList ) # to prevent accidental use of previous results
+resList <- lapply( parsList, function( pars ) {
+  myErrorSleepCalculation( pars )
+} )
+resList
+```
+
+## Protecting from errors, tryCatch
+
+Let's modify the calculation function to catch errors and return an error message instead of throwing an error.
+Note, in the form proposed below, the function may return partial results even if an error occurs.
+
+```{r}
+mySafeSleepCalculation <- function( pars ) {
+    res <- list( error="Unfinished" )
+    res$error <- tryCatch( {
+        v1 <- rnorm( pars$n, pars$mu1, pars$sd1 )
+        v2 <- rnorm( pars$n, pars$mu2, pars$sd2 )
+        h <- t.test( v1, v2 )
+        res$mean1 <- h$estimate[[1]]
+        res$mean2 <- h$estimate[[2]]
+        Sys.sleep( pars$waitTime )
+        if( pars$throwError ) {
+          stop( "An error occured" )
+        }
+        res$t <- h$statistic
+        res$p <- h$p.value
+        as.character( NA ) # return value, marking no error
+    }, error = function(e) {
+        conditionMessage(e)
+    }, interrupt = function(e) {
+        "Interrupted"
+    } )
+    res
+}
+
+mySafeSleepCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1, waitTime=5, throwError=FALSE ) )
+mySafeSleepCalculation( list( n=100, mu1=0, sd1=1, mu2=0, sd2=1, waitTime=5, throwError=TRUE ) )
+```
+
+Let's run the safe calculation function on the parameters table with `lapply`:
+
+```{r}
+rm( resList )
+resList <- lapply( parsList, function( pars ) {
+  mySafeSleepCalculation( pars )
+} )
+library( tidyverse )
+parsResTab <- bind_cols( parsList |> lapply( as_tibble ) |> bind_rows(), resList |> lapply( as_tibble ) |> bind_rows() )
+parsResTab
+parsResTab |> filter( !is.na( error ) )
+```
+
+Or with `parLapply`:
+
+```{r}
+system.time( {
+  cl <- parallel::makeCluster( spec = parallel::detectCores(), outfile = "error.log" )
+  resList <- parallel::parLapply( cl, parsList, mySafeSleepCalculation )
+  parallel::stopCluster( cl )
+} )
+parsResTab <- bind_cols( parsList |> lapply( as_tibble ) |> bind_rows(), resList |> lapply( as_tibble ) |> bind_rows() )
+parsResTab
+parsResTab |> filter( !is.na( error ) )
+```
+
+## Summary
+
+```{r}
+# ----- user-defined function defining a table with combinations of parameters needed for calculations -----
+getParsTab <- function() {
+  # this is an example; the table can also be loaded from a file or be generated in a different way
+  parsTab <- expand.grid(
+    n = c( 10, 20, 50, 100, 200, 500, 1000 ),
+    mu1 = seq( 0, 3, 0.25 ),
+    sd1 = seq( 0.5, 1.5, 0.25 ),
+    mu2 = c( 0 ),
+    sd2 = seq( 0.5, 1.5, 0.25 )
+  )
+  parsTab$waitTime <- runif( nrow(parsTab), 0, 0.001 )
+  parsTab$throwError <- FALSE
+  parsTab$throwError[ sample( nrow(parsTab), 1 ) ] <- TRUE
+  parsTab
+}
+
+# ----- user-defined calculation function -----
+myCalculation <- function( pars ) {                           # parameters are passed as a list
+    res <- list( error="Unfinished" )                         # initialize the result
+    res$error <- tryCatch( {                                  # protect from errors
+        v1 <- rnorm( pars$n, pars$mu1, pars$sd1 )
+        v2 <- rnorm( pars$n, pars$mu2, pars$sd2 )
+        h <- t.test( v1, v2 )
+        res$mean1 <- h$estimate[[1]]                          # partial result, if an error occurs
+        res$mean2 <- h$estimate[[2]]
+        Sys.sleep( pars$waitTime )                            # simulate a long calculation
+        if( pars$throwError ) {                               # simulate an error
+          stop( "An error occured" )                          # throw an error
+        }
+        res$t <- h$statistic                                  # partial result, if no error occurs
+        res$p <- h$p.value
+        as.character( NA )                                    # error value denoting no error
+    }, error = function(e) {
+        conditionMessage(e)                                   # error message in case of an error
+    }, interrupt = function(e) {
+        "Interrupted"                                         # error message in case of keyboard interruption
+    } )
+    res                                                       # the function returns a list
+}
+
+# ----- utility functions -----
+parsTab2parsList <- function( tab ) {
+  # convert a table to a list of lists
+  lapply( seq_len(nrow(tab)), function(i) do.call(list, tab[i,] ) )
+}
+
+parsResLists2tab <- function( parsList, resList ) {
+  # merge lists with parameters with the list of results, form a table
+  dplyr::bind_cols( 
+    parsList |> lapply( tibble::as_tibble ) |> dplyr::bind_rows(), 
+    resList |> lapply( tibble::as_tibble ) |> dplyr::bind_rows() 
+  )
+}
+
+# ----- main code -----
+parsList <- getParsTab() |> parsTab2parsList()
+
+cl <- parallel::makeCluster( spec = parallel::detectCores(), outfile = "error.log" )
+resList <- parallel::parLapply( cl, parsList, myCalculation )
+parallel::stopCluster( cl )
+
+parsResLists2tab( parsList, resList )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+An R function
+
+```{r}
+.MESSAGE <- function(...){
+    system(sprintf('echo "%s"', paste0(..., collapse="")))
+}
+
+myCalculation <- function( pars ) {
+    res <- pars
+
+    res$waitTime <- sample(1:5, 1)
+    res$x <- sample(1:10, 1)
+    res$y <- sample(LETTERS, 1)
+    prefix <- rep( "   ", res$waitTime )
+    .MESSAGE( prefix, "Starting calculation with parameters: ", paste0(pars, collapse=", "), " ", res$waitTime, "\n" )
+    Sys.sleep( res$waitTime )
+    .MESSAGE( prefix, "Calculation finished with result: ", res$waitTime, "\n" )
+    res
+}
+```
+
+## Forking (Linux/Mac only)
+
+```{r}
+parallel::mclapply( 1:5, myCalculation, mc.cores = 10 )
+```
+
+## Parallel execution
+
+```{r}
+library( parallel )
+cl <- makeCluster( 5 )
+clusterExport( cl, ".MESSAGE" )
+
+parsList <- lapply( 1:20, function(i) list( a=i, b=i+1, c=i+2 ) )
+res <- parLapply( cl, parsList, myCalculation )
+stopCluster( cl )
+
+res |> map( as_tibble ) |> bind_rows()
+```
+
+## Explanation
+
+The `makeCluster` function creates a cluster of workers.
+The `parLapply` function applies a function to each element of a list in parallel.
+The `stopCluster` function stops the cluster of workers.
+
+
+
+
+```{r}
+### lapply
+library(parallel)
+f <- function(i) {
+  lmer(Petal.Width ~ . - Species + (1 | Species), data = iris)
+}
+
+system.time({
+  library(lme4)
+  save1 <- lapply(1:100, f)
+})
+
+### mclapply
+library(parallel)
+f <- function(i) {
+  lmer(Petal.Width ~ . - Species + (1 | Species), data = iris)
+}
+
+system.time({
+  library(lme4)
+  save2 <- mclapply(1:100, f)
+})
+
+
+### mclapply
+library(parallel)
+f <- function(i) {
+  lmer(Petal.Width ~ . - Species + (1 | Species), data = iris)
+}
+
+system.time({
+  cl <- makeCluster(detectCores())
+  clusterEvalQ(cl, library(lme4))
+  save3 <- parLapply(cl, 1:100, f)
+  stopCluster(cl)
+})
+
+
+parallel::detectCores()
+```
