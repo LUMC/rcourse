@@ -1,0 +1,710 @@
+## Create a numerical vector and calculate the mean {#task:ExVectorNumerical} {#needs:VectorNumerical} {#function:mean} {#function:c} {#function:round} {#function:sort}
+
+Let's assume that we are describing the weights of some people.
+Invent several different weights (in kg) for 6-8 people and write code which stores these weights in a numerical vector `weights`.
+Print the `weights` vector and calculate the mean weight. Store the mean weight in a variable `meanWeight` and print it.
+Find out how to use the `round` function and print the meanWeight rounded to one decimal place.
+
+Find out how to use `sort` to print the weights sorted from the smallest to the largest. Then, add an argument to sort to print the weights in the decreasing order.
+
+Finally, assume that there are two additional people whose weights are 94 and 68 kg. Add these weights to the `weights` vector and print the updated vector.
+Note, that you are not allowed to type the weights again, you should use the `c` function to add the new weights to the existing vector.
+
+```{r}
+### SOLUTION
+weights <- c( 70, 65, 80, 72, 68, 75 )
+weights
+meanWeight <- mean( weights )
+meanWeight
+round( meanWeight, 1 )
+sort( weights )
+sort( weights, decreasing = TRUE )
+weights <- c( weights, 94, 68 )
+weights
+```
+
+## BMI {#task:ExTwoNumericalVectorsBMI} {#needs:ExVectorNumerical} {#function:^} {#function:/} {#function:c} {#function:round}
+
+On the Kaggle platform, there is a dataset with heights and weights 
+of 25000 adults: https://www.kaggle.com/datasets/burnoutminer/heights-and-weights-dataset.
+For the first 8 people from the dataset manually create a vector of `weightsPounds` (weights in pounds) and a vector of `heightsInches` (heights in inches)
+When you type the numbers, manually round the values to full integers.
+
+First, convert the weights to kilograms and heights to meters.
+Then, use the converted numbers to calculate the BMI (Body Mass Index) of each person and store the results in a vector `bmi`.
+Use the function `round` to print the `bmi` vector rounded to one decimal place.
+
+```{r}
+### SOLUTION
+weightsPounds <- c( 113, 137, 153, 142, 133, 123, 131, 136 )
+heightsInches <- c( 66, 72, 69, 68, 68, 69, 70, 70 )
+
+weightsKg <- weightsPounds * 0.453592
+weightsKg
+heightsMeters <- heightsInches * 0.0254
+heightsMeters
+bmi <- weightsKg / heightsMeters^2
+round(bmi, 1)
+```
+
+## Names of vector elements, a character vector {#task:ExVectorNames} {#needs:ExVectorNumerical} {#function:names} {#function:c} {#function:sort}
+
+Use a `weights` vector created in task {#reftask:ExVectorNames}.  
+Invent different names for all people described by `weights`. Store these names in a character vector `nms`. Print them.  
+Then, use the `names` function to set names in `weights` to `nms`. Print the `weights` vector after the element names have been set.
+Use (two times!) the square bracket operator to print the weight of the third person in `nms`.
+Print the last name from the `nms` vector.
+
+Can you print the `weights` vector so, that the names are printed in the alphabetical order of the names?
+And then in the reversed alphabetical order of the names?
+
+```{r}
+### SOLUTION
+weights <- c( 70, 65, 80, 72, 68, 75 )
+nms <- c( "Bob", "Alice", "Daisy", "Charlie", "Frank", "Eve" )
+names( weights ) <- nms
+print( weights )
+weights[ nms[3] ]
+nms[ length( nms ) ] # or tail( nms, 1 )
+weights[ sort( names( weights ) ) ]
+weights[ sort( names( weights ), decreasing = TRUE ) ]
+```
+
+## A numerical vector with named elements {#task:ExVectorNumericalNamed} {#needs:ExVectorNames} {#function:c} {#function:names}
+
+Alex has the following grades: biology - 7, math - 9, history - 6, biology - 7, music - 7.5, physics - 8.
+Use the `c` function to create a named numerical vector `gradesAlex` with the given grades and subject names.
+Get the subject names from `gradesAlex` with the `names` function and print them.
+
+Then, create a character vector `subjects` with the elements: "physics", "math", "biology", "history".
+Use the square bracket operator to print the grades of Alex in the order given in the `subjects` vector.
+
+```{r}
+### SOLUTION
+gradesAlex <- c( biology = 7, math = 9, history = 6, biology = 7, music = 7.5, physics = 8 )
+gradesAlex
+names( gradesAlex )
+subjects <- c( "physics", "math", "biology", "history" )
+gradesAlex[ subjects ]
+```
+
+## Monthly spendings {#task:ExVectorMonthlySpendings} {#needs:ExVectorNames} {#function:c} {#function:names}
+
+Some monthly spendings are described by vectors `spendJan`, `spendFeb`, and `spendMar`. 
+Each vector contains all spendings in the same five categories, but the order of categories may differ.
+Calculate the total spendings for each category.
+
+```{r}
+spendJan <- c( transport = 50, rent = 500, sport = 33, food = 200, clothes = 100 )
+spendFeb <- c( rent = 550, clothes = 30, food = 130, sport = 55, transport = 90 )
+spendMar <- c( rent = 600, food = 180, transport = 70, clothes = 280, sport = 50 )
+```
+
+```{r}
+### SOLUTION
+nm <- names( spendJan )
+spendJan[ nm ] + spendFeb[ nm ] + spendMar[ nm ]
+```
+
+## Descriptive statistics, investigating a numerical vector {#task:ExVectorStats} {#needs:ExVectorNumerical} {#function:length} {#function:is.na} {#function:max} {#function:min} {#function:median} {#function:fivenum} {#function:sort} {#function:head} {#function:tail} {#function:[...]} {#function:sum} {#funtion:|} {#funtion:&}
+
+You are given a numerical vector `vs` with many elements. 
+Find out how many elements are in the vector and use `is.na` to find how many of them are missing (`NA`).
+
+Use `max` and `min` functions to find the largest and smallest element of the vector, ignoring the missing values.
+Calculate the `median` of the vector, ignoring the missing values.
+Finally, understand how the `fivenum` function works and use it to find the minimum, lower hinge, median, upper hinge, and maximum of the vector, ignoring the missing values.
+
+Use `sort`, `head` or `tail` or `[...]` to print the 5 smallest and 5 largest elements of the vector, ignoring the missing values.
+
+Calculate, how many elements of the vector are larger than 2 or smaller than -2.  
+Also, calculate how many elements are between -1 and 1 (both sides inclusive).
+
+For practicing, use a `vs` vector generated as follows:
+
+```{r}
+vs <- sample( c( rnorm( 10000 ), rep( NA, 100 ) ), 1000 )
+```
+
+```{r}
+length( vs )
+sum( is.na( vs ) )
+
+min( vs, na.rm = TRUE )
+max( vs, na.rm = TRUE )
+median( vs, na.rm = TRUE )
+fivenum( vs, na.rm = TRUE )
+
+sort( vs, na.last = TRUE )[1:5]
+head( sort( vs, na.last = TRUE ), 5 )
+head( sort( vs, na.last = NA, decreasing=TRUE ), 5 )
+tail( sort( vs, na.last = NA ), 5 )
+
+sum( vs > 2 | vs < -2, na.rm = TRUE )
+sum( vs >= -1 & vs <= 1, na.rm = TRUE )
+```
+
+## Sampling from the normal distribution {#task:ExSamplingNormal} {#needs:ExVectorNumerical} {#function:rnorm} {#function:round} {#function:mean} {#function:sd}
+
+According to the study https://www.nature.com/articles/pr2012189, in year 2009
+the mean final height of Dutch girls was 170.7cm with a standard deviation of 6.3cm.
+Assume that this height distribution is normal.
+Use the `rnorm` function to generate a random sample of 30 heights from the distribution.
+Try this command several times to see that the generated random heights are different each time.
+Use the `round` function to round the heights to one decimal place.
+Store the rounded heights in a numerical vector `heights` and print them.
+
+Now, use the `mean` and `sd` functions to calculate the mean and standard deviation of the `heights` vector.
+Are these values close to the parameters which you used to generate the heights?
+
+Repeat the above steps with the same parameters but generate a sample of 1000 heights.
+Are now the mean and standard deviation of the `heights` vector closer to the parameters?
+
+```{r}
+heights <- round( rnorm( n = 30, mean = 170.7, sd = 6.3 ), 1 )
+#heights
+mean( heights )
+sd( heights )
+
+heights <- round( rnorm( n = 1000, mean = 170.7, sd = 6.3 ), 1 )
+#heights
+mean( heights )
+sd( heights )
+```
+
+## Tossing an unfair coin {#task:ExUnfairCoin} {#needs:ExVectorNumerical} {#function:runif} {#function:sum} {#function:<} {#function:length} {#function:all} {#function:any} {#function:!} {#constant:TRUE} {#constant:FALSE}
+
+You are given a very unfair coin which has a probability of 0.99 to show heads.
+Use the `runif` function to generate a vector of uniformly distributed random numbers in range [0,1].
+Next, compare the numbers to the heads probability, to create a logical vector `isHeads` with `TRUE/FALSE` values corresponding to 20 random tosses of the unfair coin (`TRUE` means heads).
+Print the `isHeads` vector.
+
+For this unfair coin it is very likely all values will be `TRUE`. Use the `all` function to check if indeed all values are `TRUE`.
+Next, negate the `isHeads` vector to get a vector `isTails`. Use `any` function to check if there are any tails in the `isTails` vector. 
+
+Now, generate 10000 tosses of the unfair coin and calculate the proportion of heads in the `isHeads` vector.
+Is it proportion close to 0.99?
+
+```{r}
+isHeads <- runif( 20 ) < 0.99
+all( isHeads )
+any( !isHeads )
+
+isHeads <- runif( 10000 ) < 0.99
+sum( isHeads ) / length( isHeads )
+```
+
+## Rolling a dice {#task:ExRollingDice} {#needs:ExVectorNumerical} {#function:sample} {#function:sum} {#function:%in%} {#function:|} {#function:==}
+
+A dice has 6 faces with numbers from 1 to 6. Prepare a vector `tosses` with 100 random numbers from 1 to 6.
+Hint: use the `sample` function (check the help page to find out how to use it; sample with replacement).
+
+Calculate, how many times the number 2 or 5 was rolled in the `tosses` vector. 
+Perform this calculation by summing the logical vector of the `tosses==2` or `tosses==5`.
+Finally, find out how the same calculation can be performed with the `match` operator `%in%`.
+
+```{r}
+tosses <- sample( 1:6, 100, replace = TRUE )
+sum( tosses == 2 ) + sum( tosses == 5 )
+sum( tosses == 2 | tosses == 5 )
+sum( tosses %in% c( 2, 5 ) )
+```
+
+## The standard 52-card deck {#task:ExCardDeck} {#needs:ExVectorNumerical} {#function:rep} {#function:paste} {#function:sample} {#function:head} {#function:tail}
+
+You are given the vectors of `suits` and `ranks` of [the standard 52-card deck](https://en.wikipedia.org/wiki/Standard_52-card_deck):
+
+```{r}
+suits <- c( "♣", "♦", "♥", "♠" )
+ranks <- c( "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" )
+```
+
+Create a deck of cards by combining all possible pairs of `ranks` and `suits`.
+Use the function `rep` to create 4 copies of `ranks` and 13 copies of `suits`.
+Use the `paste` function to combine the repeated `ranks` and `suits` into a single vector of card names.
+Finally, use the `sample` function to shuffle the deck.
+Store the shuffled deck in a character vector `deck`.
+Here is a random example of `deck`:
+
+```{text}
+ [1] "3♦"  "Q♦"  "4♦"  "10♦" "4♠"  "K♠"  "3♣"  "J♣"  "4♥"  "7♥"
+[11] "A♠"  "8♠"  "6♠"  "10♠" "A♥"  "6♣"  "8♥"  "K♦"  "Q♥"  "7♠"
+...
+```
+
+Now, remove the first 5 cards from the `deck` and assign them to `player1` variable.
+Then, remove the next 5 cards from the `deck` and assign them to `player2` variable.
+Use the `head` and `tail` functions, with positive and negative `n`, to perform these operations.
+
+```{r}
+deck <- sample( paste( rep( ranks, 4 ), rep( suits, each = 13 ), sep = "" ) )
+deck
+
+player1 <- head( deck, 5 )
+deck <- tail( deck, -5 )
+player2 <- head( deck, 5 )
+deck <- tail( deck, -5 )
+```
+
+## Snacks in a kindergarten {#task:ExKindergardenSnacks} {#function:length} {#function:unique} {#function:duplicated} {#function:which} {#function:==} {#function:sort} {#function::}
+
+In a kindergarten there are children, each of a different name. The children are eating snacks. Each child should get exactly one snack.
+Here, in `nms`, there are the names of the children in the order of picking snacks:
+
+```{r}
+nmsTxt <- "Oliver Mia Walter Charlie Liam Kate Hank Gina Zoe Eva Xena Tom Nora Jack Cathy Helen Yuri Rita Ivan Ben Adam Daisy Liam Quinn George Sam Vera Pam Eve Bob Alice Frank David Fred Yuri Mia Yuri Ursula"
+nms <- strsplit( nmsTxt, " " )[[1]]  # split the text into words, will be introduced later
+```
+
+How many snacks were picked?
+How many kids are in the kindergarten (hint: `unique`)?
+Are there children who picked a snack more than once (write code to produce a logical `TRUE`/`FALSE` answer)? 
+What are the (unique) names of the children who picked a snack more than once (hint: `duplicated`)?
+How many kids picked a snack before "Eva" and how many after "Eva" (hint: `which` and `==`)?
+What are the names of the children who picked a snack after "Fred" (hint: `:`)?
+Produce an alphabetically sorted list of children names (hint: `sort`).
+
+```{r}
+# num of snacks taken
+length(nms) 
+
+# num of kids
+length(unique(nms)) 
+
+# more snacks than kids?
+length(unique(nms)) < length(nms) 
+
+# which kids took more than one snack?
+unique(nms[duplicated(nms)])
+
+# how many kids before "Eva"?
+which(nms == "Eva")-1
+
+# how many kids after "Eva"?
+length(nms) - which(nms == "Eva")
+
+# kids after "Fred"
+unique( nms[(which(nms == "Fred")+1):length(nms)] )
+
+# alphabetically sorted list of kids
+sort(unique(nms)) 
+```
+
+## Grades of students {#topic:ExListIntro} {#function:list} {#function:c} {#function:length} {#function:mean} {#function:names} {#function:$} {#function:[[...]]} {#function:[...]} {#constant:NA} {#constant:NULL}
+
+There are four students: Alice, Bob, Charlie, and Daisy. 
+Each student has several grades, and the number of grades is different for each student:
+
+- Alice: 8, 9, 7.5, 8, 9
+- Bob: 6, 7, 8, 7, 6, 5, 5, 8
+- Charlie: 9, 7, 9
+- Daisy: 8, NA, 6.5, 6.5, 7, 8, 7 (one grade is missing)
+
+Build a list `name2grades` with the grades of the students. 
+Each list element should be a vector of grades for a student.
+Names of the students should be used as the names of the list elements.
+Print the list.
+
+Use `length` to find out how many students are in the list.
+
+Extract the `names` of the students from the list and print them.
+
+Get the grades of Bob and print them. Try the `[[...]]` operator and the `$` operator.
+Calculate the number of grades of Charlie. Calculate the average of the available grades of Bob and of Daisy. Calculate the minimum grade of Alice.
+
+Alice and Daisy are from the same group "A". Bob and Charlie are from the group "B".
+Use the single bracket operator to extract the grades of the students from the group "A" into a new list `groupA_name2grades`.
+
+Can you use the `[[...]]` operator to extract the grades of the both group "A" students simultaneously?
+
+Can you use the `[...]` to extract the grades for the calculation of the average?
+
+Check the classes of what is returned by the single bracket operator, the double bracket operator and the dollar operator.
+
+Invent some new grades for a student Eve and add them to the `name2grades` list.
+
+Charlie has new grade 8.5 and 9. Add the grades appropriately to the `name2grades` list.
+
+Bob has been expelled from the school. Remove the grades from the `name2grades` list by assigning `NULL` to the list element.
+
+```{r}
+name2grades <- list(
+    Alice = c( 8, 9, 7.5, 8, 9 ),
+    Bob = c( 6, 7, 8, 7, 6, 5, 5, 8 ),
+    Charlie = c( 9, 7, 9 ),
+    Daisy = c( 8, NA, 6.5, 6.5, 7, 8, 7 )
+)
+name2grades
+name2grades[[ "Bob" ]]
+name2grades$Bob
+mean( name2grades$Bob, na.rm = TRUE )
+mean( name2grades$Daisy, na.rm = TRUE )
+
+groupA_name2grades <- name2grades[ c( "Alice", "Daisy" ) ]
+
+name2grades$Eve <- c( 7, 8, 9 )
+name2grades$Charlie <- c( name2grades$Charlie, 8.5, 9 )
+name2grades$Bob <- NULL
+```
+
+## A factor from raw data, data cleaning {#topic:ExFactor} {#needs:ExVectorNames} {#function:factor} {#function:table} {#function:addNA} {#function:levels} {#function:fct_count} {#function:fct_collapse} {#function:fct_relevel} {#library:tidyverse}
+
+The following lines produce a character vector `vs` with the values obtained from an expensive survey. 
+The survey was about the daily exercise levels of the participants, who were supposed to type one of the following values: "low", "medium", "high".
+However, some participants made typos. The data needs to be cleaned up, trying to preserve as much information as possible.
+
+```{r}
+vsTxt <- "low low low low medium L low medium medium low low low low low ? low looow low low high low low mediun medium low low low low medium HIGH low low low low low low low Medium low low low low low high medium low low low medium low low low high low low medium low high medium medium low medium high L ?"
+vs <- strsplit( vsTxt, " " )[[1]]  # split the text into words, will be introduced later
+vs[10] <- NA
+```
+
+Make a factor `fs` from the corrected values of the `vs` vector. 
+The factor should have levels: `"low"`, `"medium"`, `"high"` and `NA` (exactly in this order).
+When a word can't be corrected to one of the levels, it should be replaced with `NA`.
+Finally, print the counts of the levels in the factor.
+
+You may try a base-R solution. Use the `table` function to count the words and later the levels.
+Create a **named** character vector `m` with the corrections of the words, and use it to correct the `vs` vector with the square bracket operator.
+Use the `factor` function to create the factor `fs` with the levels in the correct order, and then add the `NA` level with the `addNA` function.
+
+For a tidyverse solution, use `fct_count` to count the levels, `fct_collapse` to map the words to correct levels, `fct_relevel` to reorder the levels.
+
+```{r}
+### SOLUTION base-R
+table( vs )
+m <- c( "?"=NA, "high"="high", "HIGH"="high", "medium"="medium", "mediun"="medium", "Medium"="medium", "looow"="low", "low"="low", "L"="low" )
+table( m[ vs ] )
+fs <- factor( m[ vs ], levels = c( "low", "medium", "high" ) )
+fs <- addNA( fs )
+table( fs )
+```
+
+```{r}
+### SOLUTION tidyverse
+fs <- factor( vs )
+fct_count( fs )
+fs <- fct_collapse( fs, low = c( "L", "low", "looow" ), medium = c( "medium", "Medium", "mediun" ), high = c( "HIGH", "high" ), other_level = NA )
+fct_count( fs )
+fs <- fct_relevel( fs, "low", "medium", "high" )
+fct_count( fs )
+```
+
+## Read a table (base-R)
+
+## Read a table (tidyverse)
+
+- read table
+- check class/str
+- show the first rows with head/last rows with tails
+- understand the content of the table
+- get column vectors
+
+```{r}
+d <- read_csv( "rcourse/data/pulse.csv" )
+d
+```
+
+## Iterating over list elements with lapply and sapply {#topic:ExLapplySapply} {#needs:ExListIntro} {#function:lapply} {#function:sapply} {#function:is.na} {#function:any} {#function:sort}
+
+The function `lapply` takes a list and a function as arguments.
+The list is iterated over and the function is applied to each element of the list.
+The result is a list of the results of the function applied to each element of the input list.
+The names of the input list are preserved in the output list.
+
+Take the list `name2grades` created in the {#reftopic:ExListIntro} task.
+Use the `lapply` function to calculate the mean of the grades of each student in the `name2grades` list.
+Additional arguments in the `lapply` function can be passed after the function argument.
+Use the `na.rm = TRUE` argument to calculate the mean of the grades of each student without the missing values.
+
+Replace `lapply` with `sapply` in the previous task and compare the types of the results.
+
+Use `sapply` to produce a vector of the number of grades of each student.
+
+Combine `lapply` with `is.na` to produce a list of logical vectors indicating if there are any missing values in the grades of each student.
+Then use `sapply` to produce a vector of logical values indicating if there are `any` missing values in the grades of each student (hint: `any`).
+
+Finally, use `lapply` to `sort` the individual grades of each student and print the complete list with names sorted in the reverse alphabetical order.
+
+```{r}
+lapply( name2grades, mean )
+lapply( name2grades, mean, na.rm = TRUE )
+sapply( name2grades, mean, na.rm = TRUE )
+sapply( name2grades, length )
+sapply( lapply( name2grades, is.na ), any )
+
+n2g <- lapply( name2grades, sort )
+n2g[ sort( names( n2g ), decreasing = TRUE ) ]
+```
+
+## Reading a list from a json file {#topic:ExListJson} {#needs:ExListIntro} {#library:rjson} {#function:jsonlite::fromJSON} {#function:class} {#function:str} {#function:plot} {#function:as.POSIXct} {#term:epoch}
+
+Let's analyse the weather data from publicly available Open-meteo archive at https://open-meteo.com/en/docs/historical-weather-api.
+
+```{r}
+#install.packages("rjson")
+library(rjson)
+url <- "https://archive-api.open-meteo.com/v1/archive?latitude=52.1583&longitude=4.4931&start_date=2024-07-01&end_date=2024-07-31&hourly=temperature_2m,relative_humidity_2m&timeformat=unixtime&timezone=Europe%2FBerlin"
+ls <- rjson::fromJSON( file = url )
+```
+
+Investigate and understand the structure (functions `class` and `str`) of the `ls` object.
+Find a way to extract the numerical vector of temperatures from the `ls` object. Find the temperature unit in another element of the `ls` list.
+Note, that the time is in the Unix format (seconds since 1970-01-01 00:00:00 UTC; different name: `epoch`). 
+Extract the vector of times and find a way to convert the time to the human-readable format (`as.POSIXct`).
+Finally, plot the temperature against time using the basic `plot` function.
+
+```{r}
+class(ls)
+str(ls)
+ls$hourly$temperature_2m
+ls$hourly_units$temperature_2m
+as.POSIXct(ls$hourly$time)
+plot(as.POSIXct(ls$hourly$time), ls$hourly$temperature_2m, type="l")
+```
+
+## Saving and reading R objects in rds format {#task:ExSaveReadRds}
+
+```{r}
+# TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+l <- list( a=1, b=2, c=3 )
+saveRDS( l, file="l.rds" )
+readRDS( file="l.rds" )
+```
+
+## Two-sample t-test returns a list {#topic:ExTTest} {#needs:ExListIntro} {#function:t.test} {#function:mean} {#function:sd} {#function:$}
+
+The t-test is a statistical test used to determine if there is a significant difference between the means of two samples.
+(Here we will use the two-sample t-test, which is used to compare the means of two independent samples. 
+There are some assumptions about the samples which must be met, but we do not discuss them here.)
+
+Generate two vectors `x` and `y` sampled from the same normal distribution (`rnorm` with the same mean and the same standard deviation).
+The vectors should have `n` elements each (`n=30`). Check the `mean` and `sd` (standard deviation) of the generated samples.
+
+Use `t.test` to perform the t-test on the `x` and `y` vectors. 
+The `t.test` function returns a list with the results of the test. 
+Investigate the list (use `str` or `names`) and extract (with the `$` operator) the difference `estimate` of the means and the `p.value`.
+
+Since the `x` and `y` samples originate from the same distribution, in most cases the t-test should not reject the null hypothesis that the means are equal.
+Does the observed `p.value` confirm this?
+Repeat manually all steps several times. Will the `p.value` be always above 0.05 or you observe a **false positive**?
+
+Finally, generate the `x` and `y` vectors with clearly different means (but the same standard deviation).
+Repeat the t-test. Is the result significant or you observe a **false negative**?
+
+```{r}
+n <- 30
+x <- rnorm( n = n, mean = 0, sd = 1 )
+y <- rnorm( n = n, mean = 0, sd = 1 )
+mean(x)
+sd(x)
+mean(y)
+sd(y)
+
+h <- t.test( x, y )
+h$estimate
+h$p.value
+```
+
+## A function testing t-test {#topic:ExTTestInFunction} {#needs:ExTTest} {#function:function} {#function:rnorm} {#function:t.test}
+
+Rewrite the solution of the {#reftopic:ExTTest} task.
+
+Write a function `myGenAndTest`, which takes five arguments: the sample size `n`, two means `mean1` and `mean2`, and two standard deviations `sd1` and `sd2`.
+The function should generate two samples `x` and `y` from normal distributions with the provided parameters. Each sample should have `n` elements.
+Then, the function should perform the t-test on the samples and return the `p.value`.
+
+```{r}
+# SOLUTION
+myGenAndTest <- function( n, mean1, mean2, sd1, sd2 ) {
+    x <- rnorm( n = n, mean = mean1, sd = sd1 )
+    y <- rnorm( n = n, mean = mean2, sd = sd2 )
+    t.test( x, y )$p.value
+}
+```
+
+The following code should work:
+```{r}
+myGenAndTest( n=30, mean1=0, mean2=0, sd1=1, sd2=1 )  # in most cases result > 0.05
+myGenAndTest( n=30, mean1=0, mean2=10, sd1=1, sd2=1 ) # in most cases result very close to 0
+```
+
+## Testing t-test with a function and sapply {#topic:ExTTestSapply} {#needs:ExLapplySapply} {#needs:ExTTestInFunction}
+
+Consider the `myGenAndTest` function from the {#reftopic:ExTTestInFunction} task.
+
+A statistical test
+
+```{r}
+# TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+repNum <- 1000
+pValues <- sapply( seq_len( repNum ), function( i ) myTest( n=30, mean1=0, mean2=0.5, sd1=1, sd2=1 ) ) 
+
+testPValues <- seq( 0, 1, 0.01 )
+rejectionRate <- sapply( testPValues, function( p ) sum( pValues < p ) / repNum )
+plot( testPValues, rejectionRate, type="l" )
+sum( pValues < 0.05 ) / repNum
+```
+
+## wilcox.test
+
+Historical Weather API:
+https://open-meteo.com/en/docs/historical-weather-api
+```{r}
+latitudes <- c( "Leiden"=52.1583, "Amsterdam"=52.374, "Kraków"=50.0647 )
+longitudes <- c( "Leiden"=4.4931, "Amsterdam"=4.8897, "Kraków"=19.945 )
+start_date <- "2010-01-01"
+end_date <- "2024-06-30"
+
+urls <- paste0( 
+    "https://archive-api.open-meteo.com/v1/archive?",
+        "latitude=", latitudes, 
+        "&longitude=", longitudes, 
+        "&start_date=", start_date, 
+        "&end_date=", end_date, 
+        "&daily=temperature_2m_max&timezone=Europe%2FBerlin" 
+)
+urls <- setNames( urls, names(latitudes) )
+
+tempsLeiden <- rjson::fromJSON( file = urls[[ 'Leiden' ]] )$daily$temperature_2m_max
+tempsAmsterdam <- rjson::fromJSON( file = urls[[ 'Amsterdam' ]] )$daily$temperature_2m_max
+tempsKrakow <- rjson::fromJSON( file = urls[[ 'Kraków' ]] )$daily$temperature_2m_max
+
+hist(tempsLeiden-tempsKrakow)
+hist(tempsLeiden-tempsAmsterdam)
+abline(0,1)
+plot(tempsKrakow, type="l", col="red")
+t.test( head(tempsLeiden, 365), tail(tempsLeiden, 365) )
+wilcox.test( tempsLeiden, tempsAmsterdam )
+
+wilcox.test( tempsLeiden, tempsAmsterdam )
+wilcox.test( tempsLeiden, tempsKrakow )
+```
+
+```{r}
+#install.packages("rjson")
+library(rjson)
+locations <- list(
+    Leiden = c( latitude=52.1583, longitude=4.4931 ),
+    Amsterdam = c( latitude=52.374, longitude=4.8897 ),
+    Kraków = c( latitude=50.0647, longitude=19.945 )
+)
+makeCityURL <- function( loc ) {
+    paste0( "https://archive-api.open-meteo.com/v1/archive?latitude=", loc$latitude, "&longitude=", loc[2], "&start_date=2024-07-01&end_date=2024-07-31&hourly=temperature_2m&timeformat=unixtime&timezone=Europe%2FBerlin" )
+}
+LeidenUrl <- "https://archive-api.open-meteo.com/v1/archive?latitude=52.1583&longitude=4.4931&start_date=2024-07-01&end_date=2024-07-31&hourly=temperature_2m,relative_humidity_2m&timeformat=unixtime&timezone=Europe%2FBerlin"
+Url <- "https://archive-api.open-meteo.com/v1/archive?latitude=52.1583&longitude=4.4931&start_date=2024-07-01&end_date=2024-07-31&hourly=temperature_2m,relative_humidity_2m&timeformat=unixtime&timezone=Europe%2FBerlin"
+ls <- rjson::fromJSON( file = url )
+https://archive-api.open-meteo.com/v1/archive?latitude=52.374&longitude=4.8897&start_date=2024-07-01&end_date=2024-07-31&hourly=temperature_2m,relative_humidity_2m
+```
+
+## Factor with age categories {#task:ExAgeCategorization} {#function:cut} {#function:table} {#function:hist} {#function:barplot} {#needs:ExVectorNumerical}
+
+From the [Eurostat database](https://ec.europa.eu/eurostat/web/population-demography/demography-population-stock-balance/database) we extracted
+estimated numbers of people of each age (range 0-99) living in the Netherlands at some recent timepoint:
+
+```{r}
+age2peopleNum <- c( 
+    168269, 170352, 170475, 172564, 175965, 175404, 180139, 176908, 181784, 185590, 190635, 191482, 192005, 188439, 191716, 193571, 199395, 
+    206526, 212170, 220073, 227052, 223141, 222346, 217582, 217364, 218670, 225921, 226586, 229437, 232336, 233373, 225765, 223129, 222512, 
+    221707, 216407, 212812, 206718, 207274, 210873, 213552, 206261, 206100, 203072, 204502, 205704, 214821, 221789, 239466, 250796, 261082, 
+    266183, 254782, 251611, 252467, 255486, 259306, 254400, 248828, 245545, 237918, 234688, 227404, 221405, 216249, 209604, 205025, 200158, 
+    198908, 190078, 189246, 189135, 192126, 198903, 201625, 140595, 143352, 132521, 118605, 108982, 107050, 98198, 90976, 79680, 73223, 
+    65613, 58404, 50597, 45188, 38009, 32204, 25186, 20334, 15452, 11867, 8684, 6348, 4353, 2924, 1837
+)
+age2peopleNum[[1]]  # 168269 people of age 0-1
+age2peopleNum[[2]]  # 170352 people of age 1-2, etc.
+```
+
+Use the `barplot` function to visualize the distribution of the number of people by age.
+For better visualisation, add the names to the elements of the `age2peopleNum` vector and reproduce the barplot.
+
+Find how to use the `prob` argument of the `sample` function.
+Use the `sample` function to generate in `as` a sample of 10000 ages from the distributed according to `age2peopleNum` 
+(the `prob` argument of `sample`).
+Use `hist` to show the histogram of the generated ages (note: the shape should be similar to the barplot).
+What ages correspond to quantiles 0.1, 0.25, 0.5, 0.75, 0.9 of the sampled ages (hint: `quantile`)?
+
+Finally, use the `cut` function on sampled ages `as` to create a factor `fs` with the age categories: 
+"infant" (age below 1), "child" (1<=age<10), "teenager" (10<=age<18), "adult" (18<=age<67), "senior" (67<=age).
+Use `table(fs, as)` to count the number of people in each category and age: 
+double check whether the assigned categories are correct (consider `right=FALSE` argument to `cut`).
+
+```{r}
+barplot( age2peopleNum )
+
+ages <- 0:(length(age2peopleNum)-1)
+names( age2peopleNum ) <- ages
+barplot( age2peopleNum )
+
+age2prob <- age2peopleNum / sum(age2peopleNum)
+as <- sample( ages, size=10000L, replace=TRUE, prob=age2prob )
+hist( as )
+quantile( as, c(0.1, 0.25, 0.5, 0.75, 0.9) )
+
+fs <- cut( as, breaks=c(0, 1, 10, 18, 67, 100), labels=c("infant", "child", "teenager", "adult", "senior"), right=FALSE )
+table(fs, as)
+```
+
+## Sandbox
+
+```{r}
+library(tidyverse)
+# from https://ec.europa.eu/eurostat/web/population-demography/demography-population-stock-balance/database
+d <- read_csv( "NL_population.csv" )
+d <- d |> filter( SEX == "T", AGE != "TOTAL" )
+d$age <- 0:99
+d$count <- d$VALUE
+d <- d |> select( age, count )
+d |> print(n=1000)
+```
+
+- saveRDS, readRDS, exchange with a colleague
+- any, all
+- write a text file
+- read texts from a file, convert to numbers
+- which.min, which.max
+- rank
+
+```{r}
+r <- 10000
+sum( sapply( 1:r, function( i ) {
+    x <- rnorm( n = n, mean = 0, sd = 1 )
+    y <- rnorm( n = n, mean = 0, sd = 1 )
+    t.test( x, y )$p.value
+} ) < 0.05 ) / r
+```
+
+Mon September 23 (13:30-17:00) 
+        - afternoon: R (day 1)    
+Tue September 24 (09:00-17:00) 
+        - full day : R (day 2)    
+Thu September 26 (13:00-17:30)
+        - Logistic regression introductory analysis
+                - R packages: foreign, stats(!),
+                        - read.spss()
+                        - factor(), levels()
+                        - names() on data.frame
+                        - save() as .Rda !
+        - basic statistics:
+                - quantile(), fivenum()
+                - boxplot (Base R)
+                - mean(), sd() of the status groups (i.e.  summarise())
+                - tapply() !
+                - t.test(..., var.equal=TRUE)
+                - lm()
+                - median(), cut(), table() for 2x2 table
+                - chiq.test()
+                - epitools::oddsratio()
+
+        - logistic regression exercise
+                - library(tidyverse)
+                - glm
+
+Fri September 27 (09:00-17:00) fully online material
+        - prepare SSA for workgroups on Tue October 1
+        - download logistic regression practical for Tue October 1 afternoon
+        - R
+                - tidyverse : filter()
+                - glm()
+                - ggplot()
