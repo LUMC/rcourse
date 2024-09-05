@@ -646,6 +646,191 @@ fs <- cut( as, breaks=c(0, 1, 10, 18, 67, 100), labels=c("infant", "child", "tee
 table(fs, as)
 ```
 
+## Reading a table from a .csv file, investigating content. {#topic:ExReadCsvInvestigate} {#function:read.csv} {#function:str} {#function:colnames} {#function:names} {#function:nrow} {#function:ncol} {#function:dim} {#function:head} {#function:tail} {#function:[...]} {#function:table} {#function:range} {#function:min} {#function:max} {#function:fivenum} {#function:unique} {#function:length}
+
+*(Note: This task illustrates the first steps of analysis of any new dataset.)*
+
+Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland, years 1993-1998) 
+participated in a simple experiment. The students measured their own pulse rate. They were then asked to flip a coin. 
+If the coin came up heads, they were to run in place for one minute. Otherwise they sat without movement for one minute. 
+Then everyone measured their pulse again. The pulse rates and other physiological and lifestyle data are given in the data table.
+A slightly modified version of the table is available in the `pulseNA.csv` file.
+
+Find the `pulseNA.csv` file and read it into the `d` data frame (for this file it makes no difference whether you use 
+the base-R `read.csv` function or the `read_csv` function from the `tidyverse` package).
+
+Use the `str` function to investigate the structure of the `d` data frame.
+Extract the column names of the `d` data frame (hint: both `colnames` and `names`).
+Get the number of rows and columns in the `d` data frame (hints: `dim`, `nrow`, `ncol`).
+*(Note: the table should have more than 10 columns; if you don't see that, then the file was read incorrectly.)*
+
+Use the `head`/`tail` functions to show the first/last 15 rows of the `d` data frame.
+Get the same first/last rows using the single square bracket operator (hint: `d[10:15,]`).
+
+Understand the meaning of the columns. Decide, which columns should be categorical and which are numerical.
+Find the range of values for the numerical columns (hint: `range`, `min/max` or `fivenum`), omitting missing values when necessary.
+Check whether the column with `id` has no missing values and indeed has different values in each row.
+For categorical columns, count the occurrences of each level (you may use `table(..., useNA="always")`).
+
+```{r}
+d <- read.csv( "rcourse/data/pulseNA.csv" )
+str(d)
+
+colnames(d)
+names(d)
+dim(d)
+nrow(d)
+ncol(d)
+
+head(d, 15)
+tail(d, 15)
+d[1:15,]
+d[(nrow(d)-15+1):nrow(d),]
+
+length(d$id)==length(unique(d$id))
+range(d$height)
+fivenum(d$height)
+range(d$weight)
+range(d$age, na.rm=TRUE)
+table(d$gender, useNA="always")
+table(d$smokes, useNA="always")
+table(d$alcohol, useNA="always")
+table(d$exercise, useNA="always")
+table(d$ran, useNA="always")
+range(d$pulse1, na.rm=TRUE)
+range(d$pulse2, na.rm=TRUE)
+range(d$year)
+table(d$year)
+```
+
+## Getting columns from a table (single/double brackets, dollar operator). {#topic:ExDataFrameColumns} {#needs:ExReadCsvInvestigate} {#function:colnames} {#function:$} {#function:[[...]]} {#function:[...]}
+
+Let's assume that `d` is a `data.frame` and that there is more than one column there (say: `height`, `weight`, `gender`...).
+
+You may think of a `data.frame` as a list of columns, where each column is a vector of the same length.
+Therefore, there must be a way to get a single column from a `data.frame` as a vector object.
+
+On the other hand, a `data.frame` represents a table, and there are operations to make a smaller table by selecting fewer columns.
+In particular, you may want to select a single column. Then, you get a `data.frame` with one column only.
+Note: a single column is still a two-dimensional `data.frame` object, not a vector.
+
+Load the `pulseNA.csv` file into the `d` variable as a `data.frame` using the base-R `read.csv` function.
+Check the column names with `colnames`. Study the following code snippets which show how to access the `height` column from the `d` table. 
+Identify, when the result is a vector and when it is a `data.frame`.
+Think about potential coding errors (e.g. you have columns named `a1` and `a2` and you request the column `a`).
+
+```{r eval=FALSE}
+d$height
+d[["height"]]
+d[, "height"]
+d[, "height", drop=FALSE]
+d["height"]
+d$hei
+d[["hei"]]
+d["hei"]
+d[c("height", "weight")]
+d[, c("height", "weight")]
+d[[ c("height", "weight") ]]
+d[ "height", "weight" ]
+```
+
+```{r error=TRUE}
+### SOLUTION
+d <- read.csv( "rcourse/data/pulseNA.csv" )
+colnames(d)
+
+d$height                       # vector, column name start with "height". NULL when not present (ERROR-PRONE)
+d[["height"]]                  # vector, column name exactly "height". NULL when not present (less, but still ERROR-PRONE)
+d[, "height"]                  # vector if one column requested, or crash when not present
+d[, "height", drop=FALSE]      # data.frame, explicitly requested not to reduce (drop) to vector
+
+d["height"]                    # data.frame with one column, crash when not present
+
+d$hei                          # vector, column name start with "hei" (so "height" is returned), ERROR-PRONE
+d[["hei"]]                     # NULL, "hei" column does not exist, ERROR-PRONE
+d["hei"]                       # error, "hei" column does not exist 
+
+d[c("height", "weight")]       # data.frame with two columns
+d[, c("height", "weight")]     # data.frame with two columns
+d[[ c("height", "weight") ]]   # error, can't get two columns with double brackets
+d[ "height", "weight" ]        # bad code: gets element in row "height" and column "weight"
+```
+
+## Reading a table from a .csv file, compare base-R `read.tsv` with tidyverse `read_tsv`. {#topic:ReadCsvBaseTidyverse} {#needs:ExDataFrameColumns} {#library:tidyverse} {#function:read.csv} {#function:read_tsv} {#function:class} {#function:str} {#function:head}
+
+Load `pulseNA.csv` file into the `bd` variable as a `data.frame` using the base-R `read.csv` function.
+Load the same file into the `td` variable as a `tibble` using the `read_tsv` function from the `tidyverse` package.
+Both objects should have the same table structure, and mostly the same functionality.
+The `tidyverse` functions are usually more user-friendly and typically allow faster spotting of errors in the code.
+The `tibble` is a modern version of the `data.frame` with some improvements, 
+but it is not always compatible with the base-R functions (e.g. it does not have `rownames`).
+
+Observe the small differences in output of `str`, `head` and `class` functions applied to both tables.
+
+```{r error=TRUE}
+library(tidyverse)
+bd <- read.csv( "rcourse/data/pulseNA.csv" )
+td <- read_csv( "rcourse/data/pulseNA.csv" )
+class(bd)
+class(td)
+str(bd)
+str(td)
+head(bd)
+head(td)
+bd$hei   # ERROR-PRONE for data.frame
+td$hei   # ERROR when column does not exist in tibble
+```
+
+## Cleaning the table, saving to .rds file. {#topic:ExReadCsvInvestigate} {#needs:ExDataFrameColumns} {#function:factor} {#function:saveRDS}
+
+*(Note: This task illustrates the first steps of analysis of any new dataset.)*
+
+Load `pulseNA.csv` file into the `d` variable. Some columns should be factors but they are character. 
+Or, they are factors but the levels are not in the correct order (e.g. `"low", "high", "moderate"` instead of `"low", "moderate", "high"`).
+
+Clean up the table. Use `factor(..., levels=...)` to convert the categorical columns to factors. 
+Always manually specify order of levels. Note: the `year` column should also be a factor 
+(the year in which the experiment was conducted).
+
+Finally, use the base-R `saveRDS` function (or `write_rds` from tidyverse) to save the cleaned table 
+to an `.rds` file `pulseNA.rds` (this is the format to save and exchange R objects).
+
+```{r}
+### SOLUTION
+d <- read.csv( "rcourse/data/pulseNA.csv" )
+d$gender <- factor( d$gender, levels=c("female", "male"))
+d$smokes <- factor( d$smokes, levels=c("no", "yes"))
+d$alcohol <- factor( d$alcohol, levels=c("no", "yes"))
+d$exercise <- factor( d$exercise, levels=c("low", "moderate", "high"))
+d$year <- factor( d$year, levels=c(1993, 1995, 1996, 1997, 1998) )
+str(d)
+
+saveRDS( d, file="rcourse/data/pulseNA.rds" )
+```
+
+## Reading a table from an .rds file and plotting histograms, scatterplots, barplots, boxplots. {#topic:ExReadRdsPlots} {#needs:ExReadCsvInvestigate} {#function:readRDS} {#function:hist} {#function:plot} {#function:barplot} {#function:boxplot} {#function:pairs}
+
+Use the base-R `readRDS` function (or `read_rds` from the `tidyverse` package) to read the `pulseNA.rds` file prepared in the {#reftopic:ExReadCsvInvestigate} task.
+Store the table in the `d` variable. Quickly check the structure of the `d`.
+
+Produce histograms of the numerical `weight` and `height` columns (hint: `hist`).
+Produce a scatterplot of the dependence of `weight` and `height` (hint: `plot`).
+Produce a barplot of the level counts in the `exercise` and `year` columns (hint: `barplot` on the result of `table`).
+Get a boxplot of the `weight` column for each `gender` (use this: `boxplot( weight ~ gender, data=d )`).
+Try and understand `pairs( d[, c("weight", "height", "pulse1", "pulse2")], col=d$gender )`.
+
+```{r}
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+str(d)
+hist(d$weight)
+hist(d$height)
+plot(d$weight, d$height)
+barplot( table(d$exercise) )
+barplot( table(d$year) )
+boxplot( weight ~ gender, data=d )
+pairs( d[, c("weight", "height", "pulse1", "pulse2")], col=d$gender )
+```
+
 ## Sandbox
 
 ```{r}

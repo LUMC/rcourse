@@ -6,7 +6,8 @@ dependencies:
   - r
   - radian
   - pandoc
-  - r-languageserver 
+  - r-languageserver
+  - r-httpgd
   - r-base
   - r-tidyverse
   - r-plotly
@@ -15,5 +16,7 @@ dependencies:
   - r-htmltable
   - r-kableextra
   - r-devtools
+  - r-rjson
+  - bioconda::bioconductor-rgraphviz
   - r-zip
   - zip
