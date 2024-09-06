@@ -756,7 +756,7 @@ d[[ c("height", "weight") ]]   # error, can't get two columns with double bracke
 d[ "height", "weight" ]        # bad code: gets element in row "height" and column "weight"
 ```
 
-## Reading a table from a .csv file, compare base-R `read.tsv` with tidyverse `read_tsv`. {#topic:ReadCsvBaseTidyverse} {#needs:ExDataFrameColumns} {#library:tidyverse} {#function:read.csv} {#function:read_tsv} {#function:class} {#function:str} {#function:head}
+## Reading a table from a .csv file, compare base-R `read.tsv` with tidyverse `read_tsv`. {#topic:ReadCsvBaseTidyverse} {#needs:ExDataFrameColumns} {#library:tidyverse} {#function:read.csv} {#function:read_tsv} {#function:class} {#function:str} {#function:head} {#function:print}
 
 Load `pulseNA.csv` file into the `bd` variable as a `data.frame` using the base-R `read.csv` function.
 Load the same file into the `td` variable as a `tibble` using the `read_tsv` function from the `tidyverse` package.
@@ -765,9 +765,10 @@ The `tidyverse` functions are usually more user-friendly and typically allow fas
 The `tibble` is a modern version of the `data.frame` with some improvements, 
 but it is not always compatible with the base-R functions (e.g. it does not have `rownames`).
 
-Observe the small differences in output of `str`, `head` and `class` functions applied to both tables.
+Try the following code and observe the small differences in output of `str`, `head`, `tail` and `class` functions applied to both tables.
+Observe, how to use `print` to see the full table content.
 
-```{r error=TRUE}
+```{r error=TRUE,eval=FALSE}
 library(tidyverse)
 bd <- read.csv( "rcourse/data/pulseNA.csv" )
 td <- read_csv( "rcourse/data/pulseNA.csv" )
@@ -777,8 +778,12 @@ str(bd)
 str(td)
 head(bd)
 head(td)
+tail(bd)
+tail(td)
 bd$hei   # ERROR-PRONE for data.frame
 td$hei   # ERROR when column does not exist in tibble
+print(td)
+print(td, n=1000)
 ```
 
 ## Cleaning the table, saving to .rds file. {#topic:ExReadCsvInvestigate} {#needs:ExDataFrameColumns} {#function:factor} {#function:saveRDS}
@@ -831,6 +836,175 @@ boxplot( weight ~ gender, data=d )
 pairs( d[, c("weight", "height", "pulse1", "pulse2")], col=d$gender )
 ```
 
+## The pipe operator. {#topic:ExPipeOperator} {#library:tidyverse} {#function:|>} {#function:rnorm} {#function:mean} {#function:round} {#function:sort} {#function:tail} {#function:head} {#function:paste}
+
+Let's say that you need to generate `100` random numbers from the normal distribution with mean `5` and standard deviation `2`.
+Then, you need to calculate the mean of the generated numbers.
+Finally, round it to two decimal places.
+
+An expanded solution would look like this (here, all steps are visible, but potenially unnecessary variables are created):
+
+```{r echo=TRUE,eval=FALSE}
+vs <- rnorm( n=100, mean=5, sd=2 )
+vsMean <- mean( vs )
+round( vsMean, 2 )
+```
+
+A compact solution would look as follows (here, the code is more concise but the steps are written backwards, 
+and it is difficult to read which arguments are passed to which functions):
+
+```{r echo=TRUE,eval=FALSE}
+round( mean( rnorm( n = 100, mean = 5, sd = 2 ) ), 2 )
+```
+
+Recent R and its libraries provide the pipe operator `|>` (earlier `%>%` in `magrittr` part of `tidyverse`) which allows you to write the code in a "chained" manner.
+The pipe operator passes the result of the left-hand side expression as the first argument of the right-hand side function,
+so `sum(1:10)` is equivalent to `1:10 |> sum()`.
+Note, that this form represents well the "data flow" through (the pipes of) the code. 
+Here, it also corresponds well to the human-readable sentence defining the problem (look above).
+
+```{r echo=TRUE,eval=FALSE}
+rnorm( n=100, mean=5, sd=2 ) |> mean() |> round(2)
+```
+
+The `tidyverse` library is carefully designed to work well with the pipe operator. Complex data manipulation tasks can be written in a compact and readable way.
+
+Solve the following two tasks using the non-pipe version and the pipe version of the code:
+- A vector of unknown names is given, e.g. `ns <- c( "Tom", "Jerry", "Mickey", "Donald" )`. Sort the names in the reversed alphabetical order and concatenate them into a single string separated by commas (hint: `paste`). 
+- A vector of person heights is given, e.g. `hs <- rnorm( n=100, mean=170, sd=10 )`. Calculate the mean height of the 5 tallest persons. Round the result to one decimal place.
+
+```{r}
+### SOLUTION (only pipe version)
+ns <- c( "Tom", "Jerry", "Mickey", "Donald" ) 
+ns |> sort(decreasing=TRUE) |> paste( collapse=", " )
+
+hs <- rnorm( n=100, mean=170, sd=10 )
+hs |> sort() |> tail(5) |> mean() |> round(1)
+```
+
+## Selecting and renaming columns of a table. {#topic:ExSelectRename} {#needs:ExReadCsvInvestigate} {#needs:ExPipeOperator} {#library:tidyverse} {#function:select} {#function:rename} {#function:head} {#function:tail}
+
+Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
+The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
+
+```{r eval=FALSE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+```
+
+Execute the following lines of code and observe the results.
+Understand how you select columns from the table and how you rename them.
+
+```{r eval=FALSE}
+d
+d |> head()
+d |> select( weight, height )
+d |> select( gender, weight, height ) |> head(n=3)
+d |> select( gender, weight, height, everything() ) |> head(n=3)
+
+d |> head()
+d |> select( -id, -name, -year ) |> head()
+
+d |> tail()
+d |> rename( WEIGHT=weight, HEIGHT=height ) |> tail()
+```
+
+Note, the lines above do not modify the `d` table. If you want to store a modified table, you need to assign the result to a variable:
+
+```{r eval=FALSE}
+smallD <- d |> select( weight, height )
+smallD |> head()
+```
+
+## Sorting rows of a table. {#topic:ExArrange} {#needs:ExSelectRename} {#library:tidyverse} {#function:arrange} {#function:desc}
+
+Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
+The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
+
+```{r eval=FALSE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+```
+
+Run the code below. Compare the output of the following lines of code to each other. 
+Understand how you sort rows of the table and print table parts.
+
+```{r eval=FALSE}
+d |> arrange( height ) |> head()
+d |> arrange( desc( height ) ) |> head()
+d |> arrange( height ) |> tail()
+d |> arrange( height ) |> slice(3:8)
+```
+
+Also compare the output between each of these longer table manipulation "pipe" expressions:
+
+```{r eval=FALSE}
+d |> 
+    select( name, age, height, weight ) |> 
+    arrange( age ) |> 
+    head(10)
+
+d |> 
+    select( name, age, height, weight ) |> 
+    arrange( age, weight ) |> 
+    head(10)
+
+d |> 
+    select( name, age, height, weight ) |> 
+    arrange( age, desc(weight) ) |> 
+    head(10)
+```
+
+The `tidyverse` library is designed to make the code more readable and easier to understand.
+For example, the last expression given above is equivalent to the following base-R code:
+
+```{r}
+head( d[
+    order( d$age, d$weight, decreasing = c( FALSE, TRUE ) ), 
+    c( "name", "age", "height", "weight" ) 
+], 10 )
+```
+
+## Filtering and sorting rows of a table, selecting columns. {#topic:ExFilterSelect} {#needs:ExReadCsvInvestigate} {#function:filter} {#function:select} {#function:arrange} {#function:head} {#function:tail} {#function:print}
+
+
+
+```{r}
+d |> filter( weight == 90 )
+d |> filter( weight > 90 ) |> arrange( weight )
+d |> filter( weight >= 90 ) |> arrange( weight )
+
+d |> filter( weight < 50 | weight > 100 )
+d |> filter( weight >= 80 & weight < 90 )     # 80 yes, 90 no
+d |> filter( between( weight, 80, 90 ) )      # 80 yes, 90 yes
+
+d |> filter( gender == "male" )
+d |> filter( !( gender == "male" ) )
+d |> filter( gender != "male" )
+d |> filter( weight < 50 | weight > 100 ) |> filter( gender != "male" )
+
+d |> filter( exercise == "low" )
+d |> filter( exercise == "low" | exercise == "moderate" )
+d |> filter( exercise %in% c( "low", "moderate" ) )
+
+selExercises <- c( "low", "moderate" )
+d |> filter( exercise %in% selExercises )
+
+d |> filter( is.na( exercise ) )
+d |> filter( is.na( exercise ) | is.na( pulse2 ) )
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ## Sandbox
 
 ```{r}
@@ -867,18 +1041,19 @@ Tue September 24 (09:00-17:00)
 Thu September 26 (13:00-17:30)
         - Logistic regression introductory analysis
                 - R packages: foreign, stats(!),
-                        - read.spss()
-                        - factor(), levels()
-                        - names() on data.frame
-                        - save() as .Rda !
+                - read.spss()
+                - [DONE] factor(), levels()
+                - [DONE] names() on data.frame
+                - save() as .Rda !
         - basic statistics:
-                - quantile(), fivenum()
-                - boxplot (Base R)
+                - quantile()
+                - [DONE] fivenum()
+                - [DONE] boxplot (Base R)
                 - mean(), sd() of the status groups (i.e.  summarise())
                 - tapply() !
                 - t.test(..., var.equal=TRUE)
                 - lm()
-                - median(), cut(), table() for 2x2 table
+                - [DONE] median(), cut(), table() for 2x2 table
                 - chiq.test()
                 - epitools::oddsratio()
 
