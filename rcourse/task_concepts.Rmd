@@ -1,3 +1,84 @@
+## First start of RStudio; console as calculator. {#topic:ExCalculator}
+
+Follow RStudio Desktop (and R) installation steps as described at https://www.rstudio.com/products/rstudio/download/. Once installed, start the RStudio program.
+
+Your screen will be divided into several parts (panes) and one of the panes will contain the R **console**.
+In the console you will see the `>` sign. This is the R **prompt**, where you can type **expressions** in the R language.
+For example, type there a mathematical expression: $2+2$ and press Enter. You should see the result: $4$.
+
+R performs calculations according to the rules of arithmetic. The order of operations is the same as in mathematics: parentheses, exponentiation, multiplication and division, addition and subtraction.
+Use `(...)` parentheses to group operations.
+Try to type several expressions given below. Each time before you press Enter, think what should be the result. Are the results as expected?
+
+```{r eval=FALSE}
+3*4+5
+3+4*5
+(3+4)*5
+3-2
+3--2
+3-(-2)
+-2--2
+8/2
+8/-2
+8/2*2
+8/(2*2)
+2^5
+```
+
+Use `.` (dot) to separate the integer part from the decimal part of a number. For example, type `3.5` and press Enter.  
+Note that the `#` sign is used to start a **comment** in R. Everything after the `#` sign till the end of the line is ignored by R.  
+Spaces are also (mostly) ignored by R. You can use them to make your code more readable.  
+Check the following expressions (think about the results before you press Enter):  
+
+```{r eval=FALSE}
+1/2
+2.0^-1
+1/2 # +1/2
+1 / 2
+3 * (4+5)
+```
+
+Observe how R reports errors. Type the following lines:
+
+```{r eval=FALSE,error=TRUE}
+2+3)      # missing opening parenthesis
+2 + * 3   # missing number between the addition and the multiplication operators
+0,5       # use dot instead of comma to denote one half
+```
+
+When Enter is pressed, but an expression is unfinished, R will show a `+` sign instead of the `>` prompt. It means that R is waiting for the rest of the expression.
+Either type the rest of the expression or press `Esc` (or `Ctrl+C`) to cancel the expression. Try the following:
+
+```{r eval=FALSE}
+3 +
+4
+
+(((((
+    1
+)))))
+```
+
+More complex operations are provided by **functions**. For example, the `sqrt` function calculates the square root of a number. Type `sqrt(9)` and press Enter.
+**Call** the following functions with the **arguments** given below:
+
+```{r eval=FALSE}
+sqrt(9)
+log10(100)
+exp(1)
+sin(pi/2)
+sum(1, 2, 3, 4, 5)
+sum()
+```
+
+In the RStudio window find another pane with the **Help** tab. Type `sqrt` in the search box and press Enter. You will see the help page for the `sqrt` function.
+The help page contains the description of the function, its arguments, and examples of usage.
+To get the help, you may also type `?sqrt` in the console and press Enter.
+The internet usually provides more up-to-date information. Try to search for `R sqrt` in your favorite search engine.
+
+## Variables and assignment {#topic:ExVariables} {#needs:ExCalculator}
+
+
+
 ## Create a numerical vector and calculate the mean {#task:ExVectorNumerical} {#needs:VectorNumerical} {#function:mean} {#function:c} {#function:round} {#function:sort}
 
 Let's assume that we are describing the weights of some people.
@@ -1011,6 +1092,7 @@ d |> filter( gender == "male" )
 d |> filter( !( gender == "male" ) )
 d |> filter( gender != "male" )
 d |> filter( weight < 50 | weight > 100 ) |> filter( gender != "male" )
+d |> filter( gender == "male" ) |> nrow()
 
 d |> filter( exercise == "low" )
 d |> filter( exercise == "low" | exercise == "moderate" )
@@ -1024,7 +1106,15 @@ d |> filter( is.na( exercise ) | is.na( pulse2 ) )
 ```
 
 
+```{r}
+d |> filter( age == 18 | age == 21 )
+d |> filter( age %in% c( 18, 21 ) )
+selAges <- c( 18, 21 )
+d |> filter( age %in% selAges )
 
+d |> filter( is.na( exercise ), ran == FALSE )
+d |> filter( is.na( exercise ), alcohol == "yes" )
+```
 
 
 
