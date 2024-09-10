@@ -2,6 +2,9 @@
 
 Follow RStudio Desktop (and R) installation steps as described at https://www.rstudio.com/products/rstudio/download/. Once installed, start the RStudio program.
 
+**First go to the "Tools" menu and select "Global Options". A window with "Options" will appear. Select "General" section, "Basic" panel and look at the "Workspace" part.**
+**Disable option "Restore .RData into workspace at startup". Also, at "Save workspace to .RData on exit" select "Never". Finally, press "Apply".**
+
 Your screen will be divided into several parts (panes) and one of the panes will contain the R **console**.
 In the console you will see the `>` sign. This is the R **prompt**, where you can type **expressions** in the R language.
 For example, type there a mathematical expression: $2+2$ and press Enter. You should see the result: $4$.
@@ -74,6 +77,8 @@ In the RStudio window find another pane with the **Help** tab. Type `sqrt` in th
 The help page contains the description of the function, its arguments, and examples of usage.
 To get the help, you may also type `?sqrt` in the console and press Enter.
 The internet usually provides more up-to-date information. Try to search for `R sqrt` in your favorite search engine.
+
+## Editing R Markdown files in RStudio {#topic:ExRMarkdown} {#needs:ExCalculator}
 
 ## Variables and assignment {#topic:ExVariables} {#needs:ExCalculator}
 
@@ -1029,7 +1034,7 @@ smallD |> head()
 Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
 The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 library(tidyverse)
 d <- readRDS( "rcourse/data/pulseNA.rds" )
 ```
@@ -1037,7 +1042,7 @@ d <- readRDS( "rcourse/data/pulseNA.rds" )
 Run the code below. Compare the output of the following lines of code to each other. 
 Understand how you sort rows of the table and print table parts.
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 d |> arrange( height ) |> head()
 d |> arrange( desc( height ) ) |> head()
 d |> arrange( height ) |> tail()
@@ -1046,7 +1051,7 @@ d |> arrange( height ) |> slice(3:8)
 
 Also compare the output between each of these longer table manipulation "pipe" expressions:
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 d |> 
     select( name, age, height, weight ) |> 
     arrange( age ) |> 
@@ -1066,7 +1071,7 @@ d |>
 The `tidyverse` library is designed to make the code more readable and easier to understand.
 For example, the last expression given above is equivalent to the following base-R code:
 
-```{r}
+```{r eval=FALSE,echo=TRUE}
 head( d[
     order( d$age, d$weight, decreasing = c( FALSE, TRUE ) ), 
     c( "name", "age", "height", "weight" ) 
@@ -1078,8 +1083,14 @@ head( d[
 Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
 The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
 
+Manually run the pieces of code given below. Compare the output of the following lines of code to each other. 
+Understand how you filter rows based on different conditions.
+Observe, how to build longer pipes by combining filtering with sorting (or with calculating the number of rows).
 
-```{r}
+```{r eval=FALSE,echo=TRUE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+
 d |> filter( weight == 90 )
 d |> filter( weight > 90 ) |> arrange( weight )
 d |> filter( weight >= 90 ) |> arrange( weight )
@@ -1105,15 +1116,21 @@ d |> filter( is.na( exercise ) )
 d |> filter( is.na( exercise ) | is.na( pulse2 ) )
 ```
 
+Filter the rows of the `d` table to select only the rows where the `age` is equal to `18` or `21` (but not `19`, nor `20`...).
+Propose two ways to do this.
+
+Then, filter the rows of the `d` table to select only the rows where there is missing data on exercise and the participant was running.
+Finally, filter the rows of the `d` table to select only the rows where the `exercise` is not missing and the participant is drinking alcohol.
 
 ```{r}
+### SOLUTION
 d |> filter( age == 18 | age == 21 )
 d |> filter( age %in% c( 18, 21 ) )
 selAges <- c( 18, 21 )
 d |> filter( age %in% selAges )
 
 d |> filter( is.na( exercise ), ran == FALSE )
-d |> filter( is.na( exercise ), alcohol == "yes" )
+d |> filter( !is.na( exercise ), alcohol == "yes" )
 ```
 
 
