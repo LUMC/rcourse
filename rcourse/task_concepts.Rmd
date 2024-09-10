@@ -1179,7 +1179,87 @@ d |>
 d |> select( weight, height ) |> mutate( bmi = weight / (height/100)^2 ) |> arrange( bmi ) |> head()
 ```
 
-## Grouping and summarizing rows of a table. {#topic:ExGroupSummarize} {#needs:ExMutate} {#function:group_by} {#function:summarize} {#function:mean} {#function:sd} {#function:n} {#function:n_distinct} {#function:quantile} {#function:median} {#function:sum} {#function:sd} {#function:var} {#function:range} {#function:min} {#function:max} {#function:fivenum} {#function:unique}
+## Grouping and summarizing rows of a table. {#topic:ExGroupSummarize} {#needs:ExMutate} {#function:group_by} {#function:summarize} {#function:count} {#function:mean} {#function:sd} {#function:n}
+
+The `group_by` function is used to group rows of a table into separate parts, based on the values in one or more columns.
+Then, the `summarize` function allows to calculate summary statistics separately for each group (one row per group is created in the output table).  
+The `mutate` function can also be used with `group_by` to prodicue calculations within each group (but with `mutate` the number of rows does not change).
+
+Manually run the pieces of code given below. Compare the output of the following lines of code to each other. 
+Understand how you perform calculations on groups of rows in the table.
+Observe, how to build longer pipes by combining several actions on the tables.
+
+```{r eval=FALSE,echo=TRUE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+
+d |> group_by( gender ) |> summarize( studentsNum=n() )
+d |> group_by( gender ) |> mutate( studentsNum=n() ) # compare to above; not what you usually want
+
+d |> count( gender )                       # a shortcut 
+d |> count( gender, name = "studentsNum" ) # a shortcut with renaming
+
+d |> 
+    group_by( gender ) |> 
+    summarize( n=n(), meanWeight=mean(weight), sdWeight=sd(weight) )
+
+d |> count( gender, exercise )
+d |> count( exercise, gender )
+
+dd <- d |> count( gender, exercise )
+dd 
+dd |> 
+    group_by( gender ) |> 
+    mutate( fracWithinGender = n/sum(n) )
+
+d |> 
+    count( gender, exercise ) |> 
+    group_by( gender ) |> 
+    mutate( percentWithinGender = round( 100*n/sum(n), 1 ) ) |>
+    arrange( gender, desc(percentWithinGender) )
+```
+
+Per gender, calculate the mean and the standard deviation of the pulse before the exercise.
+Find how to perform these calculations with ignoring missing values. Name the columns `meanPulseBefore` and `sdPulseBefore`.
+
+How many students were there in each year of the experiment?
+
+Per year, calculate the number of students and the number of missing values in the `exercise` column.
+Provide the results in a single table with columns `year`, `studentsNum`, `missingExerciseNum`.
+
+For each gender and `run` levels, build a table with min, median, and max of known pulses after the exercise.
+
+```{r}
+### SOLUTION
+d |> 
+    group_by( gender ) |> 
+    summarize( meanPulseBefore=mean(pulse1, na.rm=TRUE), sdPulseBefore=sd(pulse1, na.rm=TRUE) )
+d |>                                # another possible solution
+    filter( !is.na(pulse1) ) |>
+    group_by( gender ) |>
+    summarize( meanPulseBefore=mean(pulse1), sdPulseBefore=sd(pulse1) )
+
+d |> count( year )
+
+d |> 
+    group_by( year ) |> 
+    summarize( studentsNum=n(), missingExerciseNum=sum( is.na(exercise) ) )
+
+d |>
+    filter( !is.na(pulse2) ) |>
+    group_by( gender, ran ) |>
+    summarize( minPulse=min(pulse2), medianPulse=median(pulse2), maxPulse=max(pulse2) )
+```
+
+## Getting (pulling) a column from a table.
+
+```{r}
+d$weight
+d |> pull( weight )
+
+setNames( d$weight, d$name )
+d |> pull( weight, name )
+```
 
 
 ## Sandbox
