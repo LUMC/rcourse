@@ -1124,24 +1124,29 @@ d |> filter( is.na( exercise ) )
 d |> filter( is.na( exercise ) | is.na( pulse2 ) )
 ```
 
-Filter the rows of the `d` table to select only the rows where the `age` is one of: `18` or `21`.
-Propose two ways to do this.
+1. Filter the rows of the `d` table to select only the rows where the `age` is one of: `18` or `21`. Propose two ways to do this.
 
-Filter the rows of the `d` table with `weight` more than `60` but not more than `70`.
+2. Filter the rows of the `d` table with `weight` more than `60` but not more than `70`.
 
-Then, filter the rows of the `d` table to select only the rows where there is missing data on exercise and the participant was running.
-Finally, filter the rows of the `d` table to select only the rows where the `exercise` is not missing and the participant is drinking alcohol.
+3. Filter the rows of the `d` table to select only the rows where there is missing data on exercise and the participant was running.
+
+4. Filter the rows of the `d` table to select only the rows where the `exercise` is not missing and the participant is drinking alcohol.
 
 ```{r}
 ### SOLUTION
+# [question 1]
 d |> filter( age == 18 | age == 21 )
 d |> filter( age %in% c( 18, 21 ) )
 selAges <- c( 18, 21 )
 d |> filter( age %in% selAges )
 
+# [question 2]
 d |> filter( weight > 60 & weight <= 70 )
 
+# [question 3]
 d |> filter( is.na( exercise ), ran == FALSE )
+
+# [question 4]
 d |> filter( !is.na( exercise ), alcohol == "yes" )
 ```
 
@@ -1219,46 +1224,88 @@ d |>
     arrange( gender, desc(percentWithinGender) )
 ```
 
-Per gender, calculate the mean and the standard deviation of the pulse before the exercise.
-Find how to perform these calculations with ignoring missing values. Name the columns `meanPulseBefore` and `sdPulseBefore`.
+1. Per gender, calculate the mean and the standard deviation of the pulse before the exercise.
+    Find how to perform these calculations with ignoring missing values. Name the columns `meanPulseBefore` and `sdPulseBefore`.
 
-How many students were there in each year of the experiment?
+2. How many students were there in each year of the experiment?
 
-Per year, calculate the number of students and the number of missing values in the `exercise` column.
-Provide the results in a single table with columns `year`, `studentsNum`, `missingExerciseNum`.
+3. Per year, calculate the number of students and the number of missing values in the `exercise` column.
+    Provide the results in a single table with columns `year`, `studentsNum`, `missingExerciseNum`.
 
-For each gender and `run` levels, build a table with min, median, and max of known pulses after the exercise.
+4. For each gender and `run` levels, build a table with min, median, and max of known pulses after the exercise.
 
 ```{r}
 ### SOLUTION
+# [question 1]
 d |> 
     group_by( gender ) |> 
     summarize( meanPulseBefore=mean(pulse1, na.rm=TRUE), sdPulseBefore=sd(pulse1, na.rm=TRUE) )
-d |>                                # another possible solution
+
+# [question 1, another possible solution]
+d |>                               
     filter( !is.na(pulse1) ) |>
     group_by( gender ) |>
     summarize( meanPulseBefore=mean(pulse1), sdPulseBefore=sd(pulse1) )
 
+# [question 2]
 d |> count( year )
 
+# [question 3]
 d |> 
     group_by( year ) |> 
     summarize( studentsNum=n(), missingExerciseNum=sum( is.na(exercise) ) )
 
+# [question 4]
 d |>
     filter( !is.na(pulse2) ) |>
     group_by( gender, ran ) |>
     summarize( minPulse=min(pulse2), medianPulse=median(pulse2), maxPulse=max(pulse2) )
 ```
 
-## Getting (pulling) a column from a table.
+## Getting (pulling) a column from a table as a (named) vector. {#topic:ExPull} {#needs:ExTTest} {#function:pull} {#function:class} {#function:t.test}
 
-```{r}
-d$weight
+The `pull` function is used to extract a column from a table as a vector.
+
+Run the code below. It shows several ways to extract the `weight` column from the `d` table as a vector.
+Understand how you get a vector from a table and how you get a named vector.
+
+```{r eval=FALSE,echo=TRUE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
+
+d[['weight']]
+d$weight             # possibly error-prone in base-R
 d |> pull( weight )
 
 setNames( d$weight, d$name )
+setNames( d[['weight']], d[['name']] )
 d |> pull( weight, name )
+```
+
+1. Use the tidyverse notation (with `pull`) to extract numerical vectors of the pulses before the exercise, separately for 
+    females and males. Name the vectors `femalePulseBefore` and `malePulseBefore`. Use the `class` function to verify
+    that indeed you have vectors of numbers. Finally, use the `t.test` function to compare the means of the two vectors.
+    Is there a significant difference between the male and female pulse rates (at the alpha level 0.05)?
+
+2. Use again `t.test` to perform a paired t-test to compare the pulse rates before and after the exercise for the students who did run.
+    There should be a significant difference now. Is that the case? How much higher is the pulse rate after the exercise on average?
+
+```{r}
+### SOLUTION
+# [question 1]
+femalePulseBefore <- d |> filter( gender == "female" ) |> pull( pulse1 )
+malePulseBefore <- d |> filter( gender == "male" ) |> pull( pulse1 )
+class( femalePulseBefore )
+class( malePulseBefore )
+t.test( femalePulseBefore, malePulseBefore )
+
+# [question 1, another solution, better, discussed later]
+t.test( pulse1 ~ gender, data=d )
+
+# [question 2]
+dd <- d |> filter( ran )
+t.test( dd$pulse1, dd$pulse2, paired=TRUE )
+# t.test( dd |> pull( pulse1 ), dd |> pull( pulse2 ), paired=TRUE ) # another solution, with pull
 ```
 
 
