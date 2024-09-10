@@ -997,10 +997,12 @@ hs |> sort() |> tail(5) |> mean() |> round(1)
 
 ## Selecting and renaming columns of a table. {#topic:ExSelectRename} {#needs:ExReadCsvInvestigate} {#needs:ExPipeOperator} {#library:tidyverse} {#function:select} {#function:rename} {#function:head} {#function:tail}
 
+The `select` function is used to select columns of a table. The `everything` function is used to select all (remaining) columns.
+
 Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
 The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 library(tidyverse)
 d <- readRDS( "rcourse/data/pulseNA.rds" )
 ```
@@ -1008,7 +1010,7 @@ d <- readRDS( "rcourse/data/pulseNA.rds" )
 Execute the following lines of code and observe the results.
 Understand how you select columns from the table and how you rename them.
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 d
 d |> head()
 d |> select( weight, height )
@@ -1024,15 +1026,17 @@ d |> rename( WEIGHT=weight, HEIGHT=height ) |> tail()
 
 Note, the lines above do not modify the `d` table. If you want to store a modified table, you need to assign the result to a variable:
 
-```{r eval=FALSE}
+```{r eval=FALSE,echo=TRUE}
 smallD <- d |> select( weight, height )
 smallD |> head()
 ```
 
 ## Sorting rows of a table. {#topic:ExArrange} {#needs:ExSelectRename} {#library:tidyverse} {#function:arrange} {#function:desc}
 
+The `arrange` function is used to sort rows of a table based on the values in one or more columns.
+
 Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
-The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
+The `arrange` function comes from the `tidyverse` library, so you need to load it with `library(tidyverse)`.
 
 ```{r eval=FALSE,echo=TRUE}
 library(tidyverse)
@@ -1078,14 +1082,16 @@ head( d[
 ], 10 )
 ```
 
-## Filtering and sorting rows of a table, selecting columns. {#topic:ExFilterSelect} {#needs:ExReadCsvInvestigate} {#function:filter} {#function:select} {#function:arrange} {#function:head} {#function:tail} {#function:print}
+## Filtering and sorting rows of a table, selecting columns. {#topic:ExFilterSelect} {#needs:ExArrange} {#function:filter} {#function:select} {#function:arrange} {#function:nrow} {#function:is.na} {#function:%in%} {#function:between} {#function:|} {#function:c} {#function:&} {#function:!} {#function:|}
 
-Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
-The examples below use the `tidyverse` library, so you need to load it with `library(tidyverse)`.
+The `filter` function is used to select rows of a table that meet certain conditions.
 
 Manually run the pieces of code given below. Compare the output of the following lines of code to each other. 
 Understand how you filter rows based on different conditions.
 Observe, how to build longer pipes by combining filtering with sorting (or with calculating the number of rows).
+
+Load the `pulseNA.rds` file into the `d` variable (you can also read the `pulseNA.csv` file).
+The `filter` function comes from the `tidyverse` library, so you need to load it with `library(tidyverse)`.
 
 ```{r eval=FALSE,echo=TRUE}
 library(tidyverse)
@@ -1095,9 +1101,11 @@ d |> filter( weight == 90 )
 d |> filter( weight > 90 ) |> arrange( weight )
 d |> filter( weight >= 90 ) |> arrange( weight )
 
-d |> filter( weight < 50 | weight > 100 )
-d |> filter( weight >= 80 & weight < 90 )     # 80 yes, 90 no
-d |> filter( between( weight, 80, 90 ) )      # 80 yes, 90 yes
+d |> filter( weight < 50 | weight > 100 )             # OR
+d |> filter( weight >= 80 & weight < 90 )             # 80 yes, 90 no (AND)
+d |> filter( between( weight, 80, 90 ) )              # 80 yes, 90 yes
+d |> filter( weight >= 80, weight < 90 )              # 80 yes, 90 no (comma is AND)
+d |> filter( weight >= 80 ) |> filter( weight < 90 )  # 80 yes, 90 no (two steps are AND)
 
 d |> filter( gender == "male" )
 d |> filter( !( gender == "male" ) )
@@ -1116,8 +1124,10 @@ d |> filter( is.na( exercise ) )
 d |> filter( is.na( exercise ) | is.na( pulse2 ) )
 ```
 
-Filter the rows of the `d` table to select only the rows where the `age` is equal to `18` or `21` (but not `19`, nor `20`...).
+Filter the rows of the `d` table to select only the rows where the `age` is one of: `18` or `21`.
 Propose two ways to do this.
+
+Filter the rows of the `d` table with `weight` more than `60` but not more than `70`.
 
 Then, filter the rows of the `d` table to select only the rows where there is missing data on exercise and the participant was running.
 Finally, filter the rows of the `d` table to select only the rows where the `exercise` is not missing and the participant is drinking alcohol.
@@ -1129,16 +1139,47 @@ d |> filter( age %in% c( 18, 21 ) )
 selAges <- c( 18, 21 )
 d |> filter( age %in% selAges )
 
+d |> filter( weight > 60 & weight <= 70 )
+
 d |> filter( is.na( exercise ), ran == FALSE )
 d |> filter( !is.na( exercise ), alcohol == "yes" )
 ```
 
+## Modifying (mutating) columns of a table. {#topic:ExMutate}
 
+The `mutate` function is used to add new columns to a table or modify existing columns.
+It can use the values of existing columns to calculate the values of new columns.
+This operation does not change the number of rows in the table.
 
+```{r eval=FALSE,echo=TRUE}
+library(tidyverse)
+d <- readRDS( "rcourse/data/pulseNA.rds" )
 
+d |> select( height ) |> mutate( isVeryTall = height > 190 ) |> head()
+d |> select( height ) |> mutate( howTall = if_else( height > 190, "very", "not_very" ) ) |> head()
 
+d |> 
+    select( pulse1, pulse2 ) |> 
+    mutate( pulseDiff = pulse2 - pulse1 ) |> 
+    head()
+d |> 
+    select( pulse1, pulse2 ) |> 
+    mutate( minPulse = pmin(pulse1, pulse2), maxPulse = pmax(pulse1, pulse2) ) |> 
+    head()
+d |> 
+    select( pulse1, pulse2 ) |> 
+    mutate( 
+        minPulse = if_else( pulse1 < pulse2, pulse1, pulse2 ), 
+        maxPulse = if_else( pulse1 < pulse2, pulse2, pulse1 ) ) |> 
+    head()
+```
 
+```{r}
+### SOLUTION
+d |> select( weight, height ) |> mutate( bmi = weight / (height/100)^2 ) |> arrange( bmi ) |> head()
+```
 
+## Grouping and summarizing rows of a table. {#topic:ExGroupSummarize} {#needs:ExMutate} {#function:group_by} {#function:summarize} {#function:mean} {#function:sd} {#function:n} {#function:n_distinct} {#function:quantile} {#function:median} {#function:sum} {#function:sd} {#function:var} {#function:range} {#function:min} {#function:max} {#function:fivenum} {#function:unique}
 
 
 ## Sandbox
